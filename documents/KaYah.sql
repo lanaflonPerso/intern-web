@@ -1,0 +1,8 @@
+insert into township(division_id,name) values(1,'Bawlakhe Township')
+insert into township(division_id,name) values(1,'Demoso Township')
+insert into township(division_id,name) values(1,'Hpasawng Township')
+insert into township(division_id,name) values(1,'Hpruso Township')
+insert into township(division_id,name) values(1,'Kyephogy Township')
+insert into township(division_id,name) values(1,'Loikaw Township')
+insert into township(division_id,name) values(1,'Mese Township')
+insert into township(division_id,name) values(1,'Shadaw Township')

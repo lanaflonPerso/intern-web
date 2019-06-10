@@ -1,18 +1,19 @@
 package com.jdc.clinic.entity;
 
 import java.io.Serializable;
+import java.util.LinkedHashSet;
 import java.util.Set;
 
 import javax.persistence.Entity;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.Getter;
+import lombok.Setter;
 
 @Entity
-@Data
-@NoArgsConstructor
+@Getter
+@Setter
 public class Member extends Account implements Serializable {
 
 	private static final long serialVersionUID = 1L;
@@ -22,5 +23,9 @@ public class Member extends Account implements Serializable {
 
 	@OneToMany(mappedBy = "member")
 	private Set<FamilyMember> family;
+	
+	public Member() {
+		family = new LinkedHashSet<>();
+	}
 
 }

@@ -7,10 +7,12 @@ import java.util.Set;
 import javax.persistence.Entity;
 import javax.persistence.OneToMany;
 
-import lombok.Data;
+import lombok.Getter;
+import lombok.Setter;
 
 @Entity
-@Data
+@Getter
+@Setter
 public class Partner extends Account implements Serializable {
 	
 	private static final long serialVersionUID = 1L;

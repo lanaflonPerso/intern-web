@@ -1,0 +1,12 @@
+insert into township (division_id,name) values(15,'Zeyatheiddhi Township');
+insert into township (division_id,name) values(15,'Pyinnyatheddhi Township');
+insert into township (division_id,name) values(15,'Bawgatheiddhi Township');
+insert into township (division_id,name) values(15,'Mingalatheiddhi Township');
+insert into township (division_id,name) values(15,'Pyinmana Township');
+insert into township (division_id,name) values(15,'Lewe Township');
+insert into township (division_id,name) values(15,'Tatkone Township');
+insert into township (division_id,name) values(15,'Ottarathiri Township');
+insert into township (division_id,name) values(15,'Dekkhinathiri Township');
+insert into township (division_id,name) values(15,'Pobbathiri Township');
+insert into township (division_id,name) values(15,'Zabuthiri Township');
+insert into township (division_id,name) values(15,'Zeyarthiri Township');

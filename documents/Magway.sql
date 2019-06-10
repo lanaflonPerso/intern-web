@@ -1,0 +1,28 @@
+	
+
+
+
+insert into township(division_id,name) values(1,'Magway Township')
+insert into township(division_id,name) values(1,'Myothit Township') 
+insert into township(division_id,name) values(1,'Natmauk Township') 
+insert into township(division_id,name) values(1,'Yenangyaung Township')
+insert into township(division_id,name) values(1,'Minbu Township')
+insert into township(division_id,name) values(1,'Ngape Township' )
+insert into township(division_id,name) values(1,'Pwintbyu Township') 
+insert into township(division_id,name) values(1,'Salin Township' )
+insert into township(division_id,name) values(1,'Sidoktaya Township')	
+insert into township(division_id,name) values(1,'Myaing Township')
+insert into township(division_id,name) values(1,'Pakokku Township')
+insert into township(division_id,name) values(1,'Pauk Township')
+insert into township(division_id,name) values(1,'Seikphyu Township')
+insert into township(division_id,name) values(1,'Yesagyo Township')
+insert into township(division_id,name) values(1,'Aunglan Township') 
+insert into township(division_id,name) values(1,'Kamma Township')
+insert into township(division_id,name) values(1,'Mindon Township')
+insert into township(division_id,name) values(1,'Minhla Township' )
+insert into township(division_id,name) values(1,'Sinbaungwe Township')
+insert into township(division_id,name) values(1,'Thayet Township')
+insert into township(division_id,name) values(1,'Gangaw Township')
+insert into township(division_id,name) values(1,'Saw Township' )
+insert into township(division_id,name) values(1,'Tilin Township')
+insert into township(division_id,name) values(1,'Kyaukhtu Subtownship')

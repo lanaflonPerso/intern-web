@@ -3,10 +3,8 @@ package com.jdc.clinic.entity;
 import java.io.Serializable;
 import java.security.Security;
 
-import javax.persistence.Embedded;
 import javax.persistence.EmbeddedId;
 import javax.persistence.Entity;
-import javax.persistence.Enumerated;
 import javax.persistence.JoinColumn;
 import javax.persistence.JoinColumns;
 import javax.persistence.ManyToOne;
@@ -21,7 +19,6 @@ public class Booking implements Serializable {
 
 	private static final long serialVersionUID = 1L;
 
-	@Embedded
 	private Security security;
 
 	@ManyToOne
@@ -41,7 +38,6 @@ public class Booking implements Serializable {
 	@ManyToOne
 	private Timetable timeTable;
 
-	@Enumerated
 	private Status status;
 	
 	@EmbeddedId

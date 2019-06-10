@@ -2,8 +2,6 @@ package com.jdc.clinic.entity;
 
 import java.io.Serializable;
 
-import javax.persistence.Column;
-import javax.persistence.Embedded;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
@@ -32,13 +30,11 @@ public class Account implements Serializable {
 	@NotEmpty(message = "Please enter Name.")
 	private String name;
 
-	@Column
 	private String email;
 
 	@Enumerated(EnumType.STRING)
 	private Role role;
 	
-	@Embedded
 	private SecurityInfo security;
 
 	public enum Role {

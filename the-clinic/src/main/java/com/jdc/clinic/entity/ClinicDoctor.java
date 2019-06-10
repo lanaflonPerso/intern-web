@@ -30,6 +30,6 @@ public class ClinicDoctor implements Serializable {
 	private Doctor doctor;
 	
 	@EmbeddedId
-	private ClinitDoctorPK id;
+	private ClinicDoctorPK id;
 
 }

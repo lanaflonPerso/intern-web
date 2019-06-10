@@ -6905,7 +6905,7 @@
 											"font": "Arial;13;1",
 											"left": 349,
 											"top": 919,
-											"width": 104.41259765625,
+											"width": 135.51611328125,
 											"height": 13,
 											"text": "Family"
 										},
@@ -6940,7 +6940,7 @@
 									"font": "Arial;13;0",
 									"left": 344,
 									"top": 912,
-									"width": 114.41259765625,
+									"width": 145.51611328125,
 									"height": 25,
 									"stereotypeLabel": {
 										"$ref": "AAAAAAFrMFcleMDghHg="
@@ -6977,7 +6977,7 @@
 											"font": "Arial;13;0",
 											"left": 349,
 											"top": 942,
-											"width": 104.41259765625,
+											"width": 135.51611328125,
 											"height": 13,
 											"text": "-familyID: Long",
 											"horizontalAlignment": 0
@@ -6994,7 +6994,7 @@
 											"font": "Arial;13;0",
 											"left": 349,
 											"top": 957,
-											"width": 104.41259765625,
+											"width": 135.51611328125,
 											"height": 13,
 											"text": "-phoneNo: String",
 											"horizontalAlignment": 0
@@ -7011,7 +7011,7 @@
 											"font": "Arial;13;0",
 											"left": 349,
 											"top": 972,
-											"width": 104.41259765625,
+											"width": 135.51611328125,
 											"height": 13,
 											"text": "-password: String",
 											"horizontalAlignment": 0
@@ -7028,7 +7028,7 @@
 											"font": "Arial;13;0",
 											"left": 349,
 											"top": 987,
-											"width": 104.41259765625,
+											"width": 135.51611328125,
 											"height": 13,
 											"text": "+patients: Set<Patient>",
 											"horizontalAlignment": 0
@@ -7052,7 +7052,7 @@
 									"font": "Arial;13;0",
 									"left": 344,
 									"top": 1005,
-									"width": 114.41259765625,
+									"width": 145.51611328125,
 									"height": 10
 								},
 								{
@@ -7092,7 +7092,7 @@
 							"containerChangeable": true,
 							"left": 344,
 							"top": 912,
-							"width": 114.41259765625,
+							"width": 145.51611328125,
 							"height": 103,
 							"nameCompartment": {
 								"$ref": "AAAAAAFrMFcleMDf7YA="

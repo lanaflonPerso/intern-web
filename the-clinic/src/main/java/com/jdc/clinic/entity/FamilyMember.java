@@ -5,11 +5,8 @@ import java.time.LocalDate;
 import java.util.LinkedHashSet;
 import java.util.Set;
 
-import javax.persistence.Column;
 import javax.persistence.ElementCollection;
-import javax.persistence.Embedded;
 import javax.persistence.Entity;
-import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -37,24 +34,19 @@ public class FamilyMember implements Serializable {
 	@NotEmpty(message = "Please enter Patient Name.")
 	private String name;
 
-	@Column
 	private String relationship;
 
-	@Column
 	private LocalDate dob;
 
-	@Enumerated
 	private BloodType bloodType;
 
 	@ElementCollection
 	private Set<String> alergicMedicnes;
 
-	@Embedded
 	private SecurityInfo security;
 
-	@Enumerated
 	private Gender gender;
-	
+
 	@ManyToOne
 	private Member member;
 
@@ -62,8 +54,7 @@ public class FamilyMember implements Serializable {
 	private Set<DiseasesHistory> diseasesHistories;
 
 	public enum Gender {
-		Male,
-		Female
+		Male, Female
 	}
 
 	public enum BloodType {

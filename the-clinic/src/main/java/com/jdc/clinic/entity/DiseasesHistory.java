@@ -2,7 +2,6 @@ package com.jdc.clinic.entity;
 
 import java.io.Serializable;
 
-import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -30,7 +29,6 @@ public class DiseasesHistory implements Serializable{
 	@NotEmpty(message = "Please enter hospital name.")
 	private String hospital;
 
-	@Column
 	private int happenYear;
 
 	@ManyToOne

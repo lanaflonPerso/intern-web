@@ -12,13 +12,13 @@ public class WebConfiguration implements WebMvcConfigurer{
 
 	@Override
 	public void addViewControllers(ViewControllerRegistry registry) {
-		WebMvcConfigurer.super.addViewControllers(registry);
 		registry.addViewController("/").setViewName("index");
+		registry.addViewController("/login").setViewName("/login");
+		registry.addViewController("/signup").setViewName("/signup");
 	}
 	
 	@Override
 	public void addResourceHandlers(ResourceHandlerRegistry registry) {
-		WebMvcConfigurer.super.addResourceHandlers(registry);
 		registry.addResourceHandler("/resources/**").addResourceLocations("classpath:/static/");
 	}
 	

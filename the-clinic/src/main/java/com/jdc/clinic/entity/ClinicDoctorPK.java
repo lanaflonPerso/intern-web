@@ -11,7 +11,7 @@ import lombok.NoArgsConstructor;
 @Embeddable
 @Data
 @NoArgsConstructor
-public class ClinitDoctorPK implements Serializable {
+public class ClinicDoctorPK implements Serializable {
 
 	private static final long serialVersionUID = 1L;
 

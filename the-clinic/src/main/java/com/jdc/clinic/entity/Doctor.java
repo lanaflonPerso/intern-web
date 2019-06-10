@@ -4,11 +4,9 @@ import java.io.Serializable;
 import java.util.LinkedHashSet;
 import java.util.Set;
 
-import javax.persistence.Column;
 import javax.persistence.ElementCollection;
 import javax.persistence.Embedded;
 import javax.persistence.Entity;
-import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -28,7 +26,7 @@ public class Doctor implements Serializable {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;
 
-	@NotEmpty
+	@NotEmpty(message = "Please enter Doctor Name.")
 	private String name;
 
 	@ElementCollection
@@ -37,13 +35,10 @@ public class Doctor implements Serializable {
 	@ElementCollection
 	private Set<String> specialities;
 	
-	@Enumerated
 	private Gender gender;
 
-	@Column
 	private String hospital;
 
-	@Column
 	private String position;
 
 	@Embedded

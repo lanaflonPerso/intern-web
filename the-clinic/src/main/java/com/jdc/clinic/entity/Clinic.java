@@ -2,6 +2,10 @@ package com.jdc.clinic.entity;
 
 import java.io.Serializable;
 
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+
 public class Clinic implements Serializable {
 
 	private static final long serialVersionUID = 1L;
@@ -9,6 +13,8 @@ public class Clinic implements Serializable {
 	public Clinic() {
 	}
 
+	@Id
+	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private int id;
 
 	private String name;

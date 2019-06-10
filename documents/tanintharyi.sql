@@ -1,0 +1,10 @@
+insert into township (division_id, name) values (13, 'Dawei Township');
+insert into township (division_id, name) values (13, 'Launglon Township');
+insert into township (division_id, name) values (13, 'Thayetchaung Township');
+insert into township (division_id, name) values (13, 'Yebyu Township');
+insert into township (division_id, name) values (13, 'Tanjung Kawthaung fownship');
+insert into township (division_id, name) values (13, 'Bokfin fownship');
+insert into township (division_id, name) values (13, 'Myeik Township');
+insert into township (division_id, name) values (13, 'Kyunsu Township');
+insert into township (division_id, name) values (13, 'Palaw Township');
+insert into township (division_id, name) values (13, 'Taninthayi Township');

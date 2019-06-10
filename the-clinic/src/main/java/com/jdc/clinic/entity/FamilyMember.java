@@ -7,6 +7,8 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
+
 @Entity
 public class FamilyMember implements Serializable {
 
@@ -14,8 +16,9 @@ public class FamilyMember implements Serializable {
 
 	public FamilyMember() {
 	}
+
 	@Id
-	@GeneratedValue(strategy=GenerationType.IDENTITY)
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private long id;
 
 	private String name;
@@ -26,21 +29,11 @@ public class FamilyMember implements Serializable {
 
 	private Gender gender;
 
+	@ManyToOne
 	private Member member;
 
 	public enum Gender {
 		Male, Female
-	}
-	
-	
-
-	public FamilyMember(String name, String relationship, LocalDate dob, Gender gender, Member member) {
-		super();
-		this.name = name;
-		this.relationship = relationship;
-		this.dob = dob;
-		this.gender = gender;
-		this.member = member;
 	}
 
 	public long getId() {

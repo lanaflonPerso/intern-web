@@ -2,12 +2,13 @@ package com.jdc.clinic.entity;
 
 import java.io.Serializable;
 
-import javax.persistence.Embeddable;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.OneToMany;
+import javax.persistence.ManyToOne;
+import javax.validation.constraints.NotEmpty;
+
 @Entity
 public class Clinic implements Serializable {
 
@@ -17,12 +18,13 @@ public class Clinic implements Serializable {
 	}
 
 	@Id
-	@GeneratedValue(strategy=GenerationType.IDENTITY)
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;
 
+	@NotEmpty(message = "Please enter clinic name.")
 	private String name;
 
-	
+	@ManyToOne
 	private Partner owner;
 
 	public int getId() {

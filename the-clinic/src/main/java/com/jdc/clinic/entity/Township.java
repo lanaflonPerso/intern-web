@@ -6,7 +6,6 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.ManyToOne;
 
 @Entity
 public class Township implements Serializable {
@@ -17,12 +16,11 @@ public class Township implements Serializable {
 	}
 
 	@Id
-	@GeneratedValue(strategy=GenerationType.IDENTITY)
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;
 
 	private String name;
 
-	
 	private Division division;
 
 	public int getId() {
@@ -48,7 +46,5 @@ public class Township implements Serializable {
 	public void setDivision(Division division) {
 		this.division = division;
 	}
-	
-	
 
 }

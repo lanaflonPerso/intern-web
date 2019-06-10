@@ -7,9 +7,12 @@ import javax.persistence.Entity;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
 import javax.persistence.Id;
+import javax.persistence.Inheritance;
+import javax.persistence.InheritanceType;
 import javax.validation.constraints.NotEmpty;
 
 @Entity
+@Inheritance(strategy = InheritanceType.JOINED)
 public class Account implements Serializable {
 
 	private static final long serialVersionUID = 1L;

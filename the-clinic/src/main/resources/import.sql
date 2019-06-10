@@ -1,0 +1,15 @@
+insert into Division(name) values ('Ayeyarwady Region');
+insert into Division(name) values ('Bago Region');
+insert into Division(name) values ('Chin State');
+insert into Division(name) values ('Kachin State');
+insert into Division(name) values ('Kayah State');
+insert into Division(name) values ('Kayin State');
+insert into Division(name) values ('Magway Region');
+insert into Division(name) values ('Mandalay Region');
+insert into Division(name) values ('Mon State');
+insert into Division(name) values ('Rakhine State');
+insert into Division(name) values ('Shan State');
+insert into Division(name) values ('Sagaing Region');
+insert into Division(name) values ('Tanintharyi Region');
+insert into Division(name) values ('Yangon Region');
+insert into Division(name) values ('Naypyidaw Union Territory');

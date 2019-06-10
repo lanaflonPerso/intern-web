@@ -4,9 +4,7 @@ import java.io.Serializable;
 import java.util.Set;
 
 import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.OneToMany;
 
 @Entity
 public class Partner extends Account implements Serializable {
@@ -16,8 +14,7 @@ public class Partner extends Account implements Serializable {
 	public Partner() {
 	}
 
-	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@OneToMany(mappedBy = "owner")
 	private Set<Clinic> clinics;
 
 	public Set<Clinic> getClinics() {

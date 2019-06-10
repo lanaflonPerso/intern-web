@@ -7,6 +7,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 
 @Entity
 public class Division implements Serializable {
@@ -19,6 +20,7 @@ public class Division implements Serializable {
 
 	private String name;
 
+	@OneToMany(mappedBy = "division")
 	private Set<Township> townships;
 
 	public Division() {

@@ -7,6 +7,7 @@ import javax.persistence.Entity;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
 import javax.persistence.Id;
+import javax.validation.constraints.NotEmpty;
 
 @Entity
 public class Account implements Serializable {
@@ -14,10 +15,13 @@ public class Account implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	@Id
+	@NotEmpty(message = "Please enter phone.")
 	private String phone;
 
+	@NotEmpty(message = "Please enter password.")
 	private String password;
 
+	@NotEmpty(message = "Please enter Member Name.")
 	private String name;
 
 	private String email;

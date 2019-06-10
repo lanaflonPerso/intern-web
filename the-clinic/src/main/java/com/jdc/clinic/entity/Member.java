@@ -3,13 +3,19 @@ package com.jdc.clinic.entity;
 import java.io.Serializable;
 import java.util.Set;
 
+import javax.persistence.Entity;
+import javax.persistence.OneToMany;
+@Entity
 public class Member extends Account implements Serializable {
 
-	private static final long serialVersionUID = 1L;
+	
 
+	private static final long serialVersionUID = 1L;
+	
 	public Member() {
 	}
-
+	
+    @OneToMany(mappedBy = "member")
 	private Set<FamilyMember> family;
 
 	public Set<FamilyMember> getFamily() {

@@ -1,0 +1,9 @@
+insert into township (divistion_id, name) values (3, 'Falam');
+insert into township (divistion_id, name) values (3, 'Hakha');
+insert into township (divistion_id, name) values (3, 'Htantlang');
+insert into township (divistion_id, name) values (3, 'Kanpetlet');
+insert into township (divistion_id, name) values (3, 'Madupi');
+insert into township (divistion_id, name) values (3, 'Mindat');
+insert into township (divistion_id, name) values (3, 'Paletwa');
+insert into township (divistion_id, name) values (3, 'Tiddim');
+insert into township (divistion_id, name) values (3, 'Tonzang');

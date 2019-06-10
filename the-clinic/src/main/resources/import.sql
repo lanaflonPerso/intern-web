@@ -1,3 +1,4 @@
+
 insert into Division(name) values ('Ayeyarwady Region');
 insert into Division(name) values ('Bago Region');
 insert into Division(name) values ('Chin State');

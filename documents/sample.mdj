@@ -11507,30 +11507,6 @@
 												},
 												{
 													"_type": "UMLClass",
-													"_id": "AAAAAAFrQFGebrAot9M=",
-													"_parent": {
-														"$ref": "AAAAAAFrQE9Rna7qROI="
-													},
-													"name": "Admin",
-													"ownedElements": [
-														{
-															"_type": "UMLGeneralization",
-															"_id": "AAAAAAFrQFKgtLCQCbg=",
-															"_parent": {
-																"$ref": "AAAAAAFrQFGebrAot9M="
-															},
-															"source": {
-																"$ref": "AAAAAAFrQFGebrAot9M="
-															},
-															"target": {
-																"$ref": "AAAAAAFrQFFagK/UFSg="
-															}
-														}
-													],
-													"stereotype": "Entity"
-												},
-												{
-													"_type": "UMLClass",
 													"_id": "AAAAAAFrQFG/zLBTSsA=",
 													"_parent": {
 														"$ref": "AAAAAAFrQE9Rna7qROI="

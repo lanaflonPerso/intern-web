@@ -22,7 +22,7 @@ public class Clinic implements Serializable {
 
 	private String name;
 
-	@OneToMany
+	
 	private Partner owner;
 
 	public int getId() {

@@ -1,0 +1,14 @@
+insert into township (divistion_id, name) values (1, 'Gyobingauk');
+insert into township (divistion_id, name) values (1, 'Letpadan');
+insert into township (divistion_id, name) values (1, 'Minhla');
+insert into township (divistion_id, name) values (1, 'Monyo');
+insert into township (divistion_id, name) values (1, 'Nattalin');
+insert into township (divistion_id, name) values (1, 'Okpho');
+insert into township (divistion_id, name) values (1, 'Padaung');
+insert into township (divistion_id, name) values (1, 'Pauk Kaung');
+insert into township (divistion_id, name) values (1, 'Paungde');
+insert into township (divistion_id, name) values (1, 'Pyay');
+insert into township (divistion_id, name) values (1, 'Shwedaung');
+insert into township (divistion_id, name) values (1, 'Thayarwady');
+insert into township (divistion_id, name) values (1, 'Thegon');
+insert into township (divistion_id, name) values (1, 'Zigo');

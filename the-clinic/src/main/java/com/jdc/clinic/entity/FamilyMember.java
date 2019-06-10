@@ -3,13 +3,19 @@ package com.jdc.clinic.entity;
 import java.io.Serializable;
 import java.time.LocalDate;
 
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+@Entity
 public class FamilyMember implements Serializable {
 
 	private static final long serialVersionUID = 1L;
 
 	public FamilyMember() {
 	}
-
+	@Id
+	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private long id;
 
 	private String name;
@@ -24,6 +30,17 @@ public class FamilyMember implements Serializable {
 
 	public enum Gender {
 		Male, Female
+	}
+	
+	
+
+	public FamilyMember(String name, String relationship, LocalDate dob, Gender gender, Member member) {
+		super();
+		this.name = name;
+		this.relationship = relationship;
+		this.dob = dob;
+		this.gender = gender;
+		this.member = member;
 	}
 
 	public long getId() {

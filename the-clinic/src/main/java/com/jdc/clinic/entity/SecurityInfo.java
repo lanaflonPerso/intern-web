@@ -3,6 +3,7 @@ package com.jdc.clinic.entity;
 import java.io.Serializable;
 import java.time.LocalDateTime;
 
+import javax.persistence.Column;
 import javax.persistence.Embeddable;
 
 @Embeddable
@@ -21,6 +22,7 @@ public class SecurityInfo implements Serializable {
 
 	private LocalDateTime updateTime;
 
+	@Column(name = "del_flag")
 	private boolean delete;
 
 	public String getCreateUser() {

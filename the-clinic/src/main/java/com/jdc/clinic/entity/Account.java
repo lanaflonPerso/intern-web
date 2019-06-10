@@ -38,16 +38,6 @@ public class Account implements Serializable {
 	public Account() {
 	}
 
-	public Account(String phone, String password, String name, String email, Role role, SecurityInfo security) {
-		super();
-		this.phone = phone;
-		this.password = password;
-		this.name = name;
-		this.email = email;
-		this.role = role;
-		this.security = security;
-	}
-
 	public String getPhone() {
 		return phone;
 	}

@@ -1,6 +1,7 @@
 package com.jdc.clinic.entity;
 
 import java.io.Serializable;
+import java.util.LinkedHashSet;
 import java.util.Set;
 
 import javax.persistence.Entity;
@@ -12,6 +13,7 @@ public class Member extends Account implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	public Member() {
+		family = new LinkedHashSet<>();
 	}
 
 	@OneToMany(mappedBy = "member")

@@ -1,6 +1,7 @@
 package com.jdc.clinic.entity;
 
 import java.io.Serializable;
+import java.util.LinkedHashSet;
 import java.util.Set;
 
 import javax.persistence.Entity;
@@ -24,6 +25,7 @@ public class Division implements Serializable {
 	private Set<Township> townships;
 
 	public Division() {
+		townships = new LinkedHashSet<>();
 	}
 
 	public Division(String name) {

@@ -2,13 +2,18 @@ package com.jdc.clinic.entity;
 
 import java.io.Serializable;
 
+import javax.persistence.Embedded;
+import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
+import javax.persistence.Id;
+
+@Entity
 public class Account implements Serializable {
 
 	private static final long serialVersionUID = 1L;
 
-	public Account() {
-	}
-
+	@Id
 	private String phone;
 
 	private String password;
@@ -17,9 +22,24 @@ public class Account implements Serializable {
 
 	private String email;
 
+	@Enumerated(EnumType.STRING)
 	private Role role;
 
+	@Embedded
 	private SecurityInfo security;
+
+	public Account() {
+	}
+
+	public Account(String phone, String password, String name, String email, Role role, SecurityInfo security) {
+		super();
+		this.phone = phone;
+		this.password = password;
+		this.name = name;
+		this.email = email;
+		this.role = role;
+		this.security = security;
+	}
 
 	public String getPhone() {
 		return phone;

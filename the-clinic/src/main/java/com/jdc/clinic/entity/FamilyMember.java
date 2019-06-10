@@ -6,6 +6,7 @@ import java.util.LinkedHashSet;
 import java.util.Set;
 
 import javax.persistence.ElementCollection;
+import javax.persistence.Embedded;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -43,6 +44,7 @@ public class FamilyMember implements Serializable {
 	@ElementCollection
 	private Set<String> alergicMedicnes;
 
+	@Embedded
 	private SecurityInfo security;
 
 	private Gender gender;

@@ -3,6 +3,7 @@ package com.jdc.clinic.entity;
 import java.io.Serializable;
 import java.security.Security;
 
+import javax.persistence.Embedded;
 import javax.persistence.EmbeddedId;
 import javax.persistence.Entity;
 import javax.persistence.JoinColumn;
@@ -19,6 +20,7 @@ public class Booking implements Serializable {
 
 	private static final long serialVersionUID = 1L;
 
+	@Embedded
 	private Security security;
 
 	@ManyToOne

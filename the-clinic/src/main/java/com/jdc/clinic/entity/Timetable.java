@@ -4,6 +4,7 @@ import java.io.Serializable;
 import java.time.DayOfWeek;
 import java.time.LocalTime;
 
+import javax.persistence.Embedded;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -30,6 +31,7 @@ public class Timetable implements Serializable {
 
 	private LocalTime timeTo;
 
+	@Embedded
 	private SecurityInfo security;
 
 	@ManyToOne

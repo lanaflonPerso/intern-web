@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
 @RequestMapping("/clinics")
-public class ClinicController {
+public class PublicClinicController {
 
 	@GetMapping
 	public String search(String keyword, ModelMap model) {

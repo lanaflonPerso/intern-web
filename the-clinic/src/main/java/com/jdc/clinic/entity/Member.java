@@ -5,17 +5,16 @@ import java.util.Set;
 
 import javax.persistence.Entity;
 import javax.persistence.OneToMany;
+
 @Entity
 public class Member extends Account implements Serializable {
 
-	
-
 	private static final long serialVersionUID = 1L;
-	
+
 	public Member() {
 	}
-	
-    @OneToMany(mappedBy = "member")
+
+	@OneToMany(mappedBy = "member")
 	private Set<FamilyMember> family;
 
 	public Set<FamilyMember> getFamily() {

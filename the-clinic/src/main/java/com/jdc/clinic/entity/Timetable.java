@@ -1,17 +1,17 @@
 package com.jdc.clinic.entity;
 
 import java.io.Serializable;
-import java.util.Set;
+import java.time.DayOfWeek;
+import java.time.LocalTime;
 
-import javax.persistence.ElementCollection;
+import javax.persistence.Column;
 import javax.persistence.Embedded;
 import javax.persistence.Entity;
+import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
-import javax.persistence.OneToOne;
-import javax.validation.constraints.NotEmpty;
 
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -19,30 +19,27 @@ import lombok.NoArgsConstructor;
 @Entity
 @Data
 @NoArgsConstructor
-public class Clinic implements Serializable {
-	
+public class Timetable implements Serializable {
+
 	private static final long serialVersionUID = 1L;
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private int id;
+	private long id;
 
-	@NotEmpty(message = "Please enter Clinic Name.")
-	private String name;
+	@Enumerated
+	private DayOfWeek day;
 
-	@ElementCollection
-	private Set<String> phone;
+	@Column
+	private LocalTime timeFrom;
 
-	@ElementCollection
-	private Set<String> mails;
-	
+	@Column
+	private LocalTime timeTo;
+
 	@Embedded
 	private SecurityInfo security;
 
 	@ManyToOne
-	private Partner owner;
-
-	@OneToOne
-	private Address addrress;
+	private ClinicDoctor clinicDoctor;
 
 }

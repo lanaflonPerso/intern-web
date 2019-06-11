@@ -19,7 +19,7 @@ public class BookingController {
 	@GetMapping("/{id}")
 	public String selectPatient(@PathVariable int id) {
 		
-		return "/views/partner/patientDetail";
+		return "/views/partner/patient";
 	}
 
 }

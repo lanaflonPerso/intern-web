@@ -11,7 +11,7 @@ public class SignUpController {
 	@PostMapping
 	public String signUp() {
 		
-		return  "redirect:/";
+		return  "redirect:/home";
 	}
 
 }

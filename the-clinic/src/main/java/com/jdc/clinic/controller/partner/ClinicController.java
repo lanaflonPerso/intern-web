@@ -20,7 +20,7 @@ public class ClinicController {
 
 	@GetMapping("create")
 	public String createClinic() {
-		return "/views/partner/edit-clinic";
+		return "/views/partner/clinic-edit";
 	}
 
 	@PostMapping
@@ -30,7 +30,7 @@ public class ClinicController {
 
 	@GetMapping("{id}/edit")
 	public String edit(@PathVariable int id) {
-		return "/views/partner/edit-clinic";
+		return "/views/partner/clinic-edit";
 	}
 
 	@PostMapping("{id}/delete")

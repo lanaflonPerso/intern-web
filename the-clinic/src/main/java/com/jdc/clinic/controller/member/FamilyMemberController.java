@@ -16,13 +16,13 @@ public class FamilyMemberController {
 	@GetMapping("/create")
 	public String create(ModelMap model) {
 
-		return "/views/member/create-family";
+		return "/views/member/family-edit";
 	}
 
 	@GetMapping("/edit/{id}")
 	public String editFamilyMember(@PathVariable long id, ModelMap model) {
 
-		return "/views/member/create-family";
+		return "/views/member/family-edit";
 	}
 
 	@PostMapping

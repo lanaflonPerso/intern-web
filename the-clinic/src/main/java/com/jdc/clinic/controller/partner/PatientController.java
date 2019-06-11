@@ -17,9 +17,8 @@ public class PatientController {
 		return "/views/partner/patients";
 	}
 
-	@RequestMapping("/search")
-	public String searchPatientByName(@PathVariable int clinicID, @RequestParam("name") String keyword,
-			ModelMap model) {
+	@RequestMapping
+	public String searchPatientByName(@PathVariable int clinicID, @RequestParam String word, ModelMap model) {
 		return "/views/partner/patients";
 	}
 

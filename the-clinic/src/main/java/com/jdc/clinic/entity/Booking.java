@@ -2,10 +2,13 @@ package com.jdc.clinic.entity;
 
 import java.io.Serializable;
 import java.security.Security;
+import java.time.LocalDate;
 
 import javax.persistence.Embedded;
-import javax.persistence.EmbeddedId;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.JoinColumns;
 import javax.persistence.ManyToOne;
@@ -20,35 +23,32 @@ public class Booking implements Serializable {
 
 	private static final long serialVersionUID = 1L;
 
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	private long id;
 	@Embedded
 	private Security security;
 
 	@ManyToOne
-	@JoinColumns({
-		@JoinColumn(name = "clinic_id", referencedColumnName = "clinic_id", insertable = false, updatable = false),
-		@JoinColumn(name = "doctor_id", referencedColumnName = "doctor_id", insertable = false, updatable = false)
-	})
+	@JoinColumns({ @JoinColumn(name = "clinic_id", referencedColumnName = "clinic_id"),
+			@JoinColumn(name = "doctor_id", referencedColumnName = "doctor_id") })
 	private ClinicDoctor clinicDoctor;
 
 	@ManyToOne
 	@JoinColumns({
-		@JoinColumn(name = "clinic_id", referencedColumnName = "clinic_id", insertable = false, updatable = false),
-		@JoinColumn(name = "patient_id", referencedColumnName = "patient_id", insertable = false, updatable = false)
-	})
+			@JoinColumn(name = "clinic_id", referencedColumnName = "clinic_id", insertable = false, updatable = false),
+			@JoinColumn(name = "patient_id", referencedColumnName = "patient_id") })
 	private Patient patient;
+
+	private LocalDate bookingDate;
 
 	@ManyToOne
 	private Timetable timeTable;
 
 	private Status status;
-	
-	@EmbeddedId
-	private BookingPK id;
 
 	public enum Status {
-		Apply,
-		Confirmed,
-		Cancel
+		Apply, Confirmed, Cancel
 	}
 
 }

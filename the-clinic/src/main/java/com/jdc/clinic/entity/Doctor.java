@@ -4,6 +4,7 @@ import java.io.Serializable;
 import java.util.LinkedHashSet;
 import java.util.Set;
 
+import javax.persistence.Column;
 import javax.persistence.ElementCollection;
 import javax.persistence.Embedded;
 import javax.persistence.Entity;
@@ -34,16 +35,19 @@ public class Doctor implements Serializable {
 
 	@ElementCollection
 	private Set<String> specialities;
-	
+
 	private Gender gender;
 
 	private String hospital;
 
 	private String position;
 
+	@Column(nullable = false, unique = true)
+	private String licenseCode;
+
 	@Embedded
 	private SecurityInfo security;
-	
+
 	public Doctor() {
 		degrees = new LinkedHashSet<>();
 		specialities = new LinkedHashSet<>();

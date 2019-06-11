@@ -9,5 +9,81 @@
 </head>
 <body>
 
+	<header>
+		<div class="container">
+			<br> <br> <br> <br>
+		</div>
+		<!--container end -->
+	</header>
+
+	<section>
+		<div class="container text-center">
+			<div class="logo_div">
+				<img th:src="@{/resources/fonts/logo.svg}"
+					class="img-fluid app_logo" />
+				<h1 class="appname">ClinicDiscovery</h1>
+				<h4 class="mt-4">
+					<b>512</b> clinics and <b>1021</b> doctors are available
+				</h4>
+			</div>
+			<br> <br>
+			<!--search bar start-->
+			<div class="row">
+				<div class="col-lg-2"></div>
+				<form class="form-group col-lg-8 text-center">
+					<div class="input-group">
+						<input type="text" name="search"
+							class="form-control search_bar"
+							placeholder="Search clinics" />
+					</div>
+				</form>
+				<div class="col-lg-2"></div>
+			</div>
+			<!--search bar end-->
+		</div>
+		<!-- container end -->
+		<br> <br> <br> <br>
+		<!--features div start-->
+		<div class="transwhitebox text-center">
+			<br>
+			<h5>Features</h5>
+			<br>
+			<div class="container">
+				<div class="row container align-items-center justify-content-center">
+					<div class="col-md-3">
+						<a href="#" class="stretched-link"> <img
+							src="@{/resources/fonts/clinic.svg}" class="img-fluid feat" /><br>
+							Clinics <br>
+						</a>
+					</div>
+					<div class="col-md-3">
+						<a href="#" class="stretched-link"> <img
+							th:src="@{/resources/fonts/doctor.svg}" class="img-fluid feat" /><br>
+							Doctors <br>
+						</a>
+					</div>
+					<div class="col-md-3">
+						<a href="#" class="stretched-link"> <img
+							th:src="@{/resources/fonts/disease.svg}" class="img-fluid feat" /><br>
+							Diseases <br>
+						</a>
+					</div>
+					<div class="col-md-3">
+						<a href="#" class="stretched-link"> <img
+							th:src="@{/resources/fonts/question.svg}" class="img-fluid feat" /><br>
+							Q &nbsp; A <br>
+						</a>
+					</div>
+				</div>
+			</div>
+		</div>
+		<!--features div end-->
+	</section>
+	<footer>
+		<div class="container">
+			<br> <br> <br> <br> <br> <br> <br>
+			<br> <br>
+		</div>
+	</footer>
 </body>
 </html>

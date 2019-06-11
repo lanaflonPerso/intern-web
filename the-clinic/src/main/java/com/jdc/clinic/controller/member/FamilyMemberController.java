@@ -6,7 +6,6 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
 
 import com.jdc.clinic.entity.FamilyMember;
 
@@ -14,47 +13,34 @@ import com.jdc.clinic.entity.FamilyMember;
 @RequestMapping("/member/family")
 public class FamilyMemberController {
 
-	@GetMapping("/home")
-	public String showAllFamilyMembers(ModelMap model) {
-
-		return "/views/member/home";
-	}
-
 	@GetMapping("/create")
 	public String create(ModelMap model) {
 
-		return "/views/member/familyMemberCreate";
+		return "/views/member/create-family";
 	}
 
-	@PostMapping("/create")
-	public String create(FamilyMember familyMember) {
+	@GetMapping("/edit/{id}")
+	public String editFamilyMember(@PathVariable long id, ModelMap model) {
 
-		return "redirect:/member/family/home";
+		return "/views/member/create-family";
 	}
 
-	@PostMapping("/update")
-	public String processupdateFamilyMember(FamilyMember familyMember) {
+	@PostMapping
+	public String save(FamilyMember familyMember) {
 
-		return "/views/member/familyMemberUpdateForm";
-
-	}
-
-	@GetMapping("/update/{id}")
-	public String updateFamilyMember(@PathVariable("id") int id, ModelMap model) {
-
-		return "redirect:/member/family/home";
-	}
-
-	@GetMapping("/search")
-	public String searchByName(@PathVariable ("id") int id, @RequestParam("name") String name) {
-
-		return "redirect:/member/family/home";
+		return "redirect:/member/home";
 	}
 
 	@GetMapping("/delete/{id}")
-	public String deleteFamilyMember(@PathVariable("id") int id) {
+	public String deleteFamilyMember(@PathVariable long id) {
 
-		return "redirect:/member/family/home";
+		return "redirect:/member/home";
+	}
+
+	@GetMapping("{id}")
+	public String findById(@PathVariable long id, ModelMap model) {
+
+		return "/views/member/family";
 	}
 
 }

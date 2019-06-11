@@ -1,45 +1,31 @@
 package com.jdc.clinic.controller.partner;
 
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
-import com.jdc.clinic.entity.Patient;
-
 @Controller
-@RequestMapping("/partner/patients")
+@RequestMapping("/partner/{clinicID}/patients")
 public class PatientController {
 
 	@GetMapping
-	public String index() {
-		return "view/partner/patients";
+	public String index(@PathVariable int clinicID, ModelMap model) {
+		// TODO need to check own clinic
+		return "/views/partner/patients";
 	}
 
 	@RequestMapping("/search")
-	public String searchPatientByName(@RequestParam("name") String keyword) {
-		return "view/partner/patients";
+	public String searchPatientByName(@PathVariable int clinicID, @RequestParam("name") String keyword,
+			ModelMap model) {
+		return "/views/partner/patients";
 	}
 
 	@GetMapping("/{id}")
-	public String detailByID(@PathVariable int id) {
-		return "view/partner/patientDetail";
-	}
-
-	@PostMapping("/new")
-	public String create(Patient patient) {
-		return "view/partner/create";
-	}
-
-	@GetMapping("/update")
-	public String update(int id, Patient patient) {
-		return "view/partner/create";
-	}
-
-	@RequestMapping("/delete")
-	public String deleteByID(@RequestParam("id") int id) {
-		return "view/partner/patients";
+	public String detailByID(@PathVariable int clinicID, @PathVariable int id, ModelMap model) {
+		// TODO patient info by clinic
+		return "/views/partner/patient";
 	}
 }

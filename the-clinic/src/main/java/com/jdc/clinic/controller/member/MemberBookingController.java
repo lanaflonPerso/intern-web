@@ -19,18 +19,18 @@ public class MemberBookingController {
 	
 	@PostMapping("/book")
 	public String book() {
-		return "view/bookingForm";
+		return "views/bookingForm";
 	}
 	
 	
 	@GetMapping("/bookings")
 	public String chooseMember(){
-		return "view/bookingFrom";
+		return "views/bookingFrom";
 		
 	} 
 	@PostMapping("/confirm")
 		public String confirmBooking() {
-			return "view/successBooking";
+			return "views/successBooking";
 		}
 	}
 	

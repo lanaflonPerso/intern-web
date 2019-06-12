@@ -167,7 +167,7 @@ insert into township (division_id,name) values (8,'Patheingyi');
 insert into township (division_id,name) values (8,'Pyigyidagun');
 
 insert into township (division_id,name) values (9,'Mawlamyine');
-insert into township (division_id,name) values (9,'Thaton);
+insert into township (division_id,name) values (9,'Thaton');
 insert into township (division_id,name) values (9,'Thanbyuzayat');
 insert into township (division_id,name) values (9,'Ye');
 insert into township (division_id,name) values (9,'Kyaikmaraw');
@@ -330,3 +330,5 @@ insert into township (division_id,name) values(15,'Dekkhinathiri');
 insert into township (division_id,name) values(15,'Pobbathiri');
 insert into township (division_id,name) values(15,'Zabuthiri');
 insert into township (division_id,name) values(15,'Zeyarthiri');
+
+insert into Account (phone, role, del_flag, password) values ('admin', 'Admin', false, '$2a$10$M2HV.7p3K0LX6hN7I.aqcOXiuMpen1wWJdPYgdrhASZG.XSewSSoG');

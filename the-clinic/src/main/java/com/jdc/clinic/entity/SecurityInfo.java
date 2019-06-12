@@ -33,7 +33,7 @@ public class SecurityInfo implements Serializable {
 	@LastModifiedDate
 	private LocalDateTime updateTime;
 
-	@Column(name = "del_flat", columnDefinition = "boolean default false")
+	@Column(name = "del_flag", columnDefinition = "boolean default false")
 	private boolean delete;
 
 }

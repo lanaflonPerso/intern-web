@@ -20,6 +20,6 @@ public class HomeController {
 		
 		// if partener -> Partner Home
 		
-		return "/";
+		return "/views/index";
 	}
 }

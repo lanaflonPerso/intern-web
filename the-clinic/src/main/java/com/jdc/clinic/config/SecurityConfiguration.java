@@ -24,7 +24,7 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter{
 		
 		http
 			.authorizeRequests()
-				.antMatchers("/", "/resources/**", "/login").permitAll()
+				.antMatchers("/", "/resources/**", "/login", "/signup").permitAll()
 				.antMatchers("/admin/**").hasRole("Admin")
 				.antMatchers("/member/**").hasAnyRole("Admin", "Member")
 				.antMatchers("/partner/**").hasAnyRole("Partner", "Admin")
@@ -50,7 +50,7 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter{
 			.jdbcAuthentication()
 			.dataSource(dataSource)
 			.passwordEncoder(passwordEncoder)
-			.usersByUsernameQuery("select phone, password from Account where phone = ? and del_flag = false")
+			.usersByUsernameQuery("select phone, password, true from Account where phone = ? and del_flag = false")
 			.authoritiesByUsernameQuery("select phone, role from Account where phone = ?");
 	}
 	

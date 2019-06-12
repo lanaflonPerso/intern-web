@@ -35,9 +35,6 @@ public class Booking implements Serializable {
 	private ClinicDoctor clinicDoctor;
 
 	@ManyToOne
-	@JoinColumns({
-			@JoinColumn(name = "clinic_id", referencedColumnName = "clinic_id", insertable = false, updatable = false),
-			@JoinColumn(name = "patient_id", referencedColumnName = "patient_id") })
 	private Patient patient;
 
 	private LocalDate bookingDate;

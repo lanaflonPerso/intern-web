@@ -23,7 +23,7 @@ public class PatientController {
 	}
 
 	@GetMapping("/{id}")
-	public String detailByID(@PathVariable int clinicID, @PathVariable int id, ModelMap model) {
+	public String detailByID(@PathVariable int clinicID, @PathVariable long id, ModelMap model) {
 		// TODO patient info by clinic
 		return "/views/partner/patient";
 	}

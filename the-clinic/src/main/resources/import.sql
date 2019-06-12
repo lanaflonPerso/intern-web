@@ -207,7 +207,7 @@ insert into township (division_id, name) values (11, 'Kalaw');
 insert into township (division_id, name) values (11, 'Lawlsawk');
 insert into township (division_id, name) values (11, 'Nyaungshwe');
 insert into township (division_id, name) values (11, 'Pekon');
-insert into township (division_id, name) values (11, 'Pindaya;
+insert into township (division_id, name) values (11, 'Pindaya');
 insert into township (division_id, name) values (11, 'Ywangon');
 insert into township (division_id, name) values (11, 'Hopong');
 insert into township (division_id, name) values (11, 'Hi Hseng');

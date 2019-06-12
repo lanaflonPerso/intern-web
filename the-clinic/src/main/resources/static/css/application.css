@@ -1,3 +1,43 @@
-.transwhitebox{
-	background-color: #ffffffaa;
+.navbar{
+	background-color: #3A85C7;
+}
+.navbar-brand{
+	color: white;
+}
+.div-footer{
+	position: absolute;
+	bottom: 0;
+	width: 100%;
+}
+.search-bar{
+	height: 52px;
+	background-color: white;
+	border: 1px solid #3A85C7;
+	border-radius: 36px;
+
+  	box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+	transition: 0.3s;
+}
+.search-bar:hover{
+	box-shadow: 0 8px 8px 0 rgba(0,0,0,0.2);
+}
+.f-icon-btn{
+	padding: 8px;
+	background-color: #3A85C7;
+	color: white;
+	border: 1px solid #3A85C7;
+  	border-radius: 36px;
+  	font-size: 1.2em;
+
+  	box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+	transition: 0.3s;
+}
+.f-icon-btn:hover{
+	box-shadow: 0 8px 8px 0 rgba(0,0,0,0.2);
+}
+.home-icon{
+	height: 28px;
+}
+.auth-nav{
+	color:white;
 }

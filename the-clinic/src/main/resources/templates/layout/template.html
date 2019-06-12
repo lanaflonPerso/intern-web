@@ -18,7 +18,7 @@
 </head>
 <body>
 
-	<nav class="navbar navbar-expand-lg navbar-light bg-light">
+	<nav class="navbar navbar-expand-lg">
 	
 		<a th:href="@{/}" class="navbar-brand"><i class="fa fa-home"></i> The Clinic</a>
 		
@@ -37,15 +37,15 @@
 		<ul class="navbar-nav">
 			
 			<li class="nav-item" sec:authorize="isAnonymous()">
-				<a th:href="@{/login}" class="nav-link"><i class="fa fa-sign-in"></i> Sign In</a>
+				<a th:href="@{/login}" class="nav-link auth-nav"><i class="fa fa-sign-in"></i> Sign In</a>
 			</li>
 			
 			<li class="nav-item" sec:authorize="isAnonymous()">
-				<a th:href="@{/signup}" class="nav-link"><i class="fa fa-send"></i> Sign Up</a>
+				<a th:href="@{/signup}" class="nav-link auth-nav"><i class="fa fa-send"></i> Sign Up</a>
 			</li>
 			
 			<li class="nav-item" sec:authorize="isAuthenticated()">
-				<a id="signout-btn" href="#" class="nav-link"><i class="fa fa-sign-out"></i> Sign Out</a>
+				<a id="signout-btn" href="#" class="nav-link auth-nav"><i class="fa fa-sign-out"></i> Sign Out</a>
 			</li>
 		
 		</ul>
@@ -58,7 +58,11 @@
 		</div>
 	</section>
 	
-	<footer></footer>
+	<footer>
+		<div class="div-footer d-flex justify-content-center">
+			<small>copyright&copy; 2019 JDC</small>
+		</div>
+	</footer>
 	
 	
 	<form id="logout-form" method="post" class="d-none" th:action="@{/logout}">

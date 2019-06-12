@@ -40,9 +40,9 @@ public class Account implements Serializable {
 	private SecurityInfo security;
 
 	public enum Role {
-		Admin,
-		Member,
-		Partner
+		ROLE_Admin,
+		ROLE_Member,
+		ROLE_Partner
 	}
 
 }

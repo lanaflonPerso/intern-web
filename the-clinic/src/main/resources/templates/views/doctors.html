@@ -9,21 +9,23 @@
 </head>
 <body>
 <section layout:fragment="content">
-	<div class="rounded-searchbox">
-		<form class="form-inline">
-
-			<div class="form-group mx-sm-3 mb-2">
-
-				<input type="text" class="form-control form-rounded"
+	<div class="mt-4">
+		<form action="">
+		<div class="mb-2">
+			<div class = "row">
+				<div class ="col-md-5 col-10">
+					<input type="text" class="form-control search-bar-sub pl-4"
 					 placeholder="Search">
+				</div>
+				<div class ="">
+					<button type="submit" class="btn btn-search">
+						<i class="fa fa-search"></i>
+					</button>
+				</div>
 			</div>
-			<button type="submit" class="btn btn-primary btn-dr-search btn-circle mb-2">
-				<i class="fa fa-search"></i>
-			</button>
+		</div>
 		</form>
-
-
-
+		<div style="overflow-x:auto;">
 		<table class="table">
 			<thead>
 				<tr class="tableHeading-color">
@@ -54,6 +56,7 @@
 
 			</tbody>
 		</table>
+		</div>
 	</div>
 </section>
 </body>

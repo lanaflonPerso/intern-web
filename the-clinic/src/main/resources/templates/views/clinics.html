@@ -1,30 +1,32 @@
-
-
 <!DOCTYPE html>
-<html lang="en">
+<html xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	xmlns:sec="http://www.thymeleaf.org/extras/spring-security"
+	layout:decorate="~{/layout/template}">
 <head>
-<title>Bootstrap Example</title>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<link rel="stylesheet"
-	href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
-
-<link rel="stylesheet"
-	href="https://use.fontawesome.com/releases/v5.6.3/css/all.css">
-
-<script
-	src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
-<script
-	src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
-<script
-	src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+<meta charset="UTF-8">
+<title>Doctor</title>
 </head>
 <body>
-	<br>
+<section layout:fragment="content">
+	<div class="container mt-4">
 
-	<div class="container">
-
-		<form action="/action_page.html" class="form-inline">
+		<form action="">
+		<div class="mb-2">
+			<div class = "row">
+				<div class ="col-md-5 col-10">
+					<input type="text" class="form-control search-bar-sub pl-4"
+					 placeholder="Search">
+				</div>
+				<div class ="">
+					<button type="submit" class="btn btn-search">
+						<i class="fa fa-search"></i>
+					</button>
+				</div>
+			</div>
+		</div>
+		</form>
+	<!-- 	<form action="/action_page.html" class="form-inline">
 
 			<input type="text" placeholder="Search clinic"
 				class="form-control form-rounded" size="40">
@@ -32,8 +34,9 @@
 				<i class="fa fa-search"></i>
 			</button>
 
-		</form>
-		<br>
+		</form> -->
+		
+		<div style="overflow-x:auto;">
 		<table class="table">
 
 			<thead>
@@ -48,7 +51,7 @@
 			<tbody>
 
 				<tr>
-					<th class="text-center">1</th>
+					<td class="text-center">1</td>
 					<td class="text-center">Shwe LaMin</td>
 					<td class="text-center">no(10),ThuzaNa St,Mingaladon</td>
 
@@ -57,7 +60,7 @@
 				</tr>
 
 				<tr>
-					<th class="text-center">2</th>
+					<td class="text-center">2</td>
 					<td class="text-center">Shwe LaMin</td>
 					<td class="text-center">no(10),ThuzaNa St,Mingaladon</td>
 					<td><h6
@@ -65,51 +68,7 @@
 
 				</tr>
 				<tr>
-					<th class="text-center">3</th>
-					<td class="text-center">Shwe LaMin</td>
-					<td class="text-center">no(10),ThuzaNa St,Mingaladon</td>
-					<td><h6
-							style="border-radius: 20px; border: 1px solid red; width: 90px; padding: 10px; text-align: center;">detail</h6></td>
-
-
-				</tr>
-				<tr>
-					<th class="text-center">4</th>
-					<td class="text-center">Shwe LaMin</td>
-					<td class="text-center">no(10),ThuzaNa St,Mingaladon</td>
-					<td><h6
-							style="border-radius: 20px; border: 1px solid red; width: 90px; padding: 10px; text-align: center;">detail</h6></td>
-
-				</tr>
-				<tr>
-					<th class="text-center">5</th>
-					<td class="text-center">Shwe LaMin</td>
-					<td class="text-center">no(10),ThuzaNa St,Mingaladon</td>
-					<td><h6
-							style="border-radius: 20px; border: 1px solid red; width: 90px; padding: 10px; text-align: center;">detail</h6></td>
-
-				</tr>
-				<tr>
-					<th class="text-center">6</th>
-					<td class="text-center">Shwe LaMin</td>
-					<td class="text-center">no(10),ThuzaNa St,Mingaladon</td>
-					<td><h6
-							style="border-radius: 20px; border: 1px solid red; width: 90px; padding: 10px; text-align: center;">detail</h6></td>
-
-				</tr>
-				<tr>
-					<th class="text-center">7</th>
-					<td class="text-center">Shwe LaMin</td>
-					<td class="text-center">no(10),ThuzaNa St,Mingaladon</td>
-					<td><h6
-							style="border-radius: 20px; border: 1px solid red; width: 90px; padding: 10px; text-align: center;">detail</h6></td>
-
-				</tr>
-
-
-
-				<tr>
-					<th class="text-center">8</th>
+					<td class="text-center">3</td>
 					<td class="text-center">Shwe LaMin</td>
 					<td class="text-center">no(10),ThuzaNa St,Mingaladon</td>
 					<td><h6
@@ -118,7 +77,51 @@
 
 				</tr>
 				<tr>
-					<th class="text-center">9</th>
+					<td class="text-center">4</td>
+					<td class="text-center">Shwe LaMin</td>
+					<td class="text-center">no(10),ThuzaNa St,Mingaladon</td>
+					<td><h6
+							style="border-radius: 20px; border: 1px solid red; width: 90px; padding: 10px; text-align: center;">detail</h6></td>
+
+				</tr>
+				<tr>
+					<td class="text-center">5</td>
+					<td class="text-center">Shwe LaMin</td>
+					<td class="text-center">no(10),ThuzaNa St,Mingaladon</td>
+					<td><h6
+							style="border-radius: 20px; border: 1px solid red; width: 90px; padding: 10px; text-align: center;">detail</h6></td>
+
+				</tr>
+				<tr>
+					<td class="text-center">6</td>
+					<td class="text-center">Shwe LaMin</td>
+					<td class="text-center">no(10),ThuzaNa St,Mingaladon</td>
+					<td><h6
+							style="border-radius: 20px; border: 1px solid red; width: 90px; padding: 10px; text-align: center;">detail</h6></td>
+
+				</tr>
+				<tr>
+					<td class="text-center">7</td>
+					<td class="text-center">Shwe LaMin</td>
+					<td class="text-center">no(10),ThuzaNa St,Mingaladon</td>
+					<td><h6
+							style="border-radius: 20px; border: 1px solid red; width: 90px; padding: 10px; text-align: center;">detail</h6></td>
+
+				</tr>
+
+
+
+				<tr>
+					<td class="text-center">8</td>
+					<td class="text-center">Shwe LaMin</td>
+					<td class="text-center">no(10),ThuzaNa St,Mingaladon</td>
+					<td><h6
+							style="border-radius: 20px; border: 1px solid red; width: 90px; padding: 10px; text-align: center;">detail</h6></td>
+
+
+				</tr>
+				<tr>
+					<td class="text-center">9</td>
 					<td class="text-center">Shwe LaMin</td>
 					<td class="text-center">no(10),ThuzaNa St,Mingaladon</td>
 					<td><h6
@@ -129,10 +132,11 @@
 
 			</tbody>
 		</table>
+		</div>
 	</div>
 
 
-
+</section>
 </body>
 </html>
 

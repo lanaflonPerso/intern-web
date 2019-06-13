@@ -71,7 +71,23 @@
 	<script>
 		$(function(){
 			$('#signout-btn').on('click', () => $('#logout-form').submit())
-		})
+		});
+		
+		$('#password, #confirm_password').keyup(
+		function() {
+			var temp = $('#confirm_password').val();
+			if (temp.length != 0) {
+				if ($('#password').val() == $('#confirm_password').val()) {
+					$('#confirm-error').html('(valid passwords)').css('color',
+							'green');
+				} else {
+					$('#confirm-error').html('(Passwords must match)').css(
+							'color', 'red');
+				}
+			} else {
+				$('#confirm-error').html('');
+			}
+		});
 	</script>
 </body>
 </html>

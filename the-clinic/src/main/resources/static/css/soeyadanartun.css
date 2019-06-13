@@ -1,44 +1,24 @@
-.tableHeading-color{
-          background-color: #3377FF
-      } 
-      
-      div.container{
-           margin-top:100px;
-          height: 1000px;
-          width:80%
-              
-      } 
-      
-.btn-primary {
- 
-    
- 
-  border: 2px solid rgba(58, 133, 191, 0.75);
-  border-radius: 40px;
- 
-  
-} 
- .btn-outline-primary{ 
-          
-  
- 
-  border: 2px solid rgba(58, 133, 191, 0.75);
-  border-radius: 40px;
-          
- 
-  transition: all 0.3s ease 0s;
-          
-      } 
-      .form-rounded{
-          border-radius: 1rem;
-      } 
-      
-      div.pagination{
-          margin-left: :500px;
-          margin-bottom: :100px;
-      } 
-      th{
-          color: white;
-      }
-      
-          
+.tableHeading-color {
+	background-color: #3377FF
+}
+
+.rounded-searchbox {
+	margin-top: 100px;
+	height: 1000px;
+	width: 80%
+}
+
+.btn-dr-search {
+	border: 2px solid rgba(58, 133, 191, 0.75);
+	border-radius: 40px;
+}
+
+
+
+.form-rounded {
+	border-radius: 1rem;
+}
+
+th {
+	color: white;
+}

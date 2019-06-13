@@ -28,12 +28,12 @@
 		<ul class="navbar-nav mr-auto">
 			<!-- Member Menu -->
 			<li class="nav-item" sec:authorize="hasRole('Member')">
-				<a th:href="@{/member/bookings}" class="nav-link"><i class="fa fa-calendar-o"></i> Bookings</a>
+				<a th:href="@{/member/bookings}" class="nav-link auth-nav"><i class="fa fa-calendar-o"></i> Bookings</a>
 			</li>
 			
 			<!-- Partner menus -->
 			<li class="nav-item" sec:authorize="hasRole('Partner')">
-				<a th:href="@{/partner/schedules}" class="nav-link"><i class="fa fa-calendar"></i> Schedules</a>
+				<a th:href="@{/partner/schedules}" class="nav-link auth-nav"><i class="fa fa-calendar"></i> Schedules</a>
 			</li>
 		</ul>
 		

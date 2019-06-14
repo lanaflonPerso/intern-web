@@ -65,6 +65,18 @@
 	height:48px;
 }
 
+.btn-cancel {
+	border: 1px solid #d50000;
+	border-radius: 36px;
+	color: white;
+	background-color:  #d50000;
+  	box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+	transition: 0.3s;
+	
+	width:48px;
+	height:48px;
+}
+
 .btn-search:hover{
 	box-shadow: 0 8px 8px 0 rgba(0,0,0,0.2);
 	color: white;
@@ -91,10 +103,32 @@ th {
 .search-bar-sub:hover{
 	box-shadow: 0 8px 8px 0 rgba(0,0,0,0.2);
 }
-.cusLabel {
-    color: rgb(58, 133, 199);
-}
-.gray-txt{
-	color: #6C6C6C;
+
+
+/* MemberBookings */
+
+.div-select{
+	width: 100%;
 }
 
+
+
+#table-bookings-thead{
+	width: 100%;
+	background: #3A85C7;
+}
+
+#table-bookings-tr{
+	color:black;
+}
+
+#status-pending{
+	color: #689f38;
+}
+
+#status-comfirm{
+	color: #1b5e20;
+}
+#status-cancel{
+	color: #d50000;
+}

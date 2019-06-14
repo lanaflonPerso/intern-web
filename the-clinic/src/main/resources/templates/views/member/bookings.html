@@ -5,9 +5,122 @@
 	layout:decorate="~{/layout/template}">
 <head>
 <meta charset="UTF-8">
+<link rel="stylesheet" href="/resources/css/custom.css">
 <title>Bookings</title>
 </head>
 <body>
-
+	<section layout:fragment="content">
+		<h3 class="mx-3">Booking Lists</h3>
+		<!-- start selection -->
+		<div class="row mx-2" id="div-select">
+			<div class="col-md-4 p-2">
+				<div class="dropdown">
+					<button class="btn btn-primary dropdown-toggle" type="button"
+						id="dropdownMenuButton" data-toggle="dropdown"
+						aria-haspopup="true" aria-expanded="false">Patient Name</button>
+					<div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+						<a class="dropdown-item" href="#">Daw Mya</a> <a
+							class="dropdown-item" href="#">Daw Hla</a> <a
+							class="dropdown-item" href="#">U Soe</a>
+					</div>
+				</div>
+			</div>
+			<div class="col-md-4 p-2">
+				<div class="dropdown">
+					<button class="btn btn-primary dropdown-toggle" type="button"
+						id="dropdownMenuButton" data-toggle="dropdown"
+						aria-haspopup="true" aria-expanded="false">Clinic Name</button>
+					<div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+						<a class="dropdown-item" href="#">Shwe La Min</a> <a
+							class="dropdown-item" href="#">Chan Thar</a> <a
+							class="dropdown-item" href="#">Aung</a>
+					</div>
+				</div>
+			</div>
+			<div class="col-md-4 p-2">
+				<div class="dropdown">
+					<button class="btn btn-primary dropdown-toggle" type="button"
+						id="dropdownMenuButton" data-toggle="dropdown"
+						aria-haspopup="true" aria-expanded="false">Doctor Name</button>
+					<div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+						<a class="dropdown-item" href="#">Dr.Thi</a> <a
+							class="dropdown-item" href="#">Dr.Khine</a> <a
+							class="dropdown-item" href="#">Dr.Grace</a>
+					</div>
+				</div>
+			</div>
+		</div>
+		<!-- End selection -->
+		<div class="row mx-3">
+			<table class="table  table-responsive-md  table-hover table-bordered"
+				id="table-bookings">
+				<thead id="table-bookings-thead">
+					<tr>
+						<td class="text-center">Date</td>
+						<td class="text-center">Name</td>
+						<td class="text-center">Clinic</td>
+						<td class="text-center">Time</td>
+						<td class="text-center" colspan="2">Status</td>
+					</tr>
+				</thead>
+				<tbody>
+					<tr>
+						<td>11 Jun 2019</td>
+						<td>Daw Mya</td>
+						<td>Chan Thar<br>(Dr.Thi,Specialized)
+						</td>
+						<td>2:00 pm to 3:00pm</td>
+						<td id="status-pending">Pending</td>
+						<td><button type="button" class="btn btn-outline-danger">Cancel</button></td>
+					</tr>
+					<tr>
+						<td>11 Jun 2019</td>
+						<td>Daw Mya</td>
+						<td>Chan Thar<br>(Dr.Thi,Specialized)
+						</td>
+						<td>2:00 pm to 3:00pm</td>
+						<td id="status-comfirm">Comfirmed</td>
+						<td></td>
+					</tr>
+					<tr>
+						<td>11 Jun 2019</td>
+						<td>Daw Mya</td>
+						<td>Chan Thar<br>(Dr.Thi,Specialized)
+						</td>
+						<td>2:00 pm to 3:00pm</td>
+						<td id="status-cancel">Canceled</td>
+						<td></td>
+					</tr>
+					<tr>
+						<td>11 Jun 2019</td>
+						<td>Daw Mya</td>
+						<td>Chan Thar<br>(Dr.Thi,Specialized)
+						</td>
+						<td>2:00 pm to 3:00pm</td>
+						<td id="status-pending">Pending</td>
+						<td><button type="button" class="btn btn-outline-danger">Cancel</button></td>
+					</tr>
+					<tr>
+						<td>11 Jun 2019</td>
+						<td>Daw Mya</td>
+						<td>Chan Thar<br>(Dr.Thi,Specialized)
+						</td>
+						<td>2:00 pm to 3:00pm</td>
+						<td id="status-pending">Pending</td>
+						<td><button type="button" class="btn btn-outline-danger">Cancel</button></td>
+					</tr>
+					<tr>
+						<td>11 Jun 2019</td>
+						<td>Daw Mya</td>
+						<td>Chan Thar<br>(Dr.Thi,Specialized)
+						</td>
+						<td>2:00 pm to 3:00pm</td>
+						<td id="status-pending">Pending</td>
+						<td><button type="button" class="btn btn-outline-danger">Cancel</button></td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
+	</section>
 </body>
 </html>

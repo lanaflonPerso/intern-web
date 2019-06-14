@@ -5,9 +5,95 @@
 	layout:decorate="~{/layout/template}">
 <head>
 <meta charset="UTF-8">
-<title>create family</title>
+<title>Edit Family</title>
 </head>
 <body>
+ <!-- container -->
+    <div class="container mt-5">
+        <div class="row  justify-content-md-center">
+            <div class="col col-lg-8 col-lg-offset-2">
+                <h2 class="text-center cusLabel">Add New Family Member</h2>
+                <form action="">
+                    <div class="form-group">
+                        <label for="" class="cusLabel">Enter Member Name</label>
+                        <input type="text" class="form-control" placeholder="Name">
+                    </div>
+                    <div class="form-group">
+                            <label for="" class="cusLabel">Date of Birth</label>
+                             <input type="text" class="form-control" placeholder="dd/MM/yyyy" id="datepicker">
+                     </div>
+                     <div class="row">
+                      <div class="col-md-6">
+                    <div class="form-group">
+                        <p class="cusLabel">Gender</p>
+                        <div class="form-check form-check-inline">
+                            <input type="radio" name="gender" class="form-check-input" value="male" checked>
+                            <label for="" class="form-check-label">Male</label>
+                        </div>
+                        <div class="form-check form-check-inline">
+                            <input type="radio" name="gender" class="form-check-input" value="female">
+                            <label for="" class="form-check-label">Female</label>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <p class="cusLabel">Blood Type</p>
+                        <div class="form-check form-check-inline">
+                            <input type="radio" name="bloodType" class="form-check-input">
+                            <label for="" class="form-check-label">A</label>
+                        </div>
+                        <div class="form-check form-check-inline">
+                            <input type="radio" name="bloodType" class="form-check-input">
+                            <label for="" class="form-check-label">B</label>
+                        </div>
+                        <div class="form-check form-check-inline">
+                            <input type="radio" name="bloodType" class="form-check-input">
+                            <label for="" class="form-check-label">O</label>
+                        </div>
+                        <div class="form-check form-check-inline">
+                            <input type="radio" name="bloodType" class="form-check-input">
+                            <label for="" class="form-check-label">AB</label>
+                        </div>
+                    </div>
+                    </div>
+                     </div>
+                    
+                    <div class="form-group">
+                        <label for="" class="cusLabel">Enter Relationship</label>
+                        <input type="text" class="form-control" placeholder="Relationship">
+                    </div>
+                    <button type="reset" class="btn btn-outline-danger float-right mx-2">Cancel</button>
+                    <a href="" class="btn btn-outline-info float-right">Submit</a>
+
+                </form>
+            </div>
+        </div>
+
+
+    </div>
+
+
+
+
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+        integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous">
+    </script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+        integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous">
+    </script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+        integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous">
+    </script>
+     <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+     <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+    <script>
+            $( function() {
+              $( "#datepicker" ).datepicker({
+                changeMonth: true,
+                changeYear: true
+              });
+            } );
+            </script>         
 
 </body>
 </html>

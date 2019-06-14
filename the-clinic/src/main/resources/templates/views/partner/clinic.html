@@ -8,6 +8,18 @@
 <title>Clinic</title>
 </head>
 <body>
+
+	<ul class="navbar-nav" layout:fragment="options">
+				<!-- Partner menu -->
+				<li class="nav-item" sec:authorize="hasRole('Partner')">
+					<a th:href="@{/partner/clinics/1/edit}" class="nav-link auth-nav"><i class="fa fa-pencil"></i> Edit</a>
+				</li>
+				<!-- Partner menu -->
+				<li class="nav-item" sec:authorize="hasRole('Partner')">
+					<a th:href="@{/partner/home}" class="nav-link auth-nav"><i class="fa fa-trash-o"></i> Delete</a>
+				</li>
+	</ul>
+
 	<section layout:fragment="content">
 		
 		<div class="container mt-2">
@@ -47,7 +59,7 @@
 									<tr>
 										<td valign="bottom">Email</td>
 										<td valign="top">:</td>
-										<td valign="bottom">myclinic@gmail.com</td>
+										<td valign="bottom"><a href="mailto:myclinic@gmail.com">myclinic@gmail.com</a></td>
 									</tr>
 									<tr>
 										<td valign="bottom">Location</td>

@@ -5,9 +5,81 @@
 	layout:decorate="~{/layout/template}">
 <head>
 <meta charset="UTF-8">
-<title>Patients</title>
+<link rel="stylesheet" href="/resources/css/custom.css">
+<title>Bookings</title>
 </head>
 <body>
-
+	<section layout:fragment="content">
+		<h3 class="mx-3">Patients</h3>
+		
+		
+		
+		
+		
+		
+		<form action="">
+		<div class=" mx-3 mb-2">
+			<div class = "row">
+				<div class ="col-md-5 col-10">
+					<input type="text" class="form-control search-bar-sub pl-4"
+					 placeholder="Search">
+				</div>
+				<div class ="">
+					<button type="submit" class="btn btn-search">
+						<i class="fa fa-search"></i>
+					</button>
+				</div>
+			</div>
+		</div>
+		</form>
+		
+		<div class="row mx-3">
+			<table class="table  table-responsive-md  table-hover  table-bordered" 
+				id="table-bookings">
+					<tr class="tableHeading-color">
+						<td>No</td>
+						<td >Name</td>
+						<td >Ph No</td>
+						<td></td>
+					</tr>
+				<tbody>
+					<tr>
+						<td>1</td>
+						<td>Daw Mya</td>
+						<td>09536478942</td>
+						<td><button type="button" class="btn btn-outline-primary">Details</button></td>
+                        </tr>
+                        <tr>				
+						<td>2</td>
+						<td>Daw Aye Aye Myint</td>
+						
+						
+						<td>09234563452</td>
+						<td><button type="button" class="btn btn-outline-primary">Details</button></td>
+					</tr>
+					<tr>
+						<td>3</td>
+						<td>U Aung Ko Win</td>
+						
+						<td>0977564328</td>
+						<td><button type="button" class="btn btn-outline-primary">Details</button></td>
+					</tr>
+					<tr>
+						<td>4</td>
+						<td>Daw Mya</td>
+							<td>09876745326</td>
+						<td><button type="button" class="btn btn-outline-primary">Details</button></td>
+					</tr>
+					<tr>
+						<td>5</td>
+						<td>U Bo Bo</td>
+						<td>09453678654</td>
+						<td><button type="button" class="btn btn-outline-primary">Details</button></td>
+					</tr>
+					
+				</tbody>
+			</table>
+		</div>
+	</section>
 </body>
 </html>

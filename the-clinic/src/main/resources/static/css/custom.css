@@ -132,3 +132,22 @@ th {
 	width: 100%
 } 
 
+ .mag-left{
+          margin-left: 50px;
+          margin-right: 50px;
+      }
+          
+      
+      .table table-borderless{
+          width: :100px
+      }  
+      .tone-btm{
+          margin-top: 50px;
+      } 
+
+
+
+.tone-heading {
+	color: white;
+}
+

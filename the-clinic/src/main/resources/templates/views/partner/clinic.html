@@ -48,26 +48,45 @@
 					<div id="overview" class="tab-pane fade show active" role="tabpanel" aria-labelledby="pills-home-tab">
 						<div class="row mt-4">
 							<div class="col-lg-6 col-12">
-								INFORMATION
+								<div class="row">
+									<div class="col-6">INFORMATION</div>
+									<div sec:authorize="hasRole('Partner')" class="col-6 text-right"><i class="fa fa-pencil" aria-hidden="true" style="font-size:24px"></i></div>
+								</div>
 								<hr>
 								<table class="gray-txt">
+								
+									<tr>
+										<td valign="top">Name</td>
+										<td valign="top">:</td>
+										<td valign="top">Clinic Name</td>
+									</tr>
+									<tr>
+										<td valign="top">Category</td>
+										<td valign="top">:</td>
+										<td valign="top">General clinic</td>
+									</tr>
 									<tr>
 										<td valign="top">Phone</td>
 										<td valign="top">:</td>
-										<td valign="bottom">09451241887<br>09691381615</td>
+										<td valign="top">09451241887<br>09691381615</td>
 									</tr>
 									<tr>
-										<td valign="bottom">Email</td>
+										<td valign="top">Email</td>
 										<td valign="top">:</td>
-										<td valign="bottom"><a href="mailto:myclinic@gmail.com">myclinic@gmail.com</a></td>
+										<td valign="top"><a href="mailto:myclinic@gmail.com">myclinic@gmail.com</a></td>
 									</tr>
 									<tr>
-										<td valign="bottom">Location</td>
+										<td valign="top">Address</td>
+										<td valign="top">:</td>
+										<td valign="top">No.1, Main Road, Yangon</td>
+									</tr>
+									<tr>
+										<td valign="top">Location</td>
 										<td valign="top">:</td>
 										<td></td>
 									</tr>
 									<tr>
-										<td valign="bottom" colspan="2">
+										<td valign="top" colspan="2">
 											<div>
 												<pre>(Map is here)</pre>
 											</div>

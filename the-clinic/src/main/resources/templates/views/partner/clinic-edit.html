@@ -45,50 +45,57 @@
 						<div class="row pr-lg-3 pr-md-1 pt-1 pb-1">
 								<label class="col-lg-3 col-md-4 col-sm-12 col-12">Open times</label>
 								<div class="col-lg-9 col-md-8 col-sm-12 col-12">
-									<input type="checkbox" class="col form-check-input" name="hour"/><label>&nbsp;24 Hours</label>
 									<table class="table col-12">
   										<thead style="background-color: #3A85C7; color: white">
 											<tr>
 												<th>Days</th>
 												<th>From</th>
 												<th>To</th>
+												<th>24 Hours</th>
 											</tr>
 										</thead>
 										<tbody>
 											<tr>
 												<td>Sunday</td>
-												<td><input type="time" name="from_time" class="form-control" placeholder="From"/></td>
-												<td><input type="time" name="to_time" class="form-control" placeholder="To"/></td>
+												<td><input type="time" name="sun-from-time" class="form-control" placeholder="From"/></td>
+												<td><input type="time" name="sun-to-time" class="form-control" placeholder="To"/></td>
+												<td class="text-center"><input type="checkbox" class="form-check-input" name="sat-hour"/></td>
 											</tr>
 											<tr>
 												<td>Monday</td>
-												<td><input type="time" name="from_time" class="form-control" placeholder="From"/></td>
-												<td><input type="time" name="to_time" class="form-control" placeholder="To"/></td>
+												<td><input type="time" name="mon-from-time" class="form-control" placeholder="From"/></td>
+												<td><input type="time" name="mon-to-time" class="form-control" placeholder="To"/></td>
+												<td class="text-center"><input type="checkbox" class="form-check-input" name="sat-hour"/></td>
 											</tr>
 											<tr>
 												<td>Tuesday</td>
-												<td><input type="time" name="from_time" class="form-control" placeholder="From"/></td>
-												<td><input type="time" name="to_time" class="form-control" placeholder="To"/></td>
+												<td><input type="time" name="tue-from-time" class="form-control" placeholder="From"/></td>
+												<td><input type="time" name="tue-to-time" class="form-control" placeholder="To"/></td>
+												<td class="text-center"><input type="checkbox" class="form-check-input" name="sat-hour"/></td>
 											</tr>
 											<tr>
 												<td>Wednesday</td>
-												<td><input type="time" name="from_time" class="form-control" placeholder="From"/></td>
-												<td><input type="time" name="to_time" class="form-control" placeholder="To"/></td>
+												<td><input type="time" name="web-from-time" class="form-control" placeholder="From"/></td>
+												<td><input type="time" name="web-to-time" class="form-control" placeholder="To"/></td>
+												<td class="text-center"><input type="checkbox" class="form-check-input" name="sat-hour"/></td>
 											</tr>
 											<tr>
 												<td>Thursday</td>
-												<td><input type="time" name="from_time" class="form-control" placeholder="From"/></td>
-												<td><input type="time" name="to_time" class="form-control" placeholder="To"/></td>
+												<td><input type="time" name="thu-from-time" class="form-control" placeholder="From"/></td>
+												<td><input type="time" name="thu-to-time" class="form-control" placeholder="To"/></td>
+												<td class="text-center"><input type="checkbox" class="form-check-input" name="sat-hour"/></td>
 											</tr>
 											<tr>
 												<td>Friday</td>
-												<td><input type="time" name="from_time" class="form-control" placeholder="From"/></td>
-												<td><input type="time" name="to_time" class="form-control" placeholder="To"/></td>
+												<td><input type="time" name="fri-from-time" class="form-control" placeholder="From"/></td>
+												<td><input type="time" name="fri-to-time" class="form-control" placeholder="To"/></td>
+												<td class="text-center"><input type="checkbox" class="form-check-input" name="sat-hour"/></td>
 											</tr>
 											<tr>
 												<td>Saturday</td>
-												<td><input type="time" name="from_time" class="form-control" placeholder="From"/></td>
-												<td><input type="time" name="to_time" class="form-control" placeholder="To"/></td>
+												<td><input type="time" name="sat-from-time" class="form-control" placeholder="From"/></td>
+												<td><input type="time" name="sat-to-time" class="form-control" placeholder="To"/></td>
+												<td class="text-center"><input type="checkbox" class="form-check-input" name="sat-hour"/></td>
 											</tr>
 										</tbody>
 									</table>

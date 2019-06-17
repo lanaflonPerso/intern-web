@@ -9,6 +9,13 @@
 </head>
 <body>
 
+	<ul class="navbar-nav" layout:fragment="options">
+				<!-- Partner menu -->
+				<li class="nav-item" sec:authorize="hasRole('Partner')">
+					<a th:href="@{/partner/clinics/create}" class="nav-link auth-nav"><i class="fa fa-plus"></i> Create New </a>
+				</li>
+	</ul>
+
 	<section layout:fragment="content">
 		
 		<div class="jumbotron jumbotron-fluid mt-2">
@@ -101,11 +108,7 @@
                             </div>
                       </div>
                     </div>
-                    <div class="col-md-4">
-                        <button class=" btn btn-outline-primary btn-lg mt-2  p-5">+ Add Clinic</button>
-
-                    </div>
-
+                   
                 </div>
                 
                

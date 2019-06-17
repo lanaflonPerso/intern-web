@@ -110,6 +110,7 @@ th {
 #table-bookings-thead{
 	width: 100%;
 	background: #3A85C7;
+	color: white;
 }
 
 #table-bookings-tr{

@@ -10,8 +10,8 @@
 <body>
 	<section layout:fragment="content">
 		<div class="row mt-3">
-			<div class="col-md-1"></div>
-			<div class="col-md-10 col-sm-12 col-xs-12">
+			<div class="col-lg-1"></div>
+			<div class="col-lg-10 col-md-12 col-sm-12 col-12">
 				<form enctype="multipart/form-data" method="post">
 					<div class="card form-group p-3">
 						<h4 class="text-right" th:text="${clinic_title}"></h4>
@@ -44,14 +44,14 @@
 						
 						<div class="row pr-lg-3 pr-md-1 pt-1 pb-1">
 								<label class="col-lg-3 col-md-4 col-sm-12 col-12">Open times</label>
-								<div class="col-lg-9 col-md-8 col-sm-12 col-12">
+								<div class="col-lg-9 col-md-8 col-sm-12 col-12" style="overflow-x:auto;">
 									<table class="table col-12">
   										<thead style="background-color: #3A85C7; color: white">
 											<tr>
 												<th>Days</th>
 												<th>From</th>
 												<th>To</th>
-												<th>24 Hours</th>
+												<th>24hr</th>
 											</tr>
 										</thead>
 										<tbody>
@@ -117,7 +117,7 @@
 					</div>
 				</form>
 			</div>
-			<div class="col-md-1"></div>
+			<div class="col-lg-1"></div>
 		</div>
 
 	</section>

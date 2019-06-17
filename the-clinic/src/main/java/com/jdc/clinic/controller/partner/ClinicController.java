@@ -15,7 +15,8 @@ public class ClinicController {
 
 	@GetMapping("{id}")
 	public String findById(@PathVariable int id, ModelMap model) {
-		return "/views/partner/clinic";
+		model.addAttribute("clinicID", id);
+		return "/views/clinic";
 	}
 
 	@GetMapping("create")

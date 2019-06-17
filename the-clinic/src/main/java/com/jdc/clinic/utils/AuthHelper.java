@@ -19,4 +19,9 @@ public class AuthHelper {
 		}
 		return false;
 	}
+	
+	public String getLoginId() {
+		SecurityContext ctx = SecurityContextHolder.getContext();
+		return ctx.getAuthentication().getName();
+	}
 }

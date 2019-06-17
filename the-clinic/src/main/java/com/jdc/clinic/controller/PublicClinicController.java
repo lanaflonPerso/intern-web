@@ -17,13 +17,13 @@ public class PublicClinicController {
 
 	@GetMapping("{id}")
 	public String findById(@PathVariable int id, ModelMap model) {
-
-		return "/views/partner/clinic";
+		model.addAttribute("clinicID", 1);
+		return "/views/clinic";
 	}
 
 	@GetMapping("{id}/schedules")
 	public String findSchedulesForClinic(@PathVariable int id, ModelMap model) {
-
+		model.addAttribute("clinicID", 1);
 		return "/views/schedules";
 	}
 }

@@ -71,7 +71,8 @@
 						</td>
 						<td>2:00 pm to 3:00pm</td>
 						<td id="status-pending">Pending</td>
-						<td><button type="button" class="btn btn-outline-danger">Cancel</button></td>
+						<td><button type="button" class="btn btn-outline-danger"
+								data-toggle="modal" data-target="#myModal">Cancel</button></td>
 					</tr>
 					<tr>
 						<td>11 Jun 2019</td>
@@ -98,7 +99,8 @@
 						</td>
 						<td>2:00 pm to 3:00pm</td>
 						<td id="status-pending">Pending</td>
-						<td><button type="button" class="btn btn-outline-danger">Cancel</button></td>
+						<td><button type="button" class="btn btn-outline-danger"
+								data-toggle="modal" data-target="#myModal">Cancel</button></td>
 					</tr>
 					<tr>
 						<td>11 Jun 2019</td>
@@ -107,7 +109,8 @@
 						</td>
 						<td>2:00 pm to 3:00pm</td>
 						<td id="status-pending">Pending</td>
-						<td><button type="button" class="btn btn-outline-danger">Cancel</button></td>
+						<td><button type="button" class="btn btn-outline-danger"
+								data-toggle="modal" data-target="#myModal">Cancel</button></td>
 					</tr>
 					<tr>
 						<td>11 Jun 2019</td>
@@ -116,11 +119,27 @@
 						</td>
 						<td>2:00 pm to 3:00pm</td>
 						<td id="status-pending">Pending</td>
-						<td><button type="button" class="btn btn-outline-danger">Cancel</button></td>
+						<td><button type="button" class="btn btn-outline-danger"
+								data-toggle="modal" data-target="#myModal">Cancel</button></td>
 					</tr>
 				</tbody>
 			</table>
 		</div>
+
+		<div class="modal fade" id="myModal" role="dialog">
+			<div class="modal-dialog">
+
+				<!-- Modal content-->
+				<div class="modal-content">
+					<div class="modal-header">
+
+						<h4 class="modal-title" style="color: red">Are you sure to
+							cancel?</h4>
+						<button type="button" class="btn btn-outline-danger"
+							data-dismiss="modal">Yes</button>
+					</div>
+				</div>
+			</div>
 	</section>
 </body>
 </html>

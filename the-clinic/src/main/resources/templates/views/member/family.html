@@ -8,6 +8,110 @@
 <title>family detail</title>
 </head>
 <body>
-
+<section layout:fragment="content">
+		<h3 class="mx-3">Family Member List</h3>
+		
+		<form action="">
+		<div class=" mx-3 mb-2">
+			<div class = "row">
+				<div class ="col-md-5 col-10">
+					<input type="text" id="myInput" class="form-control search-bar-sub pl-4"
+					 placeholder="Search">
+				</div>
+				<div class ="">
+					<button type="submit" class="btn btn-search">
+						<i class="fa fa-search"></i>
+					</button>
+				</div>
+			</div>
+		</div>
+		</form>
+		<div class="row mx-3">
+			<table class="table  table-responsive-md  table-hover  table-bordered" 
+				id="table-bookings">
+				<thead class="tableHeading-color">
+					<tr>
+						<td>ID</td>
+						<td >Name</td>
+						<td>Relationship</td>
+						<td></td>
+					</tr>
+					</thead>
+				 <tbody id="myTable">
+					<tr>
+						<td>001</td>
+						<td>Daw Aye Aye</td>
+						<td>Aunty</td>
+						<td><button type="button" class="btn btn-outline-danger">Delete</button></td>
+                        </tr>
+                        <tr>				
+						<td>002</td>
+						<td>Daw Aye Aye Myint</td>
+						
+						
+						<td>Wife</td>
+						<td><button type="button" class="btn btn-outline-danger">Delete</button></td>
+					</tr>
+					<tr>
+						<td>003</td>
+						<td>Mg Bo Bo</td>
+						
+						<td>Son</td>
+						<td><button type="button" class="btn btn-outline-danger">Delete</button></td>
+					</tr>
+					<tr>
+						<td>004</td>
+						<td>Ma Shwe Sin</td>
+							<td>Daughter</td>
+						<td><button type="button" class="btn btn-outline-danger">Delete</button></td>
+					</tr>
+					<tr>
+						<td>005</td>
+						<td>U Bo Bo</td>
+						<td>Grandfather</td>
+						<td><button type="button" class="btn btn-outline-danger">Delete</button></td>
+					</tr>
+					<tr>
+						<td>006</td>
+						<td>Daw Sein Sein</td>
+						<td>Grandmother</td>
+						<td><button type="button" class="btn btn-outline-danger">Delete</button></td>
+					</tr>
+					<tr>
+						<td>007</td>
+						<td>U Kyaw Kyaw</td>
+						<td>Father-in-law</td>
+						<td><button type="button" class="btn btn-outline-danger">Delete</button></td>
+					</tr>
+					<tr>
+						<td>008</td>
+						<td>Daw Mar Mar</td>
+						<td>Mother-in-law</td>
+						<td><button type="button" class="btn btn-outline-danger">Delete</button></td>
+					</tr>
+					<tr>
+						<td>009</td>
+						<td>Ma Phuu Phuu</td>
+						<td>Niece</td>
+						<td><button type="button" class="btn btn-outline-danger">Delete</button></td>
+					</tr>	
+				</tbody>
+			</table>
+		</div>
+		
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+  <script>
+  $(document).ready(function(){
+    $("#myInput").on("keyup", function() {
+      var value = $(this).val().toLowerCase();
+      $("#myTable tr").filter(function() {
+        $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
+      });
+    });
+  });
+  </script>
+	</section>
 </body>
 </html>

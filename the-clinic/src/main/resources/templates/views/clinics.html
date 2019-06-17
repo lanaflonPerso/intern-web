@@ -5,138 +5,145 @@
 	layout:decorate="~{/layout/template}">
 <head>
 <meta charset="UTF-8">
-<title>Doctor</title>
+<title>Clinics</title>
 </head>
 <body>
-<section layout:fragment="content">
-	<div class="container mt-4">
+	<section layout:fragment="content">
+		<div class="container">
 
-		<form action="">
-		<div class="mb-2">
-			<div class = "row">
-				<div class ="col-md-5 col-10">
-					<input type="text" class="form-control search-bar-sub pl-4"
-					 placeholder="Search">
-				</div>
-				<div class ="">
-					<button type="submit" class="btn btn-search">
-						<i class="fa fa-search"></i>
-					</button>
-				</div>
-			</div>
+			<form action="/action_page.html" class="form-inline">
+
+				<input type="text" placeholder="Search clinic"
+					class="form-control form-rounded" size="40">
+
+				<button type="submit" class="btn btn-primary btn-circle">
+					<i class="fa fa-search"></i>
+				</button>
+
+
+			</form>
+			<br>
+			
+			
+			<table class="table">
+
+
+				<thead>
+				
+
+					<tr class="tableHeading-color">
+						<th class="text-center">ID</th>
+						<th class="text-center">Name</th>
+						<th class="text-center">Address</th>
+						<th class="text-center"></th>
+					</tr>
+				</thead>
+				<tbody>
+
+					<tr>
+						<td class="text-center">1</td>
+						<td class="text-center">Shwe LaMin</td>
+						<td class="text-center">no(10),ThuzaNa St,Mingaladon</td>
+
+						<td>
+							<h6
+								style="border-radius: 20px; border: 1px solid red; width: 90px; padding: 10px; text-align: center;">detail</h6>
+						</td>
+					</tr>
+
+					<tr>
+						<td class="text-center">2</td>
+						<td class="text-center">Shwe LaMin</td>
+						<td class="text-center">no(10),ThuzaNa St,Mingaladon</td>
+						<td>
+							<h6
+								style="border-radius: 20px; border: 1px solid red; width: 90px; padding: 10px; text-align: center;">detail</h6>
+						</td>
+
+					</tr>
+					<tr>
+						<td class="text-center">3</td>
+						<td class="text-center">Shwe LaMin</td>
+						<td class="text-center">no(10),ThuzaNa St,Mingaladon</td>
+						<td>
+							<h6
+								style="border-radius: 20px; border: 1px solid red; width: 90px; padding: 10px; text-align: center;">detail</h6>
+						</td>
+
+
+					</tr>
+					<tr>
+						<td class="text-center">4</td>
+						<td class="text-center">Shwe LaMin</td>
+						<td class="text-center">no(10),ThuzaNa St,Mingaladon</td>
+						<td>
+							<h6
+								style="border-radius: 20px; border: 1px solid red; width: 90px; padding: 10px; text-align: center;">detail</h6>
+						</td>
+
+					</tr>
+					<tr>
+						<td class="text-center">5</td>
+						<td class="text-center">Shwe LaMin</td>
+						<td class="text-center">no(10),ThuzaNa St,Mingaladon</td>
+						<td>
+							<h6
+								style="border-radius: 20px; border: 1px solid red; width: 90px; padding: 10px; text-align: center;">detail</h6>
+						</td>
+
+					</tr>
+					<tr>
+						<td class="text-center">6</td>
+						<td class="text-center">Shwe LaMin</td>
+						<td class="text-center">no(10),ThuzaNa St,Mingaladon</td>
+						<td>
+							<h6
+								style="border-radius: 20px; border: 1px solid red; width: 90px; padding: 10px; text-align: center;">detail</h6>
+						</td>
+
+					</tr>
+					<tr>
+						<td class="text-center">7</td>
+						<td class="text-center">Shwe LaMin</td>
+						<td class="text-center">no(10),ThuzaNa St,Mingaladon</td>
+						<td>
+							<h6
+								style="border-radius: 20px; border: 1px solid red; width: 90px; padding: 10px; text-align: center;">detail</h6>
+						</td>
+
+					</tr>
+
+
+
+					<tr>
+						<td class="text-center">8</td>
+						<td class="text-center">Shwe LaMin</td>
+						<td class="text-center">no(10),ThuzaNa St,Mingaladon</td>
+						<td>
+							<h6
+								style="border-radius: 20px; border: 1px solid red; width: 90px; padding: 10px; text-align: center;">detail</h6>
+						</td>
+
+
+					</tr>
+					<tr>
+						<td class="text-center">9</td>
+						<td class="text-center">Shwe LaMin</td>
+						<td class="text-center">no(10),ThuzaNa St,Mingaladon</td>
+						<td>
+							<h6
+								style="border-radius: 20px; border: 1px solid red; width: 90px; padding: 10px; text-align: center;">detail</h6>
+						</td>
+
+
+					</tr>
+
+				</tbody>
+			</table>
 		</div>
-		</form>
-	<!-- 	<form action="/action_page.html" class="form-inline">
 
-			<input type="text" placeholder="Search clinic"
-				class="form-control form-rounded" size="40">
-			<button type="submit" class="btn btn-primary btn-circle">
-				<i class="fa fa-search"></i>
-			</button>
+	</section>
 
-		</form> -->
-		
-		<div style="overflow-x:auto;">
-		<table class="table">
-
-			<thead>
-
-				<tr>
-					<th class="text-center">ID</th>
-					<th class="text-center">Name</th>
-					<th class="text-center">Address</th>
-					<th class="text-center"></th>
-				</tr>
-			</thead>
-			<tbody>
-
-				<tr>
-					<td class="text-center">1</td>
-					<td class="text-center">Shwe LaMin</td>
-					<td class="text-center">no(10),ThuzaNa St,Mingaladon</td>
-
-					<td><h6
-							style="border-radius: 20px; border: 1px solid red; width: 90px; padding: 10px; text-align: center;">detail</h6></td>
-				</tr>
-
-				<tr>
-					<td class="text-center">2</td>
-					<td class="text-center">Shwe LaMin</td>
-					<td class="text-center">no(10),ThuzaNa St,Mingaladon</td>
-					<td><h6
-							style="border-radius: 20px; border: 1px solid red; width: 90px; padding: 10px; text-align: center;">detail</h6></td>
-
-				</tr>
-				<tr>
-					<td class="text-center">3</td>
-					<td class="text-center">Shwe LaMin</td>
-					<td class="text-center">no(10),ThuzaNa St,Mingaladon</td>
-					<td><h6
-							style="border-radius: 20px; border: 1px solid red; width: 90px; padding: 10px; text-align: center;">detail</h6></td>
-
-
-				</tr>
-				<tr>
-					<td class="text-center">4</td>
-					<td class="text-center">Shwe LaMin</td>
-					<td class="text-center">no(10),ThuzaNa St,Mingaladon</td>
-					<td><h6
-							style="border-radius: 20px; border: 1px solid red; width: 90px; padding: 10px; text-align: center;">detail</h6></td>
-
-				</tr>
-				<tr>
-					<td class="text-center">5</td>
-					<td class="text-center">Shwe LaMin</td>
-					<td class="text-center">no(10),ThuzaNa St,Mingaladon</td>
-					<td><h6
-							style="border-radius: 20px; border: 1px solid red; width: 90px; padding: 10px; text-align: center;">detail</h6></td>
-
-				</tr>
-				<tr>
-					<td class="text-center">6</td>
-					<td class="text-center">Shwe LaMin</td>
-					<td class="text-center">no(10),ThuzaNa St,Mingaladon</td>
-					<td><h6
-							style="border-radius: 20px; border: 1px solid red; width: 90px; padding: 10px; text-align: center;">detail</h6></td>
-
-				</tr>
-				<tr>
-					<td class="text-center">7</td>
-					<td class="text-center">Shwe LaMin</td>
-					<td class="text-center">no(10),ThuzaNa St,Mingaladon</td>
-					<td><h6
-							style="border-radius: 20px; border: 1px solid red; width: 90px; padding: 10px; text-align: center;">detail</h6></td>
-
-				</tr>
-
-
-
-				<tr>
-					<td class="text-center">8</td>
-					<td class="text-center">Shwe LaMin</td>
-					<td class="text-center">no(10),ThuzaNa St,Mingaladon</td>
-					<td><h6
-							style="border-radius: 20px; border: 1px solid red; width: 90px; padding: 10px; text-align: center;">detail</h6></td>
-
-
-				</tr>
-				<tr>
-					<td class="text-center">9</td>
-					<td class="text-center">Shwe LaMin</td>
-					<td class="text-center">no(10),ThuzaNa St,Mingaladon</td>
-					<td><h6
-							style="border-radius: 20px; border: 1px solid red; width: 90px; padding: 10px; text-align: center;">detail</h6></td>
-
-
-				</tr>
-
-			</tbody>
-		</table>
-		</div>
-	</div>
-
-
-</section>
 </body>
 </html>
 

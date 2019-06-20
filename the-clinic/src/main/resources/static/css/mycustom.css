@@ -9,3 +9,10 @@ nav{
 	height: 70px;
 	background-color:white;
 }
+
+
+.m-profile-img {
+	width: 40px;
+	height: 40px;
+	border-radius: 50%;
+}

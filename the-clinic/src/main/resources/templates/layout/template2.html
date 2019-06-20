@@ -23,23 +23,78 @@
 <body>
 
 	<nav id="part-d-nav"
-				class="navbar sticky-top navbar-default navbar-fixed shadow">
+				class="navbar sticky-top navbar-default navbar-fixed shadow navbar-expand">
 
 
 
 				<a th:href="@{/}" class="btn nav-app-name stretched-link">The Clinic</a>
 
+				<i class="fab fa-pagelines mr-auto" style="font-size:40px; color:#5aba4a"></i>
+
+				
+				<ul class="navbar-nav ml-auto">
+					
+						<li class="nav-item" sec:authorize="isAnonymous()">
+							<a th:href="@{/login}" class="nav-link auth-nav"><i class="fal fa-sign-in-alt" style="font-size:24px;"></i> <span class="d-md-inline d-none">Sign In</span></a>
+						</li>
+							
+						<li class="nav-item" sec:authorize="isAnonymous()">
+							<a th:href="@{/signup}" class="nav-link auth-nav"><i class="fal fa-paper-plane" style="font-size:24px;"></i> <span class="d-md-inline d-none">Sign Up</span></a>
+						</li>
+					
+				</ul>
+				  
+				
+				<div class="" sec:authorize="isAuthenticated()">
+					
+							<div class="ml-auto text-right dropdown m-account-dropdown">
+					
+
+									<a class="btn text-right dropdown-toggle-split"
+											data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+											<span class="d-md-inline d-none">Htet Aung Lin</span> <img alt="no image" class="m-profile-img" th:src="@{/resources/img/avatar5.png}" />
+									</a>
 
 
-				<!-- drop div end -->
+									<div id="dropdown" class="dropdown-menu dropdown-menu-right">
+					
+											<a class="dropdown-item" th:href="@{/home}"><i class="fal fa-tachometer-alt"></i>&nbsp;Dashboard</a>
+					
+											<a class="dropdown-item" href="#"><i class="fal fa-user"></i>&nbsp;Profile</a>
+
+											<div class="dropdown-divider"></div>
+
+											<a class="dropdown-item" href="#">
+												<i class="fal fa-cog text-aqua"></i>&nbsp;Setting
+											</a> 
+												
+											<a class="dropdown-item" id="signout-btn">
+												<i class="fal fa-sign-out"></i>&nbsp;Logout
+											</a>
+									</div>
+
+							</div>
+						
+					</div>
 
 			</nav>
 			
+			<form id="logout-form" method="post" class="d-none" th:action="@{/logout}">
+			</form>
+			
 
-			<section class="container-fluid">
+			<section class="">
 				<div layout:fragment="content">
 					
 				</div>
 			</section>
+			
+			
+			<script>
+		
+					$('#signout-btn').on('click', function(){
+						$('#logout-form').submit();
+					});
+			</script>
 </body>
 </html>

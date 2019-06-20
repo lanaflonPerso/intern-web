@@ -2,122 +2,126 @@
 <html xmlns:th="http://www.thymeleaf.org"
 	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
 	xmlns:sec="http://www.thymeleaf.org/extras/spring-security"
-	layout:decorate="~{/layout/template}">
+	layout:decorate="~{/layout/partner-deshboard-template}">
 <head>
 <meta charset="UTF-8">
-<title>Partner</title>
+<title>Detail</title>
+<style type="text/css">
+.dash-card-icons {
+	color: white;
+}
+
+
+.table-in-card{
+	color: white;
+	width:100%;
+}
+
+.card-general .dash-card-icons{
+	transform: scale(1,1);
+	transition: all 0.3s;
+}
+
+.card-general:hover .dash-card-icons{
+	 transform: scale(1.1,1.1);
+}
+.card-parent{
+	
+}
+</style>
 </head>
 <body>
+	<section layout:fragment="dashboard-contents">
 
-	<ul class="navbar-nav" layout:fragment="options">
-		<!-- Partner menu -->
-	</ul>
-
-	<section layout:fragment="content">
-
-		<div class="jumbotron jumbotron-fluid mt-2">
-			<div class="container">
-				<h1 class="display-6">This is partner's home</h1>
-			</div>
+		<div>
+			<p style="font-size:20px;" class="ml-1">Dashboard</p>
+			
 		</div>
+		<div class="container-fluid">
+			<div class="row">
+					
+					<div class="col-lg-3 p-1 col-sm-6 card-parent">
+						<div class="p-3 card-general" style="background-color: #834A07;">
+							<table class="table-in-card">
+								<tr>
+									<td>Patients</td>
+									<td rowspan="2" class="text-right">
+										<i class="fas fa-user-injured dash-card-icons w-50 h-50"></i>
+									</td>
+								</tr>
+								<tr>
+									<td><h1>5,123</h1></td>
+								</tr>
 
-		<div class="row" style="margin-top: 20px">
-			<div class="col-md-4">
-
-				<div class="shadow-sm card mb-4 bg-light">
-					<div class="card-body">
-						<div class="row">
-							<div class="col-sm-5 p-1">
-								<img
-									src="http://www.lamesachamber.org/wp-content/uploads/2016/07/Lamesa-Primary-Care-Clinic-250x174.png"
-									width="150px">
-							</div>
-							<div class="col-sm-7">
-
-								<p class="partner-card-title">Shwe lamin Clinic 1</p>
-								<p class="partner-card-text">Address: North Okkalapa ,Yangon</p>
-								<a href="" th:href="@{/clinics/1}"
-									class="btn btn-primary btn-sm float-right ">Details</a>
-
-							</div>
+							</table>
 						</div>
 					</div>
-				</div>
 
-			</div>
-			<div class="col-md-4">
+					<div class="col-lg-3 col-sm-6 p-1">
+						<div class="p-3 card-general" style="background-color: #3A70C7;">
+							<table class="table-in-card">
+								<tr>
+									<td>Bookings</td>
+									<td rowspan="2" class="text-right">
+										<i class="fas fa-book dash-card-icons w-50 h-50"></i>
+									</td>
+								</tr>
+								<tr>
+									<td><h1>920</h1></td>
+								</tr>
 
-				<div class="shadow-sm card mb-4 bg-light">
-					<div class="card-body">
-						<div class="row">
-							<div class="col-sm-5 p-1">
-								<img
-									src="http://www.lamesachamber.org/wp-content/uploads/2016/07/Lamesa-Primary-Care-Clinic-250x174.png"
-									width="150px">
-							</div>
-							<div class="col-sm-7">
-
-								<p class="partner-card-title">Shwe lamin Clinic 2</p>
-								<p class="partner-card-text">Address: North Okkalapa ,Yangon</p>
-								<a href="" th:href="@{/clinics/1}"
-									class="btn btn-primary btn-sm float-right ">Details</a>
-
-							</div>
+							</table>
 						</div>
 					</div>
-				</div>
-			</div>
-			<div class="col-md-4">
 
-				<div class="shadow-sm card mb-4 bg-light">
-					<div class="card-body">
-						<div class="row">
-							<div class="col-sm-5 p-1">
-								<img
-									src="http://www.lamesachamber.org/wp-content/uploads/2016/07/Lamesa-Primary-Care-Clinic-250x174.png"
-									width="150px">
-							</div>
-							<div class="col-sm-7">
+					<div class="col-lg-3 col-sm-6 p-1">
+						<div class="p-3 card-general" style="background-color: #C98B42;">
+							<table class="table-in-card">
+								<tr>
+									<td>Doctors</td>
+									<td rowspan="2" class="text-right">
+										<i class="fas fa-user-md dash-card-icons w-50 h-50"></i>
+									</td>
+								</tr>
+								<tr>
+									<td><h1>42</h1></td>
+								</tr>
 
-								<p class="partner-card-title">Shwe lamin Clinic 3</p>
-								<p class="partner-card-text">Address: North Okkalapa ,Yangon</p>
-								<a href="" th:href="@{/clinics/1}"
-									class="btn btn-primary btn-sm float-right ">Details</a>
-
-							</div>
+							</table>
 						</div>
 					</div>
-				</div>
-			</div>
 
-			<div class="col-md-4">
+					<div class="col-lg-3 col-sm-6 p-1">
+						<div class="p-3 card-general" style="background-color: #3AC7BC;">
+							<table class="table-in-card">
+								<tr>
+									<td>Clinics</td>
+									<td rowspan="2" class="text-right ml-auto">
+										<i class="fas fa-hospital dash-card-icons w-50 h-50"></i>
+									</td>
+								</tr>
+								<tr>
+									<td><h1>3</h1></td>
+								</tr>
 
-				<div class="shadow-sm card mb-4 bg-light">
-					<div class="card-body">
-						<div class="row">
-							<div class="col-sm-5 p-1">
-								<img
-									src="http://www.lamesachamber.org/wp-content/uploads/2016/07/Lamesa-Primary-Care-Clinic-250x174.png"
-									width="150px">
-
-							</div>
-							<div class="col-sm-7">
-
-								<p class="partner-card-title">Shwe lamin Clinic 4</p>
-								<p class="partner-card-text">Address: North Okkalapa ,Yangon</p>
-								<a href="" th:href="@{/clinics/1}"
-									class="btn btn-primary btn-sm float-right ">Details</a>
-
-							</div>
+							</table>
 						</div>
 					</div>
-				</div>
-			</div>
+					
+			</div><!-- row bar end -->
 
+		</div><!-- row bar end -->
+			
+		<div class="card mt-3 container-fluid">
+			
+			
+
+			
+				
 		</div>
-
-
-
+		
+		
+		
 	</section>
 
 </body>

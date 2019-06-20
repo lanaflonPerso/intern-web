@@ -6,20 +6,22 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+
 import com.jdc.clinic.entity.Clinic;
 
 @Controller
 @RequestMapping("/partner/clinics")
 public class ClinicController {
 
-
 	@GetMapping("{id}")
-	public String findById(@PathVariable int id,ModelMap model) {
-		return "/views/partner/clinic";
+	public String findById(@PathVariable int id, ModelMap model) {
+		model.addAttribute("clinicID", id);
+		return "/views/clinic";
 	}
 
 	@GetMapping("create")
-	public String createClinic() {
+	public String createClinic(ModelMap model) {
+		model.addAttribute("clinic_title", "Add New Clinic");
 		return "/views/partner/clinic-edit";
 	}
 
@@ -29,7 +31,8 @@ public class ClinicController {
 	}
 
 	@GetMapping("{id}/edit")
-	public String edit(@PathVariable int id) {
+	public String edit(@PathVariable int id, ModelMap model) {
+		model.addAttribute("clinic_title", "Edit (Clinic Name)");
 		return "/views/partner/clinic-edit";
 	}
 

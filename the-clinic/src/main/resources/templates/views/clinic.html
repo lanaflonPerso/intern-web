@@ -2,12 +2,138 @@
 <html xmlns:th="http://www.thymeleaf.org"
 	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
 	xmlns:sec="http://www.thymeleaf.org/extras/spring-security"
-	layout:decorate="~{/layout/template}">
+	layout:decorate="~{/views/clinic-detail-template}">
 <head>
-<meta charset="UTF-8">
+<meta charset="ISO-8859-1">
 <title>Clinic</title>
 </head>
 <body>
+	<div layout:fragment="clinic-details-content">
+		<div class="row d-flex justify-content-center">
+			<ul class="nav nav-pills" role="tablist">
+				<li><a class="nav-link active" aria-selected="false">Overview</a></li>
+				<li><a th:href="@{/clinics/{id}/doctors(id=${clinicID})}"
+					class="nav-link" aria-selected="false">Doctors</a></li>
+				<li><a th:href="@{/clinics/{id}/schedules(id=${clinicID})}"
+					class="nav-link" aria-selected="false">Schedule</a></li>
+			</ul>
+		</div>
+		<!-- <hr> -->
+		<div class="tab-content">
+			<div id="overview">
+				<div class="row mt-4">
+					<div class="col-lg-6 col-12">
+						<div class="row">
+							<div class="col-6">INFORMATION</div>
+							<div sec:authorize="hasRole('Partner')" class="col-6 text-right">
+								<i class="fa fa-pencil" aria-hidden="true"
+									style="font-size: 24px"></i>
+							</div>
+						</div>
+						<hr>
+						<table class="gray-txt">
 
+							<tr>
+								<td valign="top">Name</td>
+								<td valign="top">:</td>
+								<td valign="top">Clinic Name</td>
+							</tr>
+							<tr>
+								<td valign="top">Category</td>
+								<td valign="top">:</td>
+								<td valign="top">General clinic</td>
+							</tr>
+							<tr>
+								<td valign="top">Phone</td>
+								<td valign="top">:</td>
+								<td valign="top">09451241887<br>09691381615
+								</td>
+							</tr>
+							<tr>
+								<td valign="top">Email</td>
+								<td valign="top">:</td>
+								<td valign="top"><a href="mailto:myclinic@gmail.com">myclinic@gmail.com</a></td>
+							</tr>
+							<tr>
+								<td valign="top">Address</td>
+								<td valign="top">:</td>
+								<td valign="top">No.1, Main Road, Yangon</td>
+							</tr>
+							<tr>
+								<td valign="top">Location</td>
+								<td valign="top">:</td>
+								<td></td>
+							</tr>
+							<tr>
+								<td valign="top" colspan="2">
+									<div>
+										<pre>(Map is here)</pre>
+									</div>
+								</td>
+							</tr>
+						</table>
+					</div>
+					<div class="col-lg-6 col-12">
+						OPENING TIME
+						<hr>
+						<div class="open-time-group gray-txt">
+							<div class="card gray-txt height-card p-2 m-1">
+								<div class="red-path">
+									<i class="fa fa-calendar-minus-o" aria-hidden="true"
+										style='font-size: 24px'></i>&nbsp;&nbsp;Sun&#x00009;: Close
+								</div>
+							</div>
+							<div class="card gray-txt height-card p-2 m-1">
+								<div class="green-path">
+									<i class="fa fa-calendar-check-o" aria-hidden="true"
+										style='font-size: 24px'></i>&nbsp;&nbsp;Mon&#x00009;: 09:00 am
+									to 12:00 pm
+								</div>
+							</div>
+							<div class="card gray-txt height-card p-2 m-1">
+								<div class="green-path">
+									<i class="fa fa-calendar-check-o" aria-hidden="true"
+										style='font-size: 24px'></i>&nbsp;&nbsp;Tue&#x00009;: 09:00 am
+									to 12:00 pm
+								</div>
+							</div>
+							<div class="card gray-txt height-card p-2 m-1">
+								<div class="green-path">
+									<i class="fa fa-calendar-check-o" aria-hidden="true"
+										style='font-size: 24px'></i>&nbsp;&nbsp;Web&#x00009;: 09:00 am
+									to 12:00 pm
+								</div>
+							</div>
+							<div class="card gray-txt height-card p-2 m-1">
+								<div class="green-path">
+									<i class="fa fa-calendar-check-o" aria-hidden="true"
+										style='font-size: 24px'></i>&nbsp;&nbsp;Thu&#x00009;: 09:00 am
+									to 12:00 pm
+								</div>
+							</div>
+							<div class="card gray-txt height-card p-2 m-1">
+								<div class="green-path">
+									<i class="fa fa-calendar-check-o" aria-hidden="true"
+										style='font-size: 24px'></i>&nbsp;&nbsp;Fri&#x00009;: 09:00 am
+									to 12:00 pm
+								</div>
+							</div>
+							<div class="card gray-txt height-card p-2 m-1">
+								<div class="red-path">
+									<i class="fa fa-calendar-minus-o" aria-hidden="true"
+										style='font-size: 24px'></i>&nbsp;&nbsp;Sat&#x00009;: Close
+								</div>
+							</div>
+						</div>
+					</div>
+					<!--open time end-->
+
+				</div>
+				<!--Doctors complete-->
+			</div>
+			<!--overview complete-->
+		</div>
+		<!--Tab Content end-->
+	</div>
 </body>
 </html>

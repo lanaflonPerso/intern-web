@@ -14,16 +14,16 @@ public class PublicClinicController {
 	public String search(String keyword, ModelMap model) {
 		return "/views/clinics";
 	}
-	
+
 	@GetMapping("{id}")
 	public String findById(@PathVariable int id, ModelMap model) {
-		
+		model.addAttribute("clinicID", 1);
 		return "/views/clinic";
 	}
-	
+
 	@GetMapping("{id}/schedules")
 	public String findSchedulesForClinic(@PathVariable int id, ModelMap model) {
-		
+		model.addAttribute("clinicID", 1);
 		return "/views/schedules";
 	}
 }

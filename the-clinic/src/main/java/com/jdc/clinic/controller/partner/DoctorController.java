@@ -12,6 +12,13 @@ import com.jdc.clinic.entity.Doctor;
 @RequestMapping("/partner/doctors")
 public class DoctorController {
 	
+	
+	@GetMapping("{clinicId}")
+	public String index(@PathVariable int clinicId) {
+	
+		return "/views/partner/doctors";
+	}
+	
 	@GetMapping("{clinicId}/create")
 	public String create(@PathVariable int clinicId) {
 	

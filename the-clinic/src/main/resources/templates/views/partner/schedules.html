@@ -9,5 +9,178 @@
 </head>
 <body>
 
+	<section layout:fragment="content"> 
+	
+			<nav class="navbar navbar-expand-lg" style="">
+
+
+
+			<ul class="nav nav-tabs">
+
+				<li class="nav-item"><a class="nav-link" href="#">Sunday</a></li>
+				<li class="nav-item"><a class="nav-link" href="#">Monday</a></li>
+				<li class="nav-item"><a class="nav-link" href="#">Tuesday</a></li>
+				<li class="nav-item"><a class="nav-link" href="#">Wednesday</a>
+				</li>
+				<li class="nav-item"><a class="nav-link" href="#">Thursday</a>
+				</li>
+				<li class="nav-item"><a class="nav-link" href="#">Friday</a></li>
+				<li class="nav-item"><a class="nav-link" href="#">Saturday</a>
+				</li>
+				<li class="nav-item"><a class="nav-link" href="#"
+					data-toggle="modal" data-target="#myModal"> Create Schedule</a></li>
+			</ul>
+
+			<div></div>
+
+
+		</nav>
+
+
+
+
+
+
+
+		<div class="modal" id="myModal">
+			<div class="row">
+				<div class="col-lg-3 col-md-2"></div>
+				<div class="col-lg-6 col-md-8 col-sm-12 col-12 card"
+					style="background-color: white;">
+					<div>
+						<div class="container mt-5">
+							<h4>Add Schedule</h4>
+							<div>
+								<form action="" method="get">
+									<div class="form-group">
+										<label for="" class="cusLabel"> Enter Doctor Name</label> <input
+											type="text" class="form-control" placeholder="Name">
+									</div>
+									<div class="form-group">
+										<label for="" class="cusLabel"> Enter Degree</label> <input
+											type="text" class="form-control" placeholder="Degree">
+									</div>
+									<div class="form-group">
+										<label for="" class="cusLabel"> From</label> <input
+											type="time" class="form-control"
+											placeholder="Enter Start Time">
+									</div> 
+									<div class="form-group">
+										<label for="" class="cusLabel"> To</label> <input type="time"
+											class="form-control" placeholder="Enter End Time">
+									</div>
+									<div class="form-group">
+										<label for="" class="cusLabel">Day Of Week:</label> <select
+											class="custom-select">
+											<option selected>Day Of Week</option>
+											<option>Sunday</option>
+											<option>Monday</option>
+											<option>Tuesday</option>
+											<option>Wednesday</option>
+											<option>Thursday</option>
+											<option>Friday</option>
+											<option>Saturday</option>
+										</select>
+									</div>
+									<div class="form-group">
+										<button class="btn btn-outline-success" >Create</button>
+										<button class="btn btn-outline-danger" data-dismiss="modal">Cancel</button>
+									</div>
+								</form>
+								<!--form end-->
+							</div>
+							<!--form div end-->
+						</div>
+						<!--container end-->
+					</div>
+					<!--modal end-->
+				</div>
+				<!--col end-->
+				<div class="col-lg-3 col-md-2"></div>
+			</div>
+			<!--row end-->
+		</div>
+		<!--dialog container end-->
+
+		<h4>Doctor Schedule</h4>
+		<br>
+
+
+		<div style="overflow-x: auto">
+
+			<table class="table table-bordered table-expand-lg">
+
+				<thead>
+					<tr class="tableHeading-color">
+						<th>Name</th>
+						<th>Degree</th>
+						<th>From</th>
+						<th>To</th>
+						<th></th>
+
+					</tr>
+				</thead>
+				<tbody>
+					<tr>
+						<td>Dr.Thet Hylar Tin</td>
+						<td>Cardiologist</td>
+						<td>10:00 AM</td>
+						<td>12:00 AM</td>
+						<td>
+							<button type="button" class="btn btn-outline-success" 
+								>Edit</button>
+							<button type="button" class="btn btn-outline-danger">Delete</button>
+						</td>
+					</tr>
+
+					<tr>
+						<td>Dr.San Lwin Oo</td>
+						<td>Neurologist</td>
+						<td>8:00 AM</td>
+						<td>10:00 AM</td>
+						<td>
+							<button type="button" class="btn btn-outline-success" >Edit</button>
+							<button type="button" class="btn btn-outline-danger">Delete</button>
+						</td>
+					</tr>
+
+					<tr>
+						<td>Dr.Chit Thae</td>
+						<td>Baby Specialist</td>
+						<td>9:30 AM</td>
+						<td>11:00 AM</td>
+						<td>
+							<button type="button" class="btn btn-outline-success" >Edit</button>
+							<button type="button" class="btn btn-outline-danger">Delete</button>
+						</td>
+					</tr>
+
+					<tr>
+						<td>Dr.Khin Lay</td>
+						<td>General</td>
+						<td>1:00 PM</td>
+						<td>3:00 PM</td>
+						<td>
+							<button type="button" class="btn btn-outline-success" >Edit</button>
+							<button type="button" class="btn btn-outline-danger">Delete</button>
+						</td>
+					</tr>
+
+					<tr>
+						<td>Dr.Htet Aung Lin</td>
+						<td>Cardiologist</td>
+						<td>4:00 PM</td>
+						<td>6:00 PM</td>
+						<td>
+							<button type="button" class="btn btn-outline-success" >Edit</button>
+							<button type="button" class="btn btn-outline-danger">Delete</button>
+						</td>
+					</tr>
+			</table>
+
+		</div>
+		
+	</section>
+
 </body>
 </html>

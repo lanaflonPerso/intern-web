@@ -21,7 +21,7 @@
 		<div class=" mx-3 mb-2">
 			<div class = "row">
 				<div class ="col-md-5 col-10">
-					<input type="text" class="form-control search-bar-sub pl-4"
+					<input type="text" id="myInput" class="form-control search-bar-sub pl-4"
 					 placeholder="Search">
 				</div>
 				<div class ="">
@@ -34,7 +34,7 @@
 		</form>
 		
 		<div class="row mx-3">
-			<table class="table  table-responsive-md  table-hover  table-bordered" 
+			<table class="table  table-responsive-md  table-hover  " 
 				id="table-bookings">
 					<tr class="tableHeading-color">
 						<td>No</td>
@@ -42,7 +42,7 @@
 						<td >Ph No</td>
 						<td></td>
 					</tr>
-				<tbody>
+				<tbody id="myTable">
 					<tr>
 						<td>1</td>
 						<td>Daw Mya</td>
@@ -66,7 +66,7 @@
 					</tr>
 					<tr>
 						<td>4</td>
-						<td>Daw Mya</td>
+						<td>Daw Myint Myint Aye</td>
 							<td>09876745326</td>
 						<td><button type="button" class="btn btn-outline-primary">Details</button></td>
 					</tr>
@@ -80,6 +80,22 @@
 				</tbody>
 			</table>
 		</div>
+		
+		
+		 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+  <script>
+  $(document).ready(function(){
+    $("#myInput").on("keyup", function() {
+      var value = $(this).val().toLowerCase();
+      $("#myTable tr").filter(function() {
+        $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
+      });
+    });
+  });
+  </script>
 	</section>
+
 </body>
 </html>

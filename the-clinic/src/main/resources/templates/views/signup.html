@@ -9,7 +9,7 @@
 </head>
 <body>
 	<section layout:fragment="content">
-	
+
 		<div class="container mt-5">
 			<div class="row">
 				<div class="col-md-3"></div>
@@ -19,48 +19,66 @@
 						<h4 class="text-center">Sign up</h4>
 						<hr>
 						<label>Enter your phone number <span style="color: red;">*</span></label>
-						<br>
-						<input type="text" 
-							name="phone" 
-							class="form-control input-box p-3" 
-							placeholder="Phone"
-							oninvalid="this.setCustomValidity('Please enter phone number here')" 
-							oninput="this.setCustomValidity('')" 
-							required/>
-						<br>
-						<label>Enter New Password <span style="color: red;">*</span>&nbsp;<span><small id="pass-format-validation"></small></span></label>
-						<input type="password" 
-							name="pass" 
-							id="password"
-							class="form-control input-box p-3" 
+						<br> <input type="text" name="phone"
+							class="form-control input-box p-3" placeholder="Phone"
+							oninvalid="this.setCustomValidity('Please enter phone number here')"
+							oninput="this.setCustomValidity('')" required /> <br> <label>Enter
+							New Password <span style="color: red;">*</span>&nbsp;<span><small
+								id="pass-format-validation"></small></span>
+						</label> <input type="password" name="pass" id="password"
+							class="form-control input-box p-3"
 							oninvalid="this.setCustomValidity('Please type new password here')"
-							oninput="this.setCustomValidity('')" 
-							placeholder="Password" required/>
-						<br>
-						<label>Confirm Password <span style="color: red;">*</span>&nbsp;<span><small id="confirm-error"></small></span></label>
-						<input type="password" 
-							name="pass-confirm"
-							id="confirm_password"
-							class="form-control input-box p-3" 
+							oninput="this.setCustomValidity('')" placeholder="Password"
+							required /> <br> <label>Confirm Password <span
+							style="color: red;">*</span>&nbsp;<span><small
+								id="confirm-error"></small></span></label> <input type="password"
+							name="pass-confirm" id="confirm_password"
+							class="form-control input-box p-3"
 							oninvalid="this.setCustomValidity('Please retype password here')"
-							oninput="this.setCustomValidity('')" 
-							placeholder="Password" required/>
-						<br>
+							oninput="this.setCustomValidity('')" placeholder="Password"
+							required /> <br>
 						<div class="form-group form-check text-center mt-2">
 							<input type="checkbox" class="form-check-input" name="check">
-							<label class="form-check-label" for="exampleCheck1"><small>I agree to <a href="#">Terms of Service</a> &amp; <a href="#">Privacy Policy</a></small></label>
+							<label class="form-check-label" for="exampleCheck1"><small>I
+									agree to <a href="#">Terms of Service</a> &amp; <a href="#">Privacy
+										Policy</a>
+							</small></label>
 						</div>
 
 						<div class="container">
 							<div class="row">
-								<input type="submit" class="col-12 btn home-icon-btn" style="background-color: #3A85C7; color: white;" value="Confirm">
+								<input type="submit" class="col-12 btn home-icon-btn"
+									style="background-color: #3A85C7; color: white;"
+									value="Confirm">
 							</div>
 						</div>
-					</form><br>
+					</form>
+					<br>
 				</div>
 				<div class="col-md-3"></div>
-			</div><!--row end-->
-		</div><!--container end-->
+			</div>
+			<!--row end-->
+		</div>
+		<!--container end-->
+		<script>
+			$('#password, #confirm_password').keyup(
+					function() {
+						var temp = $('#confirm_password').val();
+						if (temp.length != 0) {
+							if ($('#password').val() == $('#confirm_password')
+									.val()) {
+								$('#confirm-error').html('(valid passwords)')
+										.css('color', 'green');
+							} else {
+								$('#confirm-error').html(
+										'(Passwords must match)').css('color',
+										'red');
+							}
+						} else {
+							$('#confirm-error').html('');
+						}
+					});
+		</script>
 	</section>
 </body>
 </html>

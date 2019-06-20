@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	xmlns:sec="http://www.thymeleaf.org/extras/spring-security"
+	layout:decorate="~{/layout/template2}">
+<head>
+<meta charset="UTF-8">
+<title>Login</title>
+
+<style type="text/css">
+
+.ads-icon{
+	color:#C98B42;
+}
+
+.card{
+	
+	border: 1px solid;
+	border-image: linear-gradient(45deg, rgb(0,143,104), rgb(250,224,66)) 1;
+}
+
+.ads-text{
+	text-align: justify;
+	text-justify: inter-word;
+}
+
+body{
+			background-image: url("/resources/img/bkimg.jpg");
+			background-repeat: no-repeat;
+			background-position: center;
+			background-attachment: fixed;
+			background-size: cover;
+			
+}
+
+
+/* Extra small devices (phones, 600px and down) */
+@media ( max-width : 600px) {
+	.ads-icon{
+	align-items: center;
+	}
+	.ads-title{
+		text-align: center;
+	}
+}
+
+/* Small devices (portrait tablets and large phones, 600px and up) */
+@media ( min-width : 600px) {
+	.ads-icon{
+		align-items: center;
+		width:80%;
+		height:80%;
+	}
+	
+	.ads-title{
+		text-align: center;
+	}
+	
+}
+
+/* Medium devices (landscape tablets, 768px and up) */
+@media ( min-width : 768px) {
+	.ads-icon{
+		align-items: center;
+		width:80%;
+		height:80%;
+	}
+	.ads-title{
+		text-align: left;
+	}
+}
+
+/* Large devices (laptops/desktops, 992px and up) */
+@media ( min-width : 992px) {
+	.ads-icon{
+	
+		width:100%;
+		height:100%;
+	}
+	.ads-title{
+		text-align: left;
+	}
+}
+
+/* Extra large devices (large laptops and desktops, 1200px and up) */
+@media ( min-width : 1200px) {
+	.ads-icon{
+		width:100%;
+		height:100%;
+	}
+	.ads-title{
+		text-align: left;
+	}
+	
+}
+
+</style>
+
+</head>
+<body>
+
+	<section layout:fragment="content">
+		
+		<div class="row mt-5">
+		
+		
+		<div class="col-lg-6 col-md-12 pt-5  order-lg-1 order-2">
+			
+				<div class="ml-md-5 ml-md-5">
+				
+					<div class="row">
+						
+						<div class="col-lg-4 col-md-4 text-center">
+							<img th:src="@{/resources/img/stethoscope.svg}" class="ads-icon"/>
+						</div>
+						<div class="col-lg-8 col-md-8 col-12" style="color:#834A07;">
+							
+							<h4 class="ads-title mt-3">Something here</h4>
+							
+							<p class="ads-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+							
+							
+						</div>
+					
+					</div>
+					
+				</div>
+				
+			</div>
+			
+		
+		
+		
+			<div class="col-lg-6 col-md-12 pt-lg-3 pl-lg-5 pr-lg-5 pb-5 mb-5 order-lg-2 order-1">
+			
+				<div class="card p-3 ml-lg-1 mr-md-5 ml-md-5">
+				
+					<div layout:fragment="sign-box">
+						
+					</div>
+					
+				</div>
+				
+			</div>
+			
+			
+		</div>
+	
+	</section>
+
+</body>
+</html>

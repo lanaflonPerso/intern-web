@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html 
+	xmlns:th="http://www.thymeleaf.org"
+	xmlns:sec="http://www.thymeleaf.org/extras/spring-security"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title layout:title-pattern="$LAYOUT_TITLE | $CONTENT_TITLE">Clinic</title>
+
+<link rel="stylesheet" th:href="@{/resources/css/bootstrap.min.css}">
+<link rel="stylesheet" th:href="@{/resources/css/application.css}">
+
+<link rel="stylesheet" th:href="@{/resources/css/mycustom.css}">
+
+<script th:src="@{/resources/js/jquery.min.js}"></script>
+<script th:src="@{/resources/js/popper.min.js}"></script>
+<script th:src="@{/resources/js/bootstrap.min.js}"></script>
+<script th:src="@{/resources/js/all.js}"></script>
+
+
+</head>
+<body>
+
+	<nav id="part-d-nav"
+				class="navbar sticky-top navbar-default navbar-fixed shadow">
+
+
+
+				<a th:href="@{/}" class="btn nav-app-name stretched-link">The Clinic</a>
+
+
+
+				<!-- drop div end -->
+
+			</nav>
+			
+
+			<section class="container-fluid">
+				<div layout:fragment="content">
+					
+				</div>
+			</section>
+</body>
+</html>

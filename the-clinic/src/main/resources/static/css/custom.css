@@ -105,8 +105,29 @@ th {
 	width: 100%;
 }
 
+#selection{
+	
+	padding-right: 25px;
+	padding-bottom: 10px;
+}
+.btn-delete{
+	padding:0px;
+}
+#book-cancel{
+	color: #212121;
+	
+}
 
+#book-cancel:hover{
+	color: #d50000;
+	
+}
 
+#dropdownMenuButton{
+	background-color: #3A85C7;
+	color: white;
+	
+}
 #table-bookings-thead{
 	width: 100%;
 	background: #3A85C7;
@@ -118,7 +139,8 @@ th {
 }
 
 #status-pending{
-	color: #689f38;
+	padding-right:20px;
+	color: #1b5e20;
 }
 
 #status-comfirm{
@@ -127,6 +149,12 @@ th {
 #status-cancel{
 	color: #d50000;
 }
+#datepicker{
+	background-color: #3A85C7;
+	color: white;
+}
+
+
 
 /* End MemberBookings */
 .rounded-searchbox1 {
@@ -154,5 +182,33 @@ th {
 	color: white;
 }
 
+.btn-seemore{
+	transform: scale(1,1);
+	transition: all 0.3s;
 
+} 
+    
+.btn-seemore:hover{
+	transform: scale(1.1,1.1);
+    
+} 
+        body, html {
+  height: 100%;
+}
+
+.bg { 
+  
+  background-image: url('/resources/img/bkimg.jpg');
+
+  /* Full height */
+  height: 100%; 
+
+  /*Center and scale the image nicely */
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+    background-attachment: fixed;
+    
+
+}
 

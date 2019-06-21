@@ -1,0 +1,340 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title layout:title-pattern="$LAYOUT_TITLE | $CONTENT_TITLE">Clinic</title>
+
+<link rel="stylesheet" th:href="@{/resources/css/bootstrap.min.css}">
+
+
+<script th:src="@{/resources/js/jquery.min.js}"></script>
+<script th:src="@{/resources/js/bootstrap.min.js}"></script>
+<script th:src="@{/resources/js/popper.min.js}"></script>
+<script th:src="@{/resources/js/all.js}"></script>
+
+<style>
+
+
+.head-nav {
+	color: #B42E2E;
+	background-color: white;
+	box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+}
+
+.m-profile-img {
+	width: 40px;
+	height: 40px;
+	border-radius: 50%;
+}
+
+.m-logo {
+	width: 48px;
+	height: 48px;
+}
+
+.m-account-menu {
+	color: black;
+}
+
+.m-account-dropdown:hover {
+	background-color: #fafafa;
+}
+
+.m-profile-img-sidebar {
+	width: 80px;
+	height: 80px;
+	border-radius: 50%;
+}
+
+.m-sidebar-header {
+	background-image: linear-gradient(#3A55C7, #3A85C7);
+}
+
+#m-sidebar.active {
+	margin-left: -260px;
+}
+
+#m-sidebar {
+	background-color: white;
+	transition: all 0.3s;
+}
+
+.sidebar {
+	position: fixed;
+	top: 0;
+	bottom: 0;
+	right: auto;
+	left: 0;
+	width: 260px;
+	display: block;
+	z-index: 1;
+	color: #fff;
+	font-weight: 200;
+	background-size: cover;
+	background-position: center center;
+}
+
+#main-panel {
+	margin-left: 260px;
+	width: calc(100% - 260px);
+	transition: all 0.3s;
+}
+
+.part-in-content {
+	/* overflow-x: hidden; */
+	
+}
+
+#part-d-nav {
+	background-color: white;
+}
+
+#main-panel.active {
+	width: 100%;
+	margin-left: 0px;
+}
+
+#sidebarCollapse {
+	transform: scale(1, 1);
+	transition: all 0.3s;
+}
+
+#sidebarCollapse:hover {
+	transform: scale(1.1, 1.1);
+}
+
+.nav-app-name{
+transform: translateX(-50%);
+  left: 50%;
+  position: absolute;
+  font-size: 24px;
+}
+
+/* Extra small devices (phones, 600px and down) */
+@media ( max-width : 600px) {
+	.username {
+		display: none;
+	}
+}
+
+/* Small devices (portrait tablets and large phones, 600px and up) */
+@media ( min-width : 600px) {
+	.username {
+		display: none;
+	}
+}
+
+/* Medium devices (landscape tablets, 768px and up) */
+@media ( min-width : 768px) {
+	.username {
+		display: none;
+	}
+}
+
+/* Large devices (laptops/desktops, 992px and up) */
+@media ( min-width : 992px) {
+	.username {
+		display: inline;
+	}
+}
+
+/* Extra large devices (large laptops and desktops, 1200px and up) */
+@media ( min-width : 1200px) {
+	.username {
+		display: inline;
+	}
+}
+</style>
+
+</head>
+<body>
+	<div class="wrapper">
+
+		<div class="sidebar shadow" id="m-sidebar" data-color="purple">
+
+			<div class="sidebar-wrapper">
+
+				<div class="logo m-sidebar-header pt-4 pb-4 pl-4 pr-2">
+
+					<table class="w-100">
+
+						<tr>
+
+							<td><img th:src="@{/resources/img/girl.png}"
+								class="m-profile-img-sidebar" /></td>
+
+							<td>
+								<h5>Grace</h5> <span style="color: #DEDEDE;"><b>Member</b></span>
+
+							</td>
+
+						</tr>
+
+					</table>
+
+				</div>
+
+				<div class="nav">
+
+					<a href="#" class="btn w-100 text-left nav-link active"> 
+						<i class="fal fa-tachometer-alt"></i>&nbsp;Dashboard
+					</a>
+					
+					<a href="#" class="btn w-100 text-left nav-link"> <i
+						class="fal fa-hospital"></i>&nbsp;Search Clinics
+					</a> 
+					
+					<a href="#" class="btn w-100 text-left nav-link"> <i
+						class="fal fa-search"></i>&nbsp;Search Doctors
+					</a> 
+					
+					<a href="#member-list" class="btn w-100 text-left nav-link dropdown-toggle-split"
+						data-toggle="collapse" aria-expanded="false"> <i
+						class="fal fa-user"></i>&nbsp;Family Member &nbsp;&nbsp;<i
+						class="fal fa-angle-right ml-auto"></i>
+					</a>
+
+					<ul class="collapse list-unstyled w-100" id="member-list">
+						<li class="ml-3">
+							<a href="#" class="text-left btn w-100 nav-link"> 
+								<i class="fal fa-user-plus"></i>&nbsp;&nbsp;Add New Member
+							</a>
+						</li>
+						<li class="ml-3">
+							<a href="#" class="text-left btn w-100 nav-link">
+								<i class="fal fa-list-alt"></i>&nbsp;&nbsp;Member List
+							</a>
+						</li>
+					</ul>
+					<a href="#booking-list" class="btn w-100 text-left nav-link dropdown-toggle-split"
+					data-toggle="collapse" aria-expanded="false"> <i
+						class="fal fa-book"></i>&nbsp;Bookings&nbsp;&nbsp;<i
+						class="fal fa-angle-right ml-auto"></i>
+					</a> 
+					
+					<ul class="collapse list-unstyled w-100" id="booking-list">
+						<li class="ml-3">
+							<a href="#" class="text-left btn w-100 nav-link"> 
+								<i class="fal fa-calendar-plus"></i>&nbsp;&nbsp;Add New Book
+							</a>
+						</li>
+						<li class="ml-3">
+							<a href="#" class="text-left btn w-100 nav-link">
+								<i class="fal fa-list-alt"></i>&nbsp;&nbsp;Booking Lists
+							</a>
+						</li>
+					</ul>
+					
+
+
+				</div>
+
+			</div>
+
+		</div>
+
+
+
+
+		
+
+
+
+		<div class="main-panel" id="main-panel">
+
+			<nav id="part-d-nav"
+				class="navbar sticky-top navbar-default navbar-fixed shadow">
+
+
+				<div class="btn ml-auto mr-auto text-center" id="sidebarCollapsse"
+					style="position: absolute;">
+					<i class="fas fa-bars" style="font-size: 24px;"></i>
+				</div>
+
+
+
+				<span class="nav-app-name">The Clinic</span>
+
+
+				<div class="btn mr-auto text-left" id="sidebarCollapse"
+					style="position: absolute;">
+					<i class="fas fa-bars" style="font-size: 24px;"></i>
+				</div>
+
+
+				<div class="ml-auto text-right dropdown m-account-dropdown">
+
+					<a class="btn text-right dropdown-toggle-split"
+						data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+						<img alt="no image"
+						class="m-profile-img" th:src="@{/resources/img/girl.png}" />
+						<span class="username"><b>Grace</b></span> 
+					</a>
+
+					<div id="drop-menu" class="dropdown-menu dropdown-menu-right">
+						<a class="dropdown-item" href="#"><i class="fal fa-user"></i>&nbsp;Profile</a>
+
+						<div class="dropdown-divider"></div>
+
+						<a class="dropdown-item" href="#">
+							<i class="fal fa-cog text-aqua"></i>&nbsp;Setting
+						</a> 
+							
+						<a class="dropdown-item" id="signout-btn">
+							<i class="fal fa-sign-out"></i>&nbsp;Logout
+						</a>
+					</div>
+
+
+				</div>
+				<!-- drop div end -->
+
+			</nav>
+			
+			<div class="part-in-content content p-2">
+
+				<div layout:fragment="dashboard-contents"></div>
+
+
+			</div>
+
+		</div><!-- main panel end -->
+	</div>
+	
+	<form id="logout-form" method="post" class="d-none" th:action="@{/logout}">
+	</form>
+	
+
+
+	<script>
+		/* $(function(){
+			$('#signout-btn2').on('click', () => alert('Hello');)
+		}); */
+		
+		/* $(document).ready(function() { */
+			$('#sidebarCollapse').on('click', function() {
+				$('#m-sidebar').toggleClass('active');
+				$('#main-panel').toggleClass('active');
+			});
+			
+		$('#signout-btn').on('click', function(){
+			$('#logout-form').submit();
+		});
+		
+			
+/* 
+			$('#signout-btn').on('click', function() { 
+				alert('Hello');
+				$('#logout-form').submit();
+			}); */
+			
+			
+		/* }); */
+		
+	</script>
+
+</body>
+</html>

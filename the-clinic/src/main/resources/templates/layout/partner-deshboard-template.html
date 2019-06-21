@@ -8,6 +8,7 @@
 <title layout:title-pattern="$LAYOUT_TITLE | $CONTENT_TITLE">Clinic</title>
 
 <link rel="stylesheet" th:href="@{/resources/css/bootstrap.min.css}">
+<link rel="stylesheet" th:href="@{/resources/css/mycustom.css}">
 
 
 <script th:src="@{/resources/js/jquery.min.js}"></script>
@@ -113,40 +114,7 @@ transform: translateX(-50%);
   font-size: 24px;
 }
 
-/* Extra small devices (phones, 600px and down) */
-@media ( max-width : 600px) {
-	.username {
-		display: none;
-	}
-}
 
-/* Small devices (portrait tablets and large phones, 600px and up) */
-@media ( min-width : 600px) {
-	.username {
-		display: none;
-	}
-}
-
-/* Medium devices (landscape tablets, 768px and up) */
-@media ( min-width : 768px) {
-	.username {
-		display: none;
-	}
-}
-
-/* Large devices (laptops/desktops, 992px and up) */
-@media ( min-width : 992px) {
-	.username {
-		display: inline;
-	}
-}
-
-/* Extra large devices (large laptops and desktops, 1200px and up) */
-@media ( min-width : 1200px) {
-	.username {
-		display: inline;
-	}
-}
 </style>
 
 </head>
@@ -244,8 +212,7 @@ transform: translateX(-50%);
 				</div>
 
 
-
-				<span class="nav-app-name">The Clinic</span>
+				<a th:href="@{/}" class="btn nav-app-name stretched-link">The Clinic</a>
 
 
 				<div class="btn mr-auto text-left" id="sidebarCollapse"
@@ -258,7 +225,7 @@ transform: translateX(-50%);
 
 					<a class="btn text-right dropdown-toggle-split"
 						data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-						<span class="username">Htet Aung Lin</span> <img alt="no image"
+						<span class="d-md-inline d-none">Htet Aung Lin</span> <img alt="no image"
 						class="m-profile-img" th:src="@{/resources/img/avatar5.png}" />
 					</a>
 
@@ -298,29 +265,15 @@ transform: translateX(-50%);
 
 
 	<script>
-		/* $(function(){
-			$('#signout-btn2').on('click', () => alert('Hello');)
-		}); */
-		
-		/* $(document).ready(function() { */
-			$('#sidebarCollapse').on('click', function() {
-				$('#m-sidebar').toggleClass('active');
-				$('#main-panel').toggleClass('active');
-			});
+		$('#sidebarCollapse').on('click', function() {
+			$('#m-sidebar').toggleClass('active');
+			$('#main-panel').toggleClass('active');
+		});
 			
 		$('#signout-btn').on('click', function(){
 			$('#logout-form').submit();
 		});
 		
-			
-/* 
-			$('#signout-btn').on('click', function() { 
-				alert('Hello');
-				$('#logout-form').submit();
-			}); */
-			
-			
-		/* }); */
 		
 	</script>
 

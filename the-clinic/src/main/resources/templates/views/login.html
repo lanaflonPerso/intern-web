@@ -2,41 +2,76 @@
 <html xmlns:th="http://www.thymeleaf.org"
 	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
 	xmlns:sec="http://www.thymeleaf.org/extras/spring-security"
-	layout:decorate="~{/layout/template}">
+	layout:decorate="~{/views/templogin}">
 <head>
 <meta charset="UTF-8">
 <title>Login</title>
+
+<style type="text/css">
+
+
+.login-btn{
+	background-color: #3A85C7;
+	color: white;
+}
+.login-btn:hover{
+	color:white;
+}
+
+</style>
+
 </head>
 <body>
 
-	<section layout:fragment="content">
+	<section layout:fragment="sign-box">
 		
-		<div class="row mt-5">
-			
-			<div class="col-6">
-	
-				<h4>Login</h4>
-			
-				<form method="post" th:action="@{/login}">
+			<div class="text-center">
+					<i class="fal fa-user-circle dash-card-icons" style="width:40px; height:40px;"></i>
+					<p style="font-size:24px;">Sign In</p>
+			</div>
 					
-					<div class="form-group">
-						<label>Login Id</label>
-						<input type="text" name="loginId" placeholder="Enter Login Id" class="form-control" />
-					</div>
-
-					<div class="form-group">
-						<label>Password</label>
-						<input type="password" name="password" placeholder="Enter Password" class="form-control" />
-					</div>
 					
-					<div class="form-group">
-						<input type="submit" class="btn btn-primary" value="Login"/>
-					</div>
-
-				</form>
 					
-			</div>		
-		</div>
+					<hr>
+					
+					
+					<form method="post" th:action="@{/login}">
+					
+					
+						<div class="form-group">
+						
+							<label class="label">Enter User ID</label>
+							<input type="text" name="loginId" placeholder="User ID" class="form-control"/>
+							
+						</div>
+						
+						
+						<div class="form-group">
+						
+							<label class="label">Enter Password</label>
+							<input type="password" name="password" placeholder="Password" class="form-control"/>
+							
+						</div>
+						
+						<div class="form-group text-center">
+						
+							<a href="#" style="position:center"><small>Forgot Password?</small></a>
+							
+						</div>
+						
+						<div class="form-group">
+							<button type="submit" class="w-100 btn login-btn"><i class="fal fa-sign-in-alt"></i> Sign In</button>
+							
+							
+						</div>
+						
+						<div class="form-group text-center mt-5">
+						
+							<small>Not a member? <a th:href="@{/signup}" style="position:center; color:green;">Create Account</a></small>
+							
+						</div>
+						
+					</form>
 	
 	</section>
 

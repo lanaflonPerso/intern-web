@@ -185,12 +185,11 @@ th {
 .btn-seemore{
 	transform: scale(1,1);
 	transition: all 0.3s;
-
+	margin-bottom: 0;
 } 
     
 .btn-seemore:hover{
 	transform: scale(1.1,1.1);
-    
 } 
         body, html {
   height: 100%;

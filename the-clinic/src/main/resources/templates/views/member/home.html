@@ -45,7 +45,7 @@ pre {
 	font-family: Courier New;
 }
 
-.calendar {
+/* .calendar {
 	/* box-shadow: 0px 3px 3px rgba(0, 0, 0, 0.25); */
 	font: 13px/1.5 "Helvetica Neue", Helvatica, Arial, san-serif;
 	display: table;
@@ -142,7 +142,7 @@ width: 100%;
 	color: #fff;
 	background: rgba(73, 160, 174, 0.5);
 	cursor: pointer;
-}
+} */
 </style>
 </head>
 <body>
@@ -230,53 +230,16 @@ width: 100%;
 
 <div id="container ">
 				<div class="row">
+				
+				
 
-					<div id="pnlEventCalendar" class="col-lg-6"></div>
-					<div class="col-lg-6" id="doctorList">
-				<script>
-					$(function () {
-						$('#pnlEventCalendar').calendar({
-							months: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'],
-							days: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'], onSelect: function (event) {
-								triggerSelectEvent(event);
-							}
-						});
-
-
-					});
-
-
-
-				</script>
-
-					</div>
 
 				</div>
 			</div>
 			<!--overview complete-->
 
 
-			<script type="text/javascript">
-			function triggerSelectEvent(event) {
-			var date = new Date(currentYear, currentMonth, currentDay);
-
-			const days = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
-			const monthNames = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
-		
-			var label = date.getDate();
-
-
-			if (event != undefined) {
-				$('#lblEventCalendar').text(days[date.getDay()] + " " + " " + monthNames[date.getMonth()] + " " + label + " ");
-
-
-			}
-
-		}
-
-
-
-	</script>
+			
 		</div><!-- row bar end -->
 		</section>	
 </body>

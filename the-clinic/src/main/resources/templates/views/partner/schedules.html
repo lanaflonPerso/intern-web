@@ -9,39 +9,10 @@
 </head>
 <body>
 
-	<section layout:fragment="content"> 
-	
-			<nav class="navbar navbar-expand-lg" style="">
+	<section layout:fragment="content">
 
-
-
-			<ul class="nav nav-tabs">
-
-				<li class="nav-item"><a class="nav-link" href="#">Sunday</a></li>
-				<li class="nav-item"><a class="nav-link" href="#">Monday</a></li>
-				<li class="nav-item"><a class="nav-link" href="#">Tuesday</a></li>
-				<li class="nav-item"><a class="nav-link" href="#">Wednesday</a>
-				</li>
-				<li class="nav-item"><a class="nav-link" href="#">Thursday</a>
-				</li>
-				<li class="nav-item"><a class="nav-link" href="#">Friday</a></li>
-				<li class="nav-item"><a class="nav-link" href="#">Saturday</a>
-				</li>
-				<li class="nav-item"><a class="nav-link" href="#"
-					data-toggle="modal" data-target="#myModal"> Create Schedule</a></li>
-			</ul>
-
-			<div></div>
-
-
-		</nav>
-
-
-
-
-
-
-
+		
+		<br>
 		<div class="modal" id="myModal">
 			<div class="row">
 				<div class="col-lg-3 col-md-2"></div>
@@ -64,7 +35,7 @@
 										<label for="" class="cusLabel"> From</label> <input
 											type="time" class="form-control"
 											placeholder="Enter Start Time">
-									</div> 
+									</div>
 									<div class="form-group">
 										<label for="" class="cusLabel"> To</label> <input type="time"
 											class="form-control" placeholder="Enter End Time">
@@ -83,7 +54,7 @@
 										</select>
 									</div>
 									<div class="form-group">
-										<button class="btn btn-outline-success" >Create</button>
+										<button class="btn btn-outline-success">Create</button>
 										<button class="btn btn-outline-danger" data-dismiss="modal">Cancel</button>
 									</div>
 								</form>
@@ -94,6 +65,7 @@
 						<!--container end-->
 					</div>
 					<!--modal end-->
+
 				</div>
 				<!--col end-->
 				<div class="col-lg-3 col-md-2"></div>
@@ -101,17 +73,40 @@
 			<!--row end-->
 		</div>
 		<!--dialog container end-->
+		
+		<h4>Doctor Schedule</h4> 
+		<div class="d-flex flex-row-reverse">
+		<div class="dropdown">
+						<button type="button"
+							class="btn btn-outline-primary dropdown-toggle"
+							data-toggle="dropdown">Day Of Weeks</button>
+						<div class="dropdown-menu">
+							<a class="dropdown-item" href="#">Sunday</a> <a
+								class="dropdown-item" href="#">Monday</a> <a
+								class="dropdown-item" href="#">Tuesday</a> <a
+								class="dropdown-item" href="#">Wednesday</a> <a
+								class="dropdown-item" href="#">Thursday</a> <a
+								class="dropdown-item" href="#">Friday</a> <a
+								class="dropdown-item" href="#">Saturday</a>
 
-		<h4>Doctor Schedule</h4>
+						</div>
+					</div>
+				
+
+				<a class="nav-link" href="#"
+					data-toggle="modal" data-target="#myModal">Create Schedule</a>
+		</div>
+		
 		<br>
 
 
-		<div style="overflow-x: auto">
+		<div class="container">
 
-			<table class="table table-bordered table-expand-lg">
+			<table class="table table-bordered table-sm-3  " id="myTable">
 
 				<thead>
 					<tr class="tableHeading-color">
+						<th>No</th>
 						<th>Name</th>
 						<th>Degree</th>
 						<th>From</th>
@@ -122,65 +117,122 @@
 				</thead>
 				<tbody>
 					<tr>
+						<td>1</td>
 						<td>Dr.Thet Hylar Tin</td>
 						<td>Cardiologist</td>
 						<td>10:00 AM</td>
 						<td>12:00 AM</td>
 						<td>
-							<button type="button" class="btn btn-outline-success" 
-								>Edit</button>
-							<button type="button" class="btn btn-outline-danger">Delete</button>
+							<button type="submit" class="btn btn-outline-success btn-sm" >
+								<i class="fa fa-edit"></i>
+							</button>
+							<button type="button" class="btn btn-outline-danger btn-sm"
+								onclick="deleteRow(this)">
+								<i class="fas fa-trash-alt"></i>
+							</button>
 						</td>
 					</tr>
 
-					<tr>
-						<td>Dr.San Lwin Oo</td>
-						<td>Neurologist</td>
-						<td>8:00 AM</td>
-						<td>10:00 AM</td>
-						<td>
-							<button type="button" class="btn btn-outline-success" >Edit</button>
-							<button type="button" class="btn btn-outline-danger">Delete</button>
-						</td>
-					</tr>
 
 					<tr>
+						<td>2</td>
 						<td>Dr.Chit Thae</td>
 						<td>Baby Specialist</td>
 						<td>9:30 AM</td>
 						<td>11:00 AM</td>
 						<td>
-							<button type="button" class="btn btn-outline-success" >Edit</button>
-							<button type="button" class="btn btn-outline-danger">Delete</button>
+							<button type="submit" class="btn btn-outline-success btn-sm" >
+								<i class="fa fa-edit"></i>
+							</button>
+							<button type="button" class="btn btn-outline-danger btn-sm"
+								onclick="deleteRow(this)">
+								<i class="fas fa-trash-alt"></i>
+							</button>
 						</td>
 					</tr>
 
 					<tr>
+						<td>3</td>
 						<td>Dr.Khin Lay</td>
 						<td>General</td>
 						<td>1:00 PM</td>
 						<td>3:00 PM</td>
 						<td>
-							<button type="button" class="btn btn-outline-success" >Edit</button>
-							<button type="button" class="btn btn-outline-danger">Delete</button>
+							<button type="submit" class="btn btn-outline-success btn-sm" >
+								<i class="fa fa-edit"></i>
+							</button>
+							<button type="button" class="btn btn-outline-danger btn-sm "
+								onclick="deleteRow(this)">
+								<i class="fas fa-trash-alt"></i>
+							</button>
 						</td>
 					</tr>
 
 					<tr>
+						<td>4</td>
 						<td>Dr.Htet Aung Lin</td>
 						<td>Cardiologist</td>
 						<td>4:00 PM</td>
 						<td>6:00 PM</td>
 						<td>
-							<button type="button" class="btn btn-outline-success" >Edit</button>
-							<button type="button" class="btn btn-outline-danger">Delete</button>
+							<button type="submit" class="btn btn-outline-success btn-sm" >
+								<i class="fa fa-edit"></i>
+							</button>
+							<button type="button" class="btn btn-outline-danger btn-sm"
+								onclick="deleteRow(this)">
+								<i class="fas fa-trash-alt"></i>
+							</button>
+						</td>
+					</tr>
+
+					<tr>
+						<td>5</td>
+						<td>Dr.Su Su</td>
+						<td>Cardiologist</td>
+						<td>4:00 PM</td>
+						<td>6:00 PM</td>
+						<td>
+							<button type="submit" class="btn btn-outline-success btn-sm" >
+								<i class="fa fa-edit"></i>
+							</button>
+							<button type="button" class="btn btn-outline-danger btn-sm"
+								onclick="deleteRow(this)">
+								<i class="fas fa-trash-alt"></i>
+							</button>
+						</td>
+					</tr>
+
+					<tr>
+						<td>6</td>
+						<td>Dr.Su Mon</td>
+						<td>Cardiologist</td>
+						<td>4:00 PM</td>
+						<td>6:00 PM</td>
+						<td>
+							<button type="submit" class="btn btn-outline-success btn-sm" 
+								>
+								<i class="fa fa-edit"></i>
+							</button>
+							<button type="button" class="btn btn-outline-danger btn-sm"
+								onclick="deleteRow(this)">
+								<i class="fas fa-trash-alt"></i>
+							</button>
 						</td>
 					</tr>
 			</table>
 
 		</div>
-		
-	</section>
+
+
+		<script>
+function deleteRow(r) {
+  var i = r.parentNode.parentNode.rowIndex;
+  document.getElementById("myTable").deleteRow(i);
+}
+</script>
+
+
+</section>
 
 </body>
 </html>

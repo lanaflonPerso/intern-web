@@ -10,578 +10,210 @@
 </head>
 <body>
 
-    <div layout:fragment="content" class="container">
-        <h2>Doctors</h2>
+<section layout:fragment="content">
 
-        <form action="/action_page.html" class="form-inline">
-
-            <input type="text" placeholder="Search doctor" class="form-control form-rounded" size="40">
-            <button type="submit" class="btn btn-search"><i class="fa fa-search"></i></button>
-            
-           
-
-        </form>
-        <br>
-        <div class="row">
+    <div class="container">
+        <div class="main-wrapper">
 
 
-            <div class="col-lg-3 col-md-4 col-sm-6 col-12">
-                <div class="card mb-3 p-2" style="background-color:lightblue">
 
-                    <table>
-                        <tr>
-                            <td>Name</td>
-                            <td>:</td>
-                            <td>Chit Thae</td>
-                        </tr>
-                        <tr>
-                            <td>Degree</td>
-                            <td>:</td>
-                            <td>M.B.,B.S</td>
-                        </tr>
-                        <tr>
-                            <td>Specialities</td>
-                            <td>:</td>
-                            <td>General</td>
-                        </tr>
-                        <tr>
-                            <td>Gender</td>
-                            <td>:</td>
-                            <td>Female</td>
-                        </tr>
+            <div class="profile-info-left" style="min-height: 400px;">
 
-                        <tr>
-                            <td>Hospital</td>
-                            <td>:</td>
-                            <td>SSC</td>
-                        </tr>
-                        <tr>
-                            <td>Position</td>
-                            <td>:</td>
-                            <td>Prof</td>
-                        </tr>
-                        <tr>
-                            <td>LicenseCode</td>
-                            <td>:</td>
-                            <td>1105</td>
-                        </tr>
+                <div class="content">
 
-                        <tr>
-                            <td> <button type="button" class="btn btn-info">Schedule</button></td>
-                            <td></td>
-                            <td> <button type="button" class="btn btn-info">Delete</button></td>
 
-                        </tr>
-                    </table>
+
+
+                    <div class="row">
+                        <div class="col-sm-4 col-6">
+                            <h2 class="page-title">Doctor Profile</h2>
+
+
+                        </div>
+
+
+
+                        <div class="container">
+                            <div class="row">
+                                <div class="col-3">
+                                    <div class="profile-img-wrap">
+                                        <div class="profile-img">
+                                            <a href="#"><img class="avatar" th:src="@{/resources/img/doctor.png}" alt=""></a>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="col-6">
+
+                                    <div class="profile-basic">
+                                        <div class="row">
+
+                                            <div class="col-md-7">
+                                                <ul class="personal-info">
+                                                    <li>
+                                                        <span
+                                                            class="title">Name</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                                        <span class="">:</span>
+                                                        <span class="text">Chit Thae</span>
+
+                                                    </li>
+                                                    <li>
+                                                        <span
+                                                            class="title">Specialist</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                                        <span class="">:</span>
+                                                        <span class="text">Gynecologist</span>
+                                                    </li>
+                                                    <li>
+                                                        <span
+                                                            class="title">Phone</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                                        <span class="">:</span>
+                                                        <span class="text">770-889-6484</span>
+                                                    </li>
+                                                    <li>
+                                                        <span
+                                                            class="title">Email</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                                        <span class="">:</span>
+                                                        <span class="text">chitthae3131@gmail.com</span>
+                                                    </li>
+                                                    <li>
+                                                        <span
+                                                            class="title">Birthday</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                                        <span class="">:</span>
+                                                        <span class="text">3rd March</span>
+                                                    </li>
+                                                    <li>
+                                                        <span
+                                                            class="title">Address</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                                        <span class="">:</span>
+                                                        <span class="text">HtaukKyant</span>
+                                                    </li>
+                                                    <li>
+                                                        <span
+                                                            class="title">Gender</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                                        <span class="">:</span>
+                                                        <span class="text">Female</span>
+                                                    </li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+
+
+
+
+
+
+
+                    </div>
+
                 </div>
-            </div>
 
-            <div class="col-lg-3 col-md-4 col-sm-6 col-12">
-                <div class="card mb-3 p-2" style="background-color:lightblue">
 
-                    <table>
-                        <tr>
-                            <td>Name</td>
-                            <td>:</td>
-                            <td>Chit Thae</td>
-                        </tr>
-                        <tr>
-                            <td>Degree</td>
-                            <td>:</td>
-                            <td>M.B.,B.S</td>
-                        </tr>
-                        <tr>
-                            <td>Specialities</td>
-                            <td>:</td>
-                            <td>General</td>
-                        </tr>
-                        <tr>
-                            <td>Gender</td>
-                            <td>:</td>
-                            <td>Female</td>
-                        </tr>
 
-                        <tr>
-                            <td>Hospital</td>
-                            <td>:</td>
-                            <td>SSC</td>
-                        </tr>
-                        <tr>
-                            <td>Position</td>
-                            <td>:</td>
-                            <td>Prof</td>
-                        </tr>
-                        <tr>
-                            <td>LicenseCode</td>
-                            <td>:</td>
-                            <td>1105</td>
-                        </tr>
+                <div class="profile-tabs">
 
-                        <tr>
-                            <td> <button type="button" class="btn btn-info">Schedule</button></td>
-                            <td></td>
-                            <td> <button type="button" class="btn btn-info">Delete</button></td>
 
-                        </tr>
-                    </table>
+                    <div class="tab-content">
+                        <div class="tab-pane show active" id="about-cont">
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <div class="card-box">
+                                        <h3 class="card-title">Education Informations</h3>
+                                        <div class="experience-box">
+                                            <ul class="experience-list">
+                                                <li>
+                                                    <div class="experience-user">
+                                                        <div class="before-circle"></div>
+                                                    </div>
+                                                    <div class="experience-content">
+                                                        <div class="timeline-content">
+                                                            <a href="#/" class="name">International College of Medical
+                                                                Science (UG)</a>
+                                                            <div>MBBS</div>
+                                                            <span class="time">2001 - 2003</span>
+                                                        </div>
+                                                    </div>
+                                                </li>
+                                                <li>
+                                                    <div class="experience-user">
+                                                        <div class="before-circle"></div>
+                                                    </div>
+                                                    <div class="experience-content">
+                                                        <div class="timeline-content">
+                                                            <a href="#/" class="name">International College of Medical
+                                                                Science (PG)</a>
+                                                            <div>MD - Obstetrics &amp; Gynaecology</div>
+                                                            <span class="time">1997 - 2001</span>
+                                                        </div>
+                                                    </div>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                    <div class="card-box mb-0">
+                                        <h3 class="card-title">Experience</h3>
+                                        <div class="experience-box">
+                                            <ul class="experience-list">
+                                                <li>
+                                                    <div class="experience-user">
+                                                        <div class="before-circle"></div>
+                                                    </div>
+                                                    <div class="experience-content">
+                                                        <div class="timeline-content">
+                                                            <a href="#/" class="name">Consultant Gynecologist</a>
+                                                            <span class="time">Jan 2014 - Present (4 years 8
+                                                                months)</span>
+                                                        </div>
+                                                    </div>
+                                                </li>
+                                                <li>
+                                                    <div class="experience-user">
+                                                        <div class="before-circle"></div>
+                                                    </div>
+                                                    <div class="experience-content">
+                                                        <div class="timeline-content">
+                                                            <a href="#/" class="name">Consultant Gynecologist</a>
+                                                            <span class="time">Jan 2009 - Present (6 years 1
+                                                                month)</span>
+                                                        </div>
+                                                    </div>
+                                                </li>
+                                                <li>
+                                                    <div class="experience-user">
+                                                        <div class="before-circle"></div>
+                                                    </div>
+                                                    <div class="experience-content">
+                                                        <div class="timeline-content">
+                                                            <a href="#/" class="name">Consultant Gynecologist</a>
+                                                            <span class="time">Jan 2004 - Present (5 years 2
+                                                                months)</span>
+                                                        </div>
+                                                    </div>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
                 </div>
-            </div>
-            <div class="col-lg-3 col-md-4 col-sm-6 col-12">
-                <div class="card mb-3 p-2" style="background-color:lightblue">
 
-                    <table>
-                        <tr>
-                            <td>Name</td>
-                            <td>:</td>
-                            <td>Chit Thae</td>
-                        </tr>
-                        <tr>
-                            <td>Degree</td>
-                            <td>:</td>
-                            <td>M.B.,B.S</td>
-                        </tr>
-                        <tr>
-                            <td>Specialities</td>
-                            <td>:</td>
-                            <td>General</td>
-                        </tr>
-                        <tr>
-                            <td>Gender</td>
-                            <td>:</td>
-                            <td>Female</td>
-                        </tr>
 
-                        <tr>
-                            <td>Hospital</td>
-                            <td>:</td>
-                            <td>SSC</td>
-                        </tr>
-                        <tr>
-                            <td>Position</td>
-                            <td>:</td>
-                            <td>Prof</td>
-                        </tr>
-                        <tr>
-                            <td>LicenseCode</td>
-                            <td>:</td>
-                            <td>1105</td>
-                        </tr>
 
-                        <tr>
-                            <td> <button type="button" class="btn btn-info">Schedule</button></td>
-                            <td></td>
-                            <td> <button type="button" class="btn btn-info">Delete</button></td>
 
-                        </tr>
-                    </table>
-                </div>
-            </div>
-            <div class="col-lg-3 col-md-4 col-sm-6 col-12">
-                <div class="card mb-3 p-2" style="background-color:lightblue">
 
-                    <table>
-                        <tr>
-                            <td>Name</td>
-                            <td>:</td>
-                            <td>Chit Thae</td>
-                        </tr>
-                        <tr>
-                            <td>Degree</td>
-                            <td>:</td>
-                            <td>M.B.,B.S</td>
-                        </tr>
-                        <tr>
-                            <td>Specialities</td>
-                            <td>:</td>
-                            <td>General</td>
-                        </tr>
-                        <tr>
-                            <td>Gender</td>
-                            <td>:</td>
-                            <td>Female</td>
-                        </tr>
-
-                        <tr>
-                            <td>Hospital</td>
-                            <td>:</td>
-                            <td>SSC</td>
-                        </tr>
-                        <tr>
-                            <td>Position</td>
-                            <td>:</td>
-                            <td>Prof</td>
-                        </tr>
-                        <tr>
-                            <td>LicenseCode</td>
-                            <td>:</td>
-                            <td>1105</td>
-                        </tr>
-
-                        <tr>
-                            <td> <button type="button" class="btn btn-info">Schedule</button></td>
-                            <td></td>
-                            <td> <button type="button" class="btn btn-info">Delete</button></td>
-
-                        </tr>
-                    </table>
-                </div>
-            </div>
-            <div class="col-lg-3 col-md-4 col-sm-6 col-12">
-                <div class="card mb-3 p-2" style="background-color:lightblue">
-
-                    <table>
-                        <tr>
-                            <td>Name</td>
-                            <td>:</td>
-                            <td>Chit Thae</td>
-                        </tr>
-                        <tr>
-                            <td>Degree</td>
-                            <td>:</td>
-                            <td>M.B.,B.S</td>
-                        </tr>
-                        <tr>
-                            <td>Specialities</td>
-                            <td>:</td>
-                            <td>General</td>
-                        </tr>
-                        <tr>
-                            <td>Gender</td>
-                            <td>:</td>
-                            <td>Female</td>
-                        </tr>
-
-                        <tr>
-                            <td>Hospital</td>
-                            <td>:</td>
-                            <td>SSC</td>
-                        </tr>
-                        <tr>
-                            <td>Position</td>
-                            <td>:</td>
-                            <td>Prof</td>
-                        </tr>
-                        <tr>
-                            <td>LicenseCode</td>
-                            <td>:</td>
-                            <td>1105</td>
-                        </tr>
-
-                        <tr>
-                            <td> <button type="button" class="btn btn-info">Schedule</button></td>
-                            <td></td>
-                            <td> <button type="button" class="btn btn-info">Delete</button></td>
-
-                        </tr>
-                    </table>
-                </div>
-            </div>
-            <div class="col-lg-3 col-md-4 col-sm-6 col-12">
-                <div class="card mb-3 p-2" style="background-color:lightblue">
-
-                    <table>
-                        <tr>
-                            <td>Name</td>
-                            <td>:</td>
-                            <td>Chit Thae</td>
-                        </tr>
-                        <tr>
-                            <td>Degree</td>
-                            <td>:</td>
-                            <td>M.B.,B.S</td>
-                        </tr>
-                        <tr>
-                            <td>Specialities</td>
-                            <td>:</td>
-                            <td>General</td>
-                        </tr>
-                        <tr>
-                            <td>Gender</td>
-                            <td>:</td>
-                            <td>Female</td>
-                        </tr>
-
-                        <tr>
-                            <td>Hospital</td>
-                            <td>:</td>
-                            <td>SSC</td>
-                        </tr>
-                        <tr>
-                            <td>Position</td>
-                            <td>:</td>
-                            <td>Prof</td>
-                        </tr>
-                        <tr>
-                            <td>LicenseCode</td>
-                            <td>:</td>
-                            <td>1105</td>
-                        </tr>
-
-                        <tr>
-                            <td> <button type="button" class="btn btn-info">Schedule</button></td>
-                            <td></td>
-                            <td> <button type="button" class="btn btn-info">Delete</button></td>
-
-                        </tr>
-                    </table>
-                </div>
-            </div>
-            <div class="col-lg-3 col-md-4 col-sm-6 col-12">
-                <div class="card mb-3 p-2" style="background-color:lightblue">
-
-                    <table>
-                        <tr>
-                            <td>Name</td>
-                            <td>:</td>
-                            <td>Chit Thae</td>
-                        </tr>
-                        <tr>
-                            <td>Degree</td>
-                            <td>:</td>
-                            <td>M.B.,B.S</td>
-                        </tr>
-                        <tr>
-                            <td>Specialities</td>
-                            <td>:</td>
-                            <td>General</td>
-                        </tr>
-                        <tr>
-                            <td>Gender</td>
-                            <td>:</td>
-                            <td>Female</td>
-                        </tr>
-
-                        <tr>
-                            <td>Hospital</td>
-                            <td>:</td>
-                            <td>SSC</td>
-                        </tr>
-                        <tr>
-                            <td>Position</td>
-                            <td>:</td>
-                            <td>Prof</td>
-                        </tr>
-                        <tr>
-                            <td>LicenseCode</td>
-                            <td>:</td>
-                            <td>1105</td>
-                        </tr>
-
-                        <tr>
-                            <td> <button type="button" class="btn btn-info">Schedule</button></td>
-                            <td></td>
-                            <td> <button type="button" class="btn btn-info">Delete</button></td>
-
-                        </tr>
-                    </table>
-                </div>
-            </div>
-            <div class="col-lg-3 col-md-4 col-sm-6 col-12">
-                <div class="card mb-3 p-2" style="background-color:lightblue">
-
-                    <table>
-                        <tr>
-                            <td>Name</td>
-                            <td>:</td>
-                            <td>Chit Thae</td>
-                        </tr>
-                        <tr>
-                            <td>Degree</td>
-                            <td>:</td>
-                            <td>M.B.,B.S</td>
-                        </tr>
-                        <tr>
-                            <td>Specialities</td>
-                            <td>:</td>
-                            <td>General</td>
-                        </tr>
-                        <tr>
-                            <td>Gender</td>
-                            <td>:</td>
-                            <td>Female</td>
-                        </tr>
-
-                        <tr>
-                            <td>Hospital</td>
-                            <td>:</td>
-                            <td>SSC</td>
-                        </tr>
-                        <tr>
-                            <td>Position</td>
-                            <td>:</td>
-                            <td>Prof</td>
-                        </tr>
-                        <tr>
-                            <td>LicenseCode</td>
-                            <td>:</td>
-                            <td>1105</td>
-                        </tr>
-
-                        <tr>
-                            <td> <button type="button" class="btn btn-info">Schedule</button></td>
-                            <td></td>
-                            <td> <button type="button" class="btn btn-info">Delete</button></td>
-
-                        </tr>
-                    </table>
-                </div>
-            </div>
-            <div class="col-lg-3 col-md-4 col-sm-6 col-12">
-                <div class="card mb-3 p-2" style="background-color:lightblue">
-
-                    <table>
-                        <tr>
-                            <td>Name</td>
-                            <td>:</td>
-                            <td>Chit Thae</td>
-                        </tr>
-                        <tr>
-                            <td>Degree</td>
-                            <td>:</td>
-                            <td>M.B.,B.S</td>
-                        </tr>
-                        <tr>
-                            <td>Specialities</td>
-                            <td>:</td>
-                            <td>General</td>
-                        </tr>
-                        <tr>
-                            <td>Gender</td>
-                            <td>:</td>
-                            <td>Female</td>
-                        </tr>
-
-                        <tr>
-                            <td>Hospital</td>
-                            <td>:</td>
-                            <td>SSC</td>
-                        </tr>
-                        <tr>
-                            <td>Position</td>
-                            <td>:</td>
-                            <td>Prof</td>
-                        </tr>
-                        <tr>
-                            <td>LicenseCode</td>
-                            <td>:</td>
-                            <td>1105</td>
-                        </tr>
-
-                        <tr>
-                            <td> <button type="button" class="btn btn-info">Schedule</button></td>
-                            <td></td>
-                            <td> <button type="button" class="btn btn-info">Delete</button></td>
-
-                        </tr>
-                    </table>
-                </div>
-            </div>
-            <div class="col-lg-3 col-md-4 col-sm-6 col-12">
-                <div class="card mb-3 p-2" style="background-color:lightblue">
-
-                    <table>
-                        <tr>
-                            <td>Name</td>
-                            <td>:</td>
-                            <td>Chit Thae</td>
-                        </tr>
-                        <tr>
-                            <td>Degree</td>
-                            <td>:</td>
-                            <td>M.B.,B.S</td>
-                        </tr>
-                        <tr>
-                            <td>Specialities</td>
-                            <td>:</td>
-                            <td>General</td>
-                        </tr>
-                        <tr>
-                            <td>Gender</td>
-                            <td>:</td>
-                            <td>Female</td>
-                        </tr>
-
-                        <tr>
-                            <td>Hospital</td>
-                            <td>:</td>
-                            <td>SSC</td>
-                        </tr>
-                        <tr>
-                            <td>Position</td>
-                            <td>:</td>
-                            <td>Prof</td>
-                        </tr>
-                        <tr>
-                            <td>LicenseCode</td>
-                            <td>:</td>
-                            <td>1105</td>
-                        </tr>
-
-                        <tr>
-                            <td> <button type="button" class="btn btn-info">Schedule</button></td>
-                            <td></td>
-                            <td> <button type="button" class="btn btn-info">Delete</button></td>
-
-                        </tr>
-                    </table>
-                </div>
-            </div>
-            <div class="col-lg-3 col-md-4 col-sm-6 col-12">
-                <div class="card mb-3 p-2" style="background-color:lightblue">
-
-                    <table>
-                        <tr>
-                            <td>Name</td>
-                            <td>:</td>
-                            <td>Chit Thae</td>
-                        </tr>
-                        <tr>
-                            <td>Degree</td>
-                            <td>:</td>
-                            <td>M.B.,B.S</td>
-                        </tr>
-                        <tr>
-                            <td>Specialities</td>
-                            <td>:</td>
-                            <td>General</td>
-                        </tr>
-                        <tr>
-                            <td>Gender</td>
-                            <td>:</td>
-                            <td>Female</td>
-                        </tr>
-
-                        <tr>
-                            <td>Hospital</td>
-                            <td>:</td>
-                            <td>SSC</td>
-                        </tr>
-                        <tr>
-                            <td>Position</td>
-                            <td>:</td>
-                            <td>Prof</td>
-                        </tr>
-                        <tr>
-                            <td>LicenseCode</td>
-                            <td>:</td>
-                            <td>1105</td>
-                        </tr>
-
-                        <tr>
-                            <td> <button type="button" class="btn btn-info">Schedule</button></td>
-                            <td></td>
-                            <td> <button type="button" class="btn btn-info">Delete</button></td>
-
-                        </tr>
-                    </table>
-                </div>
             </div>
         </div>
+
     </div>
-
-</body>
-
-<body>
+   
+</section>
 
 </body>
 </html>

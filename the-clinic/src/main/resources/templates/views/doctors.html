@@ -8,56 +8,128 @@
 <title>Doctor List</title>
 </head>
 <body>
-<section layout:fragment="content">
-	<div class="mt-4">
-		<form action="">
-		<div class="mb-2">
-			<div class = "row">
-				<div class ="col-md-5 col-10">
-					<input type="text" class="form-control search-bar-sub pl-4"
-					 placeholder="Search">
-				</div>
-				<div class ="">
-					<button type="submit" class="btn btn-search">
-						<i class="fa fa-search"></i>
-					</button>
+	<section layout:fragment="content">
+		<div class="bg">
+			<div>
+				<h4 class="text-center mt-2">Doctor List</h4>
+			</div>
+			<br>
+			<div class="card-columns">
+				<div class="container">
+					<!--  <div class="col-sm-3">-->
+					<div class="card border-primary btn-seemore ">
+						<div class="shadow">
+							<div class="card-body ">
+								<p>
+									<strong><i class="fas fa-user-md"></i> Dr.San Lwin Oo</strong>
+								</p>
+								<p>
+									<i class="fas fa-graduation-cap"></i> M.B.,B.S
+								</p>
+								<p>Neurologist</p>
+								<a href="#" class="btn btn-primary btn-sm">See more</a>
+								<!--      </div>-->
+							</div>
+						</div>
+					</div>
+					<!--  <div class="col-sm-3">-->
+					<div class="card border-primary btn-seemore">
+
+						<div class="shadow">
+							<div class="card-body">
+								<p>
+									<strong><i class="fas fa-user-md"></i> Dr.Thet Hylar
+										Tin</strong>
+								</p>
+								<p>
+									<i class="fas fa-graduation-cap"></i> M.B.,B.S
+								</p>
+								<p>Cardiologist</p>
+
+
+								<a href="#" class="btn btn-sm btn-primary">See more</a>
+							</div>
+						</div>
+					</div>
+					<!--  </div>-->
+					<!--  <div class="col-sm-3">-->
+					<div class="card border-primary btn-seemore">
+						<div class="shadow">
+							<div class="card-body">
+								<p>
+									<strong><i class="fas fa-user-md"></i> Dr.Mya Myint Zu</strong>
+								</p>
+								<p>
+									<i class="fas fa-graduation-cap"></i> MMSc
+								</p>
+								<p>Patho</p>
+								<a href="#" class="btn btn-sm btn-primary">See more</a>
+							</div>
+							<!--      </div>-->
+						</div>
+					</div>
+					<!--  <div class="col-sm-3">-->
+					<div class="card border-primary btn-seemore">
+						<div class="shadow">
+							<div class="card-body">
+								<p>
+									<strong><i class="fas fa-user-md"></i> Dr.Mya Myint Zu</strong>
+								</p>
+								<p>
+									<i class="fas fa-graduation-cap"></i> MMSc
+								</p>
+								<p>Patho</p>
+								<a href="#" class="btn btn-sm btn-primary">See more</a>
+							</div>
+						</div>
+					</div>
+					<!--  </div>-->
+					<!--</div> -->
+					<!--<br>-->
+					<!--<div class="row mr-2 ml-2">-->
+					<!--     <div class="col-sm-3">-->
+					<div class="card border-primary btn-seemore">
+						<div class="shadow">
+							<div class="card-body">
+
+								<p>
+									<strong><i class="fas fa-user-md"></i> Dr.Htet Aung
+										Lin</strong>
+								</p>
+								<p>
+									<i class="fas fa-graduation-cap"></i> M.B.,B.S
+								</p>
+								<p>Neurologist</p>
+								<a href="#" class="btn btn-sm btn-primary">See more</a>
+							</div>
+						</div>
+					</div>
+					<!--  </div>-->
+					<!--  <div class="col-sm-3">-->
+					<div class="card border-primary btn-seemore">
+						<div class="shadow">
+
+							<div class="card-body">
+								<p>
+									<strong><i class="fas fa-user-md"></i> Dr.Chit Thae</strong>
+								</p>
+								<p>
+									<i class="fas fa-graduation-cap"></i> M.B.,B.S
+								</p>
+								<p>Neurologist</p>
+								<a href="#" class="btn btn-sm btn-primary">See more</a>
+
+
+							</div>
+							<!--      </div>-->
+						</div>
+
+
+
+					</div>
 				</div>
 			</div>
 		</div>
-		</form>
-		<div style="overflow-x:auto;">
-		<table class="table">
-			<thead class="tone-heading">
-				<tr class="tableHeading-color">
-					<th scope="col">No</th>
-					<th scope="col">Name</th>
-					<th scope="col">Degree</th>
-					<th scope="col">Specialities</th>
-					<th scope="col"></th>
-				</tr>
-			</thead>
-			<tbody>
-				<tr>
-					<td>1</td>
-					<td>Dr.Thet Hylar Tin</td>
-					<td>M.B.,B.S</td>
-					<td>Cardiologists</td>
-					<td><a href="" th:href="@{/views/doctors}" class="btn btn-primary btn-dr-search">Details</a></td>
-				</tr>
-				
-				<tr>
-					<td>2</td>
-					<td>Dr.San Lwin Oo</td>
-					<td>Neurologist</td>
-					<td>Baby Specialist</td>
-					<td><a href="" th:href="@{/views/doctors}" class="btn btn-primary btn-dr-search">Details</a></td>
-				</tr>
-
-
-			</tbody>
-		</table>
-		</div>
-	</div>
-</section>
+	</section>
 </body>
 </html>

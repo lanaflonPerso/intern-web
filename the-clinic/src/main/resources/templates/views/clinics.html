@@ -8,142 +8,216 @@
 <title>Clinics</title>
 </head>
 <body>
-	<section layout:fragment="content">
-		<div class="container">
+<section layout:fragment="content">
 
-			<form action="/action_page.html" class="form-inline">
+	
 
+
+	<div class="container">
+
+		<h2>CLINICS</h2>
+		<form action="/action_page.html" class="form-inline">
+			<div class="row mx-1">
 				<input type="text" placeholder="Search clinic"
-					class="form-control form-rounded" size="40">
-
+					class="form-control form-rounded"
+					style='width: 300px; height: 40px;'>
 				<button type="submit" class="btn btn-primary btn-circle">
 					<i class="fa fa-search"></i>
 				</button>
+			</div>
+		</form>
+
+		<br>
+
+		<div class="row">
+
+			<div class="col-lg-3 col-md-4 col-sm-6 col-12 btn-seemore">
+				<div class="card  mb-4 "
+					style="width: 250px; background-color: whitesmoke">
+					<img class="card-img-top rounded-circle" th:src="@{/resources/img/clinic.jpg}"
+						alt="Card image" style="width: 100;">
+					<div class="card-body">
+						<table>
+							<tr>
+								<td>Name</td>
+								<td>:</td>
+								<td>SSC</td>
+							</tr>
+							<tr>
+								<td>Address</td>
+								<td>:</td>
+								<td>Mingaladon</td>
+							</tr>
+						</table>
+						
+							<div class="m-t-10 text-right">
+								<button class="btn btn-primary form-control form-rounded"
+									style='width: 80px; height: 40px;'>Detail</button>
+							</div>
+						
+
+					</div>
+
+				</div>
+			</div>
+
+			<div class="col-lg-3 col-md-4 col-sm-6 col-12 btn-seemore">
+				<div class="card  mb-4"
+					style="width: 250px; background-color: whitesmoke">
+					<img class="card-img-top rounded-circle" th:src="@{/resources/img/clinic.jpg}"
+						alt="Card image" style="width: 100;">
+					<div class="card-body">
+						<table>
+							<tr>
+								<td>Name</td>
+								<td>:</td>
+								<td>Shwe LaMin</td>
+							</tr>
+							<tr>
+								<td>Address</td>
+								<td>:</td>
+								<td>South Okkalapa</td>
+							</tr>
+
+						</table>
+
+					
+							<div class="m-t-10 text-right">
+								<button class="btn btn-primary form-control form-rounded"
+									style='width: 80px; height: 40px;'>Detail</button>
+							</div>
+					
+					</div>
+
+				</div>
+			</div>
+
+			<div class="col-lg-3 col-md-4 col-sm-6 col-12 btn-seemore">
+				<div class="card  mb-4"
+					style="width: 250px; background-color: whitesmoke">
+					<img class="card-img-top rounded-circle" th:src="@{/resources/img/clinic.jpg}"
+						alt="Card image" style="width: 100;">
+					<div class="card-body">
+						<table class="">
+							<tr>
+								<td>Name</td>
+								<td>:</td>
+								<td>Shwe LaMin</td>
+							</tr>
+							<tr>
+								<td>Address</td>
+								<td>:</td>
+								<td>South Okkalapa</td>
+							</tr>
+
+						</table>
+
+						
+							<div class="m-t-10 text-right">
+								<button class="btn btn-primary form-control form-rounded"
+									style='width: 80px; height: 40px;'>Detail</button>
+							</div>
+						
+					</div>
+
+				</div>
+			</div>
+
+			<div class="col-lg-3 col-md-4 col-sm-6 col-12 btn-seemore">
+				<div class="card  mb-4"
+					style="width: 250px; background-color: whitesmoke">
+					<img class="card-img-top rounded-circle" th:src="@{/resources/img/clinic.jpg}"
+						alt="Card image" style="width: 100;">
+					<div class="card-body">
+						<table class="">
+							<tr>
+								<td>Name</td>
+								<td>:</td>
+								<td>ThuKha ChanThar</td>
+							</tr>
+							<tr>
+								<td>Address</td>
+								<td>:</td>
+								<td>Hle Dan</td>
+							</tr>
 
 
-			</form>
-			<br>
-			
-			
-			<table class="table">
+						</table>
+						
+							<div class="m-t-10 text-right">
+								<button class="btn btn-primary form-control form-rounded"
+									style='width: 80px; height: 40px;'>Detail</button>
+							</div>
+						
+					</div>
+
+				</div>
+			</div>
+			<div class="col-lg-3 col-md-4 col-sm-6 col-12 btn-seemore">
+				<div class="card  mb-4"
+					style="width: 250px; background-color: whitesmoke">
+					<img class="card-img-top rounded-circle" th:src="@{/resources/img/clinic.jpg}"
+						alt="Card image" style="width: 100;">
+					<div class="card-body">
+						<table class="">
+							<tr>
+								<td>Name</td>
+								<td>:</td>
+								<td>ACADEMY</td>
+							</tr>
+							<tr>
+								<td>Address</td>
+								<td>:</td>
+								<td>KyiMyintTie</td>
+							</tr>
 
 
-				<thead>
-				
+						</table>
+						
+							<div class="m-t-10 text-right">
+								<button class="btn btn-primary form-control form-rounded"
+									style='width: 80px; height: 40px;'>Detail</button>
+							</div>
+						
 
-					<tr class="tableHeading-color">
-						<th class="text-center">ID</th>
-						<th class="text-center">Name</th>
-						<th class="text-center">Address</th>
-						<th class="text-center"></th>
-					</tr>
-				</thead>
-				<tbody>
+					</div>
 
-					<tr>
-						<td class="text-center">1</td>
-						<td class="text-center">Shwe LaMin</td>
-						<td class="text-center">no(10),ThuzaNa St,Mingaladon</td>
+				</div>
+			</div>
+			<div class="col-lg-3 col-md-4 col-sm-6 col-12 btn-seemore">
+				<div class="card  mb-4"
+					style="width: 250px; background-color: whitesmoke">
+					<img class="card-img-top rounded-circle" th:src="@{/resources/img/clinic.jpg}"
+						alt="Card image" style="width: 100;">
+					<div class="card-body">
+						<table class="">
+							<tr>
+								<td>Name</td>
+								<td>:</td>
+								<td>Shwe LaMin</td>
+							</tr>
+							<tr>
+								<td>Address</td>
+								<td>:</td>
+								<td>South Okkalapa</td>
+							</tr>
 
-						<td>
-							<h6
-								style="border-radius: 20px; border: 1px solid red; width: 90px; padding: 10px; text-align: center;">detail</h6>
-						</td>
-					</tr>
+						</table>
 
-					<tr>
-						<td class="text-center">2</td>
-						<td class="text-center">Shwe LaMin</td>
-						<td class="text-center">no(10),ThuzaNa St,Mingaladon</td>
-						<td>
-							<h6
-								style="border-radius: 20px; border: 1px solid red; width: 90px; padding: 10px; text-align: center;">detail</h6>
-						</td>
+						
+							<div class="m-t-10 text-right">
+								<button class="btn btn-primary form-control form-rounded"
+									style='width: 80px; height: 40px;'>Detail</button>
+							</div>
+						
+					</div>
 
-					</tr>
-					<tr>
-						<td class="text-center">3</td>
-						<td class="text-center">Shwe LaMin</td>
-						<td class="text-center">no(10),ThuzaNa St,Mingaladon</td>
-						<td>
-							<h6
-								style="border-radius: 20px; border: 1px solid red; width: 90px; padding: 10px; text-align: center;">detail</h6>
-						</td>
-
-
-					</tr>
-					<tr>
-						<td class="text-center">4</td>
-						<td class="text-center">Shwe LaMin</td>
-						<td class="text-center">no(10),ThuzaNa St,Mingaladon</td>
-						<td>
-							<h6
-								style="border-radius: 20px; border: 1px solid red; width: 90px; padding: 10px; text-align: center;">detail</h6>
-						</td>
-
-					</tr>
-					<tr>
-						<td class="text-center">5</td>
-						<td class="text-center">Shwe LaMin</td>
-						<td class="text-center">no(10),ThuzaNa St,Mingaladon</td>
-						<td>
-							<h6
-								style="border-radius: 20px; border: 1px solid red; width: 90px; padding: 10px; text-align: center;">detail</h6>
-						</td>
-
-					</tr>
-					<tr>
-						<td class="text-center">6</td>
-						<td class="text-center">Shwe LaMin</td>
-						<td class="text-center">no(10),ThuzaNa St,Mingaladon</td>
-						<td>
-							<h6
-								style="border-radius: 20px; border: 1px solid red; width: 90px; padding: 10px; text-align: center;">detail</h6>
-						</td>
-
-					</tr>
-					<tr>
-						<td class="text-center">7</td>
-						<td class="text-center">Shwe LaMin</td>
-						<td class="text-center">no(10),ThuzaNa St,Mingaladon</td>
-						<td>
-							<h6
-								style="border-radius: 20px; border: 1px solid red; width: 90px; padding: 10px; text-align: center;">detail</h6>
-						</td>
-
-					</tr>
-
-
-
-					<tr>
-						<td class="text-center">8</td>
-						<td class="text-center">Shwe LaMin</td>
-						<td class="text-center">no(10),ThuzaNa St,Mingaladon</td>
-						<td>
-							<h6
-								style="border-radius: 20px; border: 1px solid red; width: 90px; padding: 10px; text-align: center;">detail</h6>
-						</td>
-
-
-					</tr>
-					<tr>
-						<td class="text-center">9</td>
-						<td class="text-center">Shwe LaMin</td>
-						<td class="text-center">no(10),ThuzaNa St,Mingaladon</td>
-						<td>
-							<h6
-								style="border-radius: 20px; border: 1px solid red; width: 90px; padding: 10px; text-align: center;">detail</h6>
-						</td>
-
-
-					</tr>
-
-				</tbody>
-			</table>
+				</div>
+			</div>
 		</div>
-
-	</section>
-
+	</div>
+</section>
 </body>
+
 </html>
 

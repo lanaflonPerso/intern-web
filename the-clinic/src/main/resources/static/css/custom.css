@@ -122,6 +122,16 @@ th {
 	color: #d50000;
 	
 }
+#book-confirm{
+	color: #212121;
+	
+}
+
+#book-confirm:hover{
+	color: #008040;
+	
+}
+
 
 #dropdownMenuButton{
 	background-color: #3A85C7;

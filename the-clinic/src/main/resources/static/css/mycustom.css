@@ -15,4 +15,13 @@ nav{
 	width: 40px;
 	height: 40px;
 	border-radius: 50%;
+} 
+
+.btn-seemore-tone{
+	margin-top: 10px;
 }
+   
+.btn-seemore-tone:hover{
+	transform: scale(1.1);
+	transition: all 0.3s;
+} 

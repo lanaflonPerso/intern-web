@@ -2,22 +2,25 @@
 <html xmlns:th="http://www.thymeleaf.org"
 	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
 	xmlns:sec="http://www.thymeleaf.org/extras/spring-security"
-	layout:decorate="~{/layout/template}">
+	layout:decorate="~{/layout/template2}">
 <head>
 <meta charset="UTF-8">
 <title>Doctor List</title>
+<style type="text/css">
+	body{
+		background-image: url("/resources/img/bkimg.jpg");
+	}
+</style>
 </head>
 <body>
 	<section layout:fragment="content">
-		<div class="bg">
-			<div>
-				<h4 class="text-center mt-2">Doctor List</h4>
-			</div>
-			<br>
+	<div class="container-fluid mt-5" style="padding-bottom: 0;">
+		
+			
+			
 			<div class="card-columns">
 				<div class="container">
-					<!--  <div class="col-sm-3">-->
-					<div class="card border-primary btn-seemore ">
+					<div class="card border-primary  btn-seemore-tone ">
 						<div class="shadow">
 							<div class="card-body ">
 								<p>
@@ -28,108 +31,132 @@
 								</p>
 								<p>Neurologist</p>
 								<a href="#" class="btn btn-primary btn-sm">See more</a>
-								<!--      </div>-->
 							</div>
 						</div>
-					</div>
-					<!--  <div class="col-sm-3">-->
-					<div class="card border-primary btn-seemore">
-
+					</div>  
+					
+					<div class="card border-primary btn-seemore-tone ">
 						<div class="shadow">
-							<div class="card-body">
+							<div class="card-body ">
 								<p>
-									<strong><i class="fa fa-user-md"></i> Dr.Thet Hylar
-										Tin</strong>
-								</p>
-								<p>
-									<i class="fa fa-graduation-cap"></i> M.B.,B.S
-								</p>
-								<p>Cardiologist</p>
-
-
-								<a href="#" class="btn btn-sm btn-primary">See more</a>
-							</div>
-						</div>
-					</div>
-					<!--  </div>-->
-					<!--  <div class="col-sm-3">-->
-					<div class="card border-primary btn-seemore">
-						<div class="shadow">
-							<div class="card-body">
-								<p>
-									<strong><i class="fa fa-user-md"></i> Dr.Mya Myint Zu</strong>
-								</p>
-								<p>
-									<i class="fa fa-graduation-cap"></i> MMSc
-								</p>
-								<p>Patho</p>
-								<a href="#" class="btn btn-sm btn-primary">See more</a>
-							</div>
-							<!--      </div>-->
-						</div>
-					</div>
-					<!--  <div class="col-sm-3">-->
-					<div class="card border-primary btn-seemore">
-						<div class="shadow">
-							<div class="card-body">
-								<p>
-									<strong><i class="fa fa-user-md"></i> Dr.Mya Myint Zu</strong>
-								</p>
-								<p>
-									<i class="fa fa-graduation-cap"></i> MMSc
-								</p>
-								<p>Patho</p>
-								<a href="#" class="btn btn-sm btn-primary">See more</a>
-							</div>
-						</div>
-					</div>
-					<!--  </div>-->
-					<!--</div> -->
-					<!--<br>-->
-					<!--<div class="row mr-2 ml-2">-->
-					<!--     <div class="col-sm-3">-->
-					<div class="card border-primary btn-seemore">
-						<div class="shadow">
-							<div class="card-body">
-
-								<p>
-									<strong><i class="fa fa-user-md"></i> Dr.Htet Aung
-										Lin</strong>
+									<strong><i class="fa fa-user-md"></i> Dr.San Lwin</strong>
 								</p>
 								<p>
 									<i class="fa fa-graduation-cap"></i> M.B.,B.S
 								</p>
 								<p>Neurologist</p>
-								<a href="#" class="btn btn-sm btn-primary">See more</a>
+								<a href="#" class="btn btn-primary btn-sm">See more</a>
 							</div>
 						</div>
-					</div>
-					<!--  </div>-->
-					<!--  <div class="col-sm-3">-->
-					<div class="card border-primary btn-seemore">
+					</div> 
+					
+					<div class="card border-primary  btn-seemore-tone ">
 						<div class="shadow">
-
-							<div class="card-body">
+							<div class="card-body ">
 								<p>
-									<strong><i class="fa fa-user-md"></i> Dr.Chit Thae</strong>
+									<strong><i class="fa fa-user-md"></i> Dr.San Lwin Oo</strong>
 								</p>
 								<p>
 									<i class="fa fa-graduation-cap"></i> M.B.,B.S
 								</p>
 								<p>Neurologist</p>
-								<a href="#" class="btn btn-sm btn-primary">See more</a>
-
-
-							</div>
-							<!--      </div>-->
+								<a href="#" class="btn btn-primary btn-sm">See more</a>
+							</div>  
 						</div>
-
-
-
+					</div> 
 					</div>
+					<div class="card border-primary  btn-seemore-tone">
+						<!-- <div class="shadow"> -->
+							<div class="card-body ">
+								<p>
+									<strong><i class="fa fa-user-md"></i> Dr.San Lwin</strong>
+								</p>
+								<p>
+									<i class="fa fa-graduation-cap"></i> M.B.,B.S
+								</p>
+								<p>Neurologist</p>
+								<a href="#" class="btn btn-primary btn-sm">See more</a>
+							</div>
+						<!--</div>  -->
+					</div> 
+					
+					<div class="card border-primary btn-seemore-tone ">
+						<div class="shadow">
+							<div class="card-body ">
+								<p>
+									<strong><i class="fa fa-user-md"></i> Dr.San Lwin Oo</strong>
+								</p>
+								<p>
+									<i class="fa fa-graduation-cap"></i> M.B.,B.S
+								</p>
+								<p>Neurologist</p>
+								<a href="#" class="btn btn-primary btn-sm">See more</a>
+							</div>
+						</div>
+					</div> 
+					
+					<div class="card border-primary btn-seemore-tone ">
+						<div class="shadow">
+							<div class="card-body ">
+								<p>
+									<strong><i class="fa fa-user-md"></i> Dr.San Lwin Oo</strong>
+								</p>
+								<p>
+									<i class="fa fa-graduation-cap"></i> M.B.,B.S
+								</p>
+								<p>Neurologist</p>
+								<a href="#" class="btn btn-primary btn-sm">See more</a>
+							</div>
+						</div>
+					</div> 
+					
+					<div class="card border-primary btn-seemore-tone ">
+						<div class="shadow">
+							<div class="card-body ">
+								<p>
+									<strong><i class="fa fa-user-md"></i> Dr.San Lwin Oo</strong>
+								</p>
+								<p>
+									<i class="fa fa-graduation-cap"></i> M.B.,B.S
+								</p>
+								<p>Neurologist</p>
+								<a href="#" class="btn btn-primary btn-sm">See more</a>
+							</div>
+						</div>
+					</div> 
+					
+					<div class="card border-primary btn-seemore-tone ">
+						<div class="shadow">
+							<div class="card-body ">
+								<p>
+									<strong><i class="fa fa-user-md"></i> Dr.San Lwin Oo</strong>
+								</p>
+								<p>
+									<i class="fa fa-graduation-cap"></i> M.B.,B.S
+								</p>
+								<p>Neurologist</p>
+								<a href="#" class="btn btn-primary btn-sm">See more</a>
+							</div>
+						</div>
+					</div> 
+					
+					<div class="card border-primary btn-seemore-tone ">
+						<div class="shadow">
+							<div class="card-body ">
+								<p>
+									<strong><i class="fa fa-user-md"></i> Dr.San Lwin Oo</strong>
+								</p>
+								<p>
+									<i class="fa fa-graduation-cap"></i> M.B.,B.S
+								</p>
+								<p>Neurologist</p>
+								<a href="#" class="btn btn-primary btn-sm">See more</a>
+							</div>
+						</div>
+					</div> 
 				</div>
 			</div>
-		</div>
+		
 	</section>
 </body>
 </html>

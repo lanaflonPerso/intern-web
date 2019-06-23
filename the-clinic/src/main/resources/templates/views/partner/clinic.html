@@ -7,8 +7,6 @@
 <meta charset="ISO-8859-1">
 <title>Clinic A</title>
 <link th:href="@{/resources/css/kst.css}" rel="stylesheet" type="text/css"/>
-<link href="/src/main/resources/static/css/bootstrap.min.css" rel="stylesheet" type="text/css"/>
-<link href="/src/main/resources/static/css/kst.css" rel="stylesheet" type="text/css"/>
 <style type="text/css">
 	.c-profile-image{
 		width: 140px;
@@ -41,7 +39,7 @@
 						<div class="col-12 col-md-auto mr-auto">
 							
 							<h4 class="c-name">SAY KHAN</h4>
-							<span class="c-category">General Clinic &bull; Kamayut</span>
+							<span class="c-category text-muted">General Clinic &bull; Kamayut</span>
 								
 						</div><!-- first column end -->
 						
@@ -70,7 +68,7 @@
 				
 					<div class="col-4">
 					
-						<div><i class="far fa-phone"></i> Phones :</div>
+						<div class="text-muted"><i class="far fa-phone"></i> Phones</div>
 						
 						<div>09123456789</div>
 						
@@ -80,7 +78,7 @@
 						
 					<div class="col-4">
 					
-						<div><i class="far fa-envelope"></i> Email :</div>
+						<div class="text-muted"><i class="far fa-envelope"></i> Email</div>
 						
 						<div><a th:href="@{mailto:myclinic1@gmail.com}">myclinic1@gmail.com</a></div>
 						
@@ -88,7 +86,7 @@
 						
 					<div class="col-4">
 					
-						<div><i class="far fa-location-arrow"></i> Address :</div>
+						<div class="text-muted"><i class="far fa-location-arrow"></i> Address</div>
 						
 						<div>No.1, Main Road, Yangon</div>
 						
@@ -101,8 +99,19 @@
 		</div>
 		
 		
-		<div class="container-fluid card mt-2">
-			TYPE HERE
+		<div class="container-fluid card-columns mt-2">
+			 <div class="card">
+			 	This is One Card
+			 </div>
+			 <div class="card">
+			 	This is Card <br>Blah
+			 </div>
+			 <div class="card">
+			 	Something <br>Blah Blah<br>Blah Blah
+			 </div>
+			 <div class="card">
+			 	Hello
+			 </div>
 		</div>
 		
 	</div>

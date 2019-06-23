@@ -83,7 +83,7 @@
         }
 
         .experience-list>li .experience-user {
-            background: #fff;
+            background: gray;
             height: 10px;
             left: 4px;
             margin: 0;
@@ -94,7 +94,7 @@
         }
 
         .experience-list>li .experience-content {
-            background-color: #fff;
+            background-color:white;
             margin: 0 0 20px 40px;
             padding: 0;
             position: relative;
@@ -110,7 +110,7 @@
         }
 
         .experience-list>li .time {
-            color: #bdbdbd;
+            color: #616161;
             display: block;
             font-size: 12px;
             line-height: 1.35;
@@ -123,12 +123,8 @@
             width: 10px;
         }
 
-        .profile-info-left {
-            border-right: 2px dashed #ccc;
-        }
-
+       
         .profile-tabs .nav-tabs {
-            background-color: #fff;
+            background-color: gray;
             box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.1);
         }
-

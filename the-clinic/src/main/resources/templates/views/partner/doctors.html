@@ -2,12 +2,289 @@
 <html xmlns:th="http://www.thymeleaf.org"
 	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
 	xmlns:sec="http://www.thymeleaf.org/extras/spring-security"
-	layout:decorate="~{/layout/template}">
+	layout:decorate="~{/layout/template2}">
 <head>
 <meta charset="UTF-8">
 <title>Detail</title>
 </head>
 <body>
+	<section layout:fragment="content">
+		<div class="container">
+			<h2>
+				Doctor <i style='font-size: 24px' class='	fa fa-user-md'></i>
+			</h2>
 
+
+
+			<form action="/action_page.html" class="form-inline">
+
+				<div class="container-fluid">
+					<div class="row">
+						<div class="form-group col-6">
+
+							<div class="row">
+								<div class="form-group col-6">
+									<input type="text" placeholder="Search doctor"
+										class="form-control form-rounded" size="33">
+								</div>
+								<div class="form-group col-4 d-flex flex-row-reverse">
+									<button type="submit" class="btn  btn-circle">
+										<i class="fa fa-search"></i>
+									</button>
+								</div>
+							</div>
+						</div>
+						<div class="form-group col-6 d-flex flex-row-reverse">
+							<button type="submit" class="btn btn-outline-info">
+								<i class="	fas fa-user-plus"></i>Add Doctor
+							</button>
+
+						</div>
+					</div>
+				</div>
+			</form>
+			<table class="table table-bordered mt-3" id="ChitTable">
+
+
+				<thead class="thead-danger">
+
+					<tr class="table-info">
+						<th class="text-center">No</th>
+						<th class="text-center">Name</th>
+						<th class="text-center">Degrees</th>
+						<th class="text-center">Specialities</th>
+						<th class="text-center"></th>
+
+					</tr>
+				</thead>
+				<tbody>
+
+					<tr>
+						<th class="text-center">1</th>
+						<td class="text-center">Chit Thae</td>
+						<td class="text-center">MBBS</td>
+						<td class="text-center">Hepatologists</td>
+
+						<td class="text-center">
+
+
+							<div class="dropdown">
+								<a href="#" class="action-icon dropdown-toggle"
+									data-toggle="dropdown" aria-expanded="true"><i
+									class="fas fa-ellipsis-h"></i></a>
+								<div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+									<a class="dropdown-item" href="edit-doctor.html"><i
+										class="	fas fa-edit"></i> Edit</a>
+									<button class="dropdown-item" type="button"
+										onclick="deleteRow(this)">
+										<i class="fas fa-trash"></i> Delete
+									</button>
+									<a class="dropdown-item" href="edit-doctor.html"><i
+										class="	fas fa-ellipsis-v"></i> Detail</a>
+
+
+								</div>
+							</div>
+						</td>
+					</tr>
+
+					<tr>
+						<th class="text-center">2</th>
+						<td class="text-center">Chit Thae</td>
+						<td class="text-center">MBBS</td>
+						<td class="text-center">Hepatologists</td>
+						<td class="text-center">
+
+
+							<div class="dropdown">
+								<a href="#" class="action-icon dropdown-toggle"
+									data-toggle="dropdown" aria-expanded="true"><i
+									class="fas fa-ellipsis-h"></i></a>
+								<div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+									<a class="dropdown-item" href="edit-doctor.html"><i
+										class="	fas fa-edit"></i> Edit</a>
+									<button class="dropdown-item" type="button"
+										onclick="deleteRow(this)">
+										<i class="fas fa-trash"></i> Delete
+									</button>
+									<a class="dropdown-item" href="edit-doctor.html"><i
+										class="	fas fa-ellipsis-v"></i> Detail</a>
+
+
+								</div>
+							</div>
+						</td>
+
+					</tr>
+					<tr>
+						<th class="text-center">3</th>
+						<td class="text-center">Chit Thae</td>
+						<td class="text-center">MBBS</td>
+						<td class="text-center">Hepatologists</td>
+						<td class="text-center">
+
+
+							<div class="dropdown">
+								<a href="#" class="action-icon dropdown-toggle"
+									data-toggle="dropdown" aria-expanded="true"><i
+									class="fas fa-ellipsis-h"></i></a>
+								<div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+									<a class="dropdown-item" href="edit-doctor.html"><i
+										class="	fas fa-edit"></i> Edit</a>
+									<button class="dropdown-item" type="button"
+										onclick="deleteRow(this)">
+										<i class="fas fa-trash"></i> Delete
+									</button>
+									<a class="dropdown-item" href="edit-doctor.html"><i
+										class="	fas fa-ellipsis-v"></i> Detail</a>
+
+
+								</div>
+							</div>
+						</td>
+
+
+					</tr>
+					<tr>
+						<th class="text-center">4</th>
+						<td class="text-center">Chit Thae</td>
+						<td class="text-center">MBBS</td>
+						<td class="text-center">Hepatologists</td>
+						<td class="text-center">
+
+
+							<div class="dropdown">
+								<a href="#" class="action-icon dropdown-toggle"
+									data-toggle="dropdown" aria-expanded="true"><i
+									class="fas fa-ellipsis-h"></i></a>
+								<div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+									<a class="dropdown-item" href="edit-doctor.html"><i
+										class="	fas fa-edit"></i> Edit</a>
+									<button class="dropdown-item" type="button"
+										onclick="deleteRow(this)">
+										<i class="fas fa-trash"></i> Delete
+									</button>
+									<a class="dropdown-item" href="edit-doctor.html"><i
+										class="	fas fa-ellipsis-v"></i> Detail</a>
+
+
+								</div>
+							</div>
+						</td>
+
+					</tr>
+					<tr>
+						<th class="text-center">5</th>
+						<td class="text-center">Chit Thae</td>
+						<td class="text-center">MBBS</td>
+						<td class="text-center">Hepatologists</td>
+						<td class="text-center">
+
+
+							<div class="dropdown">
+								<a href="#" class="action-icon dropdown-toggle"
+									data-toggle="dropdown" aria-expanded="true"><i
+									class="fas fa-ellipsis-h"></i></a>
+								<div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+									<a class="dropdown-item" href="edit-doctor.html"><i
+										class="	fas fa-edit"></i> Edit</a>
+									<button class="dropdown-item" type="button"
+										onclick="deleteRow(this)">
+										<i class="fas fa-trash"></i> Delete
+									</button>
+									<a class="dropdown-item" href="edit-doctor.html"><i
+										class="	fas fa-ellipsis-v"></i> Detail</a>
+
+
+								</div>
+							</div>
+						</td>
+					</tr>
+					<tr>
+						<th class="text-center">6</th>
+						<td class="text-center">Chit Thae</td>
+						<td class="text-center">MBBS</td>
+						<td class="text-center">Hepatologists</td>
+						<td class="text-center">
+
+
+							<div class="dropdown">
+								<a href="#" class="action-icon dropdown-toggle"
+									data-toggle="dropdown" aria-expanded="true"><i
+									class="fas fa-ellipsis-h"></i></a>
+								<div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+									<a class="dropdown-item" href="edit-doctor.html"><i
+										class="	fas fa-edit"></i> Edit</a>
+									<button class="dropdown-item" type="button"
+										onclick="deleteRow(this)">
+										<i class="fas fa-trash"></i> Delete
+									</button>
+									<a class="dropdown-item" href="edit-doctor.html"><i
+										class="	fas fa-ellipsis-v"></i> Detail</a>
+
+
+								</div>
+							</div>
+						</td>
+
+					</tr>
+					<tr>
+						<th class="text-center">7</th>
+						<td class="text-center">Chit Thae</td>
+						<td class="text-center">MBBS</td>
+						<td class="text-center">Hepatologists</td>
+						<td class="text-center">
+
+
+							<div class="dropdown">
+								<a href="#" class="action-icon dropdown-toggle"
+									data-toggle="dropdown" aria-expanded="true"><i
+									class="fas fa-ellipsis-h"></i></a>
+								<div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+									<a class="dropdown-item" href="edit-doctor.html"><i
+										class="	fas fa-edit"></i> Edit</a>
+									<button class="dropdown-item" type="button"
+										onclick="deleteRow(this)">
+										<i class="fas fa-trash"></i> Delete
+									</button>
+									<a class="dropdown-item" href="edit-doctor.html"><i
+										class="	fas fa-ellipsis-v"></i> Detail</a>
+								</div>
+							</div>
+						</td>
+					</tr>
+					<tr>
+						<th class="text-center">8</th>
+						<td class="text-center">Chit Thae</td>
+						<td class="text-center">MBBS</td>
+						<td class="text-center">Hepatologists</td>
+						<td class="text-center">
+							<div class="dropdown">
+								<a href="#" class="action-icon dropdown-toggle"
+									data-toggle="dropdown" aria-expanded="true"><i
+									class="fas fa-ellipsis-h"></i></a>
+								<div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+									<a class="dropdown-item" href="edit-doctor.html"><i
+										class="	fas fa-edit"></i> Edit</a>
+									<button class="dropdown-item" type="button"
+										onclick="deleteRow(this)">
+										<i class="fas fa-trash"></i> Delete
+									</button>
+									<a class="dropdown-item" href="edit-doctor.html"><i
+										class="	fas fa-ellipsis-v"></i> Detail</a>
+								</div>
+							</div>
+						</td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
+		<script>
+			function deleteRow(r) {
+				var i = r.parentNode.parentNode.parentNode.parentNode.rowIndex;
+				document.getElementById("ChitTable").deleteRow(i);
+			}
+		</script>
+	</section>
 </body>
 </html>

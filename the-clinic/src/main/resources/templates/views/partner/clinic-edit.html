@@ -96,7 +96,7 @@
 												<input type="tel" placeholder="Phone" name="phone1" class="form-control"/>
 											</div>
 										</div>
-										<a class="btn mt-1 form-control btn-outline-info btn-add-phone text-info" style="border-style: dashed;"><span><i class="far fa-plus"></i></span> Add New</a>
+										<button type="button" class="btn mt-1 form-control btn-outline-info btn-add-phone" style="border-style: dashed;"><span><i class="far fa-plus"></i></span> Add New</button>
 										
 									
 								</div><!-- phone form -->
@@ -109,7 +109,7 @@
 											<input type="email" placeholder="Email" name="email1" class="form-control"/>
 										</div>
 									</div>
-									<a class="btn mt-1 form-control btn-outline-info text-info btn-add-email" style="border-style: dashed;"><span><i class="far fa-plus"></i></span> Add New</a>
+									<button type="button" class="btn mt-1 form-control btn-outline-info text-info btn-add-email" style="border-style: dashed;"><span><i class="far fa-plus"></i></span> Add New</button>
 									
 								</div><!-- email form -->
 						
@@ -117,7 +117,7 @@
 								<div class="form-group">
 									
 									<label>Enter Website URL</label>
-									<input type="url" placeholder="http://www." name="phone1" class="form-control"/>
+									<input type="url" placeholder="http://www." name="website" class="form-control"/>
 									
 								</div><!-- web url form -->
 								
@@ -150,8 +150,8 @@
 			$('.phone-list').append(''+
 					'<div class="container-fluid phone-input">'+
 					'<div class="row">'+
-					'<input type="tel" placeholder="Phone" name="phone"'+index+' class="mt-1 col-11 form-control"/>'+
-					'<a class="col-auto ml-1 btn btn-outline-danger mt-1 btn-remove-phone"><i class="fal fa-minus"></i></a>'+
+					'<input type="tel" placeholder="Phone" name="phone'+index+'" class="mt-1 col-11 form-control"/>'+
+					'<button type="button" class="col-auto ml-1 btn btn-outline-danger mt-1 btn-remove-phone"><i class="fal fa-minus"></i></button>'+
 					'</div></div>'
 					);
 		});
@@ -165,8 +165,8 @@
 			$('.email-list').append(''+
 					'<div class="container-fluid email-input">'+
 					'<div class="row">'+
-					'<input type="email" placeholder="Email" name="mail"'+index+' class="mt-1 col-11 form-control"/>'+
-					'<a class="col-auto ml-1 btn btn-outline-danger mt-1 btn-remove-email"><i class="fal fa-minus"></i></a>'+
+					'<input type="email" placeholder="Email" name="mail'+index+'" class="mt-1 col-11 form-control"/>'+
+					'<button type="button" class="col-auto ml-1 btn btn-outline-danger mt-1 btn-remove-email"><i class="fal fa-minus"></i></button>'+
 					'</div></div>'
 					);
 		});

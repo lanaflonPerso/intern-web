@@ -6,7 +6,9 @@
 <head>
 <meta charset="ISO-8859-1">
 <title>Clinic A</title>
+<link th:href="@{/resources/css/kst.css}" rel="stylesheet" type="text/css"/>
 <link href="/src/main/resources/static/css/bootstrap.min.css" rel="stylesheet" type="text/css"/>
+<link href="/src/main/resources/static/css/kst.css" rel="stylesheet" type="text/css"/>
 <style type="text/css">
 	.c-profile-image{
 		width: 140px;
@@ -25,60 +27,82 @@
 <body>
 	<div layout:fragment="dashboard-contents">
 	
-		<div class="container-fluid card mt-2 p-3">
-		
-			<div class="row">
+		<div class="container-fluid card mt-2 p-3" id="content">
 				
-				<div class="col-lg-2 col-4 text-center">
-				
-					<img alt="No Image" class="c-profile-image img-fluid" th:src="@{/resources/img/clinic_profile.jpg}">
-					
-				</div>
-				
-				<div class="col-lg-10 col-8">
-				
-					<div class="container-fluid">
-						
-						<div class="row">
-						
-							<div class="col-12 col-md-auto mr-auto">
+        	<div id="one">	
+        	
+        		<img alt="No Image" class="c-profile-image img-fluid" th:src="@{/resources/img/clinic_profile.jpg}">
+        		
+			</div><!-- one end -->
+			
+        	<div id="two" class="container-fluid">
+        	
+				<div class="row">
+						<div class="col-12 col-md-auto mr-auto">
 							
-								<h4 class="c-name">SAY KHAN</h4>
-								<span class="c-category">General Clinic &bull; Kamayut</span>
+							<h4 class="c-name">SAY KHAN</h4>
+							<span class="c-category">General Clinic &bull; Kamayut</span>
 								
-							</div>
-							<div class="col-12 col-md-auto mt-lg-0 mt-2">
-								
-								<span style="color: #C98B42;">Social</span>
-								
-								<div class="d-flex justify-content-start">
+						</div><!-- first column end -->
+						
+						<div class="col-12 col-md-auto mt-lg-0 mt-2">
+						
+							<span style="color: #C98B42;">Social</span>
+							
+							<div class="d-flex justify-content-start">
 								
 									<a th:herf="@{#}" href="#"><i class="m-1 fab fa-facebook-square" style="font-size: 24px; color:#3B5998"></i></a>
 									<a th:herf="@{#}" href="#"><i class="m-1 fab fa-twitter" style="font-size: 24px; color:#38A1F3"></i></a>
 									<a th:herf="@{#}" href="#"><i class="m-1 fab fa-viber" style="font-size: 24px; color:#665CAC"></i></a>
 									<a th:herf="@{#}" href="#"><i class="m-1 fab fa-linkedin-in" style="font-size: 24px; color:#007BB6"></i></a>
 									
-								</div>
-							
 							</div>
 							
-						</div>
+						</div><!-- second column end -->
 						
-						<hr>
+				</div><!-- row end -->
+				<hr class="mt-2 mb-2 mr-0">
+			</div><!-- two end -->
+			
+        	<div id="three" class="container-fluid pl-0 pr-0 pl-md-3">
+        	
+				<div class="row">
+				
+					<div class="col-4">
+					
+						<div><i class="far fa-phone"></i> Phones :</div>
 						
-						<div>
-							
-						</div>
+						<div>09123456789</div>
 						
+						<div>09123456789</div>
 						
 					</div>
+						
+					<div class="col-4">
 					
+						<div><i class="far fa-envelope"></i> Email :</div>
+						
+						<div><a th:href="@{mailto:myclinic1@gmail.com}">myclinic1@gmail.com</a></div>
+						
+					</div>
+						
+					<div class="col-4">
 					
+						<div><i class="far fa-location-arrow"></i> Address :</div>
+						
+						<div>No.1, Main Road, Yangon</div>
+						
+					</div>	
 					
 				</div>
 				
-			</div>
+			</div><!-- three end -->
 			
+		</div>
+		
+		
+		<div class="container-fluid card mt-2">
+			TYPE HERE
 		</div>
 		
 	</div>

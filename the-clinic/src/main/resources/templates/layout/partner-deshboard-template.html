@@ -8,7 +8,7 @@
 <title layout:title-pattern="$LAYOUT_TITLE | $CONTENT_TITLE">Clinic</title>
 
 <link rel="stylesheet" th:href="@{/resources/css/bootstrap.min.css}">
-<link rel="stylesheet" th:href="@{/resources/css/mycustom.css}">
+<link rel="stylesheet" th:href="@{/resources/css/application.css}">
 
 
 <script th:src="@{/resources/js/jquery.min.js}"></script>
@@ -147,7 +147,7 @@ transform: translateX(-50%);
 
 				<div class="nav">
 
-					<a href="/home" class="btn w-100 text-left nav-link active"> 
+					<a th:href="@{/home}" class="btn w-100 text-left nav-link active"> 
 						<i class="fal fa-tachometer-alt"></i>&nbsp;Dashboard
 					</a>
 					<a href="#clinic-list" class="btn w-100 text-left nav-link dropdown-toggle-split"
@@ -170,6 +170,11 @@ transform: translateX(-50%);
 						<li class="ml-3">
 							<a href="#" class="text-left btn w-100 nav-link"> 
 								<i class="fal fa-hospital"></i>&nbsp;Clinic C
+							</a>
+						</li>
+						<li class="ml-3">
+							<a th:href="@{/partner/clinics/create}" class="text-left btn w-100 nav-link"> 
+								<i class="fal fa-plus"></i>&nbsp;New Clinic
 							</a>
 						</li>
 					</ul>
@@ -203,7 +208,7 @@ transform: translateX(-50%);
 		<div class="main-panel" id="main-panel">
 
 			<nav id="part-d-nav"
-				class="navbar sticky-top navbar-default navbar-fixed shadow">
+				class="navbar sticky-top navbar-default navbar-fixed shadow my-navbar">
 
 
 				<a th:href="@{/}" class="btn nav-app-name stretched-link"><span><i class="fab fa-pagelines mr-auto" style="font-size:28px; color:#5aba4a"></i></span> The Clinic</a>

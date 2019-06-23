@@ -92,7 +92,9 @@
 									
 										<label>Enter phone numbers</label>
 										<div class="phone-list">
-											<input type="tel" placeholder="Phone" name="phone1" class="form-control"/>
+											<div class="phone-input">
+												<input type="tel" placeholder="Phone" name="phone1" class="form-control"/>
+											</div>
 										</div>
 										<a class="btn mt-1 form-control btn-outline-info btn-add-phone text-info" style="border-style: dashed;"><span><i class="far fa-plus"></i></span> Add New</a>
 										
@@ -103,7 +105,9 @@
 									
 									<label>Enter Email address</label>
 									<div class="email-list">
-										<input type="email" placeholder="Email" name="email1" class="form-control"/>
+										<div class="email-input">
+											<input type="email" placeholder="Email" name="email1" class="form-control"/>
+										</div>
 									</div>
 									<a class="btn mt-1 form-control btn-outline-info text-info btn-add-email" style="border-style: dashed;"><span><i class="far fa-plus"></i></span> Add New</a>
 									
@@ -136,14 +140,35 @@
 		</form>
 		
 		<script>
+
+		$(document.body).on('click','.btn-remove-phone',function(){
+			$(this).closest('.phone-input').remove();
+		});
+		
 		$('.btn-add-phone').on('click', function() {
-			var index = $('.phone-list').length + 1;
-			$('.phone-list').append('<input type="tel" placeholder="Phone" name="phone"'+index+' class="mt-1 form-control"/>');
+			var index = $('.phone-input').length + 1;
+			$('.phone-list').append(''+
+					'<div class="container-fluid phone-input">'+
+					'<div class="row">'+
+					'<input type="tel" placeholder="Phone" name="phone"'+index+' class="mt-1 col-11 form-control"/>'+
+					'<a class="col-auto ml-1 btn btn-outline-danger mt-1 btn-remove-phone"><i class="fal fa-minus"></i></a>'+
+					'</div></div>'
+					);
 		});
 
+		$(document.body).on('click','.btn-remove-email',function(){
+			$(this).closest('.email-input').remove();
+		});
+		
 		$('.btn-add-email').on('click', function() {
-			var index = $('.email-list').length + 1;
-			$('.email-list').append('<input type="email" placeholder="Email" name="email"'+index+' class="mt-1 form-control"/>');
+			var index = $('.email-input').length + 1;
+			$('.email-list').append(''+
+					'<div class="container-fluid email-input">'+
+					'<div class="row">'+
+					'<input type="email" placeholder="Email" name="mail"'+index+' class="mt-1 col-11 form-control"/>'+
+					'<a class="col-auto ml-1 btn btn-outline-danger mt-1 btn-remove-email"><i class="fal fa-minus"></i></a>'+
+					'</div></div>'
+					);
 		});
 		</script>
 		

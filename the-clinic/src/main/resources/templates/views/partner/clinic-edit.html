@@ -2,124 +2,151 @@
 <html xmlns:th="http://www.thymeleaf.org"
 	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
 	xmlns:sec="http://www.thymeleaf.org/extras/spring-security"
-	layout:decorate="~{/layout/template}">
+	layout:decorate="~{/layout/partner-deshboard-template}">
 <head>
 <meta charset="ISO-8859-1">
-<title>Edit Clinic</title>
+<title>New</title>
 </head>
 <body>
-	<section layout:fragment="content">
-		<div class="row mt-3">
-			<div class="col-lg-1"></div>
-			<div class="col-lg-10 col-md-12 col-sm-12 col-12">
-				<form enctype="multipart/form-data" method="post">
-					<div class="card form-group p-3">
-						<h4 class="text-right" th:text="${clinic_title}"></h4>
-						<p class="text-right">Please fill your clinic information</p>
-						<hr>
-						<div class="row pr-lg-3 pr-md-1 pt-1 pb-1">
-							<label class="col-lg-3 col-md-4 col-sm-12 col-12">Enter
-								Clinic Name</label> <input type="text" name="name"
-								class="form-control col-lg-9 col-md-8 col-sm-12 col-12"
-								placeholder="Name" required />
-						</div>
-						<div class="row pr-lg-3 pr-md-1 pt-1 pb-1">
-							<label class="col-lg-3 col-md-4 col-sm-12 col-12">Enter
-								Phone numbers</label> <input type="tel" name="phone"
-								class="form-control col-lg-9 col-md-8 col-sm-12 col-12"
-								placeholder="Phone" required />
-						</div>
-						<div class="row pr-lg-3 pr-md-1 pt-1 pb-1">
-							<label class="col-lg-3 col-md-4 col-sm-12 col-12">Enter
-								Email address</label> <input type="email" name="email"
-								class="form-control col-lg-9 col-md-8 col-sm-12 col-12"
-								placeholder="Email" />
-						</div>
-						<div class="row pr-lg-3 pr-md-1 pt-1 pb-1">
-							<label class="col-lg-3 col-md-4 col-sm-12 col-12">Enter
-								Address</label>
-							<textarea class="form-control col-lg-9 col-md-8 col-sm-12 col-12"
-								placeholder="Address" name="address" required></textarea>
-						</div>
+	<div layout:fragment="dashboard-contents">
+
+		<form method="get" class="form mt-2">
+		
+			<div class="card">
+
+				<div class="card-header bg-transparent">
+				
+					<div style="font-size: 20px;" class="ml-1">Add New Clinic</div>
+					
+					<div class="text-muted">Please fill your clinic information</div>
+					
+				</div><!-- card header -->
+
+				<div class="card-body">
+				
+					<div class="container-fluid">
 						
-						<div class="row pr-lg-3 pr-md-1 pt-1 pb-1">
-								<label class="col-lg-3 col-md-4 col-sm-12 col-12">Open times</label>
-								<div class="col-lg-9 col-md-8 col-sm-12 col-12" style="overflow-x:auto;">
-									<table class="table col-12">
-  										<thead style="background-color: #3A85C7; color: white">
-											<tr>
-												<th>Days</th>
-												<th>From</th>
-												<th>To</th>
-												<th>24hr</th>
-											</tr>
-										</thead>
-										<tbody>
-											<tr>
-												<td>Sunday</td>
-												<td><input type="time" name="sun-from-time" class="form-control" placeholder="From"/></td>
-												<td><input type="time" name="sun-to-time" class="form-control" placeholder="To"/></td>
-												<td class="text-center"><input type="checkbox" class="form-check-input" name="sat-hour"/></td>
-											</tr>
-											<tr>
-												<td>Monday</td>
-												<td><input type="time" name="mon-from-time" class="form-control" placeholder="From"/></td>
-												<td><input type="time" name="mon-to-time" class="form-control" placeholder="To"/></td>
-												<td class="text-center"><input type="checkbox" class="form-check-input" name="sat-hour"/></td>
-											</tr>
-											<tr>
-												<td>Tuesday</td>
-												<td><input type="time" name="tue-from-time" class="form-control" placeholder="From"/></td>
-												<td><input type="time" name="tue-to-time" class="form-control" placeholder="To"/></td>
-												<td class="text-center"><input type="checkbox" class="form-check-input" name="sat-hour"/></td>
-											</tr>
-											<tr>
-												<td>Wednesday</td>
-												<td><input type="time" name="web-from-time" class="form-control" placeholder="From"/></td>
-												<td><input type="time" name="web-to-time" class="form-control" placeholder="To"/></td>
-												<td class="text-center"><input type="checkbox" class="form-check-input" name="sat-hour"/></td>
-											</tr>
-											<tr>
-												<td>Thursday</td>
-												<td><input type="time" name="thu-from-time" class="form-control" placeholder="From"/></td>
-												<td><input type="time" name="thu-to-time" class="form-control" placeholder="To"/></td>
-												<td class="text-center"><input type="checkbox" class="form-check-input" name="sat-hour"/></td>
-											</tr>
-											<tr>
-												<td>Friday</td>
-												<td><input type="time" name="fri-from-time" class="form-control" placeholder="From"/></td>
-												<td><input type="time" name="fri-to-time" class="form-control" placeholder="To"/></td>
-												<td class="text-center"><input type="checkbox" class="form-check-input" name="sat-hour"/></td>
-											</tr>
-											<tr>
-												<td>Saturday</td>
-												<td><input type="time" name="sat-from-time" class="form-control" placeholder="From"/></td>
-												<td><input type="time" name="sat-to-time" class="form-control" placeholder="To"/></td>
-												<td class="text-center"><input type="checkbox" class="form-check-input" name="sat-hour"/></td>
-											</tr>
-										</tbody>
-									</table>
-								</div>
-							</div>
+						<div class="row">
+								
+							<div class="col-12 col-md-6">
+								
+								<div class="form-group">
+									
+									<label>Enter clinic name</label>
+									<input type="text" placeholder="Name" name="name" class="form-control"/>
+									
+								</div><!-- name form -->
+								
+								<div class="form-group">
+									
+									<label>Enter clinic category</label>
+									<input type="text" placeholder="Category" list="category" name="category" class="form-control"/>
+									<datalist id="category">
+										<option>General</option>
+										<option>Dental</option>
+										<option>Orthopedic</option>
+										<option>Heart</option>
+									</datalist>
+									
+								</div><!-- category form -->
+								
+								<div class="form-group">
+									
+									<label>Select Division / State</label>
+									<select class="form-control mdb-select md-form">
+									
+  										<option value="yangon">Yangon</option>
+  										<option value="mandalay">Mandalay</option>
+  										
+  									</select>
+									
+								</div><!-- Division form -->
+								
+								<div class="form-group">
+									
+									<label>Select Township</label>
+									<select class="form-control mdb-select md-form">
+									
+  										<option value="" disabled selected>Choose Township</option>
+  										<option value="Hlaing">Hlaing</option>
+  										<option value="Sanchaung">Sanchaung</option>
+  										<option value="Kamayut">Kamayut</option>
+  										
+  									</select>
+									
+								</div><!-- Township form -->
+								
+								<div class="form-group">
+									
+									<label>Enter clinic address</label>
+									<textarea class="form-control" placeholder="Address"></textarea>
+									
+								</div><!-- Address form -->
+								
+							</div><!-- first column -->
+							
+							<div class="col-12 col-md-6">
 
-						<div class="row mt-3">
-							<label class="col-lg-3 col-md-4 col-sm-12 col-12"></label>
-							<div class="col-lg-9 col-md-8 col-sm-12 col-12 text-right">
-								<input type="submit" class="btn btn-outline-danger"
-									value="Cancel" /> <input type="submit"
-									class="btn btn-outline-success" value="Submit" />
-							</div>
-						</div>
+								
+								<div class="form-group">
+									
+										<label>Enter phone numbers</label>
+										<div class="phone-list">
+											<input type="tel" placeholder="Phone" name="phone1" class="form-control"/>
+										</div>
+										<a class="btn mt-1 form-control btn-outline-info btn-add-phone text-info" style="border-style: dashed;"><span><i class="far fa-plus"></i></span> Add New</a>
+										
+									
+								</div><!-- phone form -->
+								
+								<div class="form-group">
+									
+									<label>Enter Email address</label>
+									<div class="email-list">
+										<input type="email" placeholder="Email" name="email1" class="form-control"/>
+									</div>
+									<a class="btn mt-1 form-control btn-outline-info text-info btn-add-email" style="border-style: dashed;"><span><i class="far fa-plus"></i></span> Add New</a>
+									
+								</div><!-- email form -->
+						
+						
+								<div class="form-group">
+									
+									<label>Enter Website URL</label>
+									<input type="url" placeholder="http://www." name="phone1" class="form-control"/>
+									
+								</div><!-- web url form -->
+								
+							</div><!-- second column -->
+						
+						</div><!-- row -->
+						
+					</div><!-- container-fluid -->
+				
+				</div><!-- card body -->
 
-						<br>
+				<div class="card-footer text-right bg-transparent">
+					
+					<input type="submit" value="Submit" id="create-clinic" class="btn btn-outline-success"/>
+					
+				</div><!-- card footer -->
 
+			</div><!-- card -->
+			
+		</form>
+		
+		<script>
+		$('.btn-add-phone').on('click', function() {
+			var index = $('.phone-list').length + 1;
+			$('.phone-list').append('<input type="tel" placeholder="Phone" name="phone"'+index+' class="mt-1 form-control"/>');
+		});
 
-					</div>
-				</form>
-			</div>
-			<div class="col-lg-1"></div>
-		</div>
-
-	</section>
+		$('.btn-add-email').on('click', function() {
+			var index = $('.email-list').length + 1;
+			$('.email-list').append('<input type="email" placeholder="Email" name="email"'+index+' class="mt-1 form-control"/>');
+		});
+		</script>
+		
+	</div>
 </body>
 </html>

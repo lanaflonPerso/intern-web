@@ -2,7 +2,7 @@
 <html xmlns:th="http://www.thymeleaf.org"
 	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
 	xmlns:sec="http://www.thymeleaf.org/extras/spring-security"
-	layout:decorate="~{/layout/template}">
+	layout:decorate="~{/layout/template2}">
 <head>
 <meta charset="UTF-8">
 <link rel="stylesheet" href="/resources/css/custom.css">
@@ -53,11 +53,11 @@
 </head>
 <body>
 	<section layout:fragment="content">
+	<div class="container">
 		<br>
 		<h4 class="mx-3">
 			<i class="fa fa-info "></i><i> </i>INFORMATION
 		</h4>
- <br>
 <div class="card mx-3" style="width:700px" >
  
     <div class="card-body" > 
@@ -104,6 +104,8 @@
 			<table
 				class="table  table-responsive-md   table-hover table-bordered "
 				id="table-bookings">
+				
+				<thead id="table-bookings-thead">
 				<tr class="tableHeading-color ">
 					<td>No</td>
 					<td>Doctor Name</td>
@@ -111,6 +113,7 @@
 					<td>Time</td>
 					<td>Disease</td>
 				</tr>
+				</thead>
 				<tbody id="myTable">
 					<tr>
 						<td>1</td>
@@ -135,6 +138,7 @@
 					</tr>
 				</tbody>
 			</table>
+		</div>
 		</div>
 	</section>
 </body>

@@ -53,7 +53,7 @@
 								<div class="form-group">
 									
 									<label>Select Division / State</label>
-									<select class="form-control mdb-select md-form">
+									<select class="form-control mdb-select md-form" name="division">
 									
   										<option value="yangon">Yangon</option>
   										<option value="mandalay">Mandalay</option>
@@ -65,7 +65,7 @@
 								<div class="form-group">
 									
 									<label>Select Township</label>
-									<select class="form-control mdb-select md-form">
+									<select class="form-control mdb-select md-form" name="township">
 									
   										<option value="" disabled selected>Choose Township</option>
   										<option value="Hlaing">Hlaing</option>
@@ -109,7 +109,7 @@
 											<input type="email" placeholder="Email" name="email1" class="form-control"/>
 										</div>
 									</div>
-									<button type="button" class="btn mt-1 form-control btn-outline-info text-info btn-add-email" style="border-style: dashed;"><span><i class="far fa-plus"></i></span> Add New</button>
+									<button type="button" class="btn mt-1 form-control btn-outline-info btn-add-email" style="border-style: dashed;"><span><i class="far fa-plus"></i></span> Add New</button>
 									
 								</div><!-- email form -->
 						
@@ -151,7 +151,7 @@
 					'<div class="container-fluid phone-input">'+
 					'<div class="row">'+
 					'<input type="tel" placeholder="Phone" name="phone'+index+'" class="mt-1 col-11 form-control"/>'+
-					'<button type="button" class="col-auto ml-1 btn btn-outline-danger mt-1 btn-remove-phone"><i class="fal fa-minus"></i></button>'+
+					'<button type="button" class="ml-1 btn btn-outline-danger mt-1 btn-remove-phone"><i class="fal fa-times"></i></button>'+
 					'</div></div>'
 					);
 		});
@@ -166,7 +166,7 @@
 					'<div class="container-fluid email-input">'+
 					'<div class="row">'+
 					'<input type="email" placeholder="Email" name="mail'+index+'" class="mt-1 col-11 form-control"/>'+
-					'<button type="button" class="col-auto ml-1 btn btn-outline-danger mt-1 btn-remove-email"><i class="fal fa-minus"></i></button>'+
+					'<button type="button" class="ml-1 btn btn-outline-danger mt-1 btn-remove-email"><i class="fal fa-times"></i></button>'+
 					'</div></div>'
 					);
 		});

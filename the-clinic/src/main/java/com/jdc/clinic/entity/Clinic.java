@@ -1,7 +1,7 @@
 package com.jdc.clinic.entity;
 
 import java.io.Serializable;
-import java.util.Set;
+import java.util.List;
 
 import javax.persistence.ElementCollection;
 import javax.persistence.Embedded;
@@ -31,10 +31,10 @@ public class Clinic implements Serializable {
 	private String name;
 
 	@ElementCollection
-	private Set<String> phone;
+	private List<String> phone;
 
 	@ElementCollection
-	private Set<String> mails;
+	private List<String> mails;
 	
 	@Embedded
 	private SecurityInfo security;

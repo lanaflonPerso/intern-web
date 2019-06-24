@@ -10,9 +10,6 @@
 <body>
 	<section layout:fragment="content">
 
-
-
-
 		<div class="container">
 
 			<h2>CLINICS</h2>
@@ -34,7 +31,7 @@
 
 			<div class="row">
 
-				<div class="col-lg-3 col-md-4 col-sm-6 col-12 btn-seemore">
+				<div class="col-lg-3 col-md-4 col-sm-6 col-12 btn-seemore" th:each="c : ${clinics}" >
 					<div class="card  mb-4 "
 						style="width: 250px; background-color: whitesmoke">
 						<img class="card-img-top rounded-circle"
@@ -45,7 +42,7 @@
 								<tr>
 									<td>Name</td>
 									<td>:</td>
-									<td>SSC</td>
+									<td th:text="${c.name}">SSC</td>
 								</tr>
 								<tr>
 									<td>Address</td>
@@ -55,8 +52,8 @@
 							</table>
 
 							<div class="m-t-10 text-right">
-								<button class="btn btn-primary form-control form-rounded"
-									style='width: 80px; height: 40px;'>Detail</button>
+								<a th:href="@{/clinics/{id}(id=${c.id})}" class="btn btn-primary form-control form-rounded"
+									style='width: 80px; height: 40px;'>Detail</a>
 							</div>
 
 
@@ -65,164 +62,7 @@
 					</div>
 				</div>
 
-				<div class="col-lg-3 col-md-4 col-sm-6 col-12 btn-seemore">
-					<div class="card  mb-4"
-						style="width: 250px; background-color: whitesmoke">
-						<img class="card-img-top rounded-circle"
-							th:src="@{/resources/img/clinic.jpg}" alt="Card image"
-							style="width: 100;">
-						<div class="card-body">
-							<table>
-								<tr>
-									<td>Name</td>
-									<td>:</td>
-									<td>Shwe LaMin</td>
-								</tr>
-								<tr>
-									<td>Address</td>
-									<td>:</td>
-									<td>South Okkalapa</td>
-								</tr>
 
-							</table>
-
-
-							<div class="m-t-10 text-right">
-								<button class="btn btn-primary form-control form-rounded"
-									style='width: 80px; height: 40px;'>Detail</button>
-							</div>
-
-						</div>
-
-					</div>
-				</div>
-
-				<div class="col-lg-3 col-md-4 col-sm-6 col-12 btn-seemore">
-					<div class="card  mb-4"
-						style="width: 250px; background-color: whitesmoke">
-						<img class="card-img-top rounded-circle"
-							th:src="@{/resources/img/clinic.jpg}" alt="Card image"
-							style="width: 100;">
-						<div class="card-body">
-							<table class="">
-								<tr>
-									<td>Name</td>
-									<td>:</td>
-									<td>Shwe LaMin</td>
-								</tr>
-								<tr>
-									<td>Address</td>
-									<td>:</td>
-									<td>South Okkalapa</td>
-								</tr>
-
-							</table>
-
-
-							<div class="m-t-10 text-right">
-								<button class="btn btn-primary form-control form-rounded"
-									style='width: 80px; height: 40px;'>Detail</button>
-							</div>
-
-						</div>
-
-					</div>
-				</div>
-
-				<div class="col-lg-3 col-md-4 col-sm-6 col-12 btn-seemore">
-					<div class="card  mb-4"
-						style="width: 250px; background-color: whitesmoke">
-						<img class="card-img-top rounded-circle"
-							th:src="@{/resources/img/clinic.jpg}" alt="Card image"
-							style="width: 100;">
-						<div class="card-body">
-							<table class="">
-								<tr>
-									<td>Name</td>
-									<td>:</td>
-									<td>ThuKha ChanThar</td>
-								</tr>
-								<tr>
-									<td>Address</td>
-									<td>:</td>
-									<td>Hle Dan</td>
-								</tr>
-
-
-							</table>
-
-							<div class="m-t-10 text-right">
-								<button class="btn btn-primary form-control form-rounded"
-									style='width: 80px; height: 40px;'>Detail</button>
-							</div>
-
-						</div>
-
-					</div>
-				</div>
-				<div class="col-lg-3 col-md-4 col-sm-6 col-12 btn-seemore">
-					<div class="card  mb-4"
-						style="width: 250px; background-color: whitesmoke">
-						<img class="card-img-top rounded-circle"
-							th:src="@{/resources/img/clinic.jpg}" alt="Card image"
-							style="width: 100;">
-						<div class="card-body">
-							<table class="">
-								<tr>
-									<td>Name</td>
-									<td>:</td>
-									<td>ACADEMY</td>
-								</tr>
-								<tr>
-									<td>Address</td>
-									<td>:</td>
-									<td>KyiMyintTie</td>
-								</tr>
-
-
-							</table>
-
-							<div class="m-t-10 text-right">
-								<button class="btn btn-primary form-control form-rounded"
-									style='width: 80px; height: 40px;'>Detail</button>
-							</div>
-
-
-						</div>
-
-					</div>
-				</div>
-				<div class="col-lg-3 col-md-4 col-sm-6 col-12 btn-seemore">
-					<div class="card  mb-4"
-						style="width: 250px; background-color: whitesmoke">
-						<img class="card-img-top rounded-circle"
-							th:src="@{/resources/img/clinic.jpg}" alt="Card image"
-							style="width: 100;">
-						<div class="card-body">
-							<table class="">
-								<tr>
-									<td>Name</td>
-									<td>:</td>
-									<td>Shwe LaMin</td>
-								</tr>
-								<tr>
-									<td>Address</td>
-									<td>:</td>
-									<td>South Okkalapa</td>
-								</tr>
-
-							</table>
-
-
-							<div class="m-t-10 text-right">
-								<button class="btn btn-primary form-control form-rounded"
-									style='width: 80px; height: 40px;'>Detail</button>
-							</div>
-
-						</div>
-
-					</div>
-				</div>
 			</div>
 		</div>
 	</section>

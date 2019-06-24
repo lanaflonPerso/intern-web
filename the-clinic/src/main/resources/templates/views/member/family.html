@@ -5,113 +5,655 @@
 	layout:decorate="~{/layout/template}">
 <head>
 <meta charset="UTF-8">
-<title>family detail</title>
+<title>Family Detail</title>
 </head>
 <body>
 <section layout:fragment="content">
-		<h3 class="mx-3">Family Member List</h3>
-		
-		<form action="">
-		<div class=" mx-3 mb-2">
-			<div class = "row">
-				<div class ="col-md-5 col-10">
-					<input type="text" id="myInput" class="form-control search-bar-sub pl-4"
-					 placeholder="Search">
-				</div>
-				<div class ="">
-					<button type="submit" class="btn btn-search">
-						<i class="fa fa-search"></i>
-					</button>
-				</div>
-			</div>
-		</div>
-		</form>
-		<div class="row mx-3">
-			<table class="table  table-responsive-md  table-hover  table-bordered" 
-				id="table-bookings">
-				<thead class="tableHeading-color">
-					<tr>
-						<td>ID</td>
-						<td >Name</td>
-						<td>Relationship</td>
-						<td></td>
-					</tr>
-					</thead>
-				 <tbody id="myTable">
-					<tr>
-						<td>001</td>
-						<td>Daw Aye Aye</td>
-						<td>Aunty</td>
-						<td><button type="button" class="btn btn-outline-danger">Delete</button></td>
-                        </tr>
-                        <tr>				
-						<td>002</td>
-						<td>Daw Aye Aye Myint</td>
-						
-						
-						<td>Wife</td>
-						<td><button type="button" class="btn btn-outline-danger">Delete</button></td>
-					</tr>
-					<tr>
-						<td>003</td>
-						<td>Mg Bo Bo</td>
-						
-						<td>Son</td>
-						<td><button type="button" class="btn btn-outline-danger">Delete</button></td>
-					</tr>
-					<tr>
-						<td>004</td>
-						<td>Ma Shwe Sin</td>
-							<td>Daughter</td>
-						<td><button type="button" class="btn btn-outline-danger">Delete</button></td>
-					</tr>
-					<tr>
-						<td>005</td>
-						<td>U Bo Bo</td>
-						<td>Grandfather</td>
-						<td><button type="button" class="btn btn-outline-danger">Delete</button></td>
-					</tr>
-					<tr>
-						<td>006</td>
-						<td>Daw Sein Sein</td>
-						<td>Grandmother</td>
-						<td><button type="button" class="btn btn-outline-danger">Delete</button></td>
-					</tr>
-					<tr>
-						<td>007</td>
-						<td>U Kyaw Kyaw</td>
-						<td>Father-in-law</td>
-						<td><button type="button" class="btn btn-outline-danger">Delete</button></td>
-					</tr>
-					<tr>
-						<td>008</td>
-						<td>Daw Mar Mar</td>
-						<td>Mother-in-law</td>
-						<td><button type="button" class="btn btn-outline-danger">Delete</button></td>
-					</tr>
-					<tr>
-						<td>009</td>
-						<td>Ma Phuu Phuu</td>
-						<td>Niece</td>
-						<td><button type="button" class="btn btn-outline-danger">Delete</button></td>
-					</tr>	
-				</tbody>
-			</table>
-		</div>
-		
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
-  <script>
-  $(document).ready(function(){
-    $("#myInput").on("keyup", function() {
-      var value = $(this).val().toLowerCase();
-      $("#myTable tr").filter(function() {
-        $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
-      });
-    });
-  });
-  </script>
-	</section>
+
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+ integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+
+<style>
+body {
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+.flip-card {
+  background-color: transparent;
+  width: 350px;
+  height: 300px;
+  perspective: 1000px;
+  margin-bottom: 30px;
+
+}
+
+.flip-card-inner {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  text-align: center;
+  transition: transform 0.5s;
+  transform-style: preserve-3d;
+  box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); 
+ 
+}
+.flip-card:hover .flip-card-inner {
+  transform: rotateY(180deg);
+}
+
+.flip-card-front, .flip-card-back {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  backface-visibility: hidden;
+
+
+}
+
+.flip-card-front {
+  background-color: rgba(187, 187, 187, 0.589);
+   color: black;
+
+   z-index: 1;
+   
+}
+
+.flip-card-back {
+  background-color: #29afb9bd;
+  color: black;
+  transform: rotateY(180deg);
+  z-index: 0;
+
+}
+</style>
+</head>
+<body>
+<div class="container mt-3 text-center"><h3><b>Member List</b></h3></div>
+ <div class="container mt-5">
+<div class="card-columns">
+<!-- <div class="container"> -->
+
+  <!-- Card-1 -->
+ <div class="flip-card"> 
+  <div class="flip-card-inner">
+    <div class="flip-card-front">
+      <img th:src="@{/resources/img/greenman.png}" alt="Avatar" style="width:150px;height:150px; margin-top: 30px;">
+      <h4><b>Mg Kyaw Kyaw</b></h4>
+    <p>Nephew</p> 
+    </div>
+    <div class="flip-card-back">
+        <h3>Details</h3> 
+      <div class="card" style="background-color: #18959ebd; width: 350px; height: auto ">
+        <div class="card-body text-left">
+          <table>
+            <tr>
+              <td><b>Name</b></td>
+              <td>:</td>
+              <td>Mg Kyaw Kyaw</td>
+            </tr>
+            <tr>
+              <td><b>DOB</b></td>
+              <td>:</td>
+              <td>6.6.1997</td>
+            </tr>
+            <tr>
+                <td><b>Relationship</b></td>
+                <td>:</td>
+                <td>Nephew</td>
+              </tr>
+              <tr>
+                 <td><b>AllergicMedicine</b></td>
+                 <td>:</td>
+                 <td>None</td>
+                </tr> 
+            <tr>
+              <td><b>Blood Type</b></td>
+              <td>:</td>
+              <td>A</td>
+            </tr> 
+            <tr>
+                <td><b>Gender</b></td>
+                <td>:</td>
+                <td>Male</td>
+              </tr> 
+               <tr>
+                  <td><b>Phone</b></td>
+                  <td>:</td>
+                  <td>091111111</td>
+                </tr>
+                <tr>
+                  <td><b>Address</b></td>
+                  <td>:</td>
+                  <td>No(32),Hmawbi,Yangon</td>
+                </tr>
+          </table>
+          </div>
+     </div>
+    </div>
+  </div>
+</div>
+
+<!-- Card-2 -->
+<div class="flip-card">
+  <div class="flip-card-inner">
+    <div class="flip-card-front">
+      <img th:src="@{/resources/img/man.png}" alt="Avatar" style="width:150px;height:150px; margin-top: 30px;">
+      <h4><b>U Ba</b></h4> 
+    <p>Father</p> 
+    </div>
+    <div class="flip-card-back">
+      <h3>Details</h3> 
+      <div class="card" style="background-color: #18959ebd; width: 350px; height: auto ">
+        <div class="card-body text-left">
+          <table>
+            <tr>
+              <td><b>Name</b></td>
+              <td>:</td>
+              <td>Mg Kyaw Kyaw</td>
+            </tr>
+            <tr>
+              <td><b>DOB</b></td>
+              <td>:</td>
+              <td>6.6.1997</td>
+            </tr>
+            <tr>
+                <td><b>Relationship</b></td>
+                <td>:</td>
+                <td>Nephew</td>
+              </tr>
+              <tr>
+                 <td><b>AllergicMedicine</b></td>
+                 <td>:</td>
+                 <td>None</td>
+                </tr> 
+            <tr>
+              <td><b>Blood Type</b></td>
+              <td>:</td>
+              <td>A</td>
+            </tr> 
+            <tr>
+                <td><b>Gender</b></td>
+                <td>:</td>
+                <td>Male</td>
+              </tr> 
+              <tr>
+                  <td><b>Phone</b></td>
+                  <td>:</td>
+                  <td>092222222</td>
+                </tr>
+                <tr>
+                  <td><b>Address</b></td>
+                  <td>:</td>
+                  <td>No(32),Hmawbi,Yangon</td>
+                </tr>
+          </table>
+          </div>
+     </div>
+    </div>
+  </div>
+</div>
+
+<!-- Card-3 -->
+<div class="flip-card">
+  <div class="flip-card-inner">
+    <div class="flip-card-front">
+      <img th:src="@{/resources/img/aunt.jpg}" alt="Avatar" style="width:150px;height:150px; margin-top: 30px;">
+      <h4><b>Daw Mya</b></h4> 
+    <p>Mother</p> 
+    </div>
+    <div class="flip-card-back">
+      <h3>Details</h3> 
+      <div class="card" style="background-color: #18959ebd; width: 350px; height: auto ">
+        <div class="card-body text-left">
+          <table>
+            <tr>
+              <td><b>Name</b></td>
+              <td>:</td>
+              <td>Mg Kyaw Kyaw</td>
+            </tr>
+            <tr>
+              <td><b>DOB</b></td>
+              <td>:</td>
+              <td>6.6.1997</td>
+            </tr>
+            <tr>
+                <td><b>Relationship</b></td>
+                <td>:</td>
+                <td>Nephew</td>
+              </tr>
+              <tr>
+                 <td><b>AllergicMedicine</b></td>
+                 <td>:</td>
+                 <td>None</td>
+                </tr> 
+            <tr>
+              <td><b>Blood Type</b></td>
+              <td>:</td>
+              <td>A</td>
+            </tr> 
+            <tr>
+                <td><b>Gender</b></td>
+                <td>:</td>
+                <td>Male</td>
+              </tr> 
+              <tr>
+                  <td><b>Phone</b></td>
+                  <td>:</td>
+                  <td>091111111</td>
+                </tr>
+                <tr>
+                  <td><b>Address</b></td>
+                  <td>:</td>
+                  <td>No(32),Hmawbi,Yangon</td>
+                </tr>
+          </table>
+        </div> 
+    </div>
+</div>
+</div>
+</div>
+
+<!-- Card-5 -->
+<div class="flip-card">
+    <div class="flip-card-inner">
+      <div class="flip-card-front">
+        <img th:src="@{/resources/img/kid.png}" alt="Avatar" style="width:150px;height:150px; margin-top: 30px;">
+        <h4><b>Ma Poe Poe</b></h4> 
+      <p>Sister</p> 
+      </div>
+      <div class="flip-card-back">
+        <h3>Details</h3> 
+        <div class="card" style="background-color: #18959ebd; width: 350px; height: auto ">
+          <div class="card-body text-left">
+            <table>
+              <tr>
+                <td><b>Name</b></td>
+                <td>:</td>
+                <td>Mg Kyaw Kyaw</td>
+              </tr>
+              <tr>
+                <td><b>DOB</b></td>
+                <td>:</td>
+                <td>6.6.1997</td>
+              </tr>
+              <tr>
+                  <td><b>Relationship </b></td>
+                  <td>:</td>
+                  <td>Nephew</td>
+                </tr>
+                <tr>
+                 <td><b>AllergicMedicine</b></td>
+                 <td>:</td>
+                 <td>None</td>
+                </tr> 
+              <tr>
+                <td><b>Blood Type</b></td>
+                <td>:</td>
+                <td>A</td>
+              </tr> 
+              <tr>
+                  <td><b>Gender</b></td>
+                  <td>:</td>
+                  <td>Male</td>
+                </tr> 
+                <tr>
+                  <td><b>Phone</b></td>
+                  <td>:</td>
+                  <td>091111111</td>
+                </tr>
+                <tr>
+                  <td><b>Address</b></td>
+                  <td>:</td>
+                  <td>No(32),Hmawbi,Yangon</td>
+                </tr>
+            </table>
+            </div>
+       </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Card-5 -->
+<div class="flip-card">
+    <div class="flip-card-inner">
+      <div class="flip-card-front">
+        <img th:src="@{/resources/img/joyboy.jpg}" alt="Avatar" style="width:150px;height:150px; margin-top: 30px;">
+        <h4><b>Mg Joy</b></h4> 
+      <p>Brother</p> 
+      </div>
+      <div class="flip-card-back">
+        <h3>Details</h3> 
+        <div class="card" style="background-color: #18959ebd; width: 350px; height: auto ">
+          <div class="card-body text-left">
+            <table>
+              <tr>
+                <td><b>Name</b></td>
+                <td>:</td>
+                <td>Mg Kyaw Kyaw</td>
+              </tr>
+              <tr>
+                <td><b>DOB</b></td>
+                <td>:</td>
+                <td>6.6.1997</td>
+              </tr>
+              <tr>
+                  <td><b>Relationship </b></td>
+                  <td>:</td>
+                  <td>Nephew</td>
+                </tr>
+                <tr>
+                 <td><b>AllergicMedicine</b></td>
+                 <td>:</td>
+                 <td>None</td>
+                </tr> 
+              <tr>
+                <td><b>Blood Type</b></td>
+                <td>:</td>
+                <td>A</td>
+              </tr> 
+              <tr>
+                  <td><b>Gender</b></td>
+                  <td>:</td>
+                  <td>Male</td>
+                </tr>
+                <tr>
+                  <td><b>Phone</b></td>
+                  <td>:</td>
+                  <td>091111111</td>
+                </tr>
+                <tr>
+                  <td><b>Address</b></td>
+                  <td>:</td>
+                  <td>No(32),Hmawbi,Yangon</td>
+                </tr> 
+            </table>
+            </div>
+       </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Card-5 -->
+<div class="flip-card">
+    <div class="flip-card-inner">
+      <div class="flip-card-front">
+        <img th:src="@{/resources/img/engineer.png}" alt="Avatar" style="width:150px;height:150px; margin-top: 30px;">
+        <h4><b>Mg Zaw Zaw</b></h4> 
+      <p>Brother</p> 
+      </div>
+      <div class="flip-card-back">
+        <h3>Details</h3> 
+        <div class="card" style="background-color: #18959ebd; width: 350px; height: auto ">
+          <div class="card-body text-left">
+            <table>
+              <tr>
+                <td><b>Name</b></td>
+                <td>:</td>
+                <td>Mg Kyaw Kyaw</td>
+              </tr>
+              <tr>
+                <td><b>DOB</b></td>
+                <td>:</td>
+                <td>6.6.1997</td>
+              </tr>
+              <tr>
+                  <td><b>Relationship </b></td>
+                  <td>:</td>
+                  <td>Nephew</td>
+                </tr>
+                <tr>
+                 <td><b>AllergicMedicine</b></td>
+                 <td>:</td>
+                 <td>None</td>
+                </tr> 
+              <tr>
+                <td><b>Blood Type</b></td>
+                <td>:</td>
+                <td>A</td>
+              </tr> 
+              <tr>
+                  <td><b>Gender</b></td>
+                  <td>:</td>
+                  <td>Male</td>
+                </tr> 
+                <tr>
+                  <td><b>Phone</b></td>
+                  <td>:</td>
+                  <td>091111111</td>
+                </tr>
+                <tr>
+                  <td><b>Address</b></td>
+                  <td>:</td>
+                  <td>No(32),Hmawbi,Yangon</td>
+                </tr>
+            </table>
+            </div>
+       </div>
+      </div>
+    </div>
+  </div>
+
+
+<!-- Card-5 -->
+<div class="flip-card">
+    <div class="flip-card-inner">
+      <div class="flip-card-front">
+        <img th:src="@{/resources/img/batman.png}" alt="Avatar" style="width:150px;height:150px; margin-top: 30px;">
+        <h4><b>Mg Batman</b></h4> 
+      <p>Brother</p> 
+      </div>
+      <div class="flip-card-back">
+        <h3>Details</h3> 
+        <div class="card" style="background-color: #18959ebd; width: 350px; height: auto ">
+          <div class="card-body text-left">
+            <table>
+              <tr>
+                <td><b>Name</b></td>
+                <td>:</td>
+                <td>Mg Kyaw Kyaw</td>
+              </tr>
+              <tr>
+                <td><b>DOB</b></td>
+                <td>:</td>
+                <td>6.6.1997</td>
+              </tr>
+              <tr>
+                  <td><b>Relationship </b></td>
+                  <td>:</td>
+                  <td>Nephew</td>
+                </tr>
+                <tr>
+                 <td><b>AllergicMedicine</b></td>
+                 <td>:</td>
+                 <td>None</td>
+                </tr> 
+              <tr>
+                <td><b>Blood Type</b></td>
+                <td>:</td>
+                <td>A</td>
+              </tr> 
+              <tr>
+                  <td><b>Gender</b></td>
+                  <td>:</td>
+                  <td>Male</td>
+                </tr> 
+                <tr>
+                  <td><b>Phone</b></td>
+                  <td>:</td>
+                  <td>091111111</td>
+                </tr>
+                <tr>
+                  <td><b>Address</b></td>
+                  <td>:</td>
+                  <td>No(32),Hmawbi,Yangon</td>
+                </tr>
+            </table>
+            </div>
+       </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Card-6 -->
+<div class="flip-card">
+    <div class="flip-card-inner">
+      <div class="flip-card-front">
+        <img th:src="@{/resources/img/doctorss.png}" alt="Avatar" style="width:150px;height:150px; margin-top: 30px;">
+        <h4><b>Ma Hmu Hmu</b></h4> 
+      <p>Sister</p> 
+      </div>
+      <div class="flip-card-back">
+        <h3>Details</h3> 
+        <div class="card" style="background-color: #18959ebd; width: 350px; height: auto ">
+          <div class="card-body text-left">
+            <table>
+              <tr>
+                <td><b>Name</b></td>
+                <td>:</td>
+                <td>Mg Kyaw Kyaw</td>
+              </tr>
+              <tr>
+                <td><b>DOB</b></td>
+                <td>:</td>
+                <td>6.6.1997</td>
+              </tr>
+              <tr>
+                  <td><b>Relationship </b></td>
+                  <td>:</td>
+                  <td>Nephew</td>
+                </tr>
+                <tr>
+                 <td><b>AllergicMedicine</b></td>
+                 <td>:</td>
+                 <td>None</td>
+                </tr> 
+              <tr>
+                <td><b>Blood Type</b></td>
+                <td>:</td>
+                <td>A</td>
+              </tr> 
+              <tr>
+                  <td><b>Gender</b></td>
+                  <td>:</td>
+                  <td>Male</td>
+                </tr> 
+                <tr>
+                  <td><b>Phone</b></td>
+                  <td>:</td>
+                  <td>091111111</td>
+                </tr>
+                <tr>
+                  <td><b>Address</b></td>
+                  <td>:</td>
+                  <td>No(32),Hmawbi,Yangon</td>
+                </tr>
+            </table>
+            </div>
+       </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Card-5 -->
+<div class="flip-card">
+    <div class="flip-card-inner">
+      <div class="flip-card-front">
+        <img th:src="@{/resources/img/grandmother.png}" alt="Avatar" style="width:150px;height:150px; margin-top: 30px;">
+        <h4><b>Daw Sein Kyi</b></h4> 
+      <p>Grandmother</p> 
+      </div>
+      <div class="flip-card-back">
+        <h3>Details</h3> 
+        <div class="card" style="background-color: #18959ebd; width: 300px; height: auto ">
+          <div class="card-body text-left">
+            <table>
+              <tr>
+                <td><b>Name</b></td>
+                <td>:</td>
+                <td>Mg Kyaw Kyaw</td>
+              </tr>
+              <tr>
+                <td><b>DOB</b></td>
+                <td>:</td>
+                <td>6.6.1997</td>
+              </tr>
+              <tr>
+                  <td><b>Relationship </b></td>
+                  <td>:</td>
+                  <td>Nephew</td>
+                </tr>
+                <tr>
+                 <td><b>AllergicMedicine</b></td>
+                 <td>:</td>
+                 <td>None</td>
+                </tr> 
+              <tr>
+                <td><b>Blood Type</b></td>
+                <td>:</td>
+                <td>A</td>
+              </tr> 
+              <tr>
+                  <td><b>Gender</b></td>
+                  <td>:</td>
+                  <td>Male</td>
+                </tr> 
+                <tr>
+                  <td><b>Phone</b></td>
+                  <td>:</td>
+                  <td>091111111</td>
+                </tr>
+                <tr>
+                  <td><b>Address</b></td>
+                  <td>:</td>
+                  <td>No(32),Hmawbi,Yangon</td>
+                </tr>
+            </table>
+            </div>
+       </div>
+      </div>
+    </div>
+  </div>
+
+
+
+</div>
+    </div> 
+
+
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous">
+</script>
+ <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+ <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+
+<script>
+$(document).ready(function() {
+  var front = document.getElementsByClassName("flip-card-front");
+  var back = document.getElementsByClassName("flip-card-back");
+
+  var highest = 0;
+  var absoluteSide = "";
+
+  for (var i = 0; i < flip-card-front.length; i++) {
+    if (flip-card-front[i].offsetHeight > flip-card-back[i].offsetHeight) {
+      if (flip-card-front[i].offsetHeight > highest) {
+        highest = flip-card-front[i].offsetHeight;
+        absoluteSide = ".flip-card-front";
+      }
+    } else if (back[i].offsetHeight > highest) {
+      highest = flip-card-back[i].offsetHeight;
+      absoluteSide = ".flip-card-back";
+    }
+  }
+  $(".flip-card-front").css("height", highest);
+  $(".flip-card-back").css("height", highest);
+  $(absoluteSide).css("position", "absolute");
+});
+
+</script>
+
+             
+</section>
 </body>
 </html>

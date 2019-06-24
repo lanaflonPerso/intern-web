@@ -10,24 +10,32 @@
 </head>
 <body>
 	<section layout:fragment="content">
-		<h3 class="mx-3">Patients</h3>
-			<form action="">
-		<div class=" mx-3 mb-2">
-			<div class = "row">
-				<div class ="col-md-3 col-4">
-					<input type="text" id="myInput" class="form-control search-bar-sub pl-4"
-					 placeholder="Search">
-				</div>
-				<div class ="">
-					<button type="submit" class="btn btn-search">
-						<i class="fa fa-search"></i>
-					</button>
-				</div>
-			</div>
-		</div>
-		</form>
+		<h3 class="mx-3"><i class="fa fa-wheelchair"></i>Patients</h3>
 		
-		<div class="row mx-3">
+			<form action="/action_page.html" class="form-inline">
+
+				<div class="container-fluid">
+					<div class="row">
+						<div class="form-group col-6">
+
+							<div class="row">
+								<div class="form-group col-6">
+									<input type="text" placeholder="Search patient"
+										class="form-control form-rounded" size="33">
+								</div>
+								<div class="form-group col-4 d-flex flex-row-reverse">
+									<button type="submit" class="btn  btn-circle">
+										<i class="fa fa-search"></i>
+									</button>
+								</div>
+							</div>
+						</div>
+						
+					</div>
+				</div>
+			</form>
+			<br>
+			<div class="row mx-3">
 			<table class="table  table-responsive-md   table-hover table-bordered " 
 				id="table-bookings">
 				<thead id="table-bookings-thead">
@@ -46,7 +54,6 @@
 						<td><button type="button" class="btn btn-default btn-circle ">
 								<i class="fa fa-ellipsis-h fa-lg"></i>
 							</button></td>
-						
 					</tr>
 					<tr>
 						<td>3</td>

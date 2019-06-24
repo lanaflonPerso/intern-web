@@ -2,8 +2,8 @@ package com.jdc.clinic.entity;
 
 import java.io.Serializable;
 import java.time.LocalDate;
-import java.util.LinkedHashSet;
-import java.util.Set;
+import java.util.ArrayList;
+import java.util.List;
 
 import javax.persistence.ElementCollection;
 import javax.persistence.Embedded;
@@ -24,8 +24,8 @@ public class FamilyMember implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	public FamilyMember() {
-		alergicMedicnes = new LinkedHashSet<>();
-		diseasesHistories = new LinkedHashSet<>();
+		alergicMedicnes = new ArrayList<>();
+		diseasesHistories = new ArrayList<>();
 	}
 
 	@Id
@@ -42,7 +42,7 @@ public class FamilyMember implements Serializable {
 	private BloodType bloodType;
 
 	@ElementCollection
-	private Set<String> alergicMedicnes;
+	private List<String> alergicMedicnes;
 
 	@Embedded
 	private SecurityInfo security;
@@ -53,7 +53,7 @@ public class FamilyMember implements Serializable {
 	private Member member;
 
 	@OneToMany(mappedBy = "patient")
-	private Set<DiseasesHistory> diseasesHistories;
+	private List<DiseasesHistory> diseasesHistories;
 
 	public enum Gender {
 		Male, Female

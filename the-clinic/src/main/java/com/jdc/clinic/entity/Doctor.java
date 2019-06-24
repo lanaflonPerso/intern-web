@@ -1,8 +1,8 @@
 package com.jdc.clinic.entity;
 
 import java.io.Serializable;
-import java.util.LinkedHashSet;
-import java.util.Set;
+import java.util.ArrayList;
+import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.ElementCollection;
@@ -31,10 +31,10 @@ public class Doctor implements Serializable {
 	private String name;
 
 	@ElementCollection
-	private Set<String> degrees;
+	private List<String> degrees;
 
 	@ElementCollection
-	private Set<String> specialities;
+	private List<String> specialities;
 
 	private Gender gender;
 
@@ -49,8 +49,8 @@ public class Doctor implements Serializable {
 	private SecurityInfo security;
 
 	public Doctor() {
-		degrees = new LinkedHashSet<>();
-		specialities = new LinkedHashSet<>();
+		degrees = new ArrayList<>();
+		specialities = new ArrayList<>();
 	}
 
 }

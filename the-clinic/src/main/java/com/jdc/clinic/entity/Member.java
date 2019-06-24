@@ -1,8 +1,8 @@
 package com.jdc.clinic.entity;
 
 import java.io.Serializable;
-import java.util.LinkedHashSet;
-import java.util.Set;
+import java.util.ArrayList;
+import java.util.List;
 
 import javax.persistence.Entity;
 import javax.persistence.OneToMany;
@@ -22,10 +22,10 @@ public class Member extends Account implements Serializable {
 	private Address address;
 
 	@OneToMany(mappedBy = "member")
-	private Set<FamilyMember> family;
-	
+	private List<FamilyMember> family;
+
 	public Member() {
-		family = new LinkedHashSet<>();
+		family = new ArrayList<>();
 	}
 
 }

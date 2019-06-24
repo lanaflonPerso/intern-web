@@ -1,7 +1,7 @@
 package com.jdc.clinic.entity;
 
 import java.io.Serializable;
-import java.util.Set;
+import java.util.List;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -28,6 +28,6 @@ public class Division implements Serializable {
 	private String name;
 
 	@OneToMany(mappedBy = "division")
-	private Set<Township> townships;
+	private List<Township> townships;
 
 }

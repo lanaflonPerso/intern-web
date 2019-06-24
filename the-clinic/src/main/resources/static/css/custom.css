@@ -117,6 +117,9 @@ th {
 	color: #212121;
 	
 }
+#book-cancel-1{
+	color:red;
+}
 
 #book-cancel:hover{
 	color: #d50000;

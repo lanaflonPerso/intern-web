@@ -28,6 +28,56 @@
 .card-parent{
 	
 }
+
+
+table {
+	width: 100%;
+	table-layout: fixed;
+}
+
+.table-hover tr:hover td {
+	background-color: #AFEEEE;
+}
+
+.tbl-header {
+	background-color: #AFEEEE;
+}
+
+.tbl-content {
+	height: 250px;
+	overflow-x: auto;
+	margin-top: 0px;
+	border: 1px solid rgba(255, 255, 255, 0.3);
+}
+
+.table-patient th {
+	padding: 20px 15px;
+	text-align: left;
+	font-weight: 500;
+	font-size: 16px;
+	text-transform: uppercase;
+}
+
+.table-patient-body td {
+	padding: 15px;
+	text-align: left;
+	vertical-align: middle;
+	font-weight: 400;
+	font-size: 14px;
+	border-bottom: solid 1px lightgrey;
+}
+
+::-webkit-scrollbar {
+	width: 6px;
+}
+
+::-webkit-scrollbar-track {
+	-webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+}
+
+::-webkit-scrollbar-thumb {
+	-webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+}
 </style>
 </head>
 <body>
@@ -113,13 +163,111 @@
 		</div><!-- row bar end -->
 			
 		<div class="card mt-3 container-fluid">
-				
 			
-
-			
-				
 		</div>
+		<div class="container-fluid">
+		<div class="row">
+
+				<p class="text-left mt-4" style="font-size: 20px;">
+					<b>Today Patients' List</b>
+				</p>
+
+			</div>
+			<!--for demo wrap-->
+
+
+			<div class="tbl-header">
+				<table class="table-patient table-responsive-md">
+					<thead>
+						<tr>
+							<th>No.</th>
+							<th>Patient</th>
+							<th>Booking Time</th>
+							<th>Doctor</th>
+							<th>Clinic</th>
+						</tr>
+					</thead>
+				</table>
+			</div>
+			<div class="tbl-content">
+				<table class="table-responsive-md table-patient-body table-hover">
+					<tbody>
+						<tr>
+							<td>1</td>
+							<td>Daw Mya</td>
+							<td>9:00 am</td>
+							<td>Dr. Lwe</td>
+							<td>Clinic A</td>
+						</tr>
+						<tr>
+							<td>2</td>
+							<td>Thaw Thaw</td>
+							<td>10:00 am</td>
+							<td>Dr. Mya Theingi</td>
+							<td>Clinic B</td>
+						</tr>
+						<tr>
+							<td>3</td>
+							<td>Daw Cho</td>
+							<td>11:00 am</td>
+							<td>Dr. Lwe</td>
+							<td>Clinic A</td>
+						</tr>
+						<tr>
+							<td>4</td>
+							<td>Thida Mya</td>
+							<td>9:00 am</td>
+							<td>Dr. Kyaw</td>
+							<td>Clinic C</td>
+						</tr>
+						<tr>
+							<td>5</td>
+							<td>Han Thaw</td>
+							<td>1:00 pm</td>
+							<td>Dr. Thein</td>
+							<td>Clinic C</td>
+						</tr>
+						<tr>
+							<td>6</td>
+							<td>Daw Mya</td>
+							<td>9:00 am</td>
+							<td>Dr. Lwe</td>
+							<td>Clinic A</td>
+						</tr>
+						<tr>
+							<td>7</td>
+							<td>Daw Mya</td>
+							<td>9:00 am</td>
+							<td>Dr. Lwe</td>
+							<td>Clinic A</td>
+						</tr>
+						<tr>
+							<td>8</td>
+							<td>Daw Mya</td>
+							<td>9:00 am</td>
+							<td>Dr. Lwe</td>
+							<td>Clinic A</td>
+						</tr>
+						<tr>
+							<td>9</td>
+							<td>Daw Mya</td>
+							<td>9:00 am</td>
+							<td>Dr. Lwe</td>
+							<td>Clinic A</td>
+						</tr>
+						<tr>
+							<td>10</td>
+							<td>Daw Mya</td>
+							<td>9:00 am</td>
+							<td>Dr. Lwe</td>
+							<td>Clinic A</td>
+						</tr>
+
+					</tbody>
+				</table>
+			</div>
 		
+		</div>
 		
 		
 	</section>

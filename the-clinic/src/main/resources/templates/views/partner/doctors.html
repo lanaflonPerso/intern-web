@@ -35,9 +35,11 @@
 							</div>
 						</div>
 						<div class="form-group col-6 d-flex flex-row-reverse">
-							<button type="submit" class="btn btn-outline-info">
-								<i class="	fas fa-user-plus"></i>Add Doctor
-							</button>
+
+
+							<a class="btn btn-outline-info" href="#"
+								th:href="@{/partner/doctors/edit/1}" role="button"><i
+								class="	fas fa-user-plus"></i>Add Doctor</a>
 
 						</div>
 					</div>
@@ -69,17 +71,19 @@
 
 
 							<div class="dropdown">
-								<a href="#" class="action-icon dropdown-toggle"
+								<a href="#" class="action-icon dropdown-toggle-split"
 									data-toggle="dropdown" aria-expanded="true"><i
 									class="fas fa-ellipsis-h"></i></a>
 								<div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-									<a class="dropdown-item" href="edit-doctor.html"><i
+									<a class="dropdown-item" href="#"
+										th:href="@{/partner/doctors/edit/1}"><i
 										class="	fas fa-edit"></i> Edit</a>
 									<button class="dropdown-item" type="button"
 										onclick="deleteRow(this)">
 										<i class="fas fa-trash"></i> Delete
 									</button>
-									<a class="dropdown-item" href="edit-doctor.html"><i
+									<a class="dropdown-item" href="#"
+										th:href="@{/partner/doctors/details/1}"><i
 										class="	fas fa-ellipsis-v"></i> Detail</a>
 
 
@@ -97,17 +101,19 @@
 
 
 							<div class="dropdown">
-								<a href="#" class="action-icon dropdown-toggle"
+								<a href="#" class="action-icon dropdown-toggle-split"
 									data-toggle="dropdown" aria-expanded="true"><i
 									class="fas fa-ellipsis-h"></i></a>
 								<div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-									<a class="dropdown-item" href="edit-doctor.html"><i
+									<a class="dropdown-item" href="#"
+										th:href="@{/partner/doctors/edit/1}"><i
 										class="	fas fa-edit"></i> Edit</a>
 									<button class="dropdown-item" type="button"
 										onclick="deleteRow(this)">
 										<i class="fas fa-trash"></i> Delete
 									</button>
-									<a class="dropdown-item" href="edit-doctor.html"><i
+									<a class="dropdown-item" href="#"
+										th:href="@{/partner/doctors/details/1}"><i
 										class="	fas fa-ellipsis-v"></i> Detail</a>
 
 
@@ -123,19 +129,20 @@
 						<td class="text-center">Hepatologists</td>
 						<td class="text-center">
 
-
 							<div class="dropdown">
-								<a href="#" class="action-icon dropdown-toggle"
+								<a href="#" class="action-icon dropdown-toggle-split"
 									data-toggle="dropdown" aria-expanded="true"><i
 									class="fas fa-ellipsis-h"></i></a>
 								<div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-									<a class="dropdown-item" href="edit-doctor.html"><i
+									<a class="dropdown-item" href="#"
+										th:href="@{/partner/doctors/edit/1}"><i
 										class="	fas fa-edit"></i> Edit</a>
 									<button class="dropdown-item" type="button"
 										onclick="deleteRow(this)">
 										<i class="fas fa-trash"></i> Delete
 									</button>
-									<a class="dropdown-item" href="edit-doctor.html"><i
+									<a class="dropdown-item" href="#"
+										th:href="@{/partner/doctors/details/1}"><i
 										class="	fas fa-ellipsis-v"></i> Detail</a>
 
 
@@ -154,17 +161,19 @@
 
 
 							<div class="dropdown">
-								<a href="#" class="action-icon dropdown-toggle"
+								<a href="#" class="action-icon dropdown-toggle-split"
 									data-toggle="dropdown" aria-expanded="true"><i
 									class="fas fa-ellipsis-h"></i></a>
 								<div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-									<a class="dropdown-item" href="edit-doctor.html"><i
+									<a class="dropdown-item" href="#"
+										th:href="@{/partner/doctors/edit/1}"><i
 										class="	fas fa-edit"></i> Edit</a>
 									<button class="dropdown-item" type="button"
 										onclick="deleteRow(this)">
 										<i class="fas fa-trash"></i> Delete
 									</button>
-									<a class="dropdown-item" href="edit-doctor.html"><i
+									<a class="dropdown-item" href="#"
+										th:href="@{/partner/doctors/details/1}"><i
 										class="	fas fa-ellipsis-v"></i> Detail</a>
 
 
@@ -182,17 +191,19 @@
 
 
 							<div class="dropdown">
-								<a href="#" class="action-icon dropdown-toggle"
+								<a href="#" class="action-icon dropdown-toggle-split"
 									data-toggle="dropdown" aria-expanded="true"><i
 									class="fas fa-ellipsis-h"></i></a>
 								<div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-									<a class="dropdown-item" href="edit-doctor.html"><i
+									<a class="dropdown-item" href="#"
+										th:href="@{/partner/doctors/edit/1}"><i
 										class="	fas fa-edit"></i> Edit</a>
 									<button class="dropdown-item" type="button"
 										onclick="deleteRow(this)">
 										<i class="fas fa-trash"></i> Delete
 									</button>
-									<a class="dropdown-item" href="edit-doctor.html"><i
+									<a class="dropdown-item" href="#"
+										th:href="@{/partner/doctors/details/1}"><i
 										class="	fas fa-ellipsis-v"></i> Detail</a>
 
 
@@ -209,17 +220,19 @@
 
 
 							<div class="dropdown">
-								<a href="#" class="action-icon dropdown-toggle"
+								<a href="#" class="action-icon dropdown-toggle-split"
 									data-toggle="dropdown" aria-expanded="true"><i
 									class="fas fa-ellipsis-h"></i></a>
 								<div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-									<a class="dropdown-item" href="edit-doctor.html"><i
+									<a class="dropdown-item" href="#"
+										th:href="@{/partner/doctors/edit/1}"><i
 										class="	fas fa-edit"></i> Edit</a>
 									<button class="dropdown-item" type="button"
 										onclick="deleteRow(this)">
 										<i class="fas fa-trash"></i> Delete
 									</button>
-									<a class="dropdown-item" href="edit-doctor.html"><i
+									<a class="dropdown-item" href="#"
+										th:href="@{/partner/doctors/details/1}"><i
 										class="	fas fa-ellipsis-v"></i> Detail</a>
 
 
@@ -237,18 +250,22 @@
 
 
 							<div class="dropdown">
-								<a href="#" class="action-icon dropdown-toggle"
+								<a href="#" class="action-icon dropdown-toggle-split"
 									data-toggle="dropdown" aria-expanded="true"><i
 									class="fas fa-ellipsis-h"></i></a>
 								<div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-									<a class="dropdown-item" href="edit-doctor.html"><i
+									<a class="dropdown-item" href="#"
+										th:href="@{/partner/doctors/edit/1}"><i
 										class="	fas fa-edit"></i> Edit</a>
 									<button class="dropdown-item" type="button"
 										onclick="deleteRow(this)">
 										<i class="fas fa-trash"></i> Delete
 									</button>
-									<a class="dropdown-item" href="edit-doctor.html"><i
+									<a class="dropdown-item" href="#"
+										th:href="@{/partner/doctors/details/1}"><i
 										class="	fas fa-ellipsis-v"></i> Detail</a>
+
+
 								</div>
 							</div>
 						</td>
@@ -260,18 +277,22 @@
 						<td class="text-center">Hepatologists</td>
 						<td class="text-center">
 							<div class="dropdown">
-								<a href="#" class="action-icon dropdown-toggle"
+								<a href="#" class="action-icon dropdown-toggle-split"
 									data-toggle="dropdown" aria-expanded="true"><i
 									class="fas fa-ellipsis-h"></i></a>
 								<div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-									<a class="dropdown-item" href="edit-doctor.html"><i
+									<a class="dropdown-item" href="#"
+										th:href="@{/partner/doctors/edit/1}"><i
 										class="	fas fa-edit"></i> Edit</a>
 									<button class="dropdown-item" type="button"
 										onclick="deleteRow(this)">
 										<i class="fas fa-trash"></i> Delete
 									</button>
-									<a class="dropdown-item" href="edit-doctor.html"><i
+									<a class="dropdown-item" href="#"
+										th:href="@{/partner/doctors/details/1}"><i
 										class="	fas fa-ellipsis-v"></i> Detail</a>
+
+
 								</div>
 							</div>
 						</td>

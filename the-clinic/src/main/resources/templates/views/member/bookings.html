@@ -2,14 +2,14 @@
 <html xmlns:th="http://www.thymeleaf.org"
 	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
 	xmlns:sec="http://www.thymeleaf.org/extras/spring-security"
-	layout:decorate="~{/layout/template}">
+	layout:decorate="~{/layout/member-dashboard-template}">
 <head>
 <meta charset="UTF-8">
 <link rel="stylesheet" href="/resources/css/custom.css">
 <title>Bookings</title>
 </head>
 <body>
-	<section layout:fragment="content">
+	<section layout:fragment="dashboard-contents">
 		<h3 class="mx-3 my-3">Booking Lists</h3>
 		<!-- start selection -->
 		<div class="row mx-3 my-2" id="div-select">
@@ -51,8 +51,62 @@
 			</div>
 
 			<div id="selection">
-			<input type="text" class="form-control"  id="datepicker">
-			
+				<input type="text" class="form-control" id="datepicker">
+
+			</div>
+			<div id="selection">
+				<button class="btn btn-primary" id="dropdownMenuButton"
+					type="button" data-toggle="modal" data-target="#myModal-book">
+					<i class="fa fa-plus"></i>&nbsp;Add New Book
+				</button>
+				<div class="modal fade" id="myModal-book">
+					<div class="modal-dialog modal-lg">
+						<div class="modal-content">
+
+							<!-- Modal Header -->
+							<div class="modal-header">
+								<h4 class="modal-title" id="book-header">Add New Booking</h4>
+								<button type="button" class="close" data-dismiss="modal">&times;</button>
+							</div>
+
+							<!-- Modal body -->
+							<div class="modal-body">
+
+								<select name="clinics" class="custom-select mb-3">
+									<option selected>Choose clinic</option>
+									<option value="Chan Thar">Chan Thar</option>
+									<option value="Aung">Aung</option>
+									<option value="OSC">OSC</option>
+									<option value="SSC">SSC</option>
+								</select> <select name="doctors" class="custom-select mb-3">
+									<option selected>Choose doctor</option>
+									<option value="Dr.Thi">Dr.Thi</option>
+									<option value="Dr.Su">Dr.Su</option>
+									<option value="Dr.Htet">Dr.Htet</option>
+									<option value="Dr.Kyawt">Dr.Kyawt</option>
+								</select> <select name="doctors" class="custom-select mb-3">
+									<option selected>Choose Family Member</option>
+									<option value="Daw Mya">Daw Mya</option>
+									<option value="Daw Su">Daw Su</option>
+									<option value="U Soe">U Soe</option>
+									<option value="U Htun">U Htun</option>
+								</select> <input type="text" class="form-control" id="datepicker2">
+
+								<div style="margin-top: 5px;">
+								 <input type='text' class="form-control" id="timepicker2" />
+								</div>
+
+							</div>
+
+							<!-- Modal footer -->
+							<div class="modal-footer">
+								<button type="button" class="btn btn-outline-info"
+									data-dismiss="modal">Book</button>
+							</div>
+
+						</div>
+					</div>
+				</div>
 			</div>
 		</div>
 		<!-- End selection -->
@@ -74,8 +128,7 @@
 				<tbody>
 					<tr>
 						<td>1</td>
-						<td>Daw Mya
-						<span class="label label-success ml-auto badge"
+						<td>Daw Mya <span class="label label-success ml-auto badge"
 							style="background-color: #ef6c00; color: white; float: right; width: 80px;">Pending</span>
 						</td>
 						<td>Chan Thar</td>
@@ -112,7 +165,7 @@
 						<td>Daw Mya <span class="label label-success ml-auto badge"
 							style="background-color: #1b5e20; color: white; float: right; width: 80px;">Comfirmed</span>
 						</td>
-						
+
 						<td>Chan Thar</td>
 						<td>Dr.Thi</td>
 						<td>11/Jun</td>
@@ -126,12 +179,10 @@
 					</tr>
 					<tr>
 						<td>4</td>
-						<td>Daw Mya
-						<span
-						class="label label-success ml-auto badge"
-						style="background-color: #d50000; color: white; float: right; width: 80px;">Canceled</span>
-						
-						
+						<td>Daw Mya <span class="label label-success ml-auto badge"
+							style="background-color: #d50000; color: white; float: right; width: 80px;">Canceled</span>
+
+
 						</td>
 						<td>Chan Thar</td>
 						<td>Dr.Thi</td>
@@ -179,28 +230,57 @@
 				</div>
 			</div>
 		</div>
-		
-		
-		
-		
-     <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
-     <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
-    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
-      <script>
-            $( function() {
-            	
-              $( "#datepicker" ).datepicker({
-                dateFormat : 'dd/mm/yy',
-                changeMonth : true,
-                changeYear : true,
-                yearRange: '-100y:c+nn',
-                monthRage:'undefined',
-                /* maxDate: '-1d', */
-              });
-              
-              $("#datepicker").datepicker({ dateFormat: "dd/mm/yy"}).datepicker("setDate", new Date());
-            } );
-            </script>
+
+
+
+
+		<link rel="stylesheet"
+			href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+		<script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+		<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+		<script>
+			$(function() {
+
+				$("#datepicker").datepicker({
+					dateFormat : 'dd/mm/yy',
+					changeMonth : true,
+					changeYear : true,
+					yearRange : '-100y:c+nn',
+					monthRage : 'undefined',
+				/* maxDate: '-1d', */
+				});
+
+				$("#datepicker").datepicker({
+					dateFormat : "dd/mm/yy"
+				}).datepicker("setDate", new Date());
+			});
+		</script>
+
+		<script>
+			$(function() {
+
+				$("#datepicker2").datepicker({
+					dateFormat : 'dd/mm/yy',
+					changeMonth : true,
+					changeYear : true,
+					yearRange : '-100y:c+nn',
+					monthRage : 'undefined',
+				/* maxDate: '-1d', */
+				});
+
+				$("#datepicker2").datepicker({
+					dateFormat : "dd/mm/yy"
+				}).datepicker("setDate", new Date());
+			});
+		</script>
+
+		<script>
+            $(function () {
+                $('#timepicker2').timepicker({
+                    format: 'LT'
+                });
+            });
+        </script>
 	</section>
 </body>
 </html>

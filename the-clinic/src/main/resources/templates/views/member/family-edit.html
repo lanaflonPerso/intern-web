@@ -2,80 +2,98 @@
 <html xmlns:th="http://www.thymeleaf.org"
 	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
 	xmlns:sec="http://www.thymeleaf.org/extras/spring-security"
-	layout:decorate="~{/layout/template}">
+	layout:decorate="~{/layout/member-dashboard-template}">
 <head>
 <meta charset="UTF-8">
-<title>Edit Family</title>
+<link rel="stylesheet" href="/resources/css/custom.css">
+<title>Family Edit</title>
 </head>
+	 <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <title>Add New Family</title>
+    <link rel="stylesheet" href="custom.css">
+</head>
+
 <body>
-<section layout:fragment="content">
- <!-- container -->
-    <div class="container mt-5">
-        <div class="row  justify-content-md-center">
-            <div class="col col-lg-8 col-lg-offset-2">
-                <h2 class="text-center cusLabel">Add New Family Member</h2>
+<section layout:fragment="dashboard-contents">
+
+    <div class="container mt-5">   
+        <form action="" style="max-width:500px;margin:auto">
+          <h3 class="text-center"><b>New Family Member</b></h3>
+          <div class="input-container mt-4">
                 <form action="">
                     <div class="form-group">
                         <label for="" class="cusLabel">Enter Member Name</label>
-                        <input type="text" class="form-control" placeholder="Enter name">
+                        <input type="text" class="form-control" placeholder="Name" required>
                     </div>
                     <div class="form-group">
                             <label for="" class="cusLabel">Date of Birth</label>
-                             <input type="text" class="form-control" placeholder="dd/MM/yyyy" id="datepicker">
+                             <input type="text" class="form-control"  placeholder="dd/MM/yyyy" id="datepicker" required>
                      </div>
-                      <div class="form-group">
-                        <label for="" class="cusLabel">Enter Relationship</label>
-                        <input type="text" class="form-control" placeholder="Enter Relationship">
-                    </div>
+
                      <div class="form-group">
-                        <label for="" class="cusLabel">Allergic Medicines</label>
-                        <input type="text" class="form-control" placeholder="Enter allergic medicines">
+                        <label for="" class="cusLabel">Enter Relationship</label>
+                        <input type="text" class="form-control" placeholder="Relationship" required>
                     </div>
-                    
+
+                    <div class="form-group">
+                        <label for="" class="cusLabel">Enter Allergic Medicines</label>
+                        <input type="text" class="form-control" placeholder="Name" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="" class="cusLabel">Enter Phone Number</label>
+                        <input type="text" class="form-control" placeholder="Ph No" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="" class="cusLabel">Enter Address</label>
+                        <input type="text" class="form-control" placeholder="Address" required>
+                    </div>
+
                      <div class="row">
                       <div class="col-md-6">
                     <div class="form-group">
                         <p class="cusLabel">Gender</p>
                         <div class="form-check form-check-inline">
-                            <input type="radio" name="gender" class="form-check-input" value="male" checked>
+                            <input type="radio" name="gender" class="form-check-input" value="male" checked required>
                             <label for="" class="form-check-label">Male</label>
                         </div>
                         <div class="form-check form-check-inline">
-                            <input type="radio" name="gender" class="form-check-input" value="female">
+                            <input type="radio" name="gender" class="form-check-input" value="female" required>
                             <label for="" class="form-check-label">Female</label>
-                       </div>
-                       </div>
-                       
-                     
+                        </div>
+                    </div>
                     <div class="form-group">
                         <p class="cusLabel">Blood Type</p>
                         <div class="form-check form-check-inline">
-                            <input type="radio" name="bloodType" class="form-check-input">
+                            <input type="radio" name="bloodType" class="form-check-input" required>
                             <label for="" class="form-check-label">A</label>
                         </div>
                         <div class="form-check form-check-inline">
-                            <input type="radio" name="bloodType" class="form-check-input">
+                            <input type="radio" name="bloodType" class="form-check-input" required>
                             <label for="" class="form-check-label">B</label>
                         </div>
                         <div class="form-check form-check-inline">
-                            <input type="radio" name="bloodType" class="form-check-input">
+                            <input type="radio" name="bloodType" class="form-check-input" required>
                             <label for="" class="form-check-label">O</label>
                         </div>
                         <div class="form-check form-check-inline">
-                            <input type="radio" name="bloodType" class="form-check-input">
+                            <input type="radio" name="bloodType" class="form-check-input" required>
                             <label for="" class="form-check-label">AB</label>
                         </div>
                     </div>
                     </div>
                      </div>
-                   
+                    
+    
                     <button type="reset" class="btn btn-outline-danger float-right mx-2">Cancel</button>
-                    <a href="" class="btn btn-outline-info float-right">Submit</a>
+                    <a href="#" th:href="@{/member/family}" class="btn btn-outline-info float-right">Submit</a>
 
                 </form>
             </div>
         </div>
+
     </div>
+
 
 
 
@@ -91,7 +109,8 @@
      <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
      <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
     <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
-      <script>
+ 
+     <script>
             $( function() {
               $( "#datepicker" ).datepicker({
                 dateFormat : 'dd/mm/yy',
@@ -102,8 +121,8 @@
                 maxDate: '-1d',
               });
             } );
-            </script>
-             
-</section>
+            </script>            
+	
+	</section>
 </body>
 </html>

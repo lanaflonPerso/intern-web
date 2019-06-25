@@ -108,7 +108,7 @@ th {
 #selection{
 	
 	padding-right: 25px;
-	padding-bottom: 10px;
+	
 }
 .btn-delete{
 	padding:0px;
@@ -136,11 +136,17 @@ th {
 }
 
 
-#dropdownMenuButton{
+#selectbox{
 	background-color: #3A85C7;
 	color: white;
+	padding: 5px;
 	
 }
+#selectbox option{
+	background-color: white;
+	color: black;
+}
+
 #table-bookings-thead{
 	width: 100%;
 	background: #3A85C7;

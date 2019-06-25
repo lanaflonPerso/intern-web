@@ -10,43 +10,48 @@
 </head>
 <body>
 	<section layout:fragment="dashboard-contents">
-		<h3 class="mx-3 my-3">Booking Lists</h3>
+		<div>
+			<p style="font-size:20px;" class="ml-3">Bookings</p>
+			
+		</div>
 		<!-- start selection -->
 		<div class="row mx-3 my-2" id="div-select">
 			<div id="selection">
-				<div class="dropdown">
-					<button class="btn dropdown-toggle" type="button"
-						id="dropdownMenuButton" data-toggle="dropdown"
-						aria-haspopup="true" aria-expanded="false">Patient Name</button>
-					<div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-						<a class="dropdown-item" href="#">Daw Mya</a> <a
-							class="dropdown-item" href="#">Daw Hla</a> <a
-							class="dropdown-item" href="#">U Soe</a>
-					</div>
+				
+				<div class="form-group">
+					<select class="form-control mdb-select md-form" name="patientName" id="selectbox">
+
+						<option value="" disabled selected>Choose Patient</option>
+						<option value="Daw Hla">Daw Hla</option>
+						<option value="Daw Thi">Daw Thi</option>
+						<option value="Daw Aye">Daw Aye</option>
+
+					</select>
+				</div>
+			</div>
+
+			<div id="selection">
+				<div class="form-group">
+					<select class="form-control mdb-select md-form" name="doctorName" id="selectbox">
+
+						<option value="" disabled selected>Choose Doctor</option>
+						<option value="Dr.Thi">Dr.Thi</option>
+						<option value="Dr.Khine">Dr.Khine</option>
+						<option value="Dr.Grace">Dr.Grace</option>
+
+					</select>
 				</div>
 			</div>
 			<div id="selection">
-				<div class="dropdown">
-					<button class="btn btn-primary dropdown-toggle" type="button"
-						id="dropdownMenuButton" data-toggle="dropdown"
-						aria-haspopup="true" aria-expanded="false">Clinic Name</button>
-					<div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-						<a class="dropdown-item" href="#">Shwe La Min</a> <a
-							class="dropdown-item" href="#">Chan Thar</a> <a
-							class="dropdown-item" href="#">Aung</a>
-					</div>
-				</div>
-			</div>
-			<div id="selection">
-				<div class="dropdown">
-					<button class="btn btn-primary dropdown-toggle" type="button"
-						id="dropdownMenuButton" data-toggle="dropdown"
-						aria-haspopup="true" aria-expanded="false">Doctor Name</button>
-					<div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-						<a class="dropdown-item" href="#">Dr.Thi</a> <a
-							class="dropdown-item" href="#">Dr.Khine</a> <a
-							class="dropdown-item" href="#">Dr.Grace</a>
-					</div>
+				<div class="form-group">
+					<select class="form-control mdb-select md-form" name="clinicName" id="selectbox">
+
+						<option value="" disabled selected>Choose Clinic</option>
+						<option value="Chan Thar">Chan Thar</option>
+						<option value="Aung">Aung</option>
+						<option value="OSC">OSC</option>
+
+					</select>
 				</div>
 			</div>
 
@@ -54,58 +59,7 @@
 				<input type="text" class="form-control" id="datepicker">
 
 			</div>
-			<div id="selection">
-				<button class="btn btn-primary" id="dropdownMenuButton"
-					type="button" data-toggle="modal" data-target="#myModal-book">
-					<i class="fa fa-plus"></i>&nbsp;Add New Book
-				</button>
-				<div class="modal fade" id="myModal-book">
-					<div class="modal-dialog modal-lg">
-						<div class="modal-content">
-
-							<!-- Modal Header -->
-							<div class="modal-header">
-								<h4 class="modal-title" id="book-header">Add New Booking</h4>
-								<button type="button" class="close" data-dismiss="modal">&times;</button>
-							</div>
-
-							<!-- Modal body -->
-							<div class="modal-body">
-
-								<select name="clinics" class="custom-select mb-3">
-									<option selected>Choose clinic</option>
-									<option value="Chan Thar">Chan Thar</option>
-									<option value="Aung">Aung</option>
-									<option value="OSC">OSC</option>
-									<option value="SSC">SSC</option>
-								</select> <select name="doctors" class="custom-select mb-3">
-									<option selected>Choose doctor</option>
-									<option value="Dr.Thi">Dr.Thi</option>
-									<option value="Dr.Su">Dr.Su</option>
-									<option value="Dr.Htet">Dr.Htet</option>
-									<option value="Dr.Kyawt">Dr.Kyawt</option>
-								</select> <select name="doctors" class="custom-select mb-3">
-									<option selected>Choose Family Member</option>
-									<option value="Daw Mya">Daw Mya</option>
-									<option value="Daw Su">Daw Su</option>
-									<option value="U Soe">U Soe</option>
-									<option value="U Htun">U Htun</option>
-								</select> <input type="text" class="form-control" id="datepicker2">
-
-								<input type="text" class="form-control" id="time">
-
-							</div>
-
-							<!-- Modal footer -->
-							<div class="modal-footer">
-								<button type="button" class="btn btn-outline-info"
-									data-dismiss="modal">Book</button>
-							</div>
-
-						</div>
-					</div>
-				</div>
-			</div>
+			
 		</div>
 		<!-- End selection -->
 		<div class="row mx-3">
@@ -125,58 +79,58 @@
 				</thead>
 				<tbody>
 					<tr>
-						<td>1</td>
+						<td class="text-center">1</td>
 						<td>Daw Mya <span class="label label-success ml-auto badge"
 							style="background-color: #ef6c00; color: white; float: right; width: 80px;">Pending</span>
 						</td>
 						<td>Chan Thar</td>
 						<td>Dr.Thi</td>
-						<td>11/Jun</td>
+						<td class="text-center">11/Jun</td>
 						<td>2:00 pm to 3:00pm</td>
 						<td class="text-center">
 							<button type="button" class="btn btn-delete" data-toggle="modal"
 								data-target="#myModal">
-								<i id="book-cancel-1" class="fa fa-trash-o fa-lg"></i>
+								<i id="book-cancel" class="fal fa-trash-alt fa-lg"></i>
 							</button>
 						</td>
 
 					</tr>
 					<tr>
-						<td>2</td>
+						<td class="text-center">2</td>
 						<td>Daw Hla <span class="label label-success ml-auto badge"
 							style="background-color: #ef6c00; color: white; float: right; width: 80px;">Pending</span>
 						</td>
 						<td>Chan Thar</td>
 						<td>Dr.Thi</td>
-						<td>11/Jun</td>
+						<td class="text-center">11/Jun</td>
 						<td>2:00 pm to 3:00pm</td>
 						<td class="text-center">
 							<button type="button" class="btn btn-delete" data-toggle="modal"
 								data-target="#myModal">
-								<i id="book-cancel" class="fa fa-trash-o fa-lg"></i>
+								<i id="book-cancel" class="fal fa-trash-alt fa-lg"></i>
 							</button>
 						</td>
 
 					</tr>
 					<tr>
-						<td>3</td>
+						<td class="text-center">3</td>
 						<td>Daw Mya <span class="label label-success ml-auto badge"
 							style="background-color: #1b5e20; color: white; float: right; width: 80px;">Comfirmed</span>
 						</td>
 
 						<td>Chan Thar</td>
 						<td>Dr.Thi</td>
-						<td>11/Jun</td>
+						<td class="text-center">11/Jun</td>
 						<td>2:00 pm to 3:00pm</td>
 						<td class="text-center">
 							<button type="button" class="btn btn-delete" data-toggle="modal"
 								data-target="#myModal">
-								<i id="book-cancel" class="fa fa-trash-o fa-lg"></i>
+								<i id="book-cancel" class="fal fa-trash-alt fa-lg"></i>
 							</button>
 						</td>
 					</tr>
 					<tr>
-						<td>4</td>
+						<td class="text-center">4</td>
 						<td>Daw Mya <span class="label label-success ml-auto badge"
 							style="background-color: #d50000; color: white; float: right; width: 80px;">Canceled</span>
 
@@ -184,28 +138,28 @@
 						</td>
 						<td>Chan Thar</td>
 						<td>Dr.Thi</td>
-						<td>11/Jun</td>
+						<td class="text-center">11/Jun</td>
 						<td>2:00 pm to 3:00pm</td>
 						<td class="text-center">
 							<button type="button" class="btn btn-delete" data-toggle="modal"
 								data-target="#myModal">
-								<i id="book-cancel" class="fa fa-trash-o fa-lg"></i>
+								<i id="book-cancel" class="fal fa-trash-alt fa-lg"></i>
 							</button>
 						</td>
 					</tr>
 					<tr>
-						<td>5</td>
+						<td class="text-center">5</td>
 						<td>Daw Mya<span class="label label-success ml-auto badge"
 							style="background-color: #1b5e20; color: white; float: right; width: 80px;">Comfirmed</span>
 						</td>
 						<td>Chan Thar</td>
 						<td>Dr.Thi</td>
-						<td>11/Jun</td>
+						<td class="text-center">11/Jun</td>
 						<td>2:00 pm to 3:00pm</td>
 						<td class="text-center">
 							<button type="button" class="btn btn-delete" data-toggle="modal"
 								data-target="#myModal">
-								<i id="book-cancel" class="fa fa-trash-o fa-lg"></i>
+								<i id="book-cancel" class="fal fa-trash-alt fa-lg"></i>
 							</button>
 						</td>
 					</tr>
@@ -273,11 +227,13 @@
 		</script>
 
 		<script>
-		// Time Picker Initialization
-		$('#time').bootstrapMaterialDatePicker({ date: false });
-        </script>
-        
-        
+			// Time Picker Initialization
+			$('#time').bootstrapMaterialDatePicker({
+				date : false
+			});
+		</script>
+
+
 	</section>
 </body>
 </html>

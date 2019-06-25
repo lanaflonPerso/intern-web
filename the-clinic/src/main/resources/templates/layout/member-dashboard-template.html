@@ -179,17 +179,9 @@ transform: translateX(-50%);
 
 				<div class="nav">
 
-					<a href="#" class="btn w-100 text-left nav-link active"> 
+					<a href="#" th:href="@{/home}" class="btn w-100 text-left nav-link active"> 
 						<i class="fal fa-tachometer-alt"></i>&nbsp;Dashboard
 					</a>
-					
-					<a href="#" class="btn w-100 text-left nav-link"> <i
-						class="fal fa-hospital"></i>&nbsp;Search Clinics
-					</a> 
-					
-					<a href="#" class="btn w-100 text-left nav-link"> <i
-						class="fal fa-search"></i>&nbsp;Search Doctors
-					</a> 
 					
 					<a href="#member-list" class="btn w-100 text-left nav-link dropdown-toggle-split"
 						data-toggle="collapse" aria-expanded="false"> <i
@@ -209,24 +201,11 @@ transform: translateX(-50%);
 							</a>
 						</li>
 					</ul>
-					<a href="#booking-list" class="btn w-100 text-left nav-link dropdown-toggle-split"
-					data-toggle="collapse" aria-expanded="false"> <i
-						class="fal fa-book"></i>&nbsp;Bookings&nbsp;&nbsp;<i
-						class="fal fa-angle-right ml-auto"></i>
+					<a href="#" th:href="@{/member/bookings}" class="btn w-100 text-left nav-link"> <i
+						class="fal fa-book"></i>&nbsp;Bookings&nbsp;&nbsp;
 					</a> 
 					
-					<ul class="collapse list-unstyled w-100" id="booking-list">
-						<li class="ml-3">
-							<a href="#" class="text-left btn w-100 nav-link"> 
-								<i class="fal fa-calendar-plus"></i>&nbsp;&nbsp;Add New Book
-							</a>
-						</li>
-						<li class="ml-3">
-							<a href="#" th:href="@{/member/bookings}" class="text-left btn w-100 nav-link">
-								<i class="fal fa-list-alt"></i>&nbsp;&nbsp;Booking Lists
-							</a>
-						</li>
-					</ul>
+					
 					
 
 
@@ -246,7 +225,8 @@ transform: translateX(-50%);
 		<div class="main-panel" id="main-panel">
 
 			<nav id="part-d-nav"
-				class="navbar sticky-top navbar-default navbar-fixed shadow">
+				class="navbar sticky-top navbar-default navbar-fixed shadow my-navbar">
+
 
 
 				<div class="btn ml-auto mr-auto text-center" id="sidebarCollapsse"
@@ -256,7 +236,7 @@ transform: translateX(-50%);
 
 
 
-				<span class="nav-app-name">Home</span>
+				<a th:href="@{/}" class="btn nav-app-name stretched-link"><span><i class="fab fa-pagelines mr-auto" style="font-size:28px; color:#5aba4a"></i>The Clinic</span></a>
 
 
 				<div class="btn mr-auto text-left" id="sidebarCollapse"

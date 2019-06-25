@@ -199,12 +199,12 @@ transform: translateX(-50%);
 
 					<ul class="collapse list-unstyled w-100" id="member-list">
 						<li class="ml-3">
-							<a href="#" class="text-left btn w-100 nav-link"> 
+							<a href="#" th:href="@{/member/family/edit/1}"class="text-left btn w-100 nav-link"> 
 								<i class="fal fa-user-plus"></i>&nbsp;&nbsp;Add New Member
 							</a>
 						</li>
 						<li class="ml-3">
-							<a href="#" class="text-left btn w-100 nav-link">
+							<a href="#" th:href="@{/member/family/1}" class="text-left btn w-100 nav-link">
 								<i class="fal fa-list-alt"></i>&nbsp;&nbsp;Member List
 							</a>
 						</li>
@@ -222,7 +222,7 @@ transform: translateX(-50%);
 							</a>
 						</li>
 						<li class="ml-3">
-							<a href="#" class="text-left btn w-100 nav-link">
+							<a href="#" th:href="@{/member/bookings}" class="text-left btn w-100 nav-link">
 								<i class="fal fa-list-alt"></i>&nbsp;&nbsp;Booking Lists
 							</a>
 						</li>

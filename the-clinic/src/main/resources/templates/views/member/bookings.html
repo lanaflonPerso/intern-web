@@ -92,9 +92,7 @@
 									<option value="U Htun">U Htun</option>
 								</select> <input type="text" class="form-control" id="datepicker2">
 
-								<div style="margin-top: 5px;">
-								 <input type='text' class="form-control" id="timepicker2" />
-								</div>
+								<input type="text" class="form-control" id="time">
 
 							</div>
 
@@ -275,12 +273,11 @@
 		</script>
 
 		<script>
-            $(function () {
-                $('#timepicker2').timepicker({
-                    format: 'LT'
-                });
-            });
+		// Time Picker Initialization
+		$('#time').bootstrapMaterialDatePicker({ date: false });
         </script>
+        
+        
 	</section>
 </body>
 </html>

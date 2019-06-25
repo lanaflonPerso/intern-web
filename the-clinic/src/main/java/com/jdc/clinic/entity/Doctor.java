@@ -34,6 +34,9 @@ public class Doctor implements Serializable {
 	private List<String> degrees;
 
 	@ElementCollection
+	private List<String> phones;
+
+	@ElementCollection
 	private List<String> specialities;
 
 	private Gender gender;

@@ -35,7 +35,7 @@
 								class="m-profile-img-sidebar" /></td>
 
 							<td>
-								<h6>Htet Aung Lin</h6> <span style="color: #DEDEDE">Partner</span>
+								<h6 th:text="${session.loginUser.name}"></h6> <span style="color: #DEDEDE" th:text="${session.loginUser.role}"></span>
 
 							</td>
 
@@ -122,7 +122,7 @@
 
 					<a class="btn text-right dropdown-toggle-split"
 						data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-						<span class="d-md-inline d-none">Htet Aung Lin</span> <img alt="no image"
+						<span class="d-md-inline d-none" th:text="${session.loginUser.name}"></span> <img alt="no image"
 						class="m-profile-img" th:src="@{/resources/img/avatar5.png}" />
 					</a>
 

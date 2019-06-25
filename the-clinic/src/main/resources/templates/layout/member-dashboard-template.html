@@ -167,7 +167,7 @@ transform: translateX(-50%);
 								class="m-profile-img-sidebar" /></td>
 
 							<td>
-								<h5>Grace</h5> <span style="color: #DEDEDE;"><b>Member</b></span>
+								<h6 th:text="${session.loginUser.name}"></h6> <span style="color: #DEDEDE" th:text="${session.loginUser.role}"></span>
 
 							</td>
 
@@ -271,7 +271,7 @@ transform: translateX(-50%);
 						data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
 						<img alt="no image"
 						class="m-profile-img" th:src="@{/resources/img/girl.png}" />
-						<span class="username"><b>Grace</b></span> 
+						<span class="username"><b th:text="${session.loginUser.name}">Grace</b></span> 
 					</a>
 
 					<div id="drop-menu" class="dropdown-menu dropdown-menu-right">

@@ -17,7 +17,7 @@
 <body>
 <section layout:fragment="dashboard-contents">
 
-    <div class="container mt-5">   
+    <div class="card-center mt-5">   
         <form action="" style="max-width:500px;margin:auto">
           <h3 class="text-center"><b>New Family Member</b></h3>
           <div class="input-container mt-4">
@@ -28,7 +28,7 @@
                     </div>
                     <div class="form-group">
                             <label for="" class="cusLabel">Date of Birth</label>
-                             <input type="text" class="form-control"  placeholder="dd/MM/yyyy" id="datepicker" required>
+                             <input type="text" class="form-control"  placeholder="dd/MM/yyyy" id="datepicker1"  required>
                      </div>
 
                      <div class="form-group">
@@ -86,7 +86,7 @@
                     
     
                     <button type="reset" class="btn btn-outline-danger float-right mx-2">Cancel</button>
-                    <a href="#" th:href="@{/member/family}" class="btn btn-outline-info float-right">Submit</a>
+                    <a href="#" th:href="@{/member/family/1}" class="btn btn-outline-info float-right">Submit</a>
 
                 </form>
             </div>
@@ -100,19 +100,13 @@
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
         integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous">
     </script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
-        integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous">
-    </script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
-        integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous">
-    </script>
      <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
      <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
     <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
  
      <script>
             $( function() {
-              $( "#datepicker" ).datepicker({
+              $( "#datepicker1" ).datepicker({
                 dateFormat : 'dd/mm/yy',
                 changeMonth : true,
                 changeYear : true,

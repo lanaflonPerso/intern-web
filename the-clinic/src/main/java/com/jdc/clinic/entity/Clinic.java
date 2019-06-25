@@ -20,7 +20,7 @@ import lombok.NoArgsConstructor;
 @Data
 @NoArgsConstructor
 public class Clinic implements Serializable {
-	
+
 	private static final long serialVersionUID = 1L;
 
 	@Id
@@ -35,7 +35,7 @@ public class Clinic implements Serializable {
 
 	@ElementCollection
 	private List<String> mails;
-	
+
 	@Embedded
 	private SecurityInfo security;
 
@@ -44,5 +44,8 @@ public class Clinic implements Serializable {
 
 	@OneToOne
 	private Address addrress;
+
+	@OneToOne
+	private OpenTime openTime;
 
 }

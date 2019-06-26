@@ -4,66 +4,102 @@
 	xmlns:sec="http://www.thymeleaf.org/extras/spring-security"
 	layout:decorate="~{/layout/member-dashboard-template}">
 <head>
-<meta charset="UTF-8">
-<link rel="stylesheet" href="/resources/css/custom.css">
-<title>Family Edit</title>
+<meta charset="ISO-8859-1">
+<title>New Family Member</title>
 </head>
-	 <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
-        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-    <title>Add New Family</title>
-    <link rel="stylesheet" href="custom.css">
-</head>
-
 <body>
-<section layout:fragment="dashboard-contents">
+	<div layout:fragment="dashboard-contents">
 
-    <div class="card-center mt-5">   
-        <form action="" style="max-width:500px;margin:auto">
-          <h3 class="text-center"><b>New Family Member</b></h3>
-          <div class="input-container mt-4">
-                <form action="">
-                    <div class="form-group">
-                        <label for="" class="cusLabel">Enter Member Name</label>
-                        <input type="text" class="form-control" placeholder="Name" required>
-                    </div>
-                    <div class="form-group">
-                            <label for="" class="cusLabel">Date of Birth</label>
-                             <input type="text" class="form-control"  placeholder="dd/MM/yyyy" id="datepicker1"  required>
-                     </div>
+		<form method="get" class="form mt-2">
+		
+			<div class="card">
 
-                     <div class="form-group">
-                        <label for="" class="cusLabel">Enter Relationship</label>
-                        <input type="text" class="form-control" placeholder="Relationship" required>
-                    </div>
+				<div class="card-header bg-transparent">
+				
+					<div style="font-size: 20px;" class="ml-1">New Family Member</div>
+					
+					<div class="text-muted">Please fill your family member information</div>
+					
+				</div><!-- card header -->
 
-                    <div class="form-group">
-                        <label for="" class="cusLabel">Enter Allergic Medicines</label>
-                        <input type="text" class="form-control" placeholder="Name" required>
-                    </div>
-                    <div class="form-group">
-                        <label for="" class="cusLabel">Enter Phone Number</label>
-                        <input type="text" class="form-control" placeholder="Ph No" required>
-                    </div>
-                    <div class="form-group">
-                        <label for="" class="cusLabel">Enter Address</label>
-                        <input type="text" class="form-control" placeholder="Address" required>
-                    </div>
+				<div class="card-body">
+				
+					<div class="container-fluid">
+						
+						<div class="row">
+								
+							<div class="col-12 col-md-6">
+								
+								<div class="form-group">
+									
+									<label>Enter member name</label>
+									<input type="text" placeholder="Name" name="name" class="form-control" required>
+									
+								</div><!-- name form -->
+								
+								
+								<div class="form-group">
+									
+									<label>Enter date of birth</label>
+                                    <input type="text" class="form-control"  placeholder="dd/MM/yyyy" id="datepicker1"  required>
+                              	
+								</div><!-- DOB form -->
+								
+								<div class="form-group">
+									
+                                    <label>Enter relationship</label>
+                                    <input type="text" placeholder="Relationship" name="relationship" class="form-control" required>
+									
+								</div><!-- Relationship form -->
+								
+								<div class="form-group">
+									
+									<label>Enter allergic medicines</label>
+									<textarea class="form-control" placeholder="Allergic medicines" required></textarea>
+									
+								</div><!-- Allergic form -->
+								
+							</div><!-- first column -->
+							
+							<div class="col-12 col-md-6">
 
-                     <div class="row">
-                      <div class="col-md-6">
-                    <div class="form-group">
-                        <p class="cusLabel">Gender</p>
-                        <div class="form-check form-check-inline">
-                            <input type="radio" name="gender" class="form-check-input" value="male" checked required>
-                            <label for="" class="form-check-label">Male</label>
-                        </div>
-                        <div class="form-check form-check-inline">
-                            <input type="radio" name="gender" class="form-check-input" value="female" required>
-                            <label for="" class="form-check-label">Female</label>
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        <p class="cusLabel">Blood Type</p>
+								
+								<div class="form-group">
+									
+										<label>Enter phone number</label>
+										<div class="phone-list">
+											<div class="phone-input">
+												<input type="tel" placeholder="Phone" name="phone1" class="form-control" required/>
+											</div>
+										</div>
+										<button type="button" class="btn mt-1 form-control btn-outline-info btn-add-phone" style="border-style: dashed;"><span><i class="far fa-plus"></i></span> Add New</button>
+										
+									
+								</div><!-- phone form -->
+								
+								<div class="form-group">
+									
+									<label>Enter Address</label>
+									<textarea class="form-control" placeholder="Address" required></textarea>
+									
+								</div><!-- Address form -->
+                                
+								<div class="row">
+								<div class="col-md-6">
+                                <div class="form-group">
+                                  <p>Gender</p>
+                                  
+                                  <div class="form-check form-check-inline">
+                                  <input type="radio" name="gender" class="form-check-input" value="male" checked required>
+                                  <label for="" class="form-check-label">Male</label>
+                              </div>
+                                <div class="form-check form-check-inline">
+                                <input type="radio" name="gender" class="form-check-input" value="female" required>
+                                <label for="" class="form-check-label">Female</label>
+                              </div>
+                           </div>
+                   <!--  <div class="form-group"> -->
+                        <p>Blood Type</p>
                         <div class="form-check form-check-inline">
                             <input type="radio" name="bloodType" class="form-check-input" required>
                             <label for="" class="form-check-label">A</label>
@@ -82,30 +118,60 @@
                         </div>
                     </div>
                     </div>
-                     </div>
-                    
-    
-                    <button type="reset" class="btn btn-outline-danger float-right mx-2">Cancel</button>
-                    <a href="#" th:href="@{/member/family/1}" class="btn btn-outline-info float-right">Submit</a>
+                 	
+							</div><!-- second column -->
+						
+						</div><!-- row -->
+						
+					</div><!-- container-fluid -->
+				
+				</div><!-- card body -->
 
-                </form>
-            </div>
-        </div>
+				<div class="card-footer text-right bg-transparent">
+					
+					<!-- <input type="submit" value="Submit" id="create-clinic" class="btn btn-outline-success"/> -->
+					<a class="btn btn-outline-success" href="#" th:href="@{/member/family/1}" role="button">Submit</a>
+				</div><!-- card footer -->
 
-    </div>
+			</div><!-- card -->
+			
+		</form>
+		<script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+        <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+         <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+		
+		<script>
 
+		$(document.body).on('click','.btn-remove-phone',function(){
+			$(this).closest('.phone-input').remove();
+		});
+		
+		$('.btn-add-phone').on('click', function() {
+			var index = $('.phone-input').length + 1;
+			$('.phone-list').append(''+
+					'<div class="container-fluid phone-input">'+
+					'<div class="row">'+
+					'<input type="tel" placeholder="Phone" name="phone'+index+'" class="mt-1 col-11 form-control"/>'+
+					'<button type="button" class="ml-1 btn btn-outline-danger mt-1 btn-remove-phone"><i class="fal fa-times"></i></button>'+
+					'</div></div>'
+					);
+		});
 
-
-
-    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
-        integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous">
-    </script>
-     <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
-     <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
-    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
- 
-     <script>
-            $( function() {
+		$(document.body).on('click','.btn-remove-address',function(){
+			$(this).closest('.address-input').remove();
+		});
+		
+		$('.btn-add-address').on('click', function() {
+			var index = $('.address-input').length + 1;
+			$('.address-list').append(''+
+					'<div class="container-fluid address-input">'+
+					'<div class="row">'+
+					'<input type="email" placeholder="Address" name="address'+index+'" class="mt-1 col-11 form-control"/>'+
+					'<button type="button" class="ml-1 btn btn-outline-danger mt-1 btn-remove-address"><i class="fal fa-times"></i></button>'+
+					'</div></div>'
+					);
+		});
+        $( function() {
               $( "#datepicker1" ).datepicker({
                 dateFormat : 'dd/mm/yy',
                 changeMonth : true,
@@ -115,8 +181,7 @@
                 maxDate: '-1d',
               });
             } );
-            </script>            
-	
-	</section>
+		</script>	
+	</div>
 </body>
 </html>

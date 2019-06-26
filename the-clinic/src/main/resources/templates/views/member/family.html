@@ -23,7 +23,7 @@ body {
   width: 350px;
   height: 300px;
   perspective: 1000px;
-  margin-bottom: 30px;
+  margin-bottom: 40px;
 
 }
 
@@ -73,15 +73,29 @@ body {
 <div class="card-columns">
 
   <!-- Card-1 -->
- <div class="flip-card"> 
+ <div class="flip-card" id="HmuTable"> 
   <div class="flip-card-inner">
     <div class="flip-card-front">
       <img th:src="@{/resources/img/greenman.png}" alt="Avatar" style="width:150px;height:150px; margin-top: 30px;">
       <h4><b>Mg Kyaw Kyaw</b></h4>
     <p>Nephew</p> 
     </div>
+    
     <div class="flip-card-back">
         <h3>Details</h3> 
+        <div class="dropdown">
+        <a href="#" class="action-icon dropdown-toggle-split" data-toggle="dropdown" aria-expanded="true">
+        <i class="fas fa-ellipsis-h"></i></a>
+		<div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+		 <a class="dropdown-item" href="#"
+			th:href="@{/member/family/edit/1}">
+			<i class="	fas fa-edit"></i> Edit</a>
+				<button class="dropdown-item" type="button" onclick="deleteRow(this)">
+					<i class="fas fa-trash"></i> Delete
+				</button>
+		</div>
+	</div>
+	
       <div class="card" style="background-color: #18959ebd; width: 350px; height: auto ">
         <div class="card-body text-left">
           <table>
@@ -142,6 +156,18 @@ body {
     </div>
     <div class="flip-card-back">
       <h3>Details</h3> 
+       <div class="dropdown">
+        <a href="#" class="action-icon dropdown-toggle-split" data-toggle="dropdown" aria-expanded="true">
+        <i class="fas fa-ellipsis-h"></i></a>
+		<div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+		 <a class="dropdown-item" href="#"
+			th:href="@{/member/family/edit/1}">
+			<i class="	fas fa-edit"></i> Edit</a>
+				<button class="dropdown-item" type="button" onclick="deleteRow(this)">
+					<i class="fas fa-trash"></i> Delete
+				</button>
+		</div>
+	</div>
       <div class="card" style="background-color: #18959ebd; width: 350px; height: auto ">
         <div class="card-body text-left">
           <table>
@@ -202,6 +228,18 @@ body {
     </div>
     <div class="flip-card-back" >
       <h3>Details</h3> 
+       <div class="dropdown">
+        <a href="#" class="action-icon dropdown-toggle-split" data-toggle="dropdown" aria-expanded="true">
+        <i class="fas fa-ellipsis-h"></i></a>
+		<div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+		 <a class="dropdown-item" href="#"
+			th:href="@{/member/family/edit/1}">
+			<i class="	fas fa-edit"></i> Edit</a>
+				<button class="dropdown-item" type="button" onclick="deleteRow(this)">
+					<i class="fas fa-trash"></i> Delete
+				</button>
+		</div>
+	</div>
       							
       <div class="card" style="background-color: #18959ebd; width: 350px; height: auto ">
         <div class="card-body text-left">
@@ -263,6 +301,19 @@ body {
       </div>
       <div class="flip-card-back">
         <h3>Details</h3> 
+         <div class="dropdown">
+        <a href="#" class="action-icon dropdown-toggle-split" data-toggle="dropdown" aria-expanded="true">
+        <i class="fas fa-ellipsis-h"></i></a>
+		<div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+		 <a class="dropdown-item" href="#"
+			th:href="@{/member/family/edit/1}">
+			<i class="	fas fa-edit"></i> Edit</a>
+				<button class="dropdown-item" type="button" onclick="deleteRow(this)">
+					<i class="fas fa-trash"></i> Delete
+				</button>
+		</div>
+	</div>
+        
         <div class="card" style="background-color: #18959ebd; width: 350px; height: auto ">
           <div class="card-body text-left">
             <table>
@@ -323,6 +374,18 @@ body {
       </div>
       <div class="flip-card-back">
         <h3>Details</h3> 
+         <div class="dropdown">
+        <a href="#" class="action-icon dropdown-toggle-split" data-toggle="dropdown" aria-expanded="true">
+        <i class="fas fa-ellipsis-h"></i></a>
+		<div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+		 <a class="dropdown-item" href="#"
+			th:href="@{/member/family/edit/1}">
+			<i class="	fas fa-edit"></i> Edit</a>
+				<button class="dropdown-item" type="button" onclick="deleteRow(this)">
+					<i class="fas fa-trash"></i> Delete
+				</button>
+		</div>
+	</div>
         <div class="card" style="background-color: #18959ebd; width: 350px; height: auto ">
           <div class="card-body text-left">
             <table>
@@ -383,6 +446,18 @@ body {
       </div>
       <div class="flip-card-back">
         <h3>Details</h3> 
+         <div class="dropdown">
+        <a href="#" class="action-icon dropdown-toggle-split" data-toggle="dropdown" aria-expanded="true">
+        <i class="fas fa-ellipsis-h"></i></a>
+		<div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+		 <a class="dropdown-item" href="#"
+			th:href="@{/member/family/edit/1}">
+			<i class="	fas fa-edit"></i> Edit</a>
+				<button class="dropdown-item" type="button" onclick="deleteRow(this)">
+					<i class="fas fa-trash"></i> Delete
+				</button>
+		</div>
+	</div>
         <div class="card" style="background-color: #18959ebd; width: 350px; height: auto ">
           <div class="card-body text-left">
             <table>
@@ -444,6 +519,18 @@ body {
       </div>
       <div class="flip-card-back">
         <h3>Details</h3> 
+         <div class="dropdown">
+        <a href="#" class="action-icon dropdown-toggle-split" data-toggle="dropdown" aria-expanded="true">
+        <i class="fas fa-ellipsis-h"></i></a>
+		<div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+		 <a class="dropdown-item" href="#"
+			th:href="@{/member/family/edit/1}">
+			<i class="	fas fa-edit"></i> Edit</a>
+				<button class="dropdown-item" type="button" onclick="deleteRow(this)">
+					<i class="fas fa-trash"></i> Delete
+				</button>
+		</div>
+	</div>
         <div class="card" style="background-color: #18959ebd; width: 350px; height: auto ">
           <div class="card-body text-left">
             <table>
@@ -503,7 +590,19 @@ body {
       <p>Sister</p> 
       </div>
       <div class="flip-card-back">
-        <h3>Details</h3> 
+        <h3>Details</h3>
+         <div class="dropdown">
+        <a href="#" class="action-icon dropdown-toggle-split" data-toggle="dropdown" aria-expanded="true">
+        <i class="fas fa-ellipsis-h"></i></a>
+		<div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+		 <a class="dropdown-item" href="#"
+			th:href="@{/member/family/edit/1}">
+			<i class="	fas fa-edit"></i> Edit</a>
+				<button class="dropdown-item" type="button" onclick="deleteRow(this)">
+					<i class="fas fa-trash"></i> Delete
+				</button>
+		</div>
+	</div> 
         <div class="card" style="background-color: #18959ebd; width: 350px; height: auto ">
           <div class="card-body text-left">
             <table>
@@ -564,6 +663,18 @@ body {
       </div>
       <div class="flip-card-back">
         <h3>Details</h3> 
+         <div class="dropdown">
+        <a href="#" class="action-icon dropdown-toggle-split" data-toggle="dropdown" aria-expanded="true">
+        <i class="fas fa-ellipsis-h"></i></a>
+		<div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+		 <a class="dropdown-item" href="#"
+			th:href="@{/member/family/edit/1}">
+			<i class="	fas fa-edit"></i> Edit</a>
+				<button class="dropdown-item" type="button" onclick="deleteRow(this)">
+					<i class="fas fa-trash"></i> Delete
+				</button>
+		</div>
+	</div>
         <div class="card" style="background-color: #18959ebd; width: 350px; height: auto ">
           <div class="card-body text-left">
             <table>
@@ -652,6 +763,11 @@ $(document).ready(function() {
   $(".flip-card-back").css("height", highest);
   $(absoluteSide).css("position", "absolute");
 });
+
+function deleteCard(r) {
+	var i = r.parentNode.parentNode.parentNode.parentNode.cardIndex;
+	document.getElementById("HmuTable").deleteCard(i);
+}
 
 </script>
 

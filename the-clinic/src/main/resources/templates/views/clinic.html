@@ -9,15 +9,20 @@
 </head>
 <body>
 	<div layout:fragment="clinic-details-content">
-		<div class="row d-flex justify-content-center">
-			<ul class="nav nav-pills" role="tablist">
-				<li><a class="nav-link active" aria-selected="false">Overview</a></li>
-				<li><a th:href="@{/clinics/{id}/doctors(id=${clinicID})}"
-					class="nav-link" aria-selected="false">Doctors</a></li>
-				<li><a th:href="@{/clinics/{id}/schedules(id=${clinicID})}"
-					class="nav-link" aria-selected="false">Schedule</a></li>
+		<div class="d-flex justify-content-center">
+			<ul class="nav nav-pills mb-3" id="pills-tab" role="tablist">
+  					<li class="nav-item">
+    					<a class="nav-link active" href="" id="pills-home-tab" aria-selected="false">Overview</a>
+  					</li>
+  					<li class="nav-item">
+  						<a class="nav-link" id="pills-profile-tab"  href="#pills-profile" role="tab" aria-controls="pills-profile" aria-selected="false">Doctors</a>
+  					</li>
+  					<li class="nav-item">
+  						<a class="nav-link" id="pills-contact-tab" th:href="@{/clinics/1/schedules}" role="tab" aria-controls="pills-contact" aria-selected="false">Schedules</a>
+  					</li>
 			</ul>
 		</div>
+	
 		<!-- <hr> -->
 		<div class="tab-content">
 			<div id="overview">
@@ -74,57 +79,59 @@
 						</table>
 					</div>
 					<div class="col-lg-6 col-12">
-						OPENING TIME
-						<hr>
-						<div class="open-time-group gray-txt">
-							<div class="card gray-txt height-card p-2 m-1">
-								<div class="red-path">
-									<i class="fa fa-calendar-minus-o" aria-hidden="true"
-										style='font-size: 24px'></i>&nbsp;&nbsp;Sun&#x00009;: Close
-								</div>
-							</div>
-							<div class="card gray-txt height-card p-2 m-1">
-								<div class="green-path">
-									<i class="fa fa-calendar-check-o" aria-hidden="true"
-										style='font-size: 24px'></i>&nbsp;&nbsp;Mon&#x00009;: 09:00 am
-									to 12:00 pm
-								</div>
-							</div>
-							<div class="card gray-txt height-card p-2 m-1">
-								<div class="green-path">
-									<i class="fa fa-calendar-check-o" aria-hidden="true"
-										style='font-size: 24px'></i>&nbsp;&nbsp;Tue&#x00009;: 09:00 am
-									to 12:00 pm
-								</div>
-							</div>
-							<div class="card gray-txt height-card p-2 m-1">
-								<div class="green-path">
-									<i class="fa fa-calendar-check-o" aria-hidden="true"
-										style='font-size: 24px'></i>&nbsp;&nbsp;Web&#x00009;: 09:00 am
-									to 12:00 pm
-								</div>
-							</div>
-							<div class="card gray-txt height-card p-2 m-1">
-								<div class="green-path">
-									<i class="fa fa-calendar-check-o" aria-hidden="true"
-										style='font-size: 24px'></i>&nbsp;&nbsp;Thu&#x00009;: 09:00 am
-									to 12:00 pm
-								</div>
-							</div>
-							<div class="card gray-txt height-card p-2 m-1">
-								<div class="green-path">
-									<i class="fa fa-calendar-check-o" aria-hidden="true"
-										style='font-size: 24px'></i>&nbsp;&nbsp;Fri&#x00009;: 09:00 am
-									to 12:00 pm
-								</div>
-							</div>
-							<div class="card gray-txt height-card p-2 m-1">
-								<div class="red-path">
-									<i class="fa fa-calendar-minus-o" aria-hidden="true"
-										style='font-size: 24px'></i>&nbsp;&nbsp;Sat&#x00009;: Close
-								</div>
-							</div>
+						
+					<div class="card p-2">
+						<div class="mt-2 mb-2 d-flex">
+							<span class="mr-auto" style="color: #834A07"><span><i class="fal fa-clock" style="font-size: 20px;"></i></span> Opening Times</span>
+							<span class="hover-scale-animation "><i class="fal fa-pencil-alt"></i></span>
 						</div>
+						<table class="text-center table table-striped table-bordered">
+						
+							<thead>
+								 <tr>
+								 	<td></td>
+								 	<td><i class="fas fa-cloud-sun" style="font-size: 24px; color:#ffcc00"></i></td>
+								 	<td><i class="fas fa-moon-cloud" style="font-size: 24px; color:#483475"></i></td>
+								 	
+								 </tr>
+							</thead>
+							<tbody>
+								<tr>
+									<th>Sunday</th>
+									<td>08:00 am - 11:30 am</td>
+									<td>01:00 pm - 09:00 pm</td>
+								</tr>
+								<tr>
+									<th>Monday</th>
+									<td>08:00 am - 11:30 am</td>
+									<td class="text-danger">Closed</td>
+								</tr>
+								<tr>
+									<th>Tuesday</th>
+									<td class="text-danger">Closed</td>
+									<td>01:00 pm - 09:00 pm</td>
+								</tr>
+								<tr>
+									<th>Wednesday</th>
+									<td colspan="2">08:00 am - 08:00 pm</td>
+								</tr>
+								<tr>
+									<th>Thursday</th>
+									<td colspan="2">24 hr</td>
+								</tr>
+								<tr>
+									<th>Friday</th>
+									<td colspan="2">08:00 am - 08:00 pm</td>
+								</tr>
+								<tr>
+									<th>Saturday</th>
+									<td colspan="2" class="text-danger">Closed</td>
+								</tr>
+								
+							</tbody>
+						
+						</table>
+					</div><!-- card 1 end -->
 					</div>
 					<!--open time end-->
 
@@ -133,6 +140,8 @@
 			</div>
 			<!--overview complete-->
 		</div>
+				
+	
 		<!--Tab Content end-->
 	</div>
 </body>

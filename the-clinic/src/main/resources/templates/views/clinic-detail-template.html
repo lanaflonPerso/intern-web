@@ -2,46 +2,137 @@
 <html xmlns:th="http://www.thymeleaf.org"
 	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
 	xmlns:sec="http://www.thymeleaf.org/extras/spring-security"
-	layout:decorate="~{/layout/template}">
+	layout:decorate="~{/layout/template2}">
 <head>
 <meta charset="ISO-8859-1">
-<title>Clinic</title>
+<title>C-Name</title>
+<link href="/src/main/resources/static/css/kst.css" rel="stylesheet"
+	type="text/css" />
+<link href="/src/main/resources/static/css/bootstrap.min.css"
+	rel="stylesheet" type="text/css" />
+<link th:href="@{/resources/css/kst.css}" rel="stylesheet"
+	type="text/css" />
+	
+<style type="text/css">
+	
+body{
+			background-image: url("/resources/img/bkimg.jpg");
+			background-repeat: no-repeat;
+			background-position: center;
+			background-attachment: fixed;
+			background-size: cover;
+			
+}
+		.beside-vline{
+		border-left: 1px solid #999999;
+	}
+</style>
 </head>
+
 <body>
 
-
-
-	<ul class="navbar-nav" layout:fragment="options">
-		<!-- Partner menu -->
-		<li class="nav-item" sec:authorize="hasRole('Partner')"><a
-			th:href="@{/partner/clinics/1/edit}" class="nav-link auth-nav"><i
-				class="fa fa-pencil"></i> Edit</a></li>
-		<!-- Partner menu -->
-		<li class="nav-item" sec:authorize="hasRole('Partner')"><a
-			th:href="@{/partner/home}" class="nav-link auth-nav"><i
-				class="fa fa-trash-o"></i> Delete</a></li>
-	</ul>
-
 	<section layout:fragment="content">
-		<div class="mt-2">
-			<div class="row pl-5 pr-5">
-				<div class="col-lg-2 col-md-3 text-center">
-					<img th:src="@{/resources/img/m-clinic.png}"
-						class="img-fluid img-thumbnail" />
-				</div>
-				<div class="col-lg-10 col-md-9 d-flex align-items-center">
-					<div>
-						<h5>Clinic Name</h5>
-						<h6>General clinic</h6>
-						<p>No.1, Main Road, Yangon</p>
-					</div>
-				</div>
-			</div>
-			<div class="card mt-4 p-4 pb-5">
-				<div layout:fragment="clinic-details-content"></div>
-
-			</div>
+		
+		<div class="container card p-3 mt-3 ">
+			<span><a th:href="@{/}" style="color: black;"><i class="fas fa-home hover-scale-animation" ></i></a>&nbsp;<a th:href="@{/clinics}"  style="color: black;" class="">Clinics</a> <i class="far fa-chevron-right"></i> SAY KHAN</span>
 		</div>
+		
+		<div class="card container mt-1 p-3">
+			<div class="p-2" id="content">
+        		<div id="one">	
+        	
+        			<img alt="No Image" class="c-profile-image img-fluid" th:src="@{/resources/img/clinic_profile.jpg}">
+        		
+				</div><!-- one end -->
+			
+        		<div id="two" class="container-fluid">
+        		
+					<div class="row">
+						<div class="col-9 col-md-auto">
+							
+							<h4 class="c-name">SAY KHAN</h4>
+							<span class="c-category text-muted">General Clinic &bull; Kamayut</span>
+						</div><!-- first column end -->
+						
+						
+						
+						
+						
+						<div class="col-12 col-md-auto mt-lg-0 mt-2 mr-auto order-md-1 order-2">
+							<div class="beside-vline pl-3">
+							
+								<span style="color: #C98B42;">Social</span>
+							
+								<div class="d-flex justify-content-start">
+								
+									<a th:herf="@{#}" href="#"><i class="hover-scale-animation m-1 fab fa-facebook-square" style="font-size: 24px; color:#3B5998"></i></a>
+									<a th:herf="@{#}" href="#"><i class="hover-scale-animation m-1 fab fa-twitter" style="font-size: 24px; color:#38A1F3"></i></a>
+									<a th:herf="@{#}" href="#"><i class="hover-scale-animation m-1 fab fa-viber" style="font-size: 24px; color:#665CAC"></i></a>
+									<a th:herf="@{#}" href="#"><i class="hover-scale-animation m-1 fab fa-linkedin-in" style="font-size: 24px; color:#007BB6"></i></a>
+									
+								</div>	
+							</div>						
+							
+						</div><!-- second column end -->
+						
+						<div>
+						</div><!-- third column end -->
+						
+					</div><!-- row end -->
+				
+					<hr class="mt-2 mb-2 mr-0">
+				
+				</div><!-- two end -->
+			
+        		<div id="three" class="container-fluid pl-0 pr-0 pl-md-3">
+        	
+					<div class="row">
+				
+						<div class="col-4">
+					
+							<div class="text-muted"><i class="far fa-phone"></i> Phones</div>
+						
+							<div>09123456789</div>
+						
+							<div>09123456789</div>
+						
+						</div>
+						
+						<div class="col-4">
+					
+							<div class="text-muted"><i class="far fa-envelope"></i> Email</div>
+						
+							<div><a th:href="@{mailto:myclinic1@gmail.com}">myclinic1@gmail.com</a></div>
+						
+						</div>
+						
+						<div class="col-4">
+					
+							<div class="text-muted"><i class="far fa-location-arrow"></i> Address</div>
+						
+							<div>No.1, Main Road, Yangon</div>
+						
+						</div>	
+						
+					</div>
+								
+				</div><!-- three end -->
+				
+			</div><!-- content end -->
+			
+			<div class="container-fluid mt-2">
+				
+				<hr>
+				<div layout:fragment="clinic-details-content">
+				
+				
+				</div>
+				
+			</div>
+			
+			
+		</div>
+		
 	</section>
 
 </body>

@@ -238,6 +238,53 @@ th {
 .cusLabel {
     color: rgb(0, 3, 5);
 }
+/*Partner Patient*/
+#div-card{
+	width: 70%;
+	margin-left: 120px;
+	background-color: #82e9de;
+}
+
+#div-clinic{
+	float: right;
+	margin-left: 135px;
+}
+
+
+
+#patient-page{
+	padding-left: 250px;
+	padding-top: 5px;
+}
+
+#search-patient{
+	padding-left: 15px;
+	padding-bottom: 5px;
+}
+
+#btn-circle-search{
+	width: 40px;
+    height: 40px;
+    padding:  4px 0px;
+    border-radius: 20px;
+    margin-left:10px;
+    text-align: center;
+    font-size: 12px;
+    line-height: 1.42857;
+    background-color:#3A85C7; 
+    color: white;
+}
+
+#datepicker{
+	background-color: #0062CC;
+	color: white;
+}
+
+#bookings-page{
+	padding-left: 400px;
+	
+}
+
 
 
 

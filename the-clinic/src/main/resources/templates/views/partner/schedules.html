@@ -7,15 +7,13 @@
 <meta charset="UTF-8">
 <title>Schedules</title>
 </head>
-<style> 
-
-
+<style>
 </style>
 <body>
 
 	<div layout:fragment="dashboard-contents">
 
-		
+
 		<br>
 		<div class="modal" id="myModal">
 			<div class="row">
@@ -77,35 +75,30 @@
 			<!--row end-->
 		</div>
 		<!--dialog container end-->
+		<div class="container"> 
 		
-		<h4>Doctor Schedule</h4> 
-		<div class="d-flex flex-row-reverse">
-		<div class="dropdown">
-						<button type="button"
-							class="btn btn-outline-primary dropdown-toggle"
-							data-toggle="dropdown">Day Of Weeks</button>
-						<div class="dropdown-menu">
-							<a class="dropdown-item" href="#">Sunday</a> <a
-								class="dropdown-item" href="#">Monday</a> <a
-								class="dropdown-item" href="#">Tuesday</a> <a
-								class="dropdown-item" href="#">Wednesday</a> <a
-								class="dropdown-item" href="#">Thursday</a> <a
-								class="dropdown-item" href="#">Friday</a> <a
-								class="dropdown-item" href="#">Saturday</a>
-
-						</div>
+			<h4>Doctor Schedule</h4>
+			<div class="d-flex flex-row-reverse">
+				<div class="dropdown">
+					<button type="button"
+						class="btn btn-outline-primary dropdown-toggle"
+						data-toggle="dropdown">Day Of Weeks</button>
+					<div class="dropdown-menu">
+						<a class="dropdown-item" href="#">Sunday</a> <a
+							class="dropdown-item" href="#">Monday</a> <a
+							class="dropdown-item" href="#">Tuesday</a> <a
+							class="dropdown-item" href="#">Wednesday</a> <a
+							class="dropdown-item" href="#">Thursday</a> <a
+							class="dropdown-item" href="#">Friday</a> <a
+							class="dropdown-item" href="#">Saturday</a>
 					</div>
-				
+				</div>&nbsp;
+				<a href="#" class="btn btn-outline-primary" data-toggle="modal"
+					data-target="#myModal">Create Schedule</a>
 
-				<a class="nav-link" href="#"
-					data-toggle="modal" data-target="#myModal">Create Schedule</a>
-		</div>
-		
-		<br>
+			</div>
 
-
-		<div class="container">
-
+			<br>
 			<table class="table table-bordered table-sm-3  " id="myTable">
 
 				<thead>
@@ -126,11 +119,9 @@
 						<td>Cardiologist</td>
 						<td>10:00 AM</td>
 						<td>12:00 AM</td>
-						<td>
-							
-							<a href="#" ><i class="fa fa-edit"></i>&nbsp;&nbsp;</a>
-							<a href="#" onclick="deleteRow(this)"><i class="fa fa-trash" id="book-cancel-1"></i></a>
-						</td>
+						<td><a href="#"><i class="fa fa-edit"></i>&nbsp;&nbsp;</a> <a
+							href="#" onclick="deleteRow(this)"><i class="fa fa-trash"
+								id="book-cancel-1"></i></a></td>
 					</tr>
 
 
@@ -140,11 +131,9 @@
 						<td>Baby Specialist</td>
 						<td>9:30 AM</td>
 						<td>11:00 AM</td>
-						<td>
-							<a href="#" ><i class="fa fa-edit"></i>&nbsp;&nbsp;</a>
-							<a href="#" onclick="deleteRow(this)"><i class="fa fa-trash" id="book-cancel-1"></i></a>
-							
-						</td>
+						<td><a href="#"><i class="fa fa-edit"></i>&nbsp;&nbsp;</a> <a
+							href="#" onclick="deleteRow(this)"><i class="fa fa-trash"
+								id="book-cancel-1"></i></a></td>
 					</tr>
 
 					<tr>
@@ -153,10 +142,9 @@
 						<td>General</td>
 						<td>1:00 PM</td>
 						<td>3:00 PM</td>
-						<td>
-							<a href="#" ><i class="fa fa-edit"></i>&nbsp;&nbsp;</a>
-							<a href="#" onclick="deleteRow(this)"><i class="fa fa-trash" id="book-cancel-1"></i></a>
-						</td>
+						<td><a href="#"><i class="fa fa-edit"></i>&nbsp;&nbsp;</a> <a
+							href="#" onclick="deleteRow(this)"><i class="fa fa-trash"
+								id="book-cancel-1"></i></a></td>
 					</tr>
 
 					<tr>
@@ -165,10 +153,9 @@
 						<td>Cardiologist</td>
 						<td>4:00 PM</td>
 						<td>6:00 PM</td>
-						<td>
-							<a href="#" ><i class="fa fa-edit"></i>&nbsp;&nbsp;</a>
-							<a href="#" onclick="deleteRow(this)"><i class="fa fa-trash" id="book-cancel-1"></i></a>
-						</td>
+						<td><a href="#"><i class="fa fa-edit"></i>&nbsp;&nbsp;</a> <a
+							href="#" onclick="deleteRow(this)"><i class="fa fa-trash"
+								id="book-cancel-1"></i></a></td>
 					</tr>
 
 					<tr>
@@ -177,10 +164,9 @@
 						<td>Cardiologist</td>
 						<td>4:00 PM</td>
 						<td>6:00 PM</td>
-						<td>
-							<a href="#" ><i class="fa fa-edit"></i>&nbsp;&nbsp;</a>
-							<a href="#" onclick="deleteRow(this)"><i class="fa fa-trash" id="book-cancel-1"></i></a>
-						</td>
+						<td><a href="#"><i class="fa fa-edit"></i>&nbsp;&nbsp;</a> <a
+							href="#" onclick="deleteRow(this)"><i class="fa fa-trash"
+								id="book-cancel-1"></i></a></td>
 					</tr>
 
 					<tr>
@@ -189,17 +175,16 @@
 						<td>Cardiologist</td>
 						<td>4:00 PM</td>
 						<td>6:00 PM</td>
-						<td>
-							<a href="#" ><i class="fa fa-edit" ></i>&nbsp;&nbsp;</a>
-							<a href="#" onclick="deleteRow(this)"><i class="fa fa-trash" id="book-cancel-1"></i></a>
-						</td>
+						<td><a href="#"><i class="fa fa-edit"></i>&nbsp;&nbsp;</a> <a
+							href="#" onclick="deleteRow(this)"><i class="fa fa-trash"
+								id="book-cancel-1"></i></a></td>
 					</tr>
 			</table>
 
 		</div>
 
-
-		<script>
+	</div>
+	<script>
 function deleteRow(r) {
   var i = r.parentNode.parentNode.rowIndex;
   document.getElementById("myTable").deleteRow(i);
@@ -207,7 +192,7 @@ function deleteRow(r) {
 </script>
 
 
-</div>
+
 
 </body>
 </html>

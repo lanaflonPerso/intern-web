@@ -55,8 +55,7 @@
 									<label>Select Division / State</label>
 									<select class="form-control mdb-select md-form" name="division">
 									
-  										<option value="yangon">Yangon</option>
-  										<option value="mandalay">Mandalay</option>
+  										<option th:each="division: ${divisions}" th:text="${division.name}" th:value="${division.name}"></option>
   										
   									</select>
 									

@@ -7,6 +7,33 @@
 <meta charset="UTF-8">
 <link rel="stylesheet" href="/resources/css/custom.css">
 <title>Bookings</title>
+<style type="text/css">
+#patient-tb {
+	width: 600px;
+	margin-left: 150px;
+}
+
+.table thead {
+	background-color: #AFEEEE;
+}
+
+.table tbody {
+	text-align: left;
+	vertical-align: middle;
+	font-weight: 400;
+	font-size: 14px;
+	border-bottom: solid 2px lightgrey;
+}
+
+#patient-tr>tr:hover {
+	background-color: #AFEEEE;
+	cursor: pointer;
+}
+
+#search-bar {
+	margin-left: 132px;
+}
+</style>
 </head>
 <body>
 	<section layout:fragment="dashboard-contents">
@@ -14,113 +41,311 @@
 			<h3 class="mx-3">
 				<i class="fa fa-wheelchair"></i>Patients
 			</h3>
-			
+
 			<div class="container-fluid">
-					<div class="row">
-						
-						<div id="div-clinic">
-							<button type="button" class="btn btn-info">Clinic A</button>
-							<button type="button" class="btn btn-info">Clinic B</button>
-							<button type="button" class="btn btn-info">Clinic C</button>
-						</div>
 
-					</div>
-				</div>
-			
+				<ul class="nav nav-tabs" role="tablist">
+					<li class="nav-item"><a class="nav-link active"
+						data-toggle="tab" href="#clinicA">Clinic A</a></li>
+					<li class="nav-item"><a class="nav-link" data-toggle="tab"
+						href="#clinicB">Clinic B</a></li>
+					<li class="nav-item"><a class="nav-link" data-toggle="tab"
+						href="#clinicC">Clinic C</a></li>
+				</ul>
 
-			<div class="row mx-3 mt-3" id="clinicA">
+			</div>
 
-				<div class="card p-2" id="div-card">
+			<div class="tab-content">
+				<div class="row mx-3 mt-3 container tab-pane active" id="clinicA">
 
-					<div class="mt-2 mb-2 text-center">
+					<div class="row" id="search-bar">
 
-						<span style="color: #3A70C7"><span><i
-								class="fal fa-hospital" style="font-size: 20px;"></i></span> <b>Clinic
-								A</b></span>
-
-					</div>
-					<div class="row">
-					
 						<div id="search-patient">
 							<input type="text" placeholder="Search patient"
 								class="form-control form-rounded" size="35">
-								
+
 						</div>
 						<div id="btn-circle-search">
 							<button type="submit" class="btn  btn-circle">
-										<i class="fa fa-search" style="color: white"></i>
-									</button>
+								<i class="fa fa-search" style="color: white"></i>
+							</button>
 						</div>
 					</div>
 
-					<div>
+					<div class="table-wrapper-scroll-y my-custom-scrollbar">
+						<table class="table table-responsive-md" id="patient-tb">
+							<thead>
+								<tr>
+									<td>No.</td>
+									<td>Patient</td>
+									<td>Address</td>
+									<td></td>
+								</tr>
+							</thead>
+							<tbody id="patient-tr">
+								<a href="#" th:href="@{/partner/1/patients/1}">
+									<tr class="table-row" th:data-href="@{/partner/1/patients/1}">
 
-						<div class="list-group" style="height: 400px; overflow: scroll;">
+										<td>1</td>
+										<td>Daw Mya</td>
+										<td>No.32,Hnin Si(1st) Road,Yangon</td>
+										<td><span class="text-right"><i
+												class="fal fa-chevron-right"></i></span></td>
 
-							<a href="#" th:href="@{/partner/1/patients/1}"
-								class="list-group-item list-group-item-action d-flex justify-content-between align-items-center">
-								<span class="text-left">1.Daw Mya</span><span class="text-right"> <i
-									class="fal fa-chevron-right"></i></span>
-							</a> <a href="#"
-								class="list-group-item list-group-item-action d-flex justify-content-between align-items-center">
-								2.Daw Su <span class="text-right"><i
-									class="fal fa-chevron-right"></i></span>
-							</a> <a href="#"
-								class="list-group-item list-group-item-action d-flex justify-content-between align-items-center">
-								3.Daw Hla <span class="text-right"><i
-									class="fal fa-chevron-right"></i></span>
-							</a> <a href="#"
-								class="list-group-item list-group-item-action d-flex justify-content-between align-items-center">
-								4.U Soe <span class="text-right"><i
-									class="fal fa-chevron-right"></i></span>
-							</a> <a href="#"
-								class="list-group-item list-group-item-action d-flex justify-content-between align-items-center">
-								5.U Htun <span class="text-right"><i
-									class="fal fa-chevron-right"></i></span>
-							</a> <a href="#"
-								class="list-group-item list-group-item-action d-flex justify-content-between align-items-center">
-								6.U Aung <span class="text-right"><i
-									class="fal fa-chevron-right"></i></span>
-							</a> <a href="#"
-								class="list-group-item list-group-item-action d-flex justify-content-between align-items-center">
-								7.U Toe <span class="text-right"><i
-									class="fal fa-chevron-right"></i></span>
-							</a> <a href="#"
-								class="list-group-item list-group-item-action d-flex justify-content-between align-items-center">
-								8.Ma Thae <span class="text-right"><i
-									class="fal fa-chevron-right"></i></span>
-							</a> <a href="#"
-								class="list-group-item list-group-item-action d-flex justify-content-between align-items-center">
-								9.Ma Hnin <span class="text-right"><i
-									class="fal fa-chevron-right"></i></span>
-							</a>
+									</tr>
+								</a>
+								<tr>
+									<td>2</td>
+									<td>Daw Mya</td>
+									<td>No.32,Hnin Si(1st) Road,Yangon</td>
+									<td><span class="text-right"><i
+											class="fal fa-chevron-right"></i></span></td>
+
+								</tr>
+								<tr>
+									<td>3</td>
+									<td>Daw Mya</td>
+									<td>No.32,Hnin Si(1st) Road,Yangon</td>
+									<td><span class="text-right"><i
+											class="fal fa-chevron-right"></i></span></td>
+
+								</tr>
+								<tr>
+									<td>4</td>
+									<td>Daw Mya</td>
+									<td>No.32,Hnin Si(1st) Road,Yangon</td>
+									<td><span class="text-right"><i
+											class="fal fa-chevron-right"></i></span></td>
+
+								</tr>
+								<tr>
+									<td>5</td>
+									<td>Daw Mya</td>
+									<td>No.32,Hnin Si(1st) Road,Yangon</td>
+									<td><span class="text-right"><i
+											class="fal fa-chevron-right"></i></span></td>
+
+								</tr>
+								<tr>
+									<td>6</td>
+									<td>Daw Mya</td>
+									<td>No.32,Hnin Si(1st) Road,Yangon</td>
+									<td><span class="text-right"><i
+											class="fal fa-chevron-right"></i></span></td>
+
+								</tr>
+								<tr>
+									<td>7</td>
+									<td>Daw Mya</td>
+									<td>No.32,Hnin Si(1st) Road,Yangon</td>
+									<td><span class="text-right"><i
+											class="fal fa-chevron-right"></i></span></td>
+
+								</tr>
+								<tr>
+									<td>8</td>
+									<td>Daw Mya</td>
+									<td>No.32,Hnin Si(1st) Road,Yangon</td>
+									<td><span class="text-right"><i
+											class="fal fa-chevron-right"></i></span></td>
+
+								</tr>
+							</tbody>
+						</table>
+
+					</div>
+
+
+				</div>
+
+				<div class="row mx-3 mt-3 container tab-pane fade" id="clinicB">
+
+					<div class="card p-2" id="div-card">
+
+						<div class="mt-2 mb-2 text-center">
+
+							<span style="color: #3A70C7"><span><i
+									class="fal fa-hospital" style="font-size: 20px;"></i></span> <b>Clinic
+									B</b></span>
+
+						</div>
+						<div class="row">
+
+							<div id="search-patient">
+								<input type="text" placeholder="Search patient"
+									class="form-control form-rounded" size="35">
+
+							</div>
+							<div id="btn-circle-search">
+								<button type="submit" class="btn  btn-circle">
+									<i class="fa fa-search" style="color: white"></i>
+								</button>
+							</div>
+						</div>
+
+						<div>
+
+							<div class="list-group" style="height: 400px; overflow: scroll;">
+
+								<a href="#" th:href="@{/partner/1/patients/1}"
+									class="list-group-item list-group-item-action d-flex justify-content-between align-items-center">
+									<span class="text-left">1.Daw Mya</span><span
+									class="text-right"> <i class="fal fa-chevron-right"></i>
+								</span>
+								</a> <a href="#"
+									class="list-group-item list-group-item-action d-flex justify-content-between align-items-center">
+									2.Daw Su <span class="text-right"><i
+										class="fal fa-chevron-right"></i></span>
+								</a> <a href="#"
+									class="list-group-item list-group-item-action d-flex justify-content-between align-items-center">
+									3.Daw Hla <span class="text-right"><i
+										class="fal fa-chevron-right"></i></span>
+								</a> <a href="#"
+									class="list-group-item list-group-item-action d-flex justify-content-between align-items-center">
+									4.U Soe <span class="text-right"><i
+										class="fal fa-chevron-right"></i></span>
+								</a> <a href="#"
+									class="list-group-item list-group-item-action d-flex justify-content-between align-items-center">
+									5.U Htun <span class="text-right"><i
+										class="fal fa-chevron-right"></i></span>
+								</a> <a href="#"
+									class="list-group-item list-group-item-action d-flex justify-content-between align-items-center">
+									6.U Aung <span class="text-right"><i
+										class="fal fa-chevron-right"></i></span>
+								</a> <a href="#"
+									class="list-group-item list-group-item-action d-flex justify-content-between align-items-center">
+									7.U Toe <span class="text-right"><i
+										class="fal fa-chevron-right"></i></span>
+								</a> <a href="#"
+									class="list-group-item list-group-item-action d-flex justify-content-between align-items-center">
+									8.Ma Thae <span class="text-right"><i
+										class="fal fa-chevron-right"></i></span>
+								</a> <a href="#"
+									class="list-group-item list-group-item-action d-flex justify-content-between align-items-center">
+									9.Ma Hnin <span class="text-right"><i
+										class="fal fa-chevron-right"></i></span>
+								</a>
+							</div>
+
+						</div>
+
+						<div id="patient-page">
+							<nav aria-label="Page navigation example">
+								<ul class="pagination">
+									<li class="page-item"><a class="page-link" href="#"
+										aria-label="Previous"> <span aria-hidden="true">&laquo;</span>
+											<span class="sr-only">Previous</span>
+									</a></li>
+									<li class="page-item"><a class="page-link" href="#">1</a></li>
+									<li class="page-item"><a class="page-link" href="#">2</a></li>
+									<li class="page-item"><a class="page-link" href="#">3</a></li>
+									<li class="page-item"><a class="page-link" href="#"
+										aria-label="Next"> <span aria-hidden="true">&raquo;</span>
+											<span class="sr-only">Next</span>
+									</a></li>
+								</ul>
+							</nav>
+
 						</div>
 
 					</div>
 
-					<div id="patient-page">
-						<nav aria-label="Page navigation example">
-							<ul class="pagination">
-								<li class="page-item"><a class="page-link" href="#"
-									aria-label="Previous"> <span aria-hidden="true">&laquo;</span>
-										<span class="sr-only">Previous</span>
-								</a></li>
-								<li class="page-item"><a class="page-link" href="#">1</a></li>
-								<li class="page-item"><a class="page-link" href="#">2</a></li>
-								<li class="page-item"><a class="page-link" href="#">3</a></li>
-								<li class="page-item"><a class="page-link" href="#"
-									aria-label="Next"> <span aria-hidden="true">&raquo;</span>
-										<span class="sr-only">Next</span>
-								</a></li>
-							</ul>
-						</nav>
+				</div>
+				<div class="row mx-3 mt-3 container tab-pane fade" id="clinicC">
+
+					<div class="card p-2" id="div-card">
+
+						<div class="mt-2 mb-2 text-center">
+
+							<span style="color: #3A70C7"><span><i
+									class="fal fa-hospital" style="font-size: 20px;"></i></span> <b>Clinic
+									C</b></span>
+
+						</div>
+						<div class="row">
+
+							<div id="search-patient">
+								<input type="text" placeholder="Search patient"
+									class="form-control form-rounded" size="35">
+
+							</div>
+							<div id="btn-circle-search">
+								<button type="submit" class="btn  btn-circle">
+									<i class="fa fa-search" style="color: white"></i>
+								</button>
+							</div>
+						</div>
+
+						<div>
+
+							<div class="list-group" style="height: 400px; overflow: scroll;">
+
+								<a href="#" th:href="@{/partner/1/patients/1}"
+									class="list-group-item list-group-item-action d-flex justify-content-between align-items-center">
+									<span class="text-left">1.Daw Mya</span><span
+									class="text-right"> <i class="fal fa-chevron-right"></i>
+								</span>
+								</a> <a href="#"
+									class="list-group-item list-group-item-action d-flex justify-content-between align-items-center">
+									2.Daw Su <span class="text-right"><i
+										class="fal fa-chevron-right"></i></span>
+								</a> <a href="#"
+									class="list-group-item list-group-item-action d-flex justify-content-between align-items-center">
+									3.Daw Hla <span class="text-right"><i
+										class="fal fa-chevron-right"></i></span>
+								</a> <a href="#"
+									class="list-group-item list-group-item-action d-flex justify-content-between align-items-center">
+									4.U Soe <span class="text-right"><i
+										class="fal fa-chevron-right"></i></span>
+								</a> <a href="#"
+									class="list-group-item list-group-item-action d-flex justify-content-between align-items-center">
+									5.U Htun <span class="text-right"><i
+										class="fal fa-chevron-right"></i></span>
+								</a> <a href="#"
+									class="list-group-item list-group-item-action d-flex justify-content-between align-items-center">
+									6.U Aung <span class="text-right"><i
+										class="fal fa-chevron-right"></i></span>
+								</a> <a href="#"
+									class="list-group-item list-group-item-action d-flex justify-content-between align-items-center">
+									7.U Toe <span class="text-right"><i
+										class="fal fa-chevron-right"></i></span>
+								</a> <a href="#"
+									class="list-group-item list-group-item-action d-flex justify-content-between align-items-center">
+									8.Ma Thae <span class="text-right"><i
+										class="fal fa-chevron-right"></i></span>
+								</a> <a href="#"
+									class="list-group-item list-group-item-action d-flex justify-content-between align-items-center">
+									9.Ma Hnin <span class="text-right"><i
+										class="fal fa-chevron-right"></i></span>
+								</a>
+							</div>
+
+						</div>
+
+						<div id="patient-page">
+							<nav aria-label="Page navigation example">
+								<ul class="pagination">
+									<li class="page-item"><a class="page-link" href="#"
+										aria-label="Previous"> <span aria-hidden="true">&laquo;</span>
+											<span class="sr-only">Previous</span>
+									</a></li>
+									<li class="page-item"><a class="page-link" href="#">1</a></li>
+									<li class="page-item"><a class="page-link" href="#">2</a></li>
+									<li class="page-item"><a class="page-link" href="#">3</a></li>
+									<li class="page-item"><a class="page-link" href="#"
+										aria-label="Next"> <span aria-hidden="true">&raquo;</span>
+											<span class="sr-only">Next</span>
+									</a></li>
+								</ul>
+							</nav>
+
+						</div>
 
 					</div>
 
 				</div>
 
 			</div>
-
 
 
 		</div>
@@ -151,6 +376,14 @@
 							});
 		</script>
 
+
+		<script type="text/javascript">
+			$(document).ready(function($) {
+				$(".table-row").click(function() {
+					window.document.location = $(this).data("href");
+				});
+			});
+		</script>
 
 	</section>
 

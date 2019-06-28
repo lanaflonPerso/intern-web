@@ -12,7 +12,7 @@ import com.jdc.clinic.services.ClinicServices;
 @Controller
 @RequestMapping("/clinics")
 public class PublicClinicController {
-	
+
 	@Autowired
 	private ClinicServices service;
 
@@ -32,5 +32,10 @@ public class PublicClinicController {
 	public String findSchedulesForClinic(@PathVariable int id, ModelMap model) {
 		model.put("schedules", service.findSchedules(id));
 		return "/views/schedules";
+	}
+
+	@GetMapping("{id}/doctors")
+	public String findDoctorsForClinic(@PathVariable int id, ModelMap model) {
+		return "/views/clinicdoctors";
 	}
 }

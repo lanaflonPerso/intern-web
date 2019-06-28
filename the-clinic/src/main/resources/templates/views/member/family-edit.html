@@ -55,12 +55,12 @@
 								<div class="form-group">
 									
 									<label>Enter allergic medicines</label>
-									<div class="phone-list">
+									<div class="med-list">
 											<div class="medicine-input">
-												<input type="tel" placeholder="Allergic Medicine" name="phone1" class="form-control" required/>
+												<input type="med" placeholder="Allergic Medicine" name="med1" class="form-control" required/>
 											</div>
 										</div>
-										<button type="button" class="btn mt-1 form-control btn-outline-info btn-add-phone" style="border-style: dashed;"><span><i class="far fa-plus"></i></span> Add New</button>
+										<button type="button" class="btn mt-1 form-control btn-outline-info btn-add-med" style="border-style: dashed;"><span><i class="far fa-plus"></i></span> Add New</button>
 									
 								</div><!-- Allergic form -->
 								
@@ -186,6 +186,21 @@
                 maxDate: '-1d',
               });
             } );
+
+        $(document.body).on('click','.btn-remove-med',function(){
+			$(this).closest('.medicine-input').remove();
+		});
+		
+		$('.btn-add-med').on('click', function() {
+			var index = $('.medicine-input').length + 1;
+			$('.med-list').append(''+
+					'<div class="container-fluid medicine-input">'+
+					'<div class="row">'+
+					'<input type="med" placeholder="Allergic Medicine" name="med'+index+'" class="mt-1 col-11 form-control"/>'+
+					'<button type="button" class="ml-1 btn btn-outline-danger mt-1 btn-remove-med"><i class="fal fa-times"></i></button>'+
+					'</div></div>'
+					);
+		});
 		</script>	
 	</div>
 </body>

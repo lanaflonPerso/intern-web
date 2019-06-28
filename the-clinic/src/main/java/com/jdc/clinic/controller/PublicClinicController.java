@@ -31,6 +31,7 @@ public class PublicClinicController {
 	@GetMapping("{id}/schedules")
 	public String findSchedulesForClinic(@PathVariable int id, ModelMap model) {
 		model.put("schedules", service.findSchedules(id));
+
 		return "/views/schedules";
 	}
 

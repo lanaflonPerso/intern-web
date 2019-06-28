@@ -4,8 +4,9 @@
 	xmlns:sec="http://www.thymeleaf.org/extras/spring-security"
 	layout:decorate="~{/layout/partner-deshboard-template}">
 <head>
-<meta charset="ISO-8859-1">
+<meta charset="UTF-8">
 <title>New</title>
+
 </head>
 <body>
 	<div layout:fragment="dashboard-contents">
@@ -53,9 +54,8 @@
 								<div class="form-group">
 									
 									<label>Select Division / State</label>
-									<select class="form-control mdb-select md-form" name="division">
-									
-  										<option th:each="division: ${divisions}" th:text="${division.name}" th:value="${division.name}"></option>
+									<select class="form-control mdb-select md-form division-select" name="division" id="division">
+  										<option th:each="division: ${divisions}" th:text="${division.name}" th:value="${division.id}"></option>
   										
   									</select>
 									
@@ -64,13 +64,8 @@
 								<div class="form-group">
 									
 									<label>Select Township</label>
-									<select class="form-control mdb-select md-form" name="township">
-									
-  										<option value="" disabled selected>Choose Township</option>
-  										<option value="Hlaing">Hlaing</option>
-  										<option value="Sanchaung">Sanchaung</option>
-  										<option value="Kamayut">Kamayut</option>
-  										
+									<select class="form-control mdb-select md-form" name="township" id="township_option">
+										<option th:each="township: ${townships}" th:text="${township.name}" th:value="${township.id}"></option>
   									</select>
 									
 								</div><!-- Township form -->
@@ -140,6 +135,14 @@
 		
 		<script>
 
+		$(".division-select").change(function(){
+			//AJax here
+			$.get( "http://localhost/partner/clinics/division/" + this.value, function( data ) {
+					$('#township_option').replaceWith(data);
+			});
+
+		});
+
 		$(document.body).on('click','.btn-remove-phone',function(){
 			$(this).closest('.phone-input').remove();
 		});
@@ -170,7 +173,6 @@
 					);
 		});
 		</script>
-		
 	</div>
 </body>
 </html>

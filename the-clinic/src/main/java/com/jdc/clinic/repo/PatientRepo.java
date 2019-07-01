@@ -5,4 +5,5 @@ import com.jdc.clinic.repo.custom.BaseRepository;
 
 public interface PatientRepo extends BaseRepository<Patient, Long> {
 
+	Long countByClinicId(int clinicID);
 }

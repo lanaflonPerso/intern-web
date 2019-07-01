@@ -26,13 +26,16 @@ public class PartnerHomeController {
 
 		Partner partner = (Partner) session.getAttribute("partnerUser");
 
-		model.addAttribute("clinicCount", partner.getClinics().size());
-
 		long totalBookingCount = 0;
+		long totalPatientCount = 0;
 		for (Clinic c : partner.getClinics()) {
 			totalBookingCount += pService.getBookingCountByClinicID(c.getId());
+			totalPatientCount += pService.getPatientCountByClinicID(c.getId());
 		}
+
+		model.addAttribute("clinicCount", partner.getClinics().size());
 		model.addAttribute("bookingCount", totalBookingCount);
+		model.addAttribute("patientCount", totalPatientCount);
 
 		return "/views/partner/home";
 	}

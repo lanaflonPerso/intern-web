@@ -10,4 +10,6 @@ import com.jdc.clinic.repo.custom.BaseRepository;
 public interface ClinicDoctorRepo extends BaseRepository<ClinicDoctor, ClinicDoctorPK> {
 
 	List<Doctor> findDoctorByClinicId(int clinicID);
+
+	Long countDoctorByClinicId(int clinicID);
 }

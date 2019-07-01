@@ -5,6 +5,7 @@ import org.springframework.stereotype.Service;
 
 import com.jdc.clinic.entity.Partner;
 import com.jdc.clinic.repo.BookingRepo;
+import com.jdc.clinic.repo.ClinicDoctorRepo;
 import com.jdc.clinic.repo.ClinicRepo;
 import com.jdc.clinic.repo.PartnerRepo;
 import com.jdc.clinic.repo.PatientRepo;
@@ -13,23 +14,26 @@ import com.jdc.clinic.repo.PatientRepo;
 public class PartnerService {
 
 	@Autowired
-	ClinicRepo cRepo;
+	ClinicRepo clinicRepo;
 
 	@Autowired
-	PartnerRepo ptRepo;
+	PartnerRepo partnerRepo;
 
 	@Autowired
-	BookingRepo bRepo;
+	BookingRepo bookingRepo;
 
 	@Autowired
-	PatientRepo pRepo;
+	PatientRepo patientRepo;
+
+	@Autowired
+	ClinicDoctorRepo clinicDoctorRepo;
 
 	public Long countClinicByPartner(String phone) {
-		return cRepo.countByOwnerPhone(phone);
+		return clinicRepo.countByOwnerPhone(phone);
 	}
 
 	public Partner getPartner(String phone) {
-		return ptRepo.getOne(phone);
+		return partnerRepo.getOne(phone);
 	}
 
 	public Long getBookingCountByClinicID(int clinicID) {
@@ -37,7 +41,11 @@ public class PartnerService {
 	}
 
 	public Long getPatientCountByClinicID(int clinicID) {
-		return pRepo.countByClinicId(clinicID);
+		return patientRepo.countByClinicId(clinicID);
+	}
+
+	public Long getDoctorCountByClinicID(int clinicID) {
+		return clinicDoctorRepo.countDoctorByClinicId(clinicID);
 	}
 
 }

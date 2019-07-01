@@ -57,19 +57,9 @@
 					</a>
 
 					<ul class="collapse list-unstyled w-100" id="clinic-list">
-						<li class="ml-3">
-							<a th:href="@{/partner/clinics/1}" class="text-left btn w-100 nav-link"> 
-								<i class="fal fa-hospital"></i>&nbsp;Clinic A
-							</a>
-						</li>
-						<li class="ml-3">
-							<a href="#" class="text-left btn w-100 nav-link">
-								<i class="fal fa-hospital"></i>&nbsp;Clinic B
-							</a>
-						</li>
-						<li class="ml-3">
-							<a href="#" class="text-left btn w-100 nav-link"> 
-								<i class="fal fa-hospital"></i>&nbsp;Clinic C
+						<li class="ml-3" th:each="clinic: ${session.partnerUser.clinics}">
+							<a th:href="@{/partner/clinics/${clinic.id}}" class="text-left btn w-100 nav-link"> 
+								<i class="fal fa-hospital"></i>&nbsp;<span th:text="${clinic.name}"></span>
 							</a>
 						</li>
 						<li class="ml-3">

@@ -340,6 +340,7 @@ insert into member(phone) values ('member');
 insert into family_member (id, member_phone, name) values (1, 'member', 'Kyaw Kyaw');
 insert into family_member (id, member_phone, name) values (2, 'member', 'Aung Aung');
 insert into family_member (id, member_phone, name) values (3, 'member', 'Maung Maung');
-
+	
+insert into partner(phone) values ('partner');
 
 

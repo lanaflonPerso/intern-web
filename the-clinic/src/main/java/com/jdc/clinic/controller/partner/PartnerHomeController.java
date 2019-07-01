@@ -9,6 +9,7 @@ import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import com.jdc.clinic.entity.Clinic;
 import com.jdc.clinic.entity.Partner;
 import com.jdc.clinic.services.PartnerService;
 
@@ -26,6 +27,12 @@ public class PartnerHomeController {
 		Partner partner = (Partner) session.getAttribute("partnerUser");
 
 		model.addAttribute("clinicCount", partner.getClinics().size());
+
+		long totalBookingCount = 0;
+		for (Clinic c : partner.getClinics()) {
+			totalBookingCount += pService.getBookingCountByClinicID(c.getId());
+		}
+		model.addAttribute("bookingCount", totalBookingCount);
 
 		return "/views/partner/home";
 	}

@@ -335,3 +335,11 @@ insert into Account (phone, name, role, del_flag, password) values ('admin', 'Ad
 insert into Account (phone, name, role, del_flag, password) values ('member', 'Member', 'ROLE_Member', false, '$2a$10$M2HV.7p3K0LX6hN7I.aqcOXiuMpen1wWJdPYgdrhASZG.XSewSSoG');
 insert into Account (phone, name, role, del_flag, password) values ('partner', 'Partner', 'ROLE_Partner', false, '$2a$10$M2HV.7p3K0LX6hN7I.aqcOXiuMpen1wWJdPYgdrhASZG.XSewSSoG');
 
+insert into member(phone) values ('member');
+	
+insert into family_member (id, member_phone, name) values (1, 'member', 'Kyaw Kyaw');
+insert into family_member (id, member_phone, name) values (2, 'member', 'Aung Aung');
+insert into family_member (id, member_phone, name) values (3, 'member', 'Maung Maung');
+
+
+

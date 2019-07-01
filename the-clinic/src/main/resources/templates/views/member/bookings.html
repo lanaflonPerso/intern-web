@@ -22,9 +22,7 @@
 					<select class="form-control mdb-select md-form" name="patientName" id="selectbox">
 
 						<option value="" disabled selected>Choose Patient</option>
-						<option value="Daw Hla">Daw Hla</option>
-						<option value="Daw Thi">Daw Thi</option>
-						<option value="Daw Aye">Daw Aye</option>
+						<option th:each="family: ${familyMembers}" th:text="${family.name}" th:value="${family.id}"></option>
 
 					</select>
 				</div>
@@ -50,7 +48,7 @@
 						<option value="Chan Thar">Chan Thar</option>
 						<option value="Aung">Aung</option>
 						<option value="OSC">OSC</option>
-
+						
 					</select>
 				</div>
 			</div>

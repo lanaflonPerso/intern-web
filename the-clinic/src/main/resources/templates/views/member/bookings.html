@@ -33,9 +33,7 @@
 					<select class="form-control mdb-select md-form" name="doctorName" id="selectbox">
 
 						<option value="" disabled selected>Choose Doctor</option>
-						<option value="Dr.Thi">Dr.Thi</option>
-						<option value="Dr.Khine">Dr.Khine</option>
-						<option value="Dr.Grace">Dr.Grace</option>
+						<option th:each="doctor : ${doctors}" th:text="${doctor.name}" th:value="${doctor.id}"></option>
 
 					</select>
 				</div>
@@ -45,9 +43,7 @@
 					<select class="form-control mdb-select md-form" name="clinicName" id="selectbox">
 
 						<option value="" disabled selected>Choose Clinic</option>
-						<option value="Chan Thar">Chan Thar</option>
-						<option value="Aung">Aung</option>
-						<option value="OSC">OSC</option>
+						<option th:each="clinic :${clinics}" th:text="${clinic.name}" th:value="${clinic.id}"></option>
 						
 					</select>
 				</div>
@@ -235,3 +231,6 @@
 	</section>
 </body>
 </html>
+
+
+

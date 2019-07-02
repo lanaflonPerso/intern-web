@@ -27,6 +27,10 @@ public class MemberBookingController {
 		HttpSession session = request.getSession(true);
 		model.put("familyMembers",
 				bService.getFamilyMembersByPhone(((Account) session.getAttribute("loginUser")).getPhone()));
+
+		model.put("clinics", bService.findClinics());
+
+		model.put("doctors", bService.findDoctors());
 		return "/views/member/bookings";
 	}
 

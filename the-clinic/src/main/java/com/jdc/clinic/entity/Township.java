@@ -2,6 +2,7 @@ package com.jdc.clinic.entity;
 
 import java.io.Serializable;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -26,7 +27,7 @@ public class Township implements Serializable {
 	@NotEmpty(message = "Please enter Township Name.")
 	private String name;
 
-	@ManyToOne
+	@ManyToOne(cascade = CascadeType.MERGE)
 	private Division division;
 
 }

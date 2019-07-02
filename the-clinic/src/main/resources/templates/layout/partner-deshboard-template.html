@@ -58,7 +58,7 @@
 
 					<ul class="collapse list-unstyled w-100" id="clinic-list">
 						<li class="ml-3" th:each="clinic: ${session.partnerUser.clinics}">
-							<a th:href="@{/partner/clinics/${clinic.id}}" class="text-left btn w-100 nav-link"> 
+							<a th:href="@{/partner/clinics/{id}(id=${clinic.id})}" class="text-left btn w-100 nav-link"> 
 								<i class="fal fa-hospital"></i>&nbsp;<span th:text="${clinic.name}"></span>
 							</a>
 						</li>

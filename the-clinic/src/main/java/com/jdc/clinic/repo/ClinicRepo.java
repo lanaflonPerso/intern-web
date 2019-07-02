@@ -11,4 +11,6 @@ public interface ClinicRepo extends BaseRepository<Clinic, Integer> {
 
 	List<Clinic> findClinicById(int id);
 
+	List<Clinic> findByOwnerPhone(String phone);
+
 }

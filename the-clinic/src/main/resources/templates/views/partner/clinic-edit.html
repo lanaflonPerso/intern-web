@@ -11,7 +11,7 @@
 <body>
 	<div layout:fragment="dashboard-contents">
 
-		<form method="get" class="form mt-2">
+		<form method="post" class="form mt-2" th:object="${clinic}" th:action="@{/partner/clinics}">
 		
 			<div class="card">
 
@@ -34,37 +34,22 @@
 								<div class="form-group">
 									
 									<label>Enter clinic name</label>
-									<input type="text" placeholder="Name" name="name" class="form-control"/>
-									
+									<input type="text" placeholder="Name" name="name" class="form-control" th:field="*{name}" />
+									<small th:if="${#fields.errors('name')}" th:errors="*{name}" class="text-danger"></small>
 								</div><!-- name form -->
 								
 								<div class="form-group">
 									
-									<label>Enter clinic category</label>
-									<input type="text" placeholder="Category" list="category" name="category" class="form-control"/>
-									<datalist id="category">
-										<option>General</option>
-										<option>Dental</option>
-										<option>Orthopedic</option>
-										<option>Heart</option>
-									</datalist>
-									
-								</div><!-- category form -->
-								
-								<div class="form-group">
-									
 									<label>Select Division / State</label>
-									<select class="form-control mdb-select md-form division-select" name="division" id="division">
+									<select class="form-control mdb-select md-form division-select" name="division" id="division" th:field="*{addrress.township.division.id}">
   										<option th:each="division: ${divisions}" th:text="${division.name}" th:value="${division.id}"></option>
-  										
   									</select>
-									
 								</div><!-- Division form -->
 								
 								<div class="form-group">
 									
 									<label>Select Township</label>
-									<select class="form-control mdb-select md-form" name="township" id="township_option">
+									<select class="form-control mdb-select md-form" name="township" id="township_option" th:field="*{addrress.township.id}" >
 										<option th:each="township: ${townships}" th:text="${township.name}" th:value="${township.id}"></option>
   									</select>
 									
@@ -73,7 +58,7 @@
 								<div class="form-group">
 									
 									<label>Enter clinic address</label>
-									<textarea class="form-control" placeholder="Address"></textarea>
+									<textarea class="form-control" placeholder="Address" th:field="*{addrress.address}"></textarea>
 									
 								</div><!-- Address form -->
 								
@@ -87,7 +72,7 @@
 										<label>Enter phone numbers</label>
 										<div class="phone-list">
 											<div class="phone-input">
-												<input type="tel" placeholder="Phone" name="phone1" class="form-control"/>
+												<input type="tel" placeholder="Phone" name="phone" class="form-control"/>
 											</div>
 										</div>
 										<button type="button" class="btn mt-1 form-control btn-outline-info btn-add-phone" style="border-style: dashed;"><span><i class="far fa-plus"></i></span> Add New</button>
@@ -100,7 +85,7 @@
 									<label>Enter Email address</label>
 									<div class="email-list">
 										<div class="email-input">
-											<input type="email" placeholder="Email" name="email1" class="form-control"/>
+											<input type="email" placeholder="Email" name="mails" class="form-control"/>
 										</div>
 									</div>
 									<button type="button" class="btn mt-1 form-control btn-outline-info btn-add-email" style="border-style: dashed;"><span><i class="far fa-plus"></i></span> Add New</button>
@@ -138,7 +123,7 @@
 		$(".division-select").change(function(){
 			//AJax here
 			$.get( "http://localhost/partner/clinics/division/" + this.value, function( data ) {
-					$('#township_option').replaceWith(data);
+					$('#township_option').html(data);
 			});
 
 		});
@@ -152,7 +137,7 @@
 			$('.phone-list').append(''+
 					'<div class="container-fluid phone-input">'+
 					'<div class="row">'+
-					'<input type="tel" placeholder="Phone" name="phone'+index+'" class="mt-1 col-11 form-control"/>'+
+					'<input type="tel" placeholder="Phone" name="phone" class="mt-1 col-11 form-control"/>'+
 					'<button type="button" class="ml-1 btn btn-outline-danger mt-1 btn-remove-phone"><i class="fal fa-times"></i></button>'+
 					'</div></div>'
 					);
@@ -167,7 +152,7 @@
 			$('.email-list').append(''+
 					'<div class="container-fluid email-input">'+
 					'<div class="row">'+
-					'<input type="email" placeholder="Email" name="mail'+index+'" class="mt-1 col-11 form-control"/>'+
+					'<input type="email" placeholder="Email" name="mails" class="mt-1 col-11 form-control"/>'+
 					'<button type="button" class="ml-1 btn btn-outline-danger mt-1 btn-remove-email"><i class="fal fa-times"></i></button>'+
 					'</div></div>'
 					);

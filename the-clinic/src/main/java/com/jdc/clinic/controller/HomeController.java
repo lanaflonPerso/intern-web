@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.jdc.clinic.entity.Account;
+import com.jdc.clinic.entity.Partner;
 import com.jdc.clinic.services.AccountService;
 import com.jdc.clinic.services.PartnerService;
 import com.jdc.clinic.utils.AuthHelper;
@@ -43,8 +44,8 @@ public class HomeController {
 
 		if (auth.isUserInRole("ROLE_Partner")) {
 			if (session.getAttribute("partnerUser") == null) {
-				session.setAttribute("partnerUser",
-						pService.getPartner(((Account) session.getAttribute("loginUser")).getPhone()));
+				Partner p = pService.getPartner(((Account) session.getAttribute("loginUser")).getPhone());
+				session.setAttribute("partnerUser", p);
 			}
 
 			return "redirect:/partner/home";

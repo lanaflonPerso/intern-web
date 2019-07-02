@@ -18,7 +18,7 @@ import com.jdc.clinic.repo.TimeTableRepo;
 public class ClinicServices {
 
 	@Autowired
-	private ClinicRepo repo;
+	private ClinicRepo clinicRepo;
 	@Autowired
 	private TimeTableRepo timeTableRepo;
 
@@ -29,16 +29,20 @@ public class ClinicServices {
 
 	@Transactional
 	public Clinic findById(int id) {
-		return repo.findById(id).map(c -> {
+		return clinicRepo.findById(id).map(c -> {
 			c.getMails().size();
 			c.getPhone().size();
 			return c;
 		}).orElse(new Clinic());
 	}
 
+	public Clinic save(Clinic clinic) {
+		return clinicRepo.save(clinic);
+	}
+
 	public Map<Doctor, List<Timetable>> findSchedules(int id) {
-		return timeTableRepo.findByClinicDoctorClinicId(id)
-				.stream().collect(Collectors.groupingBy(a -> a.getClinicDoctor().getDoctor()));
-		
+		return timeTableRepo.findByClinicDoctorClinicId(id).stream()
+				.collect(Collectors.groupingBy(a -> a.getClinicDoctor().getDoctor()));
+
 	}
 }

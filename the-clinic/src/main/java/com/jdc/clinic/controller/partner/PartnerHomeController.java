@@ -35,7 +35,7 @@ public class PartnerHomeController {
 			totalDoctorCount += pService.getDoctorCountByClinicID(c.getId());
 		}
 
-		model.addAttribute("clinicCount", partner.getClinics().size());
+		model.addAttribute("clinicCount", pService.countClinicByPartner(partner.getPhone()));
 		model.addAttribute("bookingCount", totalBookingCount);
 		model.addAttribute("patientCount", totalPatientCount);
 		model.addAttribute("doctorCount", totalDoctorCount);

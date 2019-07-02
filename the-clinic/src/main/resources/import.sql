@@ -351,3 +351,12 @@ insert into doctor(name,license_code) values('Dr.Htet','12345');
 insert into doctor(name,license_code) values('Dr.Eaindray','13255');
 insert into doctor(name,license_code) values('Dr.Thi','102585');
 
+insert into clinic_doctor(clinic_id,doctor_id) values(1,2);
+insert into patient(clinic_id,patient_id) values(1,1);
+
+insert into timetable(time_from,time_to) values('12:05:12','01:10:12');
+
+ insert into booking(booking_date,status,clinic_id,doctor_id,patient_id,time_table_id) values('2019/02/07',1,1,2,1,1);
+
+
+

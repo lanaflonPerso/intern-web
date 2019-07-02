@@ -31,6 +31,8 @@ public class MemberBookingController {
 		model.put("clinics", bService.findClinics());
 
 		model.put("doctors", bService.findDoctors());
+
+		model.put("bookings", bService.listAllBookings());
 		return "/views/member/bookings";
 	}
 

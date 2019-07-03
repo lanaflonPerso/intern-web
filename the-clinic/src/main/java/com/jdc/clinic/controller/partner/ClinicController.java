@@ -49,9 +49,9 @@ public class ClinicController {
 		return "views/partner/clinic-edit";
 	}
 
-	@GetMapping("division/{id}")
+	@GetMapping("division/{divID}")
 	@ResponseBody
-	public List<Township> getTownshipByDivision(@PathVariable("id") int divID) {
+	public List<Township> getTownshipByDivision(@PathVariable int divID) {
 		return locationService.findTownships(divID);
 	}
 

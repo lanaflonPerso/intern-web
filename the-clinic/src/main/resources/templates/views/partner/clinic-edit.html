@@ -132,6 +132,7 @@
 				contentType: 'application/json',
 				mimeType: 'application/json',
 				success: function(data){
+					console.log(data);
 					$('#township_option').children().remove()
 					$(data).each((i, value)  => {
 						$('#township_option').append($('<option>').text(value.name).attr('value', value.id))

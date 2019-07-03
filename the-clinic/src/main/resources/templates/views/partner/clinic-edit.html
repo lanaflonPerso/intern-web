@@ -120,11 +120,28 @@
 		
 		<script>
 
-		$(".division-select").change(function(){
+		$(".division-select").on('change', function(){
 			//AJax here
-			$.get( "http://localhost/partner/clinics/division/" + this.value, function( data ) {
+			/* $.get( "http://localhost/partner/clinics/division/" + this.value, function( data ) {
 					$('#township_option').html(data);
-			});
+			}); */
+			$.ajax({
+				url: "http://localhost/partner/clinics/division/" + this.value,
+				type: "GET",
+				dataType: "JSON",
+				contentType: 'application/json',
+				mimeType: 'application/json',
+				success: function(data){
+					console.log(data);
+					$('#township_option').children().remove()
+					$(data).each((i, value)  => {
+						$('#township_option').append($('<option>').text(value.name).attr('value', value.id))
+					})
+				},
+				error: function(xhr, status, err){
+					console.error(this.props.url, status, err.toString())
+				},
+			}); 
 
 		});
 

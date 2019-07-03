@@ -33,7 +33,7 @@
 					<select class="form-control mdb-select md-form" name="doctorName" id="selectbox">
 
 						<option value="" disabled selected>Choose Doctor</option>
-						<option th:each="doctor : ${doctors}" th:text="${doctor.name}" th:value="${doctor.id}"></option>
+						<option th:each="booking : ${bookings}" th:text="${booking.clinicDoctor.doctor.name}" th:value="${booking.clinicDoctor.doctor.id}"></option>
 
 					</select>
 				</div>
@@ -43,7 +43,7 @@
 					<select class="form-control mdb-select md-form" name="clinicName" id="selectbox">
 
 						<option value="" disabled selected>Choose Clinic</option>
-						<option th:each="clinic :${clinics}" th:text="${clinic.name}" th:value="${clinic.id}"></option>
+						<option th:each="booking : ${bookings}" th:text="${booking.clinicDoctor.clinic.name}" th:value="${booking.clinicDoctor.clinic.id}"></option>
 						
 					</select>
 				</div>
@@ -75,7 +75,7 @@
 					<tr th:each="booking :${bookings}">
 						<td class="text-center" th:text="${booking.id}"></td>
 						<td>
-						<p style="float: left" th:text="${booking.patient.patient.name}"></p>
+						<p style="float: left" th:text="${booking.patient.familyMember.name}"></p>
 						<span class="label label-success ml-auto badge mt-1"
 							style="background-color: #ef6c00; color: white; float: right; width: 80px;" th:text="${booking.status}"></span>
 						</td>

@@ -21,6 +21,7 @@ public class DoctorController {
 	@GetMapping("{clinicId}")
 	public String index(@PathVariable int clinicId, ModelMap model) {
 		model.put("doctors", dService.getDoctorsByClinicId(clinicId));
+
 		return "/views/partner/doctors";
 	}
 
@@ -32,7 +33,6 @@ public class DoctorController {
 
 	@GetMapping("edit/{id}")
 	public String edit(@PathVariable int id) {
-
 		return "/views/partner/doctor-edit";
 	}
 
@@ -43,7 +43,6 @@ public class DoctorController {
 
 	@GetMapping("details/{id}")
 	public String findById(@PathVariable int id) {
-
 		return "/views/partner/doctor";
 	}
 

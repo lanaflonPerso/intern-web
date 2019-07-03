@@ -26,10 +26,10 @@ public class Patient implements Serializable {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private long id;
-	
+
 	@ManyToOne
 	@JoinColumn(insertable = false, updatable = false)
-	private FamilyMember patient;
+	private FamilyMember familyMember;
 
 	@ManyToOne
 	@JoinColumn(insertable = false, updatable = false)

@@ -29,5 +29,8 @@ public class Address implements Serializable {
 
 	@ManyToOne(cascade = CascadeType.MERGE)
 	private Township township;
+	
+	@ManyToOne
+	private  Clinic clinic;
 
 }

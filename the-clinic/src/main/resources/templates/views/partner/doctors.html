@@ -383,10 +383,10 @@
 				</thead>
 				<tbody>
 
-					<tr>
-						<th class="text-center">1</th>
-						<td class="text-center">Chit Thae</td>
-						<td class="text-center">MBBS</td>
+					<tr th:each="doctor : ${doctors}">
+						<td class="text-center" th:text="${doctor.id}"></td>
+						<td class="text-center" th:text="${doctor.name}"></td>
+						<td class="text-center" th:text="${doctor.degrees}"></td>
 						<td class="text-center">Hepatologists</td>
 
 						<td class="text-center">
@@ -414,66 +414,7 @@
 						</td>
 					</tr>
 
-					<tr>
-						<th class="text-center">2</th>
-						<td class="text-center">Chit Thae</td>
-						<td class="text-center">MBBS</td>
-						<td class="text-center">Hepatologists</td>
-						<td class="text-center">
-
-
-							<div class="dropdown">
-								<a href="#" class="action-icon dropdown-toggle-split"
-									data-toggle="dropdown" aria-expanded="true"><i
-									class="fas fa-ellipsis-h"></i></a>
-								<div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-									<a class="dropdown-item" href="#"
-										th:href="@{/partner/doctors/edit/1}"><i
-										class="	fas fa-edit"></i> Edit</a>
-									<button class="dropdown-item" type="button"
-										onclick="deleteRow(this)">
-										<i class="fas fa-trash"></i> Delete
-									</button>
-									<a class="dropdown-item" href="#"
-										th:href="@{/partner/doctors/details/1}"><i
-										class="	fas fa-ellipsis-v"></i> Detail</a>
-
-
-								</div>
-							</div>
-						</td>
-
-					</tr>
-					<tr>
-						<th class="text-center">3</th>
-						<td class="text-center">Chit Thae</td>
-						<td class="text-center">MBBS</td>
-						<td class="text-center">Hepatologists</td>
-						<td class="text-center">
-
-							<div class="dropdown">
-								<a href="#" class="action-icon dropdown-toggle-split"
-									data-toggle="dropdown" aria-expanded="true"><i
-									class="fas fa-ellipsis-h"></i></a>
-								<div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-									<a class="dropdown-item" href="#"
-										th:href="@{/partner/doctors/edit/1}"><i
-										class="	fas fa-edit"></i> Edit</a>
-									<button class="dropdown-item" type="button"
-										onclick="deleteRow(this)">
-										<i class="fas fa-trash"></i> Delete
-									</button>
-									<a class="dropdown-item" href="#"
-										th:href="@{/partner/doctors/details/1}"><i
-										class="	fas fa-ellipsis-v"></i> Detail</a>
-
-
-								</div>
-							</div>
-						</td>
-
-
-					</tr>
+					
 					</tbody>
 					</table>
 					

@@ -190,80 +190,18 @@ table {
 			<div class="tbl-content">
 				<table class="table-responsive-md table-patient-body table-hover">
 					<tbody>
-						<tr>
-							<td>1</td>
-							<td>Daw Mya</td>
-							<td>9:00 am</td>
-							<td>Dr. Lwe</td>
-							<td>Clinic A</td>
+						<tr th:each="todayBooking : ${todayBookingList}">
+							<td th:text = "${todayBooking.id}"></td>
+							<td th:text = "${todayBooking.patient.patient.name}"></td>
+							<td th:text = "${todayBooking.timeTable.timeFrom}"></td>
+							<td th:text = "${todayBooking.clinicDoctor.doctor.name}"></td>
+							<td th:text = "${todayBooking.clinicDoctor.clinic.name}"></td>
 						</tr>
-						<tr>
-							<td>2</td>
-							<td>Thaw Thaw</td>
-							<td>10:00 am</td>
-							<td>Dr. Mya Theingi</td>
-							<td>Clinic B</td>
-						</tr>
-						<tr>
-							<td>3</td>
-							<td>Daw Cho</td>
-							<td>11:00 am</td>
-							<td>Dr. Lwe</td>
-							<td>Clinic A</td>
-						</tr>
-						<tr>
-							<td>4</td>
-							<td>Thida Mya</td>
-							<td>9:00 am</td>
-							<td>Dr. Kyaw</td>
-							<td>Clinic C</td>
-						</tr>
-						<tr>
-							<td>5</td>
-							<td>Han Thaw</td>
-							<td>1:00 pm</td>
-							<td>Dr. Thein</td>
-							<td>Clinic C</td>
-						</tr>
-						<tr>
-							<td>6</td>
-							<td>Daw Mya</td>
-							<td>9:00 am</td>
-							<td>Dr. Lwe</td>
-							<td>Clinic A</td>
-						</tr>
-						<tr>
-							<td>7</td>
-							<td>Daw Mya</td>
-							<td>9:00 am</td>
-							<td>Dr. Lwe</td>
-							<td>Clinic A</td>
-						</tr>
-						<tr>
-							<td>8</td>
-							<td>Daw Mya</td>
-							<td>9:00 am</td>
-							<td>Dr. Lwe</td>
-							<td>Clinic A</td>
-						</tr>
-						<tr>
-							<td>9</td>
-							<td>Daw Mya</td>
-							<td>9:00 am</td>
-							<td>Dr. Lwe</td>
-							<td>Clinic A</td>
-						</tr>
-						<tr>
-							<td>10</td>
-							<td>Daw Mya</td>
-							<td>9:00 am</td>
-							<td>Dr. Lwe</td>
-							<td>Clinic A</td>
-						</tr>
-
+						
 					</tbody>
 				</table>
 			</div>
+			
 			
 		</div>
 		

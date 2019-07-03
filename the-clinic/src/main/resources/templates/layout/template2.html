@@ -50,7 +50,7 @@
 
 									<a class="btn text-right dropdown-toggle-split"
 											data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-											<span class="d-md-inline d-none" th:text="${session.loginUser.name}"></span> <img alt="no image" class="m-profile-img" th:src="@{/resources/img/avatar5.png}" />
+											<span class="d-md-inline d-none" th:text="${session.loginUser.name} ?: 'Login User'"></span> <img alt="no image" class="m-profile-img" th:src="@{/resources/img/avatar5.png}" />
 									</a>
 
 

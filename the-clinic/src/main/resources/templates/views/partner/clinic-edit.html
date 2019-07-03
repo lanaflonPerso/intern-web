@@ -132,7 +132,10 @@
 				contentType: 'application/json',
 				mimeType: 'application/json',
 				success: function(data){
-					alert('success'+data);
+					$('#township_option').children().remove()
+					$(data).each((i, value)  => {
+						$('#township_option').append($('<option>').text(value.name).attr('value', value.id))
+					})
 				},
 				error: function(xhr, status, err){
 					console.error(this.props.url, status, err.toString())

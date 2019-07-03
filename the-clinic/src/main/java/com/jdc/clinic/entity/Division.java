@@ -10,6 +10,8 @@ import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.validation.constraints.NotEmpty;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
@@ -27,6 +29,7 @@ public class Division implements Serializable {
 	@NotEmpty(message = "Please enter name.")
 	private String name;
 
+	@JsonIgnore
 	@OneToMany(mappedBy = "division")
 	private List<Township> townships;
 

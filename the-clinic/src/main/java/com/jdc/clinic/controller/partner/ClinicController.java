@@ -19,6 +19,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.jdc.clinic.entity.Clinic;
 import com.jdc.clinic.entity.Partner;
+import com.jdc.clinic.entity.Township;
 import com.jdc.clinic.services.ClinicServices;
 import com.jdc.clinic.services.LocationService;
 
@@ -50,8 +51,8 @@ public class ClinicController {
 
 	@GetMapping("division/{id}")
 	@ResponseBody
-	public String getTownshipByDivision(@PathVariable("id") int divID, ModelMap model) {
-		return "[]";
+	public List<Township> getTownshipByDivision(@PathVariable("id") int divID) {
+		return locationService.findTownships(divID);
 	}
 
 	@PostMapping

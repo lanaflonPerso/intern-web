@@ -333,6 +333,7 @@ insert into township (division_id,name) values(15,'Zeyarthiri');
 
 insert into Account (phone, name, role, del_flag, password) values ('admin', 'Admin User', 'ROLE_Admin', false, '$2a$10$M2HV.7p3K0LX6hN7I.aqcOXiuMpen1wWJdPYgdrhASZG.XSewSSoG');
 insert into Account (phone, name, role, del_flag, password) values ('member', 'Member', 'ROLE_Member', false, '$2a$10$M2HV.7p3K0LX6hN7I.aqcOXiuMpen1wWJdPYgdrhASZG.XSewSSoG');
+insert into Account (phone, name, role, del_flag, password) values ('member2', 'Member', 'ROLE_Member', false, '$2a$10$M2HV.7p3K0LX6hN7I.aqcOXiuMpen1wWJdPYgdrhASZG.XSewSSoG');
 insert into Account (phone, name, role, del_flag, password) values ('partner', 'Partner', 'ROLE_Partner', false, '$2a$10$M2HV.7p3K0LX6hN7I.aqcOXiuMpen1wWJdPYgdrhASZG.XSewSSoG');
 
 insert into member(phone) values ('member');
@@ -352,7 +353,9 @@ insert into doctor(name,license_code) values('Dr.Eaindray','13255');
 insert into doctor(name,license_code) values('Dr.Thi','102585');
 
 insert into clinic_doctor(clinic_id,doctor_id) values(1,2);
-insert into patient(clinic_id,patient_id) values(1,1);
+insert into clinic_doctor(clinic_id,doctor_id) values(1,1);
+
+insert into patient(clinic_id,family_member_id) values(1,1);
 
 insert into timetable(time_from,time_to) values('12:05:12','01:10:12');
 

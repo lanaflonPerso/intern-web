@@ -10,8 +10,10 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.jdc.clinic.entity.Account;
+import com.jdc.clinic.entity.Member;
 import com.jdc.clinic.entity.Partner;
 import com.jdc.clinic.services.AccountService;
+import com.jdc.clinic.services.MemberService;
 import com.jdc.clinic.services.PartnerService;
 import com.jdc.clinic.utils.AuthHelper;
 
@@ -28,6 +30,9 @@ public class HomeController {
 	@Autowired
 	private PartnerService pService;
 
+	@Autowired
+	private MemberService memberService;
+
 	@GetMapping
 	public String index(ModelMap model, HttpServletRequest request) {
 
@@ -39,6 +44,10 @@ public class HomeController {
 		}
 
 		if (auth.isUserInRole("ROLE_Member")) {
+			if (session.getAttribute("member") == null) {
+				Member m = memberService.getMemberByPhone(((Account) session.getAttribute("loginUser")).getPhone());
+				session.setAttribute("member", m);
+			}
 			return "redirect:/member/home";
 		}
 

@@ -49,4 +49,13 @@ public class BookingService {
 		return bRepo.findAll();
 	}
 
+	public List<Booking> getBookingsByMember(String memberPhone) {
+
+		String query = "select b from Booking b join Patient p on b.patient = p join FamilyMember f on f = p.familyMember join Member m on m = f.member where m.phone='"
+				+ memberPhone + "'";
+
+		return bRepo.find(query, null);
+
+	}
+
 }

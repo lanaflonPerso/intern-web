@@ -37,7 +37,6 @@ public class PartnerHomeController {
 		session.setAttribute("partnerUser", p);
 
 		List<Booking> todayBookingList = new ArrayList<Booking>();
-		Partner partner = (Partner) session.getAttribute("partnerUser");
 
 		for (Booking b : bookingService.listAllBookings()) {
 
@@ -46,6 +45,7 @@ public class PartnerHomeController {
 			}
 		}
 
+		Partner partner = (Partner) session.getAttribute("partnerUser");
 		model.addAttribute("patientCount", pService.getPatientCountByPartnerPhone(partner.getPhone()));
 		model.addAttribute("bookingCount", pService.getbookingCountByPartnerPhone(partner.getPhone()));
 		model.addAttribute("doctorCount", pService.getDoctorCountByParterPhone(partner.getPhone()));

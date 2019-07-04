@@ -43,14 +43,6 @@ public class PartnerService {
 		}).orElse(new Partner());
 	}
 
-	public Long getBookingCountByClinicID(int clinicID) {
-		return 0L;
-	}
-
-	public Long getPatientCountByClinicID(int clinicID) {
-		return patientRepo.countByClinicId(clinicID);
-	}
-
 	public Long getbookingCountByPartnerPhone(String phone) {
 		return bookingRepo.countBookingByPartnerPhone(phone);
 	}

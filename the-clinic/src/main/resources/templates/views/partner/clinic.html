@@ -51,7 +51,7 @@
 <body>
 	<div layout:fragment="dashboard-contents">
 	
-		<div class="container-fluid mt-2 p-3">
+		<div class="container-fluid mt-2 p-3" th:object="${clinic}">
 			<div class="card p-2" id="content">
         	<div id="one">	
         	
@@ -64,13 +64,16 @@
 				<div class="row">
 						<div class="col-9 col-md-auto">
 							
-							<h4 class="c-name">SAY KHAN</h4>
-							<span class="c-category text-muted">General Clinic &bull; Kamayut</span>
+							<h4 class="c-name" th:text="*{name}"></h4>
+							
+							<span class="c-category text-muted" th:text="*{addrress.township.name}"></span>
+							<span class="c-category text-muted"> &bull; </span>
+							<span class="c-category text-muted" th:text="*{addrress.township.division.name}"></span>
 						</div><!-- first column end -->
 						
 						<div class="col-auto order-md-2 order-1 dropdown">
 							
-							<a th:href="@{/partner/clinics/1/edit}"><span><i class="hover-scale-animation fal fa-pencil-alt" style="font-size: 20px; color:black;"></i></span></a>
+							<a th:href="@{/partner/clinics/{id}/edit(id=${clinic.id})}"><span><i class="hover-scale-animation fal fa-pencil-alt" style="font-size: 20px; color:black;"></i></span></a>
 							
 						</div>
 						
@@ -129,7 +132,7 @@
 					
 						<div class="text-muted"><i class="far fa-location-arrow"></i> Address</div>
 						
-						<div>No.1, Main Road, Yangon</div>
+						<div th:text="*{addrress.address}"></div>
 						
 					</div>	
 					

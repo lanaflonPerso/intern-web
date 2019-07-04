@@ -2,8 +2,6 @@ package com.jdc.clinic.controller.partner;
 
 import java.util.List;
 
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,7 +16,6 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.jdc.clinic.entity.Clinic;
-import com.jdc.clinic.entity.Partner;
 import com.jdc.clinic.entity.Township;
 import com.jdc.clinic.services.ClinicServices;
 import com.jdc.clinic.services.LocationService;
@@ -41,7 +38,7 @@ public class ClinicController {
 
 	@GetMapping("create")
 	public String createClinic(ModelMap model) {
-		model.addAttribute("clinic_title", "Add New Clinic");
+		model.addAttribute("edit_title", "Add New Clinic");
 		model.put("divisions", locationService.findValid());
 		model.put("townships", locationService.findTownships(1));
 
@@ -57,25 +54,25 @@ public class ClinicController {
 
 	@PostMapping
 	public String save(@RequestParam("phone") List<String> phone, @RequestParam("mails") List<String> email,
-			@Valid Clinic clinic, BindingResult result, HttpServletRequest request) {
+			@Valid Clinic clinic, BindingResult result) {
+		System.out.println("Reach here");
 		if (result.hasErrors()) {
 			return "views/partner/clinic-edit";
 		}
-		HttpSession session = request.getSession(true);
 		clinic.setPhone(phone);
 		clinic.setMails(email);
-		clinic.setOwner(((Partner) session.getAttribute("partnerUser")));
 		Clinic c = clinicService.save(clinic);
-		((Partner) session.getAttribute("partnerUser")).getClinics().add(c);
 		return String.format("redirect:/partner/clinics/%d", c.getId());
 	}
 
 	@GetMapping("{id}/edit")
 	public String edit(@PathVariable int id, ModelMap model) {
-		model.addAttribute("clinic_title", "Edit (Clinic Name)");
+
 		Clinic clinic = clinicService.findById(id);
 		model.addAttribute("clinic", clinic);
-		model.put("townships", locationService.findTownships(1));
+		model.addAttribute("edit_title", "Edit " + clinic.getName());
+		model.put("townships", clinic.getAddrress().getTownship().getDivision().getTownships());
+
 		return "views/partner/clinic-edit";
 	}
 

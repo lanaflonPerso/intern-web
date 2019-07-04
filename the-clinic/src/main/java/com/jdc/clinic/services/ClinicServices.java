@@ -37,7 +37,7 @@ public class ClinicServices {
 	}
 
 	public Clinic save(Clinic clinic) {
-		return clinicRepo.save(clinic);
+		return clinicRepo.saveAndFlush(clinic);
 	}
 
 	public Map<Doctor, List<Timetable>> findSchedules(int id) {

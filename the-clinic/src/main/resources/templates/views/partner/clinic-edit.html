@@ -12,12 +12,15 @@
 	<div layout:fragment="dashboard-contents">
 
 		<form method="post" class="form mt-2" th:object="${clinic}" th:action="@{/partner/clinics}">
-		
+
+			<input type="hidden" th:if="*{owner}" name="owner" th:field="*{owner.phone}"/>
+			<input type="hidden" th:unless="*{owner}" name="owner" th:value="${session.partnerUser.phone}"/>
+			
 			<div class="card">
 
 				<div class="card-header bg-transparent">
 				
-					<div style="font-size: 20px;" class="ml-1">Add New Clinic</div>
+					<div style="font-size: 20px;" class="ml-1" th:text="${edit_title}">Add New Clinic</div>
 					
 					<div class="text-muted">Please fill your clinic information</div>
 					

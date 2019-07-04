@@ -37,11 +37,10 @@ public class PartnerHomeController {
 
 		long totalBookingCount = 0;
 		long totalPatientCount = 0;
-		long totalDoctorCount = 0;
+
 		for (Clinic c : partner.getClinics()) {
 			totalBookingCount += pService.getBookingCountByClinicID(c.getId());
 			totalPatientCount += pService.getPatientCountByClinicID(c.getId());
-			totalDoctorCount += pService.getDoctorCountByClinicID(c.getId());
 		}
 
 		for (Booking b : bookingService.listAllBookings()) {
@@ -54,7 +53,7 @@ public class PartnerHomeController {
 		model.addAttribute("clinicCount", pService.countClinicByPartner(partner.getPhone()));
 		model.addAttribute("bookingCount", totalBookingCount);
 		model.addAttribute("patientCount", totalPatientCount);
-		model.addAttribute("doctorCount", totalDoctorCount);
+		model.addAttribute("doctorCount", pService.countDoctorWhereParterPhone(partner.getPhone()));
 		model.addAttribute("todayBookingList", todayBookingList);
 
 		return "/views/partner/home";

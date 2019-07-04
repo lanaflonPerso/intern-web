@@ -121,10 +121,6 @@
 		<script>
 
 		$(".division-select").on('change', function(){
-			//AJax here
-			/* $.get( "http://localhost/partner/clinics/division/" + this.value, function( data ) {
-					$('#township_option').html(data);
-			}); */
 			$.ajax({
 				url: "http://localhost/partner/clinics/division/" + this.value,
 				type: "GET",

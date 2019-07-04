@@ -5,7 +5,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
 import javax.persistence.OneToMany;
 
 import lombok.Getter;
@@ -22,7 +21,7 @@ public class Partner extends Account implements Serializable {
 		clinics = new ArrayList<>();
 	}
 
-	@OneToMany(mappedBy = "owner", fetch = FetchType.EAGER)
+	@OneToMany(mappedBy = "owner")
 	private List<Clinic> clinics;
 
 }

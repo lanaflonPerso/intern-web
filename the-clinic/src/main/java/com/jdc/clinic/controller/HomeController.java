@@ -11,10 +11,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.jdc.clinic.entity.Account;
 import com.jdc.clinic.entity.Member;
-import com.jdc.clinic.entity.Partner;
 import com.jdc.clinic.services.AccountService;
 import com.jdc.clinic.services.MemberService;
-import com.jdc.clinic.services.PartnerService;
 import com.jdc.clinic.utils.AuthHelper;
 
 @Controller
@@ -26,9 +24,6 @@ public class HomeController {
 
 	@Autowired
 	private AccountService service;
-
-	@Autowired
-	private PartnerService pService;
 
 	@Autowired
 	private MemberService memberService;
@@ -52,11 +47,6 @@ public class HomeController {
 		}
 
 		if (auth.isUserInRole("ROLE_Partner")) {
-			if (session.getAttribute("partnerUser") == null) {
-				Partner p = pService.getPartner(((Account) session.getAttribute("loginUser")).getPhone());
-				session.setAttribute("partnerUser", p);
-			}
-
 			return "redirect:/partner/home";
 		}
 

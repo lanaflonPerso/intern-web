@@ -15,7 +15,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.jdc.clinic.entity.Account;
 import com.jdc.clinic.entity.Booking;
-import com.jdc.clinic.entity.Clinic;
 import com.jdc.clinic.entity.Partner;
 import com.jdc.clinic.services.BookingService;
 import com.jdc.clinic.services.PartnerService;
@@ -40,14 +39,6 @@ public class PartnerHomeController {
 		List<Booking> todayBookingList = new ArrayList<Booking>();
 		Partner partner = (Partner) session.getAttribute("partnerUser");
 
-		long totalBookingCount = 0;
-		long totalPatientCount = 0;
-
-		for (Clinic c : partner.getClinics()) {
-			totalBookingCount += pService.getBookingCountByClinicID(c.getId());
-			totalPatientCount += pService.getPatientCountByClinicID(c.getId());
-		}
-
 		for (Booking b : bookingService.listAllBookings()) {
 
 			if (b.getBookingDate().compareTo(LocalDate.now()) == 0) {
@@ -55,11 +46,11 @@ public class PartnerHomeController {
 			}
 		}
 
-		model.addAttribute("bookingCount", totalBookingCount);
-		model.addAttribute("patientCount", totalPatientCount);
-
+		model.addAttribute("patientCount", pService.getPatientCountByPartnerPhone(partner.getPhone()));
+		model.addAttribute("bookingCount", pService.getbookingCountByPartnerPhone(partner.getPhone()));
+		model.addAttribute("doctorCount", pService.getDoctorCountByParterPhone(partner.getPhone()));
 		model.addAttribute("clinicCount", pService.countClinicByPartner(partner.getPhone()));
-		model.addAttribute("doctorCount", pService.countDoctorWhereParterPhone(partner.getPhone()));
+
 		model.addAttribute("todayBookingList", todayBookingList);
 
 		return "/views/partner/home";

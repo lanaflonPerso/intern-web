@@ -51,7 +51,15 @@ public class PartnerService {
 		return patientRepo.countByClinicId(clinicID);
 	}
 
-	public Long countDoctorWhereParterPhone(String phone) {
+	public Long getbookingCountByPartnerPhone(String phone) {
+		return bookingRepo.countBookingByPartnerPhone(phone);
+	}
+
+	public Long getPatientCountByPartnerPhone(String phone) {
+		return patientRepo.countByPartnerPhone(phone);
+	}
+
+	public Long getDoctorCountByParterPhone(String phone) {
 		return clinicDoctorRepo.countDoctorWhereParterPhone(phone);
 	}
 

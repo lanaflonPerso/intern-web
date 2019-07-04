@@ -73,7 +73,9 @@ public class ClinicController {
 	@GetMapping("{id}/edit")
 	public String edit(@PathVariable int id, ModelMap model) {
 		model.addAttribute("clinic_title", "Edit (Clinic Name)");
-		model.addAttribute("clinic", clinicService.findById(id));
+		Clinic clinic = clinicService.findById(id);
+		model.addAttribute("clinic", clinic);
+		model.put("townships", locationService.findTownships(1));
 		return "views/partner/clinic-edit";
 	}
 

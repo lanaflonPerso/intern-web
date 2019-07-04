@@ -13,6 +13,7 @@ import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import com.jdc.clinic.entity.Account;
 import com.jdc.clinic.entity.Booking;
 import com.jdc.clinic.entity.Clinic;
 import com.jdc.clinic.entity.Partner;
@@ -32,6 +33,10 @@ public class PartnerHomeController {
 	@GetMapping
 	public String index(ModelMap model, HttpServletRequest request) {
 		HttpSession session = request.getSession(true);
+
+		Partner p = pService.getPartner(((Account) session.getAttribute("loginUser")).getPhone());
+		session.setAttribute("partnerUser", p);
+
 		List<Booking> todayBookingList = new ArrayList<Booking>();
 		Partner partner = (Partner) session.getAttribute("partnerUser");
 
@@ -50,9 +55,10 @@ public class PartnerHomeController {
 			}
 		}
 
-		model.addAttribute("clinicCount", pService.countClinicByPartner(partner.getPhone()));
 		model.addAttribute("bookingCount", totalBookingCount);
 		model.addAttribute("patientCount", totalPatientCount);
+
+		model.addAttribute("clinicCount", pService.countClinicByPartner(partner.getPhone()));
 		model.addAttribute("doctorCount", pService.countDoctorWhereParterPhone(partner.getPhone()));
 		model.addAttribute("todayBookingList", todayBookingList);
 

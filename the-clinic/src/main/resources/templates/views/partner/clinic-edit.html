@@ -13,6 +13,8 @@
 
 		<form method="post" class="form mt-2" th:object="${clinic}" th:action="@{/partner/clinics}">
 
+			<input type="hidden" th:field="*{id}" />
+			<input type="hidden" th:field="*{addrress.id}" />
 			<input type="hidden" th:if="*{owner}" name="owner" th:field="*{owner.phone}"/>
 			<input type="hidden" th:unless="*{owner}" name="owner" th:value="${session.partnerUser.phone}"/>
 			

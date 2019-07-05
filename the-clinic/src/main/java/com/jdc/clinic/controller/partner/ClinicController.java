@@ -25,14 +25,15 @@ import com.jdc.clinic.services.LocationService;
 public class ClinicController {
 
 	@Autowired
-	LocationService locationService;
+	private LocationService locationService;
 
 	@Autowired
-	ClinicServices clinicService;
+	private ClinicServices clinicService;
 
 	@GetMapping("{id}")
 	public String findById(@PathVariable int id, ModelMap model) {
-		model.addAttribute("clinic", clinicService.findById(id));
+		Clinic c = clinicService.findById(id);
+		model.addAttribute("clinic", c);
 		return "views/partner/clinic";
 	}
 
@@ -55,12 +56,15 @@ public class ClinicController {
 	@PostMapping
 	public String save(@RequestParam("phone") List<String> phone, @RequestParam("mails") List<String> email,
 			@Valid Clinic clinic, BindingResult result) {
-		System.out.println("Reach here");
+
 		if (result.hasErrors()) {
 			return "views/partner/clinic-edit";
 		}
+
 		clinic.setPhone(phone);
 		clinic.setMails(email);
+		clinic.getAddrress().setTownship(locationService.findTownshipById(clinic.getAddrress().getTownship().getId()));
+
 		Clinic c = clinicService.save(clinic);
 		return String.format("redirect:/partner/clinics/%d", c.getId());
 	}

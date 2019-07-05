@@ -17,13 +17,16 @@ public class LocationService {
 	private TownshipRepo townshipRepo;
 	@Autowired
 	private DivisionRepo divisionRepo;
-	
-	
+
 	public List<Division> findValid() {
 		return divisionRepo.findAll();
 	}
-	
+
 	public List<Township> findTownships(int divisionId) {
 		return townshipRepo.findByDivisionId(divisionId);
+	}
+
+	public Township findTownshipById(int townshipID) {
+		return townshipRepo.getOne(townshipID);
 	}
 }

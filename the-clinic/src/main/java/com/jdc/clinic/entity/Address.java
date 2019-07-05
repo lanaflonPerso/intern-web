@@ -7,6 +7,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.validation.constraints.NotEmpty;
 
@@ -29,8 +30,9 @@ public class Address implements Serializable {
 
 	@ManyToOne(cascade = CascadeType.MERGE)
 	private Township township;
-	
+
 	@ManyToOne
-	private  Clinic clinic;
+	@JoinColumn(updatable = false)
+	private Clinic clinic;
 
 }

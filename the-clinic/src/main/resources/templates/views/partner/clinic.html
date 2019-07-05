@@ -114,9 +114,9 @@
 					
 						<div class="text-muted"><i class="far fa-phone"></i> Phones</div>
 						
-						<div>09123456789</div>
-						
-						<div>09123456789</div>
+						<div th:each="ph: *{phone}">
+							<div th:text="${ph}"></div>
+						</div>
 						
 					</div>
 						
@@ -124,7 +124,10 @@
 					
 						<div class="text-muted"><i class="far fa-envelope"></i> Email</div>
 						
-						<div><a th:href="@{mailto:myclinic1@gmail.com}">myclinic1@gmail.com</a></div>
+						
+						<div th:each="mail: *{mails}">
+							<div><a th:href="@{mailto:{m}(m=${mail})}" th:text="${mail}"></a></div>
+						</div>
 						
 					</div>
 						

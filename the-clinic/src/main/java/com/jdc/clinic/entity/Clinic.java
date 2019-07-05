@@ -44,20 +44,20 @@ public class Clinic implements Serializable {
 	@ManyToOne
 	private Partner owner;
 
-	@OneToOne(mappedBy = "clinic", cascade = {CascadeType.PERSIST, CascadeType.MERGE}, orphanRemoval = true)
+	@OneToOne(mappedBy = "clinic", cascade = { CascadeType.PERSIST, CascadeType.MERGE }, orphanRemoval = true)
 	private Address addrress;
 
-	@OneToMany(mappedBy = "clinic", cascade = {CascadeType.PERSIST, CascadeType.MERGE}, orphanRemoval = true)
+	@OneToMany(mappedBy = "clinic", cascade = { CascadeType.PERSIST, CascadeType.MERGE }, orphanRemoval = true)
 	private List<OpenTime> openTime;
-	
+
 	public Clinic() {
 		phone = new ArrayList<String>();
-		mails  = new ArrayList<String>();
+		mails = new ArrayList<String>();
 		addrress = new Address();
 		security = new SecurityInfo();
 		openTime = new ArrayList<OpenTime>();
 	}
-	
+
 	@PrePersist
 	private void prePersist() {
 		addrress.setClinic(this);

@@ -1,6 +1,7 @@
 package com.jdc.clinic.controller.partner;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 import javax.validation.Valid;
 
@@ -32,7 +33,9 @@ public class ClinicController {
 
 	@GetMapping("{id}")
 	public String findById(@PathVariable int id, ModelMap model) {
+
 		Clinic c = clinicService.findById(id);
+
 		model.addAttribute("clinic", c);
 		return "views/partner/clinic";
 	}
@@ -54,24 +57,23 @@ public class ClinicController {
 	}
 
 	@PostMapping
-	public String save(@RequestParam("phone") List<String> phone, @RequestParam("mails") List<String> email,
+	public String save(@RequestParam("phone") List<String> phone, @RequestParam("mails") List<String> emails,
 			@Valid Clinic clinic, BindingResult result) {
 
 		if (result.hasErrors()) {
 			return "views/partner/clinic-edit";
 		}
 
-		clinic.setPhone(phone);
-		clinic.setMails(email);
-		clinic.getAddrress().setTownship(locationService.findTownshipById(clinic.getAddrress().getTownship().getId()));
+		clinic.setPhone(phone.stream().filter(ph -> !ph.isEmpty()).collect(Collectors.toList()));
+		clinic.setMails(emails.stream().filter(mail -> !mail.isEmpty()).collect(Collectors.toList()));
 
+		clinic.getAddrress().setTownship(locationService.findTownshipById(clinic.getAddrress().getTownship().getId()));
 		Clinic c = clinicService.save(clinic);
 		return String.format("redirect:/partner/clinics/%d", c.getId());
 	}
 
 	@GetMapping("{id}/edit")
 	public String edit(@PathVariable int id, ModelMap model) {
-
 		Clinic clinic = clinicService.findById(id);
 		model.addAttribute("clinic", clinic);
 		model.addAttribute("edit_title", "Edit " + clinic.getName());

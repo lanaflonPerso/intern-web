@@ -75,9 +75,13 @@
 								<div class="form-group">
 									
 										<label>Enter phone numbers</label>
+										<input type="hidden" name="phone" value=""/>
 										<div class="phone-list">
-											<div class="phone-input">
-												<input type="tel" placeholder="Phone" name="phone" class="form-control"/>
+											<div class="container-fluid phone-input" th:each="phone : *{phone}">
+												<div class="row">
+													<input type="tel" placeholder="Phone" name="phone" class="mt-1 col-11 form-control" th:value="${phone}"/>
+													<button type="button" class="ml-1 btn btn-outline-danger mt-1 btn-remove-phone"><i class="fal fa-times"></i></button>
+												</div>
 											</div>
 										</div>
 										<button type="button" class="btn mt-1 form-control btn-outline-info btn-add-phone" style="border-style: dashed;"><span><i class="far fa-plus"></i></span> Add New</button>
@@ -88,9 +92,13 @@
 								<div class="form-group">
 									
 									<label>Enter Email address</label>
+									<input type="hidden" name="mails" value=""/>
 									<div class="email-list">
-										<div class="email-input">
-											<input type="email" placeholder="Email" name="mails" class="form-control"/>
+										<div class="container-fluid email-input" th:each="mail: *{mails}">
+											<div class="row">
+												<input type="email" placeholder="Email" name="mails" class="mt-1 col-11 form-control" th:value="${mail}"/>
+												<button type="button" class="ml-1 btn btn-outline-danger mt-1 btn-remove-email"><i class="fal fa-times"></i></button>
+											</div>
 										</div>
 									</div>
 									<button type="button" class="btn mt-1 form-control btn-outline-info btn-add-email" style="border-style: dashed;"><span><i class="far fa-plus"></i></span> Add New</button>

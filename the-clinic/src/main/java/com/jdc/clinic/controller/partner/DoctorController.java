@@ -1,8 +1,11 @@
 package com.jdc.clinic.controller.partner;
 
 import org.springframework.beans.factory.annotation.Autowired;
+
 import org.springframework.stereotype.Controller;
+
 import org.springframework.ui.ModelMap;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -11,6 +14,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import com.jdc.clinic.entity.Doctor;
 import com.jdc.clinic.services.DoctorService;
 
+
 @Controller
 @RequestMapping("/partner/doctors")
 public class DoctorController {
@@ -18,27 +22,41 @@ public class DoctorController {
 	@Autowired
 	DoctorService dService;
 
-	@GetMapping("{clinicId}")
-	public String index(@PathVariable int clinicId, ModelMap model) {
-		model.put("doctors", dService.getDoctorsByClinicId(clinicId));
-
+	@GetMapping
+	public String all(ModelMap model) {
+		model.put("doctors", dService.findAll());
 		return "/views/partner/doctors";
 	}
 
-	@GetMapping("{clinicId}/create")
-	public String create(@PathVariable int clinicId) {
+	@GetMapping("{clinicId}")
+	public String index(@PathVariable int clinicId, ModelMap model) {
+		model.put("doctors", dService.getDoctorsByClinicId(clinicId));
+		return "/views/partner/doctors";
+	}
 
+	@GetMapping("create")
+	public String create(ModelMap model) {
+		model.addAttribute("doctor", new Doctor());
+		model.addAttribute("id", dService.findLast().getId() + 1);
 		return "/views/partner/doctor-edit";
 	}
 
 	@GetMapping("edit/{id}")
-	public String edit(@PathVariable int id) {
+	public String edit(@PathVariable int id, ModelMap model) {
+		model.addAttribute("doctor", dService.findById(id));
 		return "/views/partner/doctor-edit";
 	}
 
-	@PostMapping("save")
-	public String save(Doctor doctor) {
-		return String.format("redirect:/partner/doctors/details/%d", doctor.getId());
+	@PostMapping("edit/{id}")
+	public String save(Doctor doctor, BindingResult result, @PathVariable int id) {
+		if (result.hasErrors()) {
+			return "/views/partner/doctor-edit";
+		}
+		if (dService.findById(id).isPresent()) {
+			doctor.setId(id);
+		}
+			dService.save(doctor);
+		return "redirect:/partner/doctors";
 	}
 
 	@GetMapping("details/{id}")
@@ -46,8 +64,9 @@ public class DoctorController {
 		return "/views/partner/doctor";
 	}
 
-	@PostMapping("delete/{id}")
+	@GetMapping("delete/{id}")
 	public String delete(@PathVariable int id) {
-		return String.format("redirect:/partner/doctors/details/%d", id);
+		dService.delete(id);
+		return "redirect:/partner/doctors";
 	}
 }

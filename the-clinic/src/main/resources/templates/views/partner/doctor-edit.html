@@ -11,7 +11,8 @@
 <body>
 	<div layout:fragment="dashboard-contents">
 
-		<form method="get" class="form mt-2">
+		<form method="post" class="form mt-2" th:object="${doctor}"
+			th:action="@{'/partner/doctors/edit/'+${id}}">
 
 			<div class="card">
 
@@ -32,11 +33,13 @@
 
 							<div class="col-12 col-md-6">
 
+
+
 								<div class="form-group">
 
 									<label>Enter Doctor's name :</label> <input type="text"
-										placeholder="Name" name="name" class="form-control" />
-
+										placeholder="Name" name="name" class="form-control"
+										th:field="*{name}" /> 
 								</div>
 
 
@@ -46,7 +49,7 @@
 									<div class="">
 										<div class="form-check-inline">
 											<input type="radio" name="gender" value="male"
-												class="form-check-input">Male
+												class="form-check-input" >Male
 										</div>
 
 										<div class="form-check-inline">
@@ -67,7 +70,7 @@
 
 									<label>Enter Doctor's license-code :</label> <input type="text"
 										placeholder="License-Code" name="License-Code"
-										class="form-control" />
+										class="form-control" th:field="*{licenseCode}"/>
 
 								</div>
 							</div>
@@ -106,8 +109,7 @@
 									<label>Select Specialitie :</label> <select
 										class="form-control mdb-select md-form" name="Specialitie">
 
-										<option value="" disabled selected>Choose
-											Specialitie</option>
+										<option value="" disabled selected>Choose Specialitie</option>
 										<option value="Orthopaedic Surgeons">Orthopaedic
 											Surgeons</option>
 										<option value="Uro Surgeons">Uro Surgeons</option>
@@ -150,10 +152,11 @@
 				<!-- card body -->
 
 				<div class="card-footer text-right bg-transparent">
-					<a class="btn btn-outline-success " href="#" th:href="@{/partner/doctors/1}"
-						role="button">Cancel</a> &nbsp;&nbsp;
-						 <input type="submit" value="Submit"
-						id="create-clinic" class="btn btn-outline-success" />
+					<a class="btn btn-outline-success " href="#"
+						th:href="@{/partner/doctors/1}" role="button">Cancel</a>
+					&nbsp;&nbsp; 
+					<button class="btn btn-outline-success" type="submit" role="button">Submit</button>
+
 
 				</div>
 

@@ -23,7 +23,6 @@ public class ClinicServices {
 	private TimeTableRepo timeTableRepo;
 
 	public List<Clinic> search(String keyword) {
-
 		return null;
 	}
 

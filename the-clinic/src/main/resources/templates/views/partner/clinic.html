@@ -5,267 +5,488 @@
 	layout:decorate="~{/layout/partner-deshboard-template}">
 <head>
 <title>Clinic A</title>
-<link th:href="@{/resources/css/kst.css}" rel="stylesheet" type="text/css"/>
-
+<link th:href="@{/resources/css/kst.css}" rel="stylesheet"
+	type="text/css" />
+<link
+	href="https://cdn.jsdelivr.net/gh/gitbrent/bootstrap4-toggle@3.5.0/css/bootstrap4-toggle.min.css"
+	rel="stylesheet">
+<script
+	src="https://cdn.jsdelivr.net/gh/gitbrent/bootstrap4-toggle@3.5.0/js/bootstrap4-toggle.min.js"></script>
 <style type="text/css">
-	.c-profile-image{
-		width: 140px;
-		height: 140px;
-	}
-	.c-name{
-		color: #834A07;
-	}
-	.c-category{
-		color: black;
-	}
-	.beside-vline{
-		border-left: 1px solid #999999;
-	}
-	
-.my-card-columns .card{
-	margin-bottom:.75rem
+.c-profile-image {
+	width: 140px;
+	height: 140px;
 }
-@media (min-width:992px){
-	.my-card-columns{
-		-webkit-column-count:2;
-		-moz-column-count:2;
-		column-count:2;
-		-webkit-column-gap:1.25rem;
-		-moz-column-gap:1.25rem;
-		column-gap:1.25rem;
-		orphans:1;
-		widows:1
+
+.c-name {
+	color: #834A07;
+}
+
+.c-category {
+	color: black;
+}
+
+.beside-vline {
+	border-left: 1px solid #999999;
+}
+
+.my-card-columns .card {
+	margin-bottom: .75rem
+}
+
+@media ( min-width :992px) {
+	.my-card-columns {
+		-webkit-column-count: 2;
+		-moz-column-count: 2;
+		column-count: 2;
+		-webkit-column-gap: 1.25rem;
+		-moz-column-gap: 1.25rem;
+		column-gap: 1.25rem;
+		orphans: 1;
+		widows: 1
 	}
-	.my-card-columns .card{
-		display:inline-block;
-		width:100%
+	.my-card-columns .card {
+		display: inline-block;
+		width: 100%
 	}
 }
-.list-group-item{
+
+.list-group-item {
 	position: static;
 }
-
 </style>
 
 </head>
 <body>
 	<div layout:fragment="dashboard-contents">
-	
+
 		<div class="container-fluid mt-2 p-3" th:object="${clinic}">
 			<div class="card p-2" id="content">
-        	<div id="one">	
-        	
-        		<img alt="No Image" class="c-profile-image img-fluid" th:src="@{/resources/img/clinic_profile.jpg}">
-        		
-			</div><!-- one end -->
-			
-        	<div id="two" class="container-fluid">
-        	
-				<div class="row">
+				<div id="one">
+
+					<img alt="No Image" class="c-profile-image img-fluid"
+						th:src="@{/resources/img/clinic_profile.jpg}">
+
+				</div>
+				<!-- one end -->
+
+				<div id="two" class="container-fluid">
+
+					<div class="row">
 						<div class="col-9 col-md-auto">
-							
+
 							<h4 class="c-name" th:text="*{name}"></h4>
+
+							<span class="c-category text-muted" th:text="*{addrress.township.name}"></span> 
 							
-							<span class="c-category text-muted" th:text="*{addrress.township.name}"></span>
-							<span class="c-category text-muted"> &bull; </span>
+							<span class="c-category text-muted"> &bull; </span> 
+							
 							<span class="c-category text-muted" th:text="*{addrress.township.division.name}"></span>
-						</div><!-- first column end -->
-						
+						</div>
+						<!-- first column end -->
+
 						<div class="col-auto order-md-2 order-1 dropdown">
-							
-							<a th:href="@{/partner/clinics/{id}/edit(id=${clinic.id})}"><span><i class="hover-scale-animation fal fa-pencil-alt" style="font-size: 20px; color:black;"></i></span></a>
-							
+
+							<a th:href="@{/partner/clinics/{id}/edit(id=${clinic.id})}"><span><i
+									class="hover-scale-animation fal fa-pencil-alt"
+									style="font-size: 20px; color: black;"></i></span></a>
+
 						</div>
-						
-						
-						
-						
-						<div class="col-12 col-md-auto mt-lg-0 mt-2 mr-auto order-md-1 order-2">
+
+
+
+
+						<div
+							class="col-12 col-md-auto mt-lg-0 mt-2 mr-auto order-md-1 order-2">
 							<div class="beside-vline pl-3">
-							
+
 								<span style="color: #C98B42;">Social</span>
-							
+
 								<div class="d-flex justify-content-start">
-								
-									<a th:herf="@{#}" href="#"><i class="hover-scale-animation m-1 fab fa-facebook-square" style="font-size: 24px; color:#3B5998"></i></a>
-									<a th:herf="@{#}" href="#"><i class="hover-scale-animation m-1 fab fa-twitter" style="font-size: 24px; color:#38A1F3"></i></a>
-									<a th:herf="@{#}" href="#"><i class="hover-scale-animation m-1 fab fa-viber" style="font-size: 24px; color:#665CAC"></i></a>
-									<a th:herf="@{#}" href="#"><i class="hover-scale-animation m-1 fab fa-linkedin-in" style="font-size: 24px; color:#007BB6"></i></a>
-									
-								</div>	
-							</div>						
-							
-						</div><!-- second column end -->
-						
-						<div>
-						</div><!-- third column end -->
-						
-				</div><!-- row end -->
-				
-				<hr class="mt-2 mb-2 mr-0">
-				
-			</div><!-- two end -->
-			
-        	<div id="three" class="container-fluid pl-0 pr-0 pl-md-3">
-        	
-				<div class="row">
-				
-					<div class="col-4">
-					
-						<div class="text-muted"><i class="far fa-phone"></i> Phones</div>
-						
-						<div th:each="ph: *{phone}">
-							<div th:text="${ph}"></div>
-						</div>
-						
-					</div>
-						
-					<div class="col-4">
-					
-						<div class="text-muted"><i class="far fa-envelope"></i> Email</div>
-						
-						
-						<div th:each="mail: *{mails}">
-							<div><a th:href="@{mailto:{m}(m=${mail})}" th:text="${mail}"></a></div>
-						</div>
-						
-					</div>
-						
-					<div class="col-4">
-					
-						<div class="text-muted"><i class="far fa-location-arrow"></i> Address</div>
-						
-						<div th:text="*{addrress.address}"></div>
-						
-					</div>	
-					
-				</div>
-								
-			</div><!-- three end -->
-			</div>
-		</div>
-		
-		
-		
-		<div class="container-fluid">
-		
-			<div class="my-card-columns">
-				
-					<div class="card p-2">
-						<div class="mt-2 mb-2 d-flex">
-							<span class="mr-auto" style="color: #834A07"><span><i class="fal fa-clock" style="font-size: 20px;"></i></span> Opening Times</span>
-							<span class="hover-scale-animation "><i class="fal fa-pencil-alt"></i></span>
-						</div>
-						<table class="text-center table table-striped table-bordered">
-						
-							<thead>
-								 <tr>
-								 	<td></td>
-								 	<td><i class="fas fa-cloud-sun" style="font-size: 24px; color:#ffcc00"></i></td>
-								 	<td><i class="fas fa-moon-cloud" style="font-size: 24px; color:#483475"></i></td>
-								 	
-								 </tr>
-							</thead>
-							<tbody>
-								<tr>
-									<th>Sunday</th>
-									<td>08:00 am - 11:30 am</td>
-									<td>01:00 pm - 09:00 pm</td>
-								</tr>
-								<tr>
-									<th>Monday</th>
-									<td>08:00 am - 11:30 am</td>
-									<td class="text-danger">Closed</td>
-								</tr>
-								<tr>
-									<th>Tuesday</th>
-									<td class="text-danger">Closed</td>
-									<td>01:00 pm - 09:00 pm</td>
-								</tr>
-								<tr>
-									<th>Wednesday</th>
-									<td colspan="2">08:00 am - 08:00 pm</td>
-								</tr>
-								<tr>
-									<th>Thursday</th>
-									<td colspan="2">24 hr</td>
-								</tr>
-								<tr>
-									<th>Friday</th>
-									<td colspan="2">08:00 am - 08:00 pm</td>
-								</tr>
-								<tr>
-									<th>Saturday</th>
-									<td colspan="2" class="text-danger">Closed</td>
-								</tr>
-								
-							</tbody>
-						
-						</table>
-					</div><!-- card 1 end -->
-								
-					<div class="card p-2">
-					
-						<div class="mt-2 mb-2 text-center">
-						
-							<span style="color: #3A70C7"><span><i class="fal fa-calendar-day" style="font-size: 20px;"></i></span> Today Schedule</span>
-							
-						</div>
-						
-						<div>
-						
-							<div class="list-group" style="height: 400px; overflow: scroll;">
-								
-								<a href="#" class="list-group-item list-group-item-action d-flex justify-content-between align-items-center">
-									Dr. Tun​ Tun - Orthopedic (8:00 am to 9:00 am)
-									<span class="text-right"><i class="fal fa-chevron-right"></i></span>
-								</a>
-								<a href="#" class="list-group-item list-group-item-action d-flex justify-content-between align-items-center">
-									Dr. Tun​ Tun - Orthopedic (8:00 am to 9:00 am)
-									<span class="text-right"><i class="fal fa-chevron-right"></i></span>
-								</a>
-								<a href="#" class="list-group-item list-group-item-action d-flex justify-content-between align-items-center list-group-item-success">
-									Dr. Tun​ Tun - Orthopedic (8:00 am to 9:00 am)
-									<span class="text-right"><i class="fal fa-chevron-right"></i></span>
-								</a>
-								<a href="#" class="list-group-item list-group-item-action d-flex justify-content-between align-items-center">
-									Dr. Tun​ Tun - Orthopedic (8:00 am to 9:00 am)
-									<span class="text-right"><i class="fal fa-chevron-right"></i></span>
-								</a>
-								<a href="#" class="list-group-item list-group-item-action d-flex justify-content-between align-items-center">
-									Dr. Tun​ Tun - Orthopedic (8:00 am to 9:00 am)
-									<span class="text-right"><i class="fal fa-chevron-right"></i></span>
-								</a>
-								<a href="#" class="list-group-item list-group-item-action d-flex justify-content-between align-items-center">
-									Dr. Tun​ Tun - Orthopedic (8:00 am to 9:00 am)
-									<span class="text-right"><i class="fal fa-chevron-right"></i></span>
-								</a>
-								<a href="#" class="list-group-item list-group-item-action d-flex justify-content-between align-items-center">
-									Dr. Tun​ Tun - Orthopedic (8:00 am to 9:00 am)
-									<span class="text-right"><i class="fal fa-chevron-right"></i></span>
-								</a>
-								<a href="#" class="list-group-item list-group-item-action d-flex justify-content-between align-items-center">
-									Dr. Tun​ Tun - Orthopedic (8:00 am to 9:00 am)
-									<span class="text-right"><i class="fal fa-chevron-right"></i></span>
-								</a>
-								<a href="#" class="list-group-item list-group-item-action d-flex justify-content-between align-items-center">
-									Dr. Tun​ Tun - Orthopedic (8:00 am to 9:00 am)
-									<span class="text-right"><i class="fal fa-chevron-right"></i></span>
-								</a>
+
+									<a th:herf="@{#}" href="#"><i
+										class="hover-scale-animation m-1 fab fa-facebook-square"
+										style="font-size: 24px; color: #3B5998"></i></a> <a th:herf="@{#}"
+										href="#"><i
+										class="hover-scale-animation m-1 fab fa-twitter"
+										style="font-size: 24px; color: #38A1F3"></i></a> <a th:herf="@{#}"
+										href="#"><i class="hover-scale-animation m-1 fab fa-viber"
+										style="font-size: 24px; color: #665CAC"></i></a> <a th:herf="@{#}"
+										href="#"><i
+										class="hover-scale-animation m-1 fab fa-linkedin-in"
+										style="font-size: 24px; color: #007BB6"></i></a>
+
+								</div>
 							</div>
-							
+
 						</div>
-					
-					
-					</div><!-- card 2 end -->
+						<!-- second column end -->
+
+						<div></div>
+						<!-- third column end -->
+
+					</div>
+					<!-- row end -->
+
+					<hr class="mt-2 mb-2 mr-0">
+
 				</div>
-				
+				<!-- two end -->
+
+				<div id="three" class="container-fluid pl-0 pr-0 pl-md-3">
+
+					<div class="row">
+
+						<div class="col-4">
+
+							<div class="text-muted">
+								<i class="far fa-phone"></i> Phones
+							</div>
+
+							<div th:each="ph: *{phone}">
+								<div th:text="${ph}"></div>
+							</div>
+
+						</div>
+
+						<div class="col-4">
+
+							<div class="text-muted">
+								<i class="far fa-envelope"></i> Email
+							</div>
+
+
+							<div th:each="mail: *{mails}">
+								<div>
+									<a th:href="@{mailto:{m}(m=${mail})}" th:text="${mail}"></a>
+								</div>
+							</div>
+
+						</div>
+
+						<div class="col-4">
+
+							<div class="text-muted">
+								<i class="far fa-location-arrow"></i> Address
+							</div>
+
+							<div th:text="*{addrress.address}"></div>
+
+						</div>
+
+					</div>
+
+				</div>
+				<!-- three end -->
 			</div>
-			
 		</div>
+
+
+
+		<div class="container-fluid">
+
+			<div class="my-card-columns">
+
+				<div class="card p-2">
+					<div class="mt-2 mb-2 d-flex">
+						<span class="mr-auto" style="color: #834A07"><span><i
+								class="fal fa-clock" style="font-size: 20px;"></i></span> Opening Times</span>
+								
+						<span class="hover-scale-animation" data-toggle="modal" data-target=".bd-example-modal-lg">
+							<i class="fal fa-pencil-alt"></i></span>
+					</div>
+					<table class="text-center table table-striped table-bordered">
+
+						<thead>
+							<tr>
+								<td></td>
+								<td><i class="fas fa-cloud-sun"
+									style="font-size: 24px; color: #ffcc00"></i></td>
+								<td><i class="fas fa-moon-cloud"
+									style="font-size: 24px; color: #483475"></i></td>
+
+							</tr>
+						</thead>
+						<tbody>
+							<tr>
+								<th>Sunday</th>
+								<td>08:00 am - 11:30 am</td>
+								<td>01:00 pm - 09:00 pm</td>
+							</tr>
+							<tr>
+								<th>Monday</th>
+								<td>08:00 am - 11:30 am</td>
+								<td class="text-danger">Closed</td>
+							</tr>
+							<tr>
+								<th>Tuesday</th>
+								<td class="text-danger">Closed</td>
+								<td>01:00 pm - 09:00 pm</td>
+							</tr>
+							<tr>
+								<th>Wednesday</th>
+								<td colspan="2">08:00 am - 08:00 pm</td>
+							</tr>
+							<tr>
+								<th>Thursday</th>
+								<td colspan="2">24 hr</td>
+							</tr>
+							<tr>
+								<th>Friday</th>
+								<td colspan="2">08:00 am - 08:00 pm</td>
+							</tr>
+							<tr>
+								<th>Saturday</th>
+								<td colspan="2" class="text-danger">Closed</td>
+							</tr>
+
+						</tbody>
+
+					</table>
+				</div>
+				<!-- card 1 end -->
+
+				<div class="card p-2">
+
+					<div class="mt-2 mb-2 text-center">
+
+						<span style="color: #3A70C7"><span><i
+								class="fal fa-calendar-day" style="font-size: 20px;"></i></span> Today
+							Schedule</span>
+
+					</div>
+
+					<div>
+
+						<div class="list-group" style="height: 400px; overflow: scroll;">
+
+							<a href="#"
+								class="list-group-item list-group-item-action d-flex justify-content-between align-items-center">
+								Dr. Tun​ Tun - Orthopedic (8:00 am to 9:00 am) <span
+								class="text-right"><i class="fal fa-chevron-right"></i></span>
+							</a> <a href="#"
+								class="list-group-item list-group-item-action d-flex justify-content-between align-items-center">
+								Dr. Tun​ Tun - Orthopedic (8:00 am to 9:00 am) <span
+								class="text-right"><i class="fal fa-chevron-right"></i></span>
+							</a> <a href="#"
+								class="list-group-item list-group-item-action d-flex justify-content-between align-items-center list-group-item-success">
+								Dr. Tun​ Tun - Orthopedic (8:00 am to 9:00 am) <span
+								class="text-right"><i class="fal fa-chevron-right"></i></span>
+							</a> <a href="#"
+								class="list-group-item list-group-item-action d-flex justify-content-between align-items-center">
+								Dr. Tun​ Tun - Orthopedic (8:00 am to 9:00 am) <span
+								class="text-right"><i class="fal fa-chevron-right"></i></span>
+							</a> <a href="#"
+								class="list-group-item list-group-item-action d-flex justify-content-between align-items-center">
+								Dr. Tun​ Tun - Orthopedic (8:00 am to 9:00 am) <span
+								class="text-right"><i class="fal fa-chevron-right"></i></span>
+							</a> <a href="#"
+								class="list-group-item list-group-item-action d-flex justify-content-between align-items-center">
+								Dr. Tun​ Tun - Orthopedic (8:00 am to 9:00 am) <span
+								class="text-right"><i class="fal fa-chevron-right"></i></span>
+							</a> <a href="#"
+								class="list-group-item list-group-item-action d-flex justify-content-between align-items-center">
+								Dr. Tun​ Tun - Orthopedic (8:00 am to 9:00 am) <span
+								class="text-right"><i class="fal fa-chevron-right"></i></span>
+							</a> <a href="#"
+								class="list-group-item list-group-item-action d-flex justify-content-between align-items-center">
+								Dr. Tun​ Tun - Orthopedic (8:00 am to 9:00 am) <span
+								class="text-right"><i class="fal fa-chevron-right"></i></span>
+							</a> <a href="#"
+								class="list-group-item list-group-item-action d-flex justify-content-between align-items-center">
+								Dr. Tun​ Tun - Orthopedic (8:00 am to 9:00 am) <span
+								class="text-right"><i class="fal fa-chevron-right"></i></span>
+							</a>
+						</div>
+
+					</div>
+
+
+				</div>
+				<!-- card 2 end -->
+			</div>
+
+		</div>
+
+
+
+		<!-- Modal dialog -->
+		<div class="modal fade bd-example-modal-lg" id="open-time-dialog"
+			tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel"
+			aria-hidden="true">
+
+			<div class="modal-dialog modal-lg" role="document">
+
+				<div class="modal-content">
+
+					<div class="modal-header">
+
+						<h5 class="modal-title" id="exampleModalLongTitle">Opening
+							Time Management</h5>
+
+						<button type="button" class="close" data-dismiss="modal"
+							aria-label="Close">
+
+							<span aria-hidden="true">&times;</span>
+
+						</button>
+
+					</div>
+
+					<div class="modal-body">
+
+						<select class="form-control" id="open_type">
+
+							<option value="0">Always Open (24 hour)</option>
+							<option value="1">Custom</option>
+
+						</select>
+
+						<div class="custom-div mt-2" id="schedule-div">
+
+							<table class="table">
+								
+								
+								<tr th:each="day: ${days}">
+
+									<td><input type="checkbox" 
+										th:value="${day}" th:id="@{{da}_check(da=${day})}"
+										th:onclick="@{'toggle(\'#'+${day}+'_time_picks\',\'#'+${day}+'_close\',this)'}">
+									</td>
+
+									<td th:text="${day}">&nbsp;Tuesday&nbsp;</td>
+
+									<td>
+
+										<div th:id="@{${day}+'_time_picks'}" class="form-inline">
+
+											<div th:id="@{${day}+'_time_picks_one'}">
+												from
+												&nbsp;
+												<input class="form-control" type="time" th:id="@{${day}+'_from1'}">
+												&nbsp;
+												to 
+												&nbsp;
+												<input class="form-control" type="time" th:id="@{${day}+'_to1'}">
+
+												&nbsp;
+												<input th:onchange="@{'partTimeToggle(this, \'#'+${day}+'_time_picks_two\')'}" th:id="@{${day}+'_time_add'}" type="checkbox" checked data-toggle="toggle" data-on="<i class='fal fa-plus'></i>"
+													data-off="<i class='fal fa-minus'></i>"
+													data-onstyle="primary" data-offstyle="primary">
+											</div>
+
+											<div th:id="@{${day}+'_time_picks_two'}">
+												from
+												&nbsp;
+												<input class="form-control" type="time" th:id="@{${day}+'_from2'}">
+												&nbsp;
+												to 
+												&nbsp;
+												<input class="form-control" type="time" th:id="@{${day}+'_to2'}">
+
+											</div>
+
+										</div>
+										<div th:id="@{${day}+'_close'}" class="text-danger">Closed</div>
+
+									</td>
+
+								</tr>
+								
+								
+								
+
+							</table>
+
+
+						</div>
+
+					</div>
+
+					<div class="modal-footer">
+
+						<button type="button" class="btn btn-outline-secondary"
+							data-dismiss="modal">Cancel</button>
+
+						<button type="button" class="btn btn-outline-primary">Save
+							changes</button>
+
+					</div>
+
+
+				</div>
+
+			</div>
+
+		</div>
+
+		<script th:inline="javascript">
+		
+			$('#schedule-div').hide();
+
+			$('#MONDAY_time_picks').hide();
+			$('#TUESDAY_time_picks').hide();
+			$('#WEDNESDAY_time_picks').hide();
+			$('#THURSDAY_time_picks').hide();
+			$('#FRIDAY_time_picks').hide();
+			$('#SATURDAY_time_picks').hide();
+			$('#SUNDAY_time_picks').hide();
+
+
+			$('#MONDAY_time_picks_two').hide();
+			$('#TUESDAY_time_picks_two').hide();
+			$('#WEDNESDAY_time_picks_two').hide();
+			$('#THURSDAY_time_picks_two').hide();
+			$('#FRIDAY_time_picks_two').hide();
+			$('#SATURDAY_time_picks_two').hide();
+			$('#SUNDAY_time_picks_two').hide();
 			
-		
-		
-	
+
+			
+			
+			$('#open_type').on('change', function(){
+
+				if(this.value == 0){
+					
+					$('#schedule-div').hide();
+					
+				} else {
+					
+					$('#schedule-div').show();
+						
+				}
+				
+			});
+
+			
+		    
+		    function partTimeToggle(check, pickers){
+				if($(check).prop('checked'))
+					$(pickers).hide();
+				else
+					$(pickers).show();
+				
+			}
+
+		   
+
+			function toggle(timepickers, close, obj) {
+			   	if(!obj.checked){
+					$(timepickers).hide();
+					$(close).show();
+			   	}
+			   	else{
+					$(timepickers).show();
+					$(close).hide();
+				}
+			}
+			
+
+			
+
+		</script>
+
+	</div>
+
 </body>
 </html>

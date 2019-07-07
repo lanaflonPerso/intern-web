@@ -1,5 +1,7 @@
 package com.jdc.clinic.controller.partner;
 
+import java.time.DayOfWeek;
+import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -37,6 +39,10 @@ public class ClinicController {
 		Clinic c = clinicService.findById(id);
 
 		model.addAttribute("clinic", c);
+
+		List<DayOfWeek> days = Arrays.asList(DayOfWeek.values());
+		model.put("days", days);
+
 		return "views/partner/clinic";
 	}
 

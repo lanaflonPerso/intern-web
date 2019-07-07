@@ -6,100 +6,109 @@
 <head>
 <meta charset="UTF-8">
 <title>Clinics</title>
-<link href="/src/main/resources/static/css/bootstrap.min.css" rel="stylesheet" type="text/css"/>
+<link href="/src/main/resources/static/css/bootstrap.min.css"
+	rel="stylesheet" type="text/css" />
 <style type="text/css">
-	
-body{
+
+/* body{
 			background-image: url("/resources/img/bkimg.jpg");
 			background-repeat: no-repeat;
 			background-position: center;
 			background-attachment: fixed;
 			background-size: cover;
 			
-}
-.list-group-item{
+} */
+.list-group-item {
 	position: static;
 }
-	.c-profile-image{
-		width: 100%;
-		height: 160px;
-	}
+
+.c-profile-image {
+	width: 100%;
+	height: 160px;
+}
+
+.clinic-profile {
+	border-radius: 50%;
+	margin: 1em auto;
+	overflow: hidden;
+	max-width: 180px;
+}
 </style>
 </head>
 <body>
 	<section layout:fragment="content">
 
 		<div class="container-fluid mt-3">
-			
+
 			<div class="row  ml-3 mr-3">
-			
+
 				<div class="col-12 col-md-3 col-lg-2">
-					
+
 					<div class="d-md-inline d-none">
-							<div class="text-center p-2 mb-1 list-group-item">
-								Specialities	
-							</div>
-							
-							<div class="list-group">
-								
-								<a href="#" class="list-group-item list-group-item-action d-flex justify-content-between align-items-center">
-									All
-									<span class="text-right"><i class="fal fa-chevron-right"></i></span>
-								</a>
-								<a href="#" class="list-group-item list-group-item-action d-flex justify-content-between align-items-center">
-									General
-									<span class="text-right"><i class="fal fa-chevron-right"></i></span>
-								</a>
-								<a href="#" class="list-group-item list-group-item-action d-flex justify-content-between align-items-center">
-									Dental
-									<span class="text-right"><i class="fal fa-chevron-right"></i></span>
-								</a>
-								
-							</div>
+						<div class="text-center p-2 mb-1 list-group-item">
+							Specialities</div>
+
+						<div class="list-group">
+
+							<a href="#"
+								class="list-group-item list-group-item-action d-flex justify-content-between align-items-center">
+								All <span class="text-right"><i
+									class="fal fa-chevron-right"></i></span>
+							</a> <a href="#"
+								class="list-group-item list-group-item-action d-flex justify-content-between align-items-center">
+								General <span class="text-right"><i
+									class="fal fa-chevron-right"></i></span>
+							</a> <a href="#"
+								class="list-group-item list-group-item-action d-flex justify-content-between align-items-center">
+								Dental <span class="text-right"><i
+									class="fal fa-chevron-right"></i></span>
+							</a>
+
+						</div>
 					</div>
-					
+
 					<div class="d-md-none mb-2">
-						Specialities<br>
-						<select class="form-control">
+						Specialities<br> <select class="form-control">
 							<option>All</option>
 							<option>General</option>
 							<option>Dental</option>
 						</select>
 					</div>
-					
+
 				</div>
-				
+
 				<div class="col-12 col-md-9 col-lg-10">
-					
+
 					<form action="" method="get" class="form pl-2 pr-2">
-						<input type="text" class="form-control" placeholder="Search Clinics">
+						<input type="text" class="form-control"
+							placeholder="Search Clinics">
 					</form>
-					
+
 					<div class="container-fluid">
 						<div class="row">
-						
-							<div class="col-lg-3 p-2">
-								<div class="card">
-									<img alt="No Image" class="c-profile-image img-fluid" th:src="@{/resources/img/clinic_profile.jpg}">
-									<div class="p-3">
-										<span style="color:#3A70C7; font-size: 20px;">SAY KHAN</span><br>
-										<span>General Clinic</span><br>
-										<small class="text-muted">No.1 Main Road Yangon</small>
-										
-										<a th:href="@{/clinics/1}" class="mr-auto btn btn-primary mt-2">See More</a>
-										
-									</div>
-								</div>
+							
+							<div class="col-lg-3 col-6 text-center">
+								<img class="clinic-profile shadow" alt="100x100"
+									th:src="@{/resources/img/clinic_profile.jpg}"
+									data-holder-rendered="true">
+									
+									<h5>SAY KHAN</h5>
+									<div>General Clinic</div>
+									<small>Kamayut &bull; Yangon</small>
+									
+
 							</div>
+							
 						</div>
 					</div>
-					
+
+
 				</div>
-			
+
 			</div>
-			
+
 		</div>
-		
+
 	</section>
 </body>
 

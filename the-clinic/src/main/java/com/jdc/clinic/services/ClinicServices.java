@@ -44,4 +44,5 @@ public class ClinicServices {
 				.collect(Collectors.groupingBy(a -> a.getClinicDoctor().getDoctor()));
 
 	}
+
 }

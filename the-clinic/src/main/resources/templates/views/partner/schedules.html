@@ -5,16 +5,40 @@
 	layout:decorate="~{/layout/partner-deshboard-template}">
 <head>
 <meta charset="UTF-8">
-<title>Schedules</title>
+<link rel="stylesheet" href="/resources/css/custom.css">
+<title>Detail</title>
 </head>
-<style>
+<style type="text/css">
+#doctor-tb {
+	width: 600px;
+	margin-left: 150px;
+}
+
+.table thead {
+	background-color: #AFEEEE;
+	color: black;
+}
+
+.table tbody {
+	text-align: left;
+	vertical-align: middle;
+	font-weight: 400;
+	font-size: 14px;
+	border-bottom: solid 2px lightgrey;
+}
+
+#patient-tr>tr:hover {
+	background-color: #AFEEEE;
+	cursor: pointer;
+}
+
+#search-bar {
+	margin-left: 132px;
+}
 </style>
 <body>
 
-	<div layout:fragment="dashboard-contents">
-
-
-		<br>
+	<section layout:fragment="dashboard-contents">
 		<div class="modal" id="myModal">
 			<div class="row">
 				<div class="col-lg-3 col-md-2"></div>
@@ -25,9 +49,16 @@
 							<h4>Add Schedule</h4>
 							<div>
 								<form action="" method="get">
+
 									<div class="form-group">
-										<label for="" class="cusLabel"> Enter Doctor Name</label> <input
-											type="text" class="form-control" placeholder="Name">
+										<label for="sel1">Select Doctor</label><select
+											class="form-control mdb-select md-form" name="township"
+											id="township_option">
+											<option th:each="township:${doctors}"
+												th:text="${township.name}"></option> 
+												
+									 </select> 
+									 
 									</div>
 									<div class="form-group">
 										<label for="" class="cusLabel"> Enter Degree</label> <input
@@ -64,135 +95,321 @@
 							</div>
 							<!--form div end-->
 						</div>
-						<!--container end-->
 					</div>
-					<!--modal end-->
+				</div>
+				<!--container end-->
+			</div>
+		</div>
+		<div class="container">
+			<h2>
+				Doctor <i style='font-size: 24px' class='fa fa-user-md'></i>
+			</h2>
+			<div class="form-group col-6" style="float: right">
+				<a href class="btn btn-outline-primary" data-toggle="modal"
+					data-target="#myModal">Create Schedule</a>
+			</div>
+			<div class="container-fluid">
+
+				<ul class="nav nav-tabs" role="tablist">
+					<li class="nav-item"><a class="nav-link active"
+						data-toggle="tab" href="#clinicA">Clinic A</a></li>
+					<li class="nav-item"><a class="nav-link" data-toggle="tab"
+						href="#clinicB">Clinic B</a></li>
+					<li class="nav-item"><a class="nav-link" data-toggle="tab"
+						href="#clinicC">Clinic C</a></li>
+				</ul>
+
+			</div>
+			<div class="tab-content">
+				<div class="row mx-3 mt-3 container tab-pane active" id="clinicA">
+
+					<div class="row" id="search-bar">
+
+						<div id="search-doctor">
+							<input type="text" placeholder="Search doctor..."
+								class="form-control form-rounded" size="35">
+
+						</div>
+						<div id="btn-circle-search">
+							<button type="submit" class="btn  btn-circle">
+								<i class="fa fa-search" style="color: white"></i>
+							</button>
+						</div>
+					</div>
+
+					<div class="table-wrapper-scroll-y my-custom-scrollbar">
+						<table class="table table-bordered mt-3" id="ChitTable">
+
+
+							<thead class="thead-danger">
+
+								<tr class="table-info">
+									<th class="text-center">No</th>
+									<th class="text-center">Name</th>
+									<th class="text-center">Degrees</th>
+									<th class="text-center">Specialities</th>
+									<th class="text-center">From</th>
+									<th class="text-center">To</th>
+									<th class="text-center"></th>
+
+								</tr>
+							</thead>
+							<tbody>
+
+								<tr th:each="doctor : ${doctors}">
+									<td class="text-center" th:text="${doctor.id}"></td>
+									<td class="text-center" th:text="${doctor.name}"></td>
+									<td class="text-center" th:text="${doctor.degrees}"></td>
+									<td class="text-center">Hepatologists</td>
+									<td class="text-center"></td>
+									<td class="text-center"></td>
+
+									<td class="text-center">
+
+
+										<div class="dropdown">
+											<a href="#" class="action-icon dropdown-toggle-split"
+												data-toggle="dropdown" aria-expanded="true"><i
+												class="fas fa-ellipsis-h"></i></a>
+											<div class="dropdown-menu"
+												aria-labelledby="dropdownMenuButton">
+												<a class="dropdown-item" href="#"
+													th:href="@{'/partner/doctors/edit/'+${doctor.id}}"><i
+													class="	fas fa-edit"></i> Edit</a> <a class="dropdown-item"
+													href="#"
+													th:href="@{'/partner/doctors/delete/'+${doctor.id}}">
+													<i class="fas fa-trash"></i> Delete
+												</a> <a class="dropdown-item" href="#"
+													th:href="@{/partner/doctors/details/1}"><i
+													class="	fas fa-ellipsis-v"></i> Detail</a>
+											</div>
+										</div>
+									</td>
+								</tr>
+
+
+							</tbody>
+						</table>
+
+
+
+						<div id="bookings-page">
+
+							<ul class="pagination">
+								<li class="page-item"><a class="page-link" href="#"
+									aria-label="Previous"> <span aria-hidden="true">&laquo;</span>
+										<span class="sr-only">Previous</span>
+								</a></li>
+								<li class="page-item"><a class="page-link" href="#">1</a></li>
+								<li class="page-item"><a class="page-link" href="#">2</a></li>
+								<li class="page-item"><a class="page-link" href="#">3</a></li>
+								<li class="page-item"><a class="page-link" href="#"
+									aria-label="Next"> <span aria-hidden="true">&raquo;</span>
+										<span class="sr-only">Next</span>
+								</a></li>
+							</ul>
+						</div>
+					</div>
+
 
 				</div>
-				<!--col end-->
-				<div class="col-lg-3 col-md-2"></div>
-			</div>
-			<!--row end-->
-		</div>
-		<!--dialog container end-->
-		<div class="container"> 
-		
-			<h4>Doctor Schedule</h4>
-			<div class="d-flex flex-row-reverse">
-				<div class="dropdown">
-					<button type="button"
-						class="btn btn-outline-primary dropdown-toggle"
-						data-toggle="dropdown">Day Of Weeks</button>
-					<div class="dropdown-menu">
-						<a class="dropdown-item" href="#">Sunday</a> <a
-							class="dropdown-item" href="#">Monday</a> <a
-							class="dropdown-item" href="#">Tuesday</a> <a
-							class="dropdown-item" href="#">Wednesday</a> <a
-							class="dropdown-item" href="#">Thursday</a> <a
-							class="dropdown-item" href="#">Friday</a> <a
-							class="dropdown-item" href="#">Saturday</a>
+
+
+
+				<div class="row mx-3 mt-3 container tab-pane fade" id="clinicB">
+
+					<div class="row" id="search-bar">
+
+						<div id="search-patient">
+							<input type="text" placeholder="Search patient"
+								class="form-control form-rounded" size="35">
+
+						</div>
+						<div id="btn-circle-search">
+							<button type="submit" class="btn  btn-circle">
+								<i class="fa fa-search" style="color: white"></i>
+							</button>
+						</div>
 					</div>
-				</div>&nbsp;
-				<a href="#" class="btn btn-outline-primary" data-toggle="modal"
-					data-target="#myModal">Create Schedule</a>
+
+					<div class="table-wrapper-scroll-y my-custom-scrollbar">
+						<table class="table table-bordered mt-3" id="ChitTable">
+
+
+							<thead class="thead-danger">
+
+								<tr class="table-info">
+									<th class="text-center">No</th>
+									<th class="text-center">Name</th>
+									<th class="text-center">Degrees</th>
+									<th class="text-center">Specialities</th>
+									<th class="text-center"></th>
+
+								</tr>
+							</thead>
+							<tbody>
+
+								<tr th:each="doctor : ${doctors}">
+									<td class="text-center" th:text="${doctor.id}"></td>
+									<td class="text-center" th:text="${doctor.name}"></td>
+									<td class="text-center" th:text="${doctor.degrees}"></td>
+									<td class="text-center">Hepatologists</td>
+
+									<td class="text-center">
+
+
+										<div class="dropdown">
+											<a href="#" class="action-icon dropdown-toggle-split"
+												data-toggle="dropdown" aria-expanded="true"><i
+												class="fas fa-ellipsis-h"></i></a>
+											<div class="dropdown-menu"
+												aria-labelledby="dropdownMenuButton">
+												<a class="dropdown-item" href="#"
+													th:href="@{/partner/doctors/edit/1}"><i
+													class="	fas fa-edit"></i> Edit</a> <a class="dropdown-item"
+													href="#"> <i class="fas fa-trash"></i>
+													Delete
+												</a> <a class="dropdown-item" href="#"
+													th:href="@{/partner/doctors/details/1}"><i
+													class="	fas fa-ellipsis-v"></i> Detail</a>
+
+
+											</div>
+										</div>
+									</td>
+								</tr>
+
+
+							</tbody>
+						</table>
+
+
+
+						<div id="bookings-page">
+
+							<ul class="pagination">
+								<li class="page-item"><a class="page-link" href="#"
+									aria-label="Previous"> <span aria-hidden="true">&laquo;</span>
+										<span class="sr-only">Previous</span>
+								</a></li>
+								<li class="page-item"><a class="page-link" href="#">1</a></li>
+								<li class="page-item"><a class="page-link" href="#">2</a></li>
+								<li class="page-item"><a class="page-link" href="#">3</a></li>
+								<li class="page-item"><a class="page-link" href="#"
+									aria-label="Next"> <span aria-hidden="true">&raquo;</span>
+										<span class="sr-only">Next</span>
+								</a></li>
+							</ul>
+						</div>
+					</div>
+
+				</div>
+				<!-- <div class="row mx-3 mt-3 container tab-pane fade" id="clinicC">
+
+					<div class="row" id="search-bar">
+
+						<div id="search-patient">
+							<input type="text" placeholder="Search patient"
+								class="form-control form-rounded" size="35">
+
+						</div>
+						<div id="btn-circle-search">
+							<button type="submit" class="btn  btn-circle">
+								<i class="fa fa-search" style="color: white"></i>
+							</button>
+						</div>
+					</div>
+
+					<div class="table-wrapper-scroll-y my-custom-scrollbar">
+						<table class="table table-responsive-md" id="patient-tb">
+							<thead>
+								<tr>
+									<td>No.</td>
+									<td>Patient</td>
+									<td>Phone</td>
+									<td></td>
+								</tr>
+							</thead>
+							<tbody id="patient-tr">
+								<a href="#" th:href="@{/partner/1/patients/1}">
+									<tr class="table-row" th:data-href="@{/partner/1/patients/1}">
+
+										<td>1</td>
+										<td>Daw Mya</td>
+										<td>0945634456</td>
+										<td><span class="text-right"><i
+												class="fal fa-chevron-right"></i></span></td>
+
+									</tr>
+								</a>
+								<tr>
+									<td>2</td>
+									<td>Daw Mya</td>
+									<td>097852312</td>
+									<td><span class="text-right"><i
+											class="fal fa-chevron-right"></i></span></td>
+
+								</tr>
+								<tr>
+									<td>3</td>
+									<td>Daw Mya</td>
+									<td>0978541236</td>
+									<td><span class="text-right"><i
+											class="fal fa-chevron-right"></i></span></td>
+
+								</tr>
+								<tr>
+									<td>4</td>
+									<td>Daw Mya</td>
+									<td>09654123</td>
+									<td><span class="text-right"><i
+											class="fal fa-chevron-right"></i></span></td>
+
+								</tr>
+								<tr>
+									<td>5</td>
+									<td>Daw Mya</td>
+									<td>09561234</td>
+									<td><span class="text-right"><i
+											class="fal fa-chevron-right"></i></span></td>
+
+								</tr>
+								<tr>
+									<td>6</td>
+									<td>Daw Mya</td>
+									<td>09852369</td>
+									<td><span class="text-right"><i
+											class="fal fa-chevron-right"></i></span></td>
+
+								</tr>
+
+							</tbody>
+						</table>
+
+						<div id="bookings-page">
+
+							<ul class="pagination">
+								<li class="page-item"><a class="page-link" href="#"
+									aria-label="Previous"> <span aria-hidden="true">&laquo;</span>
+										<span class="sr-only">Previous</span>
+								</a></li>
+								<li class="page-item"><a class="page-link" href="#">1</a></li>
+								<li class="page-item"><a class="page-link" href="#">2</a></li>
+								<li class="page-item"><a class="page-link" href="#">3</a></li>
+								<li class="page-item"><a class="page-link" href="#"
+									aria-label="Next"> <span aria-hidden="true">&raquo;</span>
+										<span class="sr-only">Next</span>
+								</a></li>
+							</ul>
+						</div>
+					</div>
+
+				</div> -->
 
 			</div>
-
-			<br>
-			<table class="table table-bordered table-sm-3  " id="myTable">
-
-				<thead>
-					<tr class="tableHeading-color">
-						<th>No</th>
-						<th>Name</th>
-						<th>Degree</th>
-						<th>From</th>
-						<th>To</th>
-						<th>Actions</th>
-
-					</tr>
-				</thead>
-				<tbody>
-					<tr>
-						<td>1</td>
-						<td>Dr.Thet Hylar Tin</td>
-						<td>Cardiologist</td>
-						<td>10:00 AM</td>
-						<td>12:00 AM</td>
-						<td><a href="#"><i class="fa fa-edit"></i>&nbsp;&nbsp;</a> <a
-							href="#" onclick="deleteRow(this)"><i class="fa fa-trash"
-								id="book-cancel-1"></i></a></td>
-					</tr>
-
-
-					<tr>
-						<td>2</td>
-						<td>Dr.Chit Thae</td>
-						<td>Baby Specialist</td>
-						<td>9:30 AM</td>
-						<td>11:00 AM</td>
-						<td><a href="#"><i class="fa fa-edit"></i>&nbsp;&nbsp;</a> <a
-							href="#" onclick="deleteRow(this)"><i class="fa fa-trash"
-								id="book-cancel-1"></i></a></td>
-					</tr>
-
-					<tr>
-						<td>3</td>
-						<td>Dr.Khin Lay</td>
-						<td>General</td>
-						<td>1:00 PM</td>
-						<td>3:00 PM</td>
-						<td><a href="#"><i class="fa fa-edit"></i>&nbsp;&nbsp;</a> <a
-							href="#" onclick="deleteRow(this)"><i class="fa fa-trash"
-								id="book-cancel-1"></i></a></td>
-					</tr>
-
-					<tr>
-						<td>4</td>
-						<td>Dr.Htet Aung Lin</td>
-						<td>Cardiologist</td>
-						<td>4:00 PM</td>
-						<td>6:00 PM</td>
-						<td><a href="#"><i class="fa fa-edit"></i>&nbsp;&nbsp;</a> <a
-							href="#" onclick="deleteRow(this)"><i class="fa fa-trash"
-								id="book-cancel-1"></i></a></td>
-					</tr>
-
-					<tr>
-						<td>5</td>
-						<td>Dr.Su Su</td>
-						<td>Cardiologist</td>
-						<td>4:00 PM</td>
-						<td>6:00 PM</td>
-						<td><a href="#"><i class="fa fa-edit"></i>&nbsp;&nbsp;</a> <a
-							href="#" onclick="deleteRow(this)"><i class="fa fa-trash"
-								id="book-cancel-1"></i></a></td>
-					</tr>
-
-					<tr>
-						<td>6</td>
-						<td>Dr.Su Mon</td>
-						<td>Cardiologist</td>
-						<td>4:00 PM</td>
-						<td>6:00 PM</td>
-						<td><a href="#"><i class="fa fa-edit"></i>&nbsp;&nbsp;</a> <a
-							href="#" onclick="deleteRow(this)"><i class="fa fa-trash"
-								id="book-cancel-1"></i></a></td>
-					</tr>
-			</table>
-
 		</div>
-
-	</div>
-	<script>
-function deleteRow(r) {
-  var i = r.parentNode.parentNode.rowIndex;
-  document.getElementById("myTable").deleteRow(i);
-}
-</script>
-
-
-
-
+		<script>
+		</script>
+	</section>
 </body>
 </html>

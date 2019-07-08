@@ -39,30 +39,24 @@
 
 									<label>Enter Doctor's name :</label> <input type="text"
 										placeholder="Name" name="name" class="form-control"
-										th:field="*{name}" /> 
+										th:field="*{name}" />
 								</div>
 
 
 								<div class="column">
 									<label for="gender">Gender:</label>
-
-									<div class="">
-										<div class="form-check-inline">
-											<input type="radio" name="gender" value="male"
-												class="form-check-input" >Male
-										</div>
-
-										<div class="form-check-inline">
-											<input type="radio" name="gender" value="female"
-												class="form-check-input">Female
-										</div>
+									<div
+										th:each="gender : ${T(com.jdc.clinic.entity.FamilyMember.Gender).values()}">
+										<input type="radio" th:id="${gender}"
+											th:value="${gender}" name="gender" th:field="*{gender}"
+										 /> <label 
+											th:for="${gender}" th:text="${gender.name()}"></label>
 									</div>
-
 								</div>
 								<div class="form-group mt-2">
 
 									<label>Enter Doctor's position :</label> <input type="text"
-										placeholder="Position" name="Position" class="form-control" />
+										placeholder="Position" name="Position" class="form-control" th:field="*{position}"/>
 
 								</div>
 
@@ -70,7 +64,7 @@
 
 									<label>Enter Doctor's license-code :</label> <input type="text"
 										placeholder="License-Code" name="License-Code"
-										class="form-control" th:field="*{licenseCode}"/>
+										class="form-control" th:field="*{licenseCode}" />
 
 								</div>
 							</div>
@@ -78,14 +72,10 @@
 							<div class="col-12 col-md-6">
 								<div class="form-group">
 
-									<label>Select Hospital :</label> <select
-										class="form-control mdb-select md-form" name="Hospital">
-
-										<option value="" disabled selected>Choose Hospital</option>
-										<option value="SSC">SSC</option>
-										<option value="OSC">OSC</option>
-										<option value="ACADEMY">ACADEMY</option>
-
+									<label>Select Hospital :</label>
+									<select
+										class="form-control mdb-select md-form" name="hospital" th:field="*{hospital}">
+										<option th:each="clinic : ${clinics}" th:text="${clinic.name}" th:value="${clinic.name}"></option>
 									</select>
 
 								</div>
@@ -154,7 +144,7 @@
 				<div class="card-footer text-right bg-transparent">
 					<a class="btn btn-outline-success " href="#"
 						th:href="@{/partner/doctors/1}" role="button">Cancel</a>
-					&nbsp;&nbsp; 
+					&nbsp;&nbsp;
 					<button class="btn btn-outline-success" type="submit" role="button">Submit</button>
 
 

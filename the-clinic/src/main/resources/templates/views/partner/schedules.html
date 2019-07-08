@@ -48,14 +48,14 @@
 						<div class="container mt-5">
 							<h4>Add Schedule</h4>
 							<div>
-								<form action="" method="get">
+								<form method="post" th:object="${tTable}" th:action="@{/partner/schedules/create}">
 
 									<div class="form-group">
 										<label for="sel1">Select Doctor</label><select
-											class="form-control mdb-select md-form" name="township"
-											id="township_option">
-											<option th:each="township:${doctors}"
-												th:text="${township.name}"></option> 
+											class="form-control mdb-select md-form" name="doctor"
+											id="doctor_option" >
+											<option th:each="doctor:${doctors}"
+												th:text="${doctor.name}"></option> 
 												
 									 </select> 
 									 
@@ -87,8 +87,8 @@
 										</select>
 									</div>
 									<div class="form-group">
-										<button class="btn btn-outline-success">Create</button>
-										<button class="btn btn-outline-danger" data-dismiss="modal">Cancel</button>
+										<button class="btn btn-outline-success" type="submit">Create</button>
+										<a class="btn btn-outline-danger" data-dismiss="modal">Cancel</a>
 									</div>
 								</form>
 								<!--form end-->
@@ -102,7 +102,7 @@
 		</div>
 		<div class="container">
 			<h2>
-				Doctor <i style='font-size: 24px' class='fa fa-user-md'></i>
+				Doctor Schedule &nbsp;<i style='font-size: 24px' class='fal fa-calendar-alt'></i>
 			</h2>
 			<div class="form-group col-6" style="float: right">
 				<a href class="btn btn-outline-primary" data-toggle="modal"
@@ -156,8 +156,8 @@
 							</thead>
 							<tbody>
 
-								<tr th:each="doctor : ${doctors}">
-									<td class="text-center" th:text="${doctor.id}"></td>
+								<!-- <tr th:each="tt : ${timetables}">
+									<td class="text-center" th:text="${tt.clinicDoctor.doctor.id}"></td>
 									<td class="text-center" th:text="${doctor.name}"></td>
 									<td class="text-center" th:text="${doctor.degrees}"></td>
 									<td class="text-center">Hepatologists</td>
@@ -185,7 +185,7 @@
 											</div>
 										</div>
 									</td>
-								</tr>
+								</tr> -->
 
 
 							</tbody>

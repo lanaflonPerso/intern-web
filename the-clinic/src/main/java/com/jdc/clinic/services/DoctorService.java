@@ -8,6 +8,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import com.jdc.clinic.entity.Clinic;
+import com.jdc.clinic.entity.ClinicDoctor;
+import com.jdc.clinic.entity.ClinicDoctorPK;
 import com.jdc.clinic.entity.Doctor;
 import com.jdc.clinic.repo.ClinicDoctorRepo;
 import com.jdc.clinic.repo.DoctorRepo;
@@ -19,6 +22,9 @@ public class DoctorService {
 	private ClinicDoctorRepo cdRepo;
 
 	@Autowired
+	private ClinicServices cService;
+
+	@Autowired
 	private DoctorRepo dRepo;
 
 	@Transactional
@@ -27,8 +33,10 @@ public class DoctorService {
 				.collect(Collectors.toList());
 	}
 
-	public Doctor save(Doctor doctor) {
-		return dRepo.save(doctor);
+	public void save(Doctor doctor) {
+		Clinic c = cService.findByName(doctor.getHospital());
+		Doctor d = dRepo.save(doctor);
+		cdRepo.save(new ClinicDoctor(null, c, d, new ClinicDoctorPK(c.getId(), d.getId())));
 	}
 
 	public Optional<Doctor> findById(int id) {
@@ -42,7 +50,7 @@ public class DoctorService {
 	public void delete(int id) {
 		dRepo.delete(dRepo.findById(id).get());
 	}
-	
+
 	public Doctor findLast() {
 		return dRepo.findById(dRepo.findAll().stream().mapToInt(d -> d.getId()).max().getAsInt()).get();
 	}

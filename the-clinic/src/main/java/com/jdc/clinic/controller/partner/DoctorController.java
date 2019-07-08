@@ -1,9 +1,7 @@
 package com.jdc.clinic.controller.partner;
 
 import org.springframework.beans.factory.annotation.Autowired;
-
 import org.springframework.stereotype.Controller;
-
 import org.springframework.ui.ModelMap;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -12,19 +10,23 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.jdc.clinic.entity.Doctor;
+import com.jdc.clinic.services.ClinicServices;
 import com.jdc.clinic.services.DoctorService;
-
 
 @Controller
 @RequestMapping("/partner/doctors")
 public class DoctorController {
 
 	@Autowired
-	DoctorService dService;
+	private DoctorService dService;
+
+	@Autowired
+	private ClinicServices cService;
 
 	@GetMapping
 	public String all(ModelMap model) {
 		model.put("doctors", dService.findAll());
+		model.put("clinics", cService.findAll());
 		return "/views/partner/doctors";
 	}
 
@@ -38,6 +40,7 @@ public class DoctorController {
 	public String create(ModelMap model) {
 		model.addAttribute("doctor", new Doctor());
 		model.addAttribute("id", dService.findLast().getId() + 1);
+		model.put("clinics", cService.findAll());
 		return "/views/partner/doctor-edit";
 	}
 
@@ -55,7 +58,7 @@ public class DoctorController {
 		if (dService.findById(id).isPresent()) {
 			doctor.setId(id);
 		}
-			dService.save(doctor);
+		dService.save(doctor);
 		return "redirect:/partner/doctors";
 	}
 

@@ -45,4 +45,11 @@ public class ClinicServices {
 
 	}
 
+	public List<Clinic> findAll() {
+		return clinicRepo.findAll();
+	}
+
+	public Clinic findByName(String name) {
+		return clinicRepo.findByName(name).get(0);
+	}
 }

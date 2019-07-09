@@ -1,5 +1,7 @@
 package com.jdc.clinic.controller.member;
 
+import java.time.LocalDate;
+
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
@@ -34,7 +36,15 @@ public class MemberBookingController {
 
 		model.put("doctors", bService.findDoctors());
 
-		model.put("bookings", bService.getBookingsByMember(((Member) session.getAttribute("member")).getPhone()));
+		model.put("bookings",
+				bService.getBookingByMemberAndDate((((Member) session.getAttribute("member")).getPhone())));
+
+		return "/views/member/bookings";
+	}
+
+	@GetMapping("/{date}")
+	public String showBookingByDate(@PathVariable("date") String date, ModelMap model) {
+		model.put("bookings", bService.getBookingByDate("member", LocalDate.parse(date)));
 		return "/views/member/bookings";
 	}
 
@@ -44,10 +54,10 @@ public class MemberBookingController {
 		return "redirect:/member/bookings/**";
 	}
 
-	@GetMapping("{id}")
-	public String findById(@PathVariable long id, ModelMap model) {
-		return "/views/member/booking";
-	}
+//	@GetMapping("{id}")
+//	public String findById(@PathVariable long id, ModelMap model) {
+//		return "/views/member/booking";
+//	}
 
 	@PostMapping("{id}")
 	public String cancel(@PathVariable long id) {

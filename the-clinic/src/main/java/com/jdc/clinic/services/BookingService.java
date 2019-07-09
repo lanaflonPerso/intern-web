@@ -1,5 +1,6 @@
 package com.jdc.clinic.services;
 
+import java.time.LocalDate;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -50,9 +51,16 @@ public class BookingService {
 	}
 
 	public List<Booking> getBookingsByMember(String memberPhone) {
-
 		return bRepo.findBookingByMemberPhone(memberPhone);
 
+	}
+
+	public List<Booking> getBookingByMemberAndDate(String memberPhone) {
+		return bRepo.findBookingByMemberPhoneAndDate(memberPhone);
+	}
+
+	public List<Booking> getBookingByDate(String memberPhone, LocalDate date) {
+		return bRepo.findbookingByDate(memberPhone, date);
 	}
 
 }

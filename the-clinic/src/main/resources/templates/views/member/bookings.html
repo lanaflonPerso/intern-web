@@ -6,17 +6,20 @@
 <head>
 <meta charset="UTF-8">
 <link rel="stylesheet" href="/resources/css/custom.css">
+<link rel="stylesheet" th:href="@{/resources/css/bootstrap.min.css}">
+<script th:src="@{/resources/js/jquery.min.js}"></script>
+<script th:src="@{/resources/js/jquery-ui.min.js}"></script>
 <title>Bookings</title>
 </head>
 <body>
 	<section layout:fragment="dashboard-contents">
 		<div>
-			<p style="font-size:20px;" class="ml-3">Bookings</p>
-			
+			<p style="font-size: 20px;" class="ml-3">Bookings</p>
+
 		</div>
 		<!-- start selection -->
 		<div class="row mx-3 my-2" id="div-select">
-			<div id="selection">
+			<!-- <div id="selection">
 				
 				<div class="form-group">
 					<select class="form-control mdb-select md-form" name="patientName" id="selectbox">
@@ -37,8 +40,14 @@
 
 					</select>
 				</div>
-			</div>
+			</div> -->
 			<div id="selection">
+
+				<input type="text" placeholder="Search Booking..." id="searching"
+					class="form-control form-rounded" size="35">
+
+			</div>
+			<!-- <div id="selection">
 				<div class="form-group">
 					<select class="form-control mdb-select md-form" name="clinicName" id="selectbox">
 
@@ -47,13 +56,18 @@
 						
 					</select>
 				</div>
+			</div> -->
+			<div id="selection" class="row">
+
+				<p class="col pt-2" style="size: 20px;">
+					<b>Search by date</b>
+				</p>
+				<form method="get" id="formId" action="/member/bookings/" name="formId">
+				<input type="text" class="form-control col" id="datepicker"
+					size="12px">
+				</form>
 			</div>
 
-			<div id="selection">
-				<input type="text" class="form-control" id="datepicker" size="12px">
-
-			</div>
-			
 		</div>
 		<!-- End selection -->
 		<div class="row mx-3" th:if="${not #lists.isEmpty(bookings)}">
@@ -71,18 +85,24 @@
 
 					</tr>
 				</thead>
-				<tbody>
-					<tr th:each="booking :${bookings}">
-						<td class="text-center" th:text="${booking.id}"></td>
+				<tbody id="bookingTable">
+				
+					<tr th:each="booking,iterationStatus :${bookings}">
+						<td class="text-center" th:text="${iterationStatus.count}"></td>
 						<td>
-						<p style="float: left" th:text="${booking.patient.familyMember.name}"></p>
-						<span class="label label-success ml-auto badge mt-1"
-							style="background-color: #ef6c00; color: white; float: right; width: 80px;" th:text="${booking.status}"></span>
+							<p style="float: left"
+								th:text="${booking.patient.familyMember.name}"></p> <span
+							class="label label-success ml-auto badge mt-1"
+							style="background-color: #ef6c00; color: white; float: right; width: 80px;"
+							th:text="${booking.status}"></span>
 						</td>
-						<td class="text-center" th:text="${booking.clinicDoctor.clinic.name}"></td>
-						<td class="text-center" th:text="${booking.clinicDoctor.doctor.name}"></td>
+						<td class="text-center"
+							th:text="${booking.clinicDoctor.clinic.name}"></td>
+						<td class="text-center"
+							th:text="${booking.clinicDoctor.doctor.name}"></td>
 						<td class="text-center" th:text="${booking.bookingDate}"></td>
-						<td class="text-center" th:text="${booking.timeTable.timeFrom} + ' to '+ ${booking.timeTable.timeTo}" ></td>
+						<td class="text-center"
+							th:text="${booking.timeTable.timeFrom} + ' to '+ ${booking.timeTable.timeTo}"></td>
 						<td class="text-center">
 							<button type="button" class="btn btn-delete" data-toggle="modal"
 								data-target="#myModal">
@@ -91,7 +111,7 @@
 						</td>
 
 					</tr>
-					
+
 				</tbody>
 			</table>
 		</div>
@@ -120,49 +140,29 @@
 		<script src="https://code.jquery.com/jquery-1.12.4.js"></script>
 		<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
 		<script>
-			$(function() {
-
-				$("#datepicker").datepicker({
-					dateFormat : 'dd/mm/yy',
+         $(document).ready(function(){
+            $("#searching").on("keyup", function() {
+               var value = $(this).val().toLowerCase();
+               $("#bookingTable tr").filter(function() {
+                  $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
+               });
+            });
+         });
+      </script>
+		<script type="text/javascript">
+		$(document).ready(function() {
+			  $('#datepicker').datepicker({
+				  dateFormat : 'yy-mm-dd',
 					changeMonth : true,
 					changeYear : true,
 					yearRange : '-100y:c+nn',
-					monthRage : 'undefined',
-				/* maxDate: '-1d', */
-				});
-
-				$("#datepicker").datepicker({
-					dateFormat : "dd/mm/yy"
-				}).datepicker("setDate", new Date());
+					monthRage : 'undefined', 
+			       onSelect : function (dateText, inst) {
+			          document.formId.action = "/member/bookings/"+ dateText; 
+			          $('#formId').submit();
+			  }}).datepicker("setDate", new Date());
 			});
 		</script>
-
-		<script>
-			$(function() {
-
-				$("#datepicker2").datepicker({
-					dateFormat : 'dd/mm/yy',
-					changeMonth : true,
-					changeYear : true,
-					yearRange : '-100y:c+nn',
-					monthRage : 'undefined',
-				/* maxDate: '-1d', */
-				});
-
-				$("#datepicker2").datepicker({
-					dateFormat : "dd/mm/yy"
-				}).datepicker("setDate", new Date());
-			});
-		</script>
-
-		<script>
-			// Time Picker Initialization
-			$('#time').bootstrapMaterialDatePicker({
-				date : false
-			});
-		</script>
-
-
 	</section>
 </body>
 </html>

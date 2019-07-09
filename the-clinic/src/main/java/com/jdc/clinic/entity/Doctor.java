@@ -40,6 +40,8 @@ public class Doctor implements Serializable {
 	private List<String> specialities;
 
 	private Gender gender;
+	
+	
 
 	private String hospital;
 

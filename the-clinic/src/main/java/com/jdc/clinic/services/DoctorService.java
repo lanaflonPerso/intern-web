@@ -48,10 +48,12 @@ public class DoctorService {
 	}
 
 	public void delete(int id) {
+		
 		dRepo.delete(dRepo.findById(id).get());
 	}
 
 	public Doctor findLast() {
 		return dRepo.findById(dRepo.findAll().stream().mapToInt(d -> d.getId()).max().getAsInt()).get();
 	}
+	
 }

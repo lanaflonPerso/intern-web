@@ -82,7 +82,7 @@
 								<div class="form-group mt-2">
 
 									<label>Select Degree : </label> <select
-										class="form-control mdb-select md-form" name="degree">
+										class="form-control mdb-select md-form" name="degree" th:field="*{degrees}">
 
 										<option value="" disabled selected>Choose Degree</option>
 										<option value="M.B.B.S">M.B.B.S</option>
@@ -97,7 +97,7 @@
 								<div class="form-group">
 
 									<label>Select Specialitie :</label> <select
-										class="form-control mdb-select md-form" name="Specialitie">
+										class="form-control mdb-select md-form" name="Specialitie" th:field="*{specialities}">
 
 										<option value="" disabled selected>Choose Specialitie</option>
 										<option value="Orthopaedic Surgeons">Orthopaedic
@@ -114,7 +114,7 @@
 									<label>Enter phone numbers</label>
 									<div class="phone-list">
 										<div class="phone-input">
-											<input type="tel" placeholder="Phone" name="phone1"
+											<input type="tel" placeholder="Phone" name="phone1" th:field="*{phones}"
 												class="form-control" />
 										</div>
 									</div>

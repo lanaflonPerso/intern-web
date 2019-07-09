@@ -47,6 +47,7 @@ public class DoctorController {
 	@GetMapping("edit/{id}")
 	public String edit(@PathVariable int id, ModelMap model) {
 		model.addAttribute("doctor", dService.findById(id));
+		model.put("clinics", cService.findAll());
 		return "/views/partner/doctor-edit";
 	}
 
@@ -63,12 +64,13 @@ public class DoctorController {
 	}
 
 	@GetMapping("details/{id}")
-	public String findById(@PathVariable int id) {
+	public String findById(@PathVariable int id, ModelMap model) {
+		model.put("doctor", dService.findById(id).get());
 		return "/views/partner/doctor";
 	}
 
 	@GetMapping("delete/{id}")
-	public String delete(@PathVariable int id) {
+	public String delete(@PathVariable("id") int id) {
 		dService.delete(id);
 		return "redirect:/partner/doctors";
 	}

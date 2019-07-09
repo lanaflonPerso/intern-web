@@ -40,7 +40,8 @@
 										<div class="profile-img-wrap">
 											<div class="profile-img">
 												<a href="#"><img class="avatar"
-													th:src="@{/resources/img/doctor.png}" alt=""></a>
+													th:src="@{/resources/img/doctor.png}"
+													th:href="@{/partner/doctors/details/{id}}" alt=""></a>
 											</div>
 										</div>
 									</div>
@@ -52,27 +53,34 @@
 
 												<div class="col-md-7">
 													<ul class="personal-info">
-														<li><span class="title">Name</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-															<span class="">:</span> <span class="text">Chit
-																Thae</span></li>
-														<li><span class="title">Specialist</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-															<span class="">:</span> <span class="text">Gynecologist</span>
-														</li>
-														<li><span class="title">Phone</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-															<span class="">:</span> <span class="text">770-889-6484</span>
-														</li>
-														<li><span class="title">Email</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-															<span class="">:</span> <span class="text">chitthae3131@gmail.com</span>
-														</li>
-														<li><span class="title">Birthday</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-															<span class="">:</span> <span class="text">3rd
-																March</span></li>
-														<li><span class="title">Address</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-															<span class="">:</span> <span class="text">HtaukKyant</span>
-														</li>
-														<li><span class="title">Gender</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-															<span class="">:</span> <span class="text">Female</span>
-														</li>
+														<li><span class="title">Name</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+															<span class="">:</span> <span class="text"
+															th:text="${doctor.name}"> </span></li>
+														<li><span class="title">Specialist</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+															<span class="">:</span> <span class="text"
+															th:text="${doctor.specialities[0]}"></span></li>
+														<li><span class="title">Phone</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+															<span class="">:</span> <span class="text"
+															th:text="${doctor.phones[0]}"></span></li>
+														<li><span class="title">Degrees</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+															<span class="">:</span> <span class="text"
+															th:text="${doctor.degrees[0]}"></span></li>
+															
+														<li><span class="title">Hospital</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+															<span class="">:</span> <span class="text"
+															th:text="${doctor.hospital}"></span></li>
+															
+														<li><span class="title">LicenseCode</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+															<span class="">:</span> <span class="text"
+															th:text="${doctor.licenseCode}"></span></li>
+															<li><span class="title">Position</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+															<span class="">:</span> <span class="text"
+															th:text="${doctor.position}"></span></li>
+
+														<li><span class="title">Gender</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+															<span class="">:</span> <span class="text"
+															th:text="${doctor.gender}"></span></li>
+
 													</ul>
 												</div>
 											</div>

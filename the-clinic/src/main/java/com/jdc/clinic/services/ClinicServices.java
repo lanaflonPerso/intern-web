@@ -52,4 +52,6 @@ public class ClinicServices {
 	public Clinic findByName(String name) {
 		return clinicRepo.findByName(name).get(0);
 	}
+	
+	
 }

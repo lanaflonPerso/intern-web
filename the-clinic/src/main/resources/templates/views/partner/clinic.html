@@ -143,8 +143,16 @@
 								<i class="far fa-phone"></i> Phones
 							</div>
 
-							<div th:each="ph: *{phone}">
+							<div th:unless="*{phone.isEmpty()}" th:each="ph: *{phone}">
+							
 								<div th:text="${ph}"></div>
+								
+							</div>
+							
+							<div th:if="*{phone.isEmpty()}">
+							
+								<div><small class="text-warning">HAVEN't PHONE !</small></div>
+								
 							</div>
 
 						</div>
@@ -156,10 +164,19 @@
 							</div>
 
 
-							<div th:each="mail: *{mails}">
+							<div th:unless="*{mails.isEmpty()}" th:each="mail: *{mails}">
+							
 								<div>
+								
 									<a th:href="@{mailto:{m}(m=${mail})}" th:text="${mail}"></a>
+									
 								</div>
+								
+							</div>
+							<div th:if="*{mails.isEmpty()}">
+							
+								<div><small class="text-warning">HAVEN't EMAIL !</small></div>
+								
 							</div>
 
 						</div>

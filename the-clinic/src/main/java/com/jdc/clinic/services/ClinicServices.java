@@ -13,14 +13,19 @@ import com.jdc.clinic.entity.Doctor;
 import com.jdc.clinic.entity.Timetable;
 import com.jdc.clinic.repo.ClinicRepo;
 import com.jdc.clinic.repo.TimeTableRepo;
+import com.jdc.clinic.repo.TownshipRepo;
 
 @Service
 public class ClinicServices {
 
 	@Autowired
 	private ClinicRepo clinicRepo;
+
 	@Autowired
 	private TimeTableRepo timeTableRepo;
+
+	@Autowired
+	private TownshipRepo townshipRepo;
 
 	public List<Clinic> search(String keyword) {
 		return null;
@@ -36,7 +41,13 @@ public class ClinicServices {
 	}
 
 	public Clinic save(Clinic clinic) {
-		return clinicRepo.saveAndFlush(clinic);
+
+		clinic.setPhone(clinic.getPhone().stream().filter(p -> !p.isEmpty()).collect(Collectors.toList()));
+		clinic.setMails(clinic.getMails().stream().filter(m -> !m.isEmpty()).collect(Collectors.toList()));
+
+		clinic.getAddrress().setTownship(townshipRepo.getOne(clinic.getAddrress().getTownship().getId()));
+
+		return clinicRepo.save(clinic);
 	}
 
 	public Map<Doctor, List<Timetable>> findSchedules(int id) {
@@ -52,6 +63,9 @@ public class ClinicServices {
 	public Clinic findByName(String name) {
 		return clinicRepo.findByName(name).get(0);
 	}
-	
-	
+
+	public List<Clinic> findByOwnerPhone(String phone) {
+		return clinicRepo.findByOwnerPhone(phone);
+	}
+
 }

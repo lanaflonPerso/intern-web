@@ -1,5 +1,8 @@
 package com.jdc.clinic.controller.partner;
 
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
@@ -10,6 +13,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.jdc.clinic.entity.Doctor;
+import com.jdc.clinic.entity.Partner;
 import com.jdc.clinic.services.ClinicServices;
 import com.jdc.clinic.services.DoctorService;
 
@@ -38,16 +42,19 @@ public class DoctorController {
 
 	@GetMapping("create")
 	public String create(ModelMap model) {
-		model.addAttribute("doctor", new Doctor());
-		model.addAttribute("id", dService.findLast().getId() + 1);
+		model.put("doctor", new Doctor());
+		model.put("id", dService.findLast().getId() + 1);
 		model.put("clinics", cService.findAll());
 		return "/views/partner/doctor-edit";
 	}
 
 	@GetMapping("edit/{id}")
-	public String edit(@PathVariable int id, ModelMap model) {
-		model.addAttribute("doctor", dService.findById(id));
-		model.put("clinics", cService.findAll());
+	public String edit(@PathVariable int id, ModelMap model, HttpServletRequest request) {
+
+		HttpSession session = request.getSession(true);
+
+		model.put("doctor", dService.findById(id));
+		model.put("clinics", cService.findByOwnerPhone(((Partner) session.getAttribute("partnerUser")).getPhone()));
 		return "/views/partner/doctor-edit";
 	}
 

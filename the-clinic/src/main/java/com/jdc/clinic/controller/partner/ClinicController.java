@@ -3,7 +3,6 @@ package com.jdc.clinic.controller.partner;
 import java.time.DayOfWeek;
 import java.util.Arrays;
 import java.util.List;
-import java.util.stream.Collectors;
 
 import javax.validation.Valid;
 
@@ -15,7 +14,6 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.jdc.clinic.entity.Clinic;
@@ -48,7 +46,6 @@ public class ClinicController {
 
 	@GetMapping("create")
 	public String createClinic(ModelMap model) {
-		model.addAttribute("edit_title", "Add New Clinic");
 		model.put("divisions", locationService.findValid());
 		model.put("townships", locationService.findTownships(1));
 
@@ -63,17 +60,12 @@ public class ClinicController {
 	}
 
 	@PostMapping
-	public String save(@RequestParam("phone") List<String> phone, @RequestParam("mails") List<String> emails,
-			@Valid Clinic clinic, BindingResult result) {
+	public String save(@Valid Clinic clinic, BindingResult result) {
 
 		if (result.hasErrors()) {
 			return "views/partner/clinic-edit";
 		}
 
-		clinic.setPhone(phone.stream().filter(ph -> !ph.isEmpty()).collect(Collectors.toList()));
-		clinic.setMails(emails.stream().filter(mail -> !mail.isEmpty()).collect(Collectors.toList()));
-
-		clinic.getAddrress().setTownship(locationService.findTownshipById(clinic.getAddrress().getTownship().getId()));
 		Clinic c = clinicService.save(clinic);
 		return String.format("redirect:/partner/clinics/%d", c.getId());
 	}
@@ -81,8 +73,8 @@ public class ClinicController {
 	@GetMapping("{id}/edit")
 	public String edit(@PathVariable int id, ModelMap model) {
 		Clinic clinic = clinicService.findById(id);
-		model.addAttribute("clinic", clinic);
-		model.addAttribute("edit_title", "Edit " + clinic.getName());
+
+		model.put("clinic", clinic);
 		model.put("townships", clinic.getAddrress().getTownship().getDivision().getTownships());
 
 		return "views/partner/clinic-edit";

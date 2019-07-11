@@ -48,18 +48,20 @@
 						<div class="container mt-5">
 							<h4>Add Schedule</h4>
 							<div>
-								<form method="post" th:object="${tTable}" th:action="@{/partner/schedules/create}">
+								<form method="post" th:object="${tTable}"
+									th:action="@{/partner/schedules/create}">
 
 									<div class="form-group">
-										<label for="sel1">Select Doctor</label><select
+										<label for="sel1">Select Doctor</label> <select
 											class="form-control mdb-select md-form" name="doctor"
-											id="doctor_option" >
-											<option th:each="doctor:${doctors}"
-												th:text="${doctor.name}"></option> 
-												
-									 </select> 
-									 
+											id="doctor_option" th:field="*{clinicDoctor.doctor.id}">
+
+											<option th:each="clinicDoctor:${clinicDoctors}"
+												th:text="${clinicDoctor.doctor.name}"
+												th:value="${clinicDoctor.doctor.id}"></option>
+										</select>
 									</div>
+									
 									<div class="form-group">
 										<label for="" class="cusLabel"> Enter Degree</label> <input
 											type="text" class="form-control" placeholder="Degree">
@@ -88,6 +90,7 @@
 									</div>
 									<div class="form-group">
 										<button class="btn btn-outline-success" type="submit">Create</button>
+
 										<a class="btn btn-outline-danger" data-dismiss="modal">Cancel</a>
 									</div>
 								</form>
@@ -102,10 +105,11 @@
 		</div>
 		<div class="container">
 			<h2>
-				Doctor Schedule &nbsp;<i style='font-size: 24px' class='fal fa-calendar-alt'></i>
+				Doctor Schedule &nbsp;<i style='font-size: 24px'
+					class='fal fa-calendar-alt'></i>
 			</h2>
 			<div class="form-group col-6" style="float: right">
-				<a href class="btn btn-outline-primary" data-toggle="modal"
+				<a class="btn btn-outline-primary" data-toggle="modal"
 					data-target="#myModal">Create Schedule</a>
 			</div>
 			<div class="container-fluid">
@@ -113,10 +117,10 @@
 				<ul class="nav nav-tabs" role="tablist">
 					<li class="nav-item"><a class="nav-link active"
 						data-toggle="tab" href="#clinicA">Clinic A</a></li>
-					<li class="nav-item"><a class="nav-link" data-toggle="tab"
+					<!-- <li class="nav-item"><a class="nav-link" data-toggle="tab"
 						href="#clinicB">Clinic B</a></li>
 					<li class="nav-item"><a class="nav-link" data-toggle="tab"
-						href="#clinicC">Clinic C</a></li>
+						href="#clinicC">Clinic C</a></li> -->
 				</ul>
 
 			</div>
@@ -147,7 +151,7 @@
 									<th class="text-center">No</th>
 									<th class="text-center">Name</th>
 									<th class="text-center">Degrees</th>
-									<th class="text-center">Specialities</th>
+									
 									<th class="text-center">From</th>
 									<th class="text-center">To</th>
 									<th class="text-center"></th>
@@ -156,13 +160,13 @@
 							</thead>
 							<tbody>
 
-								<!-- <tr th:each="tt : ${timetables}">
+								<tr th:each="tt : ${timetables}">
 									<td class="text-center" th:text="${tt.clinicDoctor.doctor.id}"></td>
-									<td class="text-center" th:text="${doctor.name}"></td>
+									<td class="text-center" th:text="${tt.clinicDoctor.doctor.name}"></td>
 									<td class="text-center" th:text="${doctor.degrees}"></td>
-									<td class="text-center">Hepatologists</td>
-									<td class="text-center"></td>
-									<td class="text-center"></td>
+									
+									<td class="text-center" th:text="${tt.timeFrom}"></td>
+									<td class="text-center" th:text="${tt.timeTo}"></td>
 
 									<td class="text-center">
 
@@ -185,227 +189,14 @@
 											</div>
 										</div>
 									</td>
-								</tr> -->
+								</tr> 
 
 
 							</tbody>
 						</table>
-
-
-
-						<div id="bookings-page">
-
-							<ul class="pagination">
-								<li class="page-item"><a class="page-link" href="#"
-									aria-label="Previous"> <span aria-hidden="true">&laquo;</span>
-										<span class="sr-only">Previous</span>
-								</a></li>
-								<li class="page-item"><a class="page-link" href="#">1</a></li>
-								<li class="page-item"><a class="page-link" href="#">2</a></li>
-								<li class="page-item"><a class="page-link" href="#">3</a></li>
-								<li class="page-item"><a class="page-link" href="#"
-									aria-label="Next"> <span aria-hidden="true">&raquo;</span>
-										<span class="sr-only">Next</span>
-								</a></li>
-							</ul>
-						</div>
 					</div>
-
-
 				</div>
-
-
-
-				<div class="row mx-3 mt-3 container tab-pane fade" id="clinicB">
-
-					<div class="row" id="search-bar">
-
-						<div id="search-patient">
-							<input type="text" placeholder="Search patient"
-								class="form-control form-rounded" size="35">
-
-						</div>
-						<div id="btn-circle-search">
-							<button type="submit" class="btn  btn-circle">
-								<i class="fa fa-search" style="color: white"></i>
-							</button>
-						</div>
-					</div>
-
-					<div class="table-wrapper-scroll-y my-custom-scrollbar">
-						<table class="table table-bordered mt-3" id="ChitTable">
-
-
-							<thead class="thead-danger">
-
-								<tr class="table-info">
-									<th class="text-center">No</th>
-									<th class="text-center">Name</th>
-									<th class="text-center">Degrees</th>
-									<th class="text-center">Specialities</th>
-									<th class="text-center"></th>
-
-								</tr>
-							</thead>
-							<tbody>
-
-								<tr th:each="doctor : ${doctors}">
-									<td class="text-center" th:text="${doctor.id}"></td>
-									<td class="text-center" th:text="${doctor.name}"></td>
-									<td class="text-center" th:text="${doctor.degrees}"></td>
-									<td class="text-center">Hepatologists</td>
-
-									<td class="text-center">
-
-
-										<div class="dropdown">
-											<a href="#" class="action-icon dropdown-toggle-split"
-												data-toggle="dropdown" aria-expanded="true"><i
-												class="fas fa-ellipsis-h"></i></a>
-											<div class="dropdown-menu"
-												aria-labelledby="dropdownMenuButton">
-												<a class="dropdown-item" href="#"
-													th:href="@{/partner/doctors/edit/1}"><i
-													class="	fas fa-edit"></i> Edit</a> <a class="dropdown-item"
-													href="#"> <i class="fas fa-trash"></i>
-													Delete
-												</a> <a class="dropdown-item" href="#"
-													th:href="@{/partner/doctors/details/1}"><i
-													class="	fas fa-ellipsis-v"></i> Detail</a>
-
-
-											</div>
-										</div>
-									</td>
-								</tr>
-
-
-							</tbody>
-						</table>
-
-
-
-						<div id="bookings-page">
-
-							<ul class="pagination">
-								<li class="page-item"><a class="page-link" href="#"
-									aria-label="Previous"> <span aria-hidden="true">&laquo;</span>
-										<span class="sr-only">Previous</span>
-								</a></li>
-								<li class="page-item"><a class="page-link" href="#">1</a></li>
-								<li class="page-item"><a class="page-link" href="#">2</a></li>
-								<li class="page-item"><a class="page-link" href="#">3</a></li>
-								<li class="page-item"><a class="page-link" href="#"
-									aria-label="Next"> <span aria-hidden="true">&raquo;</span>
-										<span class="sr-only">Next</span>
-								</a></li>
-							</ul>
-						</div>
-					</div>
-
-				</div>
-				<!-- <div class="row mx-3 mt-3 container tab-pane fade" id="clinicC">
-
-					<div class="row" id="search-bar">
-
-						<div id="search-patient">
-							<input type="text" placeholder="Search patient"
-								class="form-control form-rounded" size="35">
-
-						</div>
-						<div id="btn-circle-search">
-							<button type="submit" class="btn  btn-circle">
-								<i class="fa fa-search" style="color: white"></i>
-							</button>
-						</div>
-					</div>
-
-					<div class="table-wrapper-scroll-y my-custom-scrollbar">
-						<table class="table table-responsive-md" id="patient-tb">
-							<thead>
-								<tr>
-									<td>No.</td>
-									<td>Patient</td>
-									<td>Phone</td>
-									<td></td>
-								</tr>
-							</thead>
-							<tbody id="patient-tr">
-								<a href="#" th:href="@{/partner/1/patients/1}">
-									<tr class="table-row" th:data-href="@{/partner/1/patients/1}">
-
-										<td>1</td>
-										<td>Daw Mya</td>
-										<td>0945634456</td>
-										<td><span class="text-right"><i
-												class="fal fa-chevron-right"></i></span></td>
-
-									</tr>
-								</a>
-								<tr>
-									<td>2</td>
-									<td>Daw Mya</td>
-									<td>097852312</td>
-									<td><span class="text-right"><i
-											class="fal fa-chevron-right"></i></span></td>
-
-								</tr>
-								<tr>
-									<td>3</td>
-									<td>Daw Mya</td>
-									<td>0978541236</td>
-									<td><span class="text-right"><i
-											class="fal fa-chevron-right"></i></span></td>
-
-								</tr>
-								<tr>
-									<td>4</td>
-									<td>Daw Mya</td>
-									<td>09654123</td>
-									<td><span class="text-right"><i
-											class="fal fa-chevron-right"></i></span></td>
-
-								</tr>
-								<tr>
-									<td>5</td>
-									<td>Daw Mya</td>
-									<td>09561234</td>
-									<td><span class="text-right"><i
-											class="fal fa-chevron-right"></i></span></td>
-
-								</tr>
-								<tr>
-									<td>6</td>
-									<td>Daw Mya</td>
-									<td>09852369</td>
-									<td><span class="text-right"><i
-											class="fal fa-chevron-right"></i></span></td>
-
-								</tr>
-
-							</tbody>
-						</table>
-
-						<div id="bookings-page">
-
-							<ul class="pagination">
-								<li class="page-item"><a class="page-link" href="#"
-									aria-label="Previous"> <span aria-hidden="true">&laquo;</span>
-										<span class="sr-only">Previous</span>
-								</a></li>
-								<li class="page-item"><a class="page-link" href="#">1</a></li>
-								<li class="page-item"><a class="page-link" href="#">2</a></li>
-								<li class="page-item"><a class="page-link" href="#">3</a></li>
-								<li class="page-item"><a class="page-link" href="#"
-									aria-label="Next"> <span aria-hidden="true">&raquo;</span>
-										<span class="sr-only">Next</span>
-								</a></li>
-							</ul>
-						</div>
-					</div>
-
-				</div> -->
-
+				
 			</div>
 		</div>
 		<script>

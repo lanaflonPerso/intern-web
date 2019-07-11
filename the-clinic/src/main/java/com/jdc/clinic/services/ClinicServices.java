@@ -28,7 +28,7 @@ public class ClinicServices {
 	private TownshipRepo townshipRepo;
 
 	public List<Clinic> search(String keyword) {
-		return null;
+		return clinicRepo.findByNameContainingIgnoreCase(keyword);
 	}
 
 	@Transactional
@@ -61,11 +61,10 @@ public class ClinicServices {
 	}
 
 	public Clinic findByName(String name) {
-		return clinicRepo.findByName(name).get(0);
+		return clinicRepo.findByNameContainingIgnoreCase(name).get(0);
 	}
 
 	public List<Clinic> findByOwnerPhone(String phone) {
 		return clinicRepo.findByOwnerPhone(phone);
 	}
-
 }

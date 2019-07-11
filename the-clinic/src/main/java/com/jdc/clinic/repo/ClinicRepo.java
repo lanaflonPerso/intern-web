@@ -14,5 +14,4 @@ public interface ClinicRepo extends BaseRepository<Clinic, Integer> {
 	List<Clinic> findByOwnerPhone(String phone);
 
 	List<Clinic> findByNameContainingIgnoreCase(String name);
-
 }

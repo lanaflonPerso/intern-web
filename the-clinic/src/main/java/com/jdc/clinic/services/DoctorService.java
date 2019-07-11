@@ -1,9 +1,6 @@
 package com.jdc.clinic.services;
 
-import java.util.ArrayList;
-import java.util.Collection;
 import java.util.List;
-import java.util.Map;
 import java.util.Optional;
 import java.util.stream.Collectors;
 
@@ -15,7 +12,6 @@ import com.jdc.clinic.entity.Clinic;
 import com.jdc.clinic.entity.ClinicDoctor;
 import com.jdc.clinic.entity.ClinicDoctorPK;
 import com.jdc.clinic.entity.Doctor;
-import com.jdc.clinic.entity.Timetable;
 import com.jdc.clinic.repo.ClinicDoctorRepo;
 import com.jdc.clinic.repo.DoctorRepo;
 
@@ -58,19 +54,6 @@ public class DoctorService {
 
 	public Doctor findLast() {
 		return dRepo.findById(dRepo.findAll().stream().mapToInt(d -> d.getId()).max().getAsInt()).get();
-	}
-
-	public List<Timetable> findSchedulesByDoctor(int id) {
-		List<Timetable> timetablelist = new ArrayList<Timetable>();
-		Map<Doctor, List<Timetable>> scheduleList = cService.findSchedules(id);
-		Collection<List<Timetable>> timetable = scheduleList.values();
-		for (List<Timetable> list : timetable) {
-			if (list.iterator().hasNext()) {
-				timetablelist.addAll(list);
-			}
-
-		}
-		return timetablelist;
 	}
 
 }

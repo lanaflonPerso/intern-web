@@ -1,6 +1,5 @@
 package com.jdc.clinic.controller;
 
-import java.time.LocalDate;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -16,6 +15,7 @@ import com.jdc.clinic.entity.Doctor;
 import com.jdc.clinic.entity.Timetable;
 import com.jdc.clinic.services.ClinicServices;
 import com.jdc.clinic.services.DoctorService;
+import com.jdc.clinic.services.TimeTableService;
 
 @Controller
 @RequestMapping("/clinics")
@@ -26,6 +26,9 @@ public class PublicClinicController {
 
 	@Autowired
 	private DoctorService doctorService;
+
+	@Autowired
+	private TimeTableService timetableService;
 
 	@GetMapping
 	public String search(@RequestParam(defaultValue = "", required = false) String keyword, ModelMap model) {
@@ -41,11 +44,8 @@ public class PublicClinicController {
 	}
 
 	@GetMapping("{id}/schedules")
-	public String findSchedulesForClinic(@PathVariable int id, ModelMap model, LocalDate todaydate) {
+	public String findSchedulesForClinic(@PathVariable int id, ModelMap model) {
 		model.put("schedules", service.findSchedules(id));
-		List<Timetable> doctorsSchedules = doctorService.findSchedulesByDoctor(id).stream()
-				.filter(a -> a.getDay() == todaydate.getDayOfWeek()).collect(Collectors.toList());
-		model.addAttribute("timetable", doctorsSchedules);
 
 		return "/views/schedules";
 	}
@@ -64,7 +64,7 @@ public class PublicClinicController {
 	public String findDoctorsTimetable(@PathVariable("id") int id, @PathVariable("doctorId") int doctorId,
 			ModelMap model) {
 
-		List<Timetable> doctorsSchedules = doctorService.findSchedulesByDoctor(id).stream()
+		List<Timetable> doctorsSchedules = timetableService.findDoctorsTimetableByClinicId(id).stream()
 				.filter(a -> a.getClinicDoctor().getDoctor().getId() == doctorId).collect(Collectors.toList());
 		model.addAttribute("clinicdoctorList", doctorService.getDoctorsByClinicId(id));
 		model.addAttribute("doctorSchedules", doctorsSchedules);

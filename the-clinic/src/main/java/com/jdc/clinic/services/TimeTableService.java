@@ -23,4 +23,8 @@ public class TimeTableService {
 	public Timetable save(Timetable timeTable) {
 		return timeTableRepo.save(timeTable);
 	}
+
+	public List<Timetable> findDoctorsTimetableByClinicId(int id) {
+		return timeTableRepo.findByClinicDoctorClinicId(id);
+	}
 }

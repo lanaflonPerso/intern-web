@@ -2,6 +2,7 @@ package com.jdc.clinic.services;
 
 import java.util.List;
 import java.util.Map;
+
 import java.util.stream.Collectors;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -60,6 +61,9 @@ public class ClinicServices {
 		return clinicRepo.findAll();
 	}
 
+
+	
+	
 	public Clinic findByName(String name) {
 		return clinicRepo.findByNameContainingIgnoreCase(name).get(0);
 	}

@@ -15,34 +15,23 @@
 
 		<div class="container">
 			<div class="main-wrapper">
-
-
-
 				<div class="profile-info-left" style="min-height: 400px;">
-
 					<div class="content">
-
-
-
-
 						<div class="row">
 							<div class="col-sm-4 col-6">
 								<h2 class="page-title">Doctor Profile</h2>
-
-
 							</div>
-
-
-
 							<div class="container">
 								<div class="row">
 									<div class="col-3">
 										<div class="profile-img-wrap">
+										
 											<div class="profile-img">
 												<a href="#"><img class="avatar"
 													th:src="@{/resources/img/doctor.png}"
 													th:href="@{/partner/doctors/details/{id}}" alt=""></a>
 											</div>
+											
 										</div>
 									</div>
 
@@ -65,15 +54,15 @@
 														<li><span class="title">Degrees</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 															<span class="">:</span> <span class="text"
 															th:text="${doctor.degrees[0]}"></span></li>
-															
+
 														<li><span class="title">Hospital</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 															<span class="">:</span> <span class="text"
 															th:text="${doctor.hospital}"></span></li>
-															
+
 														<li><span class="title">LicenseCode</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 															<span class="">:</span> <span class="text"
 															th:text="${doctor.licenseCode}"></span></li>
-															<li><span class="title">Position</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+														<li><span class="title">Position</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 															<span class="">:</span> <span class="text"
 															th:text="${doctor.position}"></span></li>
 

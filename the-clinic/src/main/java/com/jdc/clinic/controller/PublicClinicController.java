@@ -29,6 +29,7 @@ public class PublicClinicController {
 	@GetMapping
 	public String search(String keyword, ModelMap model) {
 		model.put("clinics", service.search(keyword));
+
 		return "/views/clinics";
 	}
 

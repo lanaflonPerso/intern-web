@@ -33,6 +33,7 @@ public class PublicClinicController {
 	@GetMapping
 	public String search(@RequestParam(defaultValue = "", required = false) String keyword, ModelMap model) {
 		model.put("clinics", service.search(keyword));
+		model.put("keyword", keyword);
 
 		return "/views/clinics";
 	}
@@ -46,12 +47,14 @@ public class PublicClinicController {
 	@GetMapping("{id}/schedules")
 	public String findSchedulesForClinic(@PathVariable int id, ModelMap model) {
 		model.put("schedules", service.findSchedules(id));
-
+		model.put("clinic", service.findById(id));
 		return "/views/schedules";
 	}
 
 	@GetMapping("{id}/doctors")
 	public String findDoctorsForClinic(@PathVariable int id, ModelMap model) {
+
+		model.put("clinic", service.findById(id));
 
 		List<Doctor> clinicdoctorList = doctorService.getDoctorsByClinicId(id);
 
@@ -63,6 +66,7 @@ public class PublicClinicController {
 	@GetMapping("{id}/doctors/{doctorId}")
 	public String findDoctorsTimetable(@PathVariable("id") int id, @PathVariable("doctorId") int doctorId,
 			ModelMap model) {
+		model.put("clinic", service.findById(id));
 
 		List<Timetable> doctorsSchedules = timetableService.findDoctorsTimetableByClinicId(id).stream()
 				.filter(a -> a.getClinicDoctor().getDoctor().getId() == doctorId).collect(Collectors.toList());

@@ -5,7 +5,7 @@
 	layout:decorate="~{/views/clinic-detail-template}">
 <head>
 <meta charset="ISO-8859-1">
-<title>Clinic</title>
+<title th:text="${clinic.name}"></title>
 </head>
 <body>
 	<div layout:fragment="clinic-details-content">
@@ -15,10 +15,10 @@
     					<a class="nav-link active" href="" id="pills-home-tab" aria-selected="false"><span><i class="fal fa-info"></i> Overview</span></a>
   					</li>
   					<li class="nav-item">
-  						<a class="nav-link" id="pills-profile-tab"  href="" th:href="@{/clinics/1/doctors}" role="tab" aria-controls="pills-profile" aria-selected="false"><span><i class="fal fa-user-md"></i> Doctors</span></a>
+  						<a class="nav-link" id="pills-profile-tab"  href="" th:href="@{/clinics/{id}/doctors(id=${clinic.id})}" role="tab" aria-controls="pills-profile" aria-selected="false"><span><i class="fal fa-user-md"></i> Doctors</span></a>
   					</li>
   					<li class="nav-item">
-  						<a class="nav-link" id="pills-contact-tab" th:href="@{/clinics/1/schedules}" role="tab" aria-controls="pills-contact" aria-selected="false"><span><i class="fal fa-calendar-alt"></i> Schedules</span></a>
+  						<a class="nav-link" id="pills-contact-tab" th:href="@{/clinics/{id}/schedules(id=${clinic.id})}" role="tab" aria-controls="pills-contact" aria-selected="false"><span><i class="fal fa-calendar-alt"></i> Schedules</span></a>
   					</li>
 			</ul>
 		</div>
@@ -37,7 +37,7 @@
 							<tr>
 								<td valign="top">Name</td>
 								<td valign="top">:</td>
-								<td valign="top">Clinic Name</td>
+								<td valign="top" th:text="${clinic.name}"></td>
 							</tr>
 							<tr>
 								<td valign="top">Category</td>
@@ -47,18 +47,23 @@
 							<tr>
 								<td valign="top">Phone</td>
 								<td valign="top">:</td>
-								<td valign="top">09451241887<br>09691381615
+								<td valign="top">
+									<div th:unless="${clinic.phone.isEmpty()}" th:each="ph: ${clinic.phone}" th:text="*{ph}"></div>
+									<div th:if="${clinic.phone.isEmpty()}"><small class="text-danger"><i class="fal fa-exclamation-triangle"></i> No Phone Found</small></div>
 								</td>
 							</tr>
 							<tr>
 								<td valign="top">Email</td>
 								<td valign="top">:</td>
-								<td valign="top"><a href="mailto:myclinic@gmail.com">myclinic@gmail.com</a></td>
+								<td valign="top">
+									<a th:unless="${clinic.mails.isEmpty()}" th:each="mail: ${clinic.mails}" th:href="@{mailto:*{mail}}" th:text="*{mail}"></a>
+									<div th:if="${clinic.mails.isEmpty()}"><small class="text-danger"><i class="fal fa-exclamation-triangle"></i> No Mail Found</small></div>
+								</td>
 							</tr>
 							<tr>
 								<td valign="top">Address</td>
 								<td valign="top">:</td>
-								<td valign="top">No.1, Main Road, Yangon</td>
+								<td valign="top" th:text="${clinic.addrress.address}"></td>
 							</tr>
 							<tr>
 								<td valign="top">Location</td>

@@ -34,4 +34,7 @@ public class OpenTime implements Serializable {
 	@ManyToOne
 	@JoinColumn(updatable = false)
 	private Clinic clinic;
+
+	private boolean is24hr;
+
 }

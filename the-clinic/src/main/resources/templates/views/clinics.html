@@ -81,11 +81,25 @@
 
 					<form action="/clinics/" method="get" class="form pl-2 pr-2">
 					
-						<input type="text" name="keyword" class="form-control" placeholder="Search Clinics">
+						<input type="text" name="keyword" th:value="${keyword}" class="form-control" placeholder="Search Clinics">
 						
 					</form>
-
-					<div class="container-fluid">
+					
+					<div class="container-fluid" th:if="${clinics.isEmpty()}">
+					
+						<div class="text-center text-warning mt-5">
+						
+							<div>
+							
+								<i class="fal fa-exclamation-triangle" style="font-size: 40px;"></i>
+								<p>No Clinic Found</p>
+								
+							</div>
+							
+						</div>
+					</div>
+					
+					<div class="container-fluid" th:unless="${clinics.isEmpty()}">
 						<div class="row">
 							
 							<div class="col-lg-3 col-6 text-center hover-scale-animation" th:each="clinic: ${clinics}" th:onclick="@{'changeLocation('+${clinic.id}+')'}">
@@ -114,9 +128,7 @@
 		
 			function changeLocation(id){
 				window.location.href = '/clinics/'+id;
-			}
-		
-
+			}		
 		
 		</script>
 

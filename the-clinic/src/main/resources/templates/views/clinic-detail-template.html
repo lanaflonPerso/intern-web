@@ -11,14 +11,14 @@
 	
 <style type="text/css">
 	
-body{
+/* body{
 			background-image: url("/resources/img/bkimg.jpg");
 			background-repeat: no-repeat;
 			background-position: center;
 			background-attachment: fixed;
 			background-size: cover;
 			
-}
+} */
 		.beside-vline{
 		border-left: 1px solid #999999;
 	}
@@ -30,7 +30,7 @@ body{
 	<section layout:fragment="content">
 		
 		<div class="container card p-3 mt-3 ">
-			<span><a th:href="@{/}" style="color: black;"><i class="fas fa-home hover-scale-animation" ></i></a>&nbsp;<a th:href="@{/clinics}"  style="color: black;" class="">Clinics</a> <i class="far fa-chevron-right"></i> SAY KHAN</span>
+			<span><a th:href="@{/}" style="color: black;"><i class="fas fa-home hover-scale-animation" ></i></a>&nbsp;<a th:href="@{/clinics}"  style="color: black;" class="">Clinics</a> <i class="far fa-chevron-right"></i> <span th:text="${clinic.name}"></span></span>
 		</div>
 		
 		<div class="card container mt-1 p-3">
@@ -46,8 +46,8 @@ body{
 					<div class="row">
 						<div class="col-9 col-md-auto">
 							
-							<h4 class="c-name">SAY KHAN</h4>
-							<span class="c-category text-muted">General Clinic &bull; Kamayut</span>
+							<h4 class="c-name" th:text="${clinic.name}"></h4>
+							<span class="c-category text-muted" th:text="@{${clinic.addrress.township.name}+' &bull; '+${clinic.addrress.township.division.name}}"></span>
 						</div><!-- first column end -->
 						
 						
@@ -87,10 +87,9 @@ body{
 						<div class="col-4">
 					
 							<div class="text-muted"><i class="far fa-phone"></i> Phones</div>
-						
-							<div>09123456789</div>
-						
-							<div>09123456789</div>
+							
+							<div th:if="${clinic.phone.isEmpty()}"><small class="text-danger"><i class="fal fa-exclamation-triangle"></i> No Phone Found</small></div>
+							<div th:unless="${clinic.phone.isEmpty()}" th:each="ph:${clinic.phone}" th:text="*{ph}"></div>
 						
 						</div>
 						
@@ -98,7 +97,8 @@ body{
 					
 							<div class="text-muted"><i class="far fa-envelope"></i> Email</div>
 						
-							<div><a th:href="@{mailto:myclinic1@gmail.com}">myclinic1@gmail.com</a></div>
+							<div th:if="${clinic.mails.isEmpty()}"><small class="text-danger"><i class="fal fa-exclamation-triangle"></i> No Email Found</small></div>
+							<div th:unless="${clinic.mails.isEmpty()}" th:each="mail:${clinic.mails}"><a th:href="@{mailto:*{mail}}" th:text="*{mail}">myclinic1@gmail.com</a></div>
 						
 						</div>
 						
@@ -106,7 +106,7 @@ body{
 					
 							<div class="text-muted"><i class="far fa-location-arrow"></i> Address</div>
 						
-							<div>No.1, Main Road, Yangon</div>
+							<div th:text="${clinic.addrress.address}"></div>
 						
 						</div>	
 						

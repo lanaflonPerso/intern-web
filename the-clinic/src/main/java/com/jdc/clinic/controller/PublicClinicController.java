@@ -10,6 +10,7 @@ import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import com.jdc.clinic.entity.Doctor;
 import com.jdc.clinic.entity.Timetable;
@@ -27,7 +28,7 @@ public class PublicClinicController {
 	private DoctorService doctorService;
 
 	@GetMapping
-	public String search(String keyword, ModelMap model) {
+	public String search(@RequestParam(defaultValue = "", required = false) String keyword, ModelMap model) {
 		model.put("clinics", service.search(keyword));
 
 		return "/views/clinics";

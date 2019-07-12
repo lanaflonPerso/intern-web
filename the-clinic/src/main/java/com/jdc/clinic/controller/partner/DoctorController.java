@@ -50,13 +50,12 @@ public class DoctorController {
 
 	@GetMapping("edit/{id}")
 	public String edit(@PathVariable int id, ModelMap model, HttpServletRequest request) {
-
 		HttpSession session = request.getSession(true);
-
 		model.put("doctor", dService.findById(id));
 		model.put("clinics", cService.findByOwnerPhone(((Partner) session.getAttribute("partnerUser")).getPhone()));
 		return "/views/partner/doctor-edit";
 	}
+
 
 	@PostMapping("edit/{id}")
 	public String save(Doctor doctor, BindingResult result, @PathVariable int id) {
@@ -78,7 +77,7 @@ public class DoctorController {
 
 	@GetMapping("delete/{id}")
 	public String delete(@PathVariable("id") int id) {
-		dService.delete(id);
+		dService.delete(dService.findById(id).get());
 		return "redirect:/partner/doctors";
 	}
 }

@@ -47,9 +47,9 @@ public class DoctorService {
 		return dRepo.findAll();
 	}
 
-	public void delete(int id) {
-
-		dRepo.delete(dRepo.findById(id).get());
+	public void delete(Doctor d) {
+		cdRepo.delete(cdRepo.findById(new ClinicDoctorPK(cService.findByName(d.getHospital()).getId(),d.getId())).get());
+		dRepo.delete(d);
 	}
 
 	public Doctor findLast() {

@@ -45,24 +45,12 @@
 			<div class="container">
 				<div class="row">
 					<div class="form-group col-4 ">
-<!-- 
-						<form th:action="@{/}" method="POST" th:object="${example}">
-							<div class="form-group">
-								<input list="names" class="form-control" id="nameinput"
-									th:field="${example.num.id}"> </input>
-								<datalist id="names">
-									<option th:each="row : ${namelist}" th:value="${row.id}"
-										th:label="${row.name}">
-								</datalist>
-								<button>submit</button>
-							</div>
-						</form>
- -->
+						<!--  <input type="text" placeholder="Search Booking..." id="searching"
+					class="form-control form-rounded" size="35">-->
 
-						<input list="encodings" value=""
-							class="col-md-9 custom-select custom-select-md" >
+						<input list="encodings" value=""  class="col-md-9 custom-select custom-select-md">
 						<datalist id="encodings">
-							<option th:each="clinic:${clinics}" th:text="${clinic.name}" ></option>
+							<option th:each="clinic:${clinics}" th:text="${clinic.name}"></option>
 
 						</datalist>
 
@@ -74,11 +62,14 @@
 							th:href="@{/partner/doctors/create}" role="button"><i
 							class="	fas fa-user-plus"></i>Add Doctor</a>
 					</div>
+					<!--  <input type="text" placeholder="Search Booking..." id="searching"
+					class="form-control form-rounded" size="35">-->
+					
 
 					<div class="row " id="search-bar">
 
 						<div id="search-doctor">
-							<input type="text" placeholder="Search doctor..."
+							<input type="text" placeholder="Search doctor..." id="searching"
 								class="form-control form-rounded" size="27">
 
 						</div>
@@ -165,10 +156,18 @@
 				</div>
 			</div>
 		</div>
-		</div>
+
+	
 		<script>
-			
-		</script>
+        $(document).ready(function(){
+           $("#searching").on("keyup", function() {
+              var value = $(this).val().toLowerCase();
+              $("#ChitTable tr").filter(function() {
+                 $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
+              });
+           });
+        });
+     </script>
 	</section>
 </body>
 </html>

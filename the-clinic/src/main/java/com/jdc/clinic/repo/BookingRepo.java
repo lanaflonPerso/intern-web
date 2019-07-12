@@ -24,4 +24,8 @@ public interface BookingRepo extends BaseRepository<Booking, Long> {
 
 	@Query(value = "select count(*) from booking join patient on booking.patient_id = patient.id join family_member on family_member.id = patient.family_member_id where member_phone=:phone", nativeQuery = true)
 	Long countBookingByMemberPhone(String phone);
+
+	@Query(value = "select booking.* from booking join clinic on booking.clinic_id = clinic.id where clinic.owner_phone = :phone", nativeQuery = true)
+	List<Booking> findBookingByPartnerPhone(String phone);
+
 }

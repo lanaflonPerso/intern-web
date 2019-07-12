@@ -2,6 +2,7 @@ package com.jdc.clinic.services;
 
 import java.time.LocalDate;
 import java.util.List;
+import java.util.stream.Collectors;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -61,6 +62,11 @@ public class BookingService {
 
 	public List<Booking> getBookingByDate(String memberPhone, LocalDate date) {
 		return bRepo.findbookingByDate(memberPhone, date);
+	}
+
+	public List<Booking> getBookingByTodayDate(String partnerPhone) {
+		return bRepo.findBookingByPartnerPhone(partnerPhone).stream()
+				.filter(a -> ((a.getBookingDate()).compareTo(LocalDate.now())) == 0).collect(Collectors.toList());
 	}
 
 }

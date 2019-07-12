@@ -56,7 +56,7 @@
 								<td valign="top">Email</td>
 								<td valign="top">:</td>
 								<td valign="top">
-									<a th:unless="${clinic.mails.isEmpty()}" th:each="mail: ${clinic.mails}" th:href="@{mailto:*{mail}}" th:text="*{mail}"></a>
+									<div th:unless="${clinic.mails.isEmpty()}" th:each="mail: ${clinic.mails}" ><a th:href="@{mailto:*{mail}}" th:text="*{mail}"></a></div>
 									<div th:if="${clinic.mails.isEmpty()}"><small class="text-danger"><i class="fal fa-exclamation-triangle"></i> No Mail Found</small></div>
 								</td>
 							</tr>

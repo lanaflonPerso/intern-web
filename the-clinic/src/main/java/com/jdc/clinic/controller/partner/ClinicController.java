@@ -17,9 +17,11 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.jdc.clinic.entity.Clinic;
+import com.jdc.clinic.entity.OpenTime;
 import com.jdc.clinic.entity.Township;
 import com.jdc.clinic.services.ClinicServices;
 import com.jdc.clinic.services.LocationService;
+import com.jdc.clinic.services.OpenTimeService;
 
 @Controller
 @RequestMapping("/partner/clinics")
@@ -31,15 +33,14 @@ public class ClinicController {
 	@Autowired
 	private ClinicServices clinicService;
 
+	@Autowired
+	private OpenTimeService openTimeService;
+
 	@GetMapping("{id}")
 	public String findById(@PathVariable int id, ModelMap model) {
 
-		Clinic c = clinicService.findById(id);
-
-		model.addAttribute("clinic", c);
-
-		List<DayOfWeek> days = Arrays.asList(DayOfWeek.values());
-		model.put("days", days);
+		model.put("clinic", clinicService.findById(id));
+		model.put("days", Arrays.asList(DayOfWeek.values()));
 
 		return "views/partner/clinic";
 	}
@@ -85,4 +86,11 @@ public class ClinicController {
 		return String.format("redirect:/partner/clinics/%d", id);
 	}
 
+	@GetMapping("24hr/{id}")
+	@ResponseBody
+	public List<OpenTime> set24Hr(@PathVariable int id) {
+		for (DayOfWeek day : DayOfWeek.values())
+			openTimeService.set24hrByClinicId(id, day);
+		return clinicService.findById(id).getOpenTime();
+	}
 }

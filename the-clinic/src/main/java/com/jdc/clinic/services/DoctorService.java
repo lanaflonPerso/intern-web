@@ -48,7 +48,8 @@ public class DoctorService {
 	}
 
 	public void delete(Doctor d) {
-		cdRepo.delete(cdRepo.findById(new ClinicDoctorPK(cService.findByName(d.getHospital()).getId(),d.getId())).get());
+		cdRepo.delete(
+				cdRepo.findById(new ClinicDoctorPK(cService.findByName(d.getHospital()).getId(), d.getId())).get());
 		dRepo.delete(d);
 	}
 
@@ -56,4 +57,8 @@ public class DoctorService {
 		return dRepo.findById(dRepo.findAll().stream().mapToInt(d -> d.getId()).max().getAsInt()).get();
 	}
 
+	public List<String> getSpecialitiesList() {
+		return dRepo.findSpecialities();
+
+	}
 }

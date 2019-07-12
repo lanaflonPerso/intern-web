@@ -40,7 +40,7 @@
 								<div class="form-group">
 									
 									<label>Enter clinic name</label>
-									<input type="text" placeholder="Name" name="name" class="form-control" th:field="*{name}" />
+									<input type="text" placeholder="Name" name="namewx" class="form-control" th:field="*{name}" oninput="this.setCustomValidity('')" oninvalid="this.setCustomValidity('Enter Clinic Name Here')" required/> 
 									<small th:if="${#fields.errors('name')}" th:errors="*{name}" class="text-danger"></small>
 								</div><!-- name form -->
 								
@@ -64,7 +64,7 @@
 								<div class="form-group">
 									
 									<label>Enter clinic address</label>
-									<textarea class="form-control" placeholder="Address" th:field="*{addrress.address}"></textarea>
+									<<textarea class="form-control" placeholder="Address" th:field="*{addrress.address}"  oninput="this.setCustomValidity('')" oninvalid="this.setCustomValidity('Enter Address Here')" required></textarea> 
 									
 								</div><!-- Address form -->
 								

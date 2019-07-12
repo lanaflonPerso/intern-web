@@ -54,14 +54,10 @@
 								class="list-group-item list-group-item-action d-flex justify-content-between align-items-center">
 								All <span class="text-right"><i
 									class="fal fa-chevron-right"></i></span>
-							</a> <a href="#"
-								class="list-group-item list-group-item-action d-flex justify-content-between align-items-center">
-								General <span class="text-right"><i
-									class="fal fa-chevron-right"></i></span>
-							</a> <a href="#"
-								class="list-group-item list-group-item-action d-flex justify-content-between align-items-center">
-								Dental <span class="text-right"><i
-									class="fal fa-chevron-right"></i></span>
+							</a> 
+							<a class="list-group-item list-group-item-action d-flex justify-content-between align-items-center" th:each="special: ${specials}" th:href="@{special}">
+								<span th:text="*{special}"></span>
+								<span class="text-right"><i class="fal fa-chevron-right"></i></span>
 							</a>
 
 						</div>

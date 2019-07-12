@@ -5,13 +5,12 @@
 	layout:decorate="~{/layout/partner-deshboard-template}">
 <head>
 <title>Clinic A</title>
-<link th:href="@{/resources/css/kst.css}" rel="stylesheet"
-	type="text/css" />
-<link
-	href="https://cdn.jsdelivr.net/gh/gitbrent/bootstrap4-toggle@3.5.0/css/bootstrap4-toggle.min.css"
-	rel="stylesheet">
-<script
-	src="https://cdn.jsdelivr.net/gh/gitbrent/bootstrap4-toggle@3.5.0/js/bootstrap4-toggle.min.js"></script>
+<link th:href="@{/resources/css/kst.css}" rel="stylesheet" type="text/css" />
+<link th:href="@{/resources/css/bootstrap-clockpicker.min.css}" rel="stylesheet" type="text/css" />
+<script type="text/javascript" th:src="@{/resources/js/bootstrap-clockpicker.min.js}"></script>
+
+
+
 <style type="text/css">
 .c-profile-image {
 	width: 140px;
@@ -59,13 +58,15 @@
 </head>
 <body>
 	<div layout:fragment="dashboard-contents">
+	
+		
 
 		<div class="container-fluid mt-2 p-3" th:object="${clinic}">
 			<div class="card p-2" id="content">
 				<div id="one">
 
 					<img alt="No Image" class="c-profile-image img-fluid"
-						th:src="@{/resources/img/clinic_profile.jpg}">
+						th:src="@{/resources/img/placeholder.png}">
 
 				</div>
 				<!-- one end -->
@@ -151,7 +152,7 @@
 							
 							<div th:if="*{phone.isEmpty()}">
 							
-								<div><small class="text-warning">HAVEN't PHONE !</small></div>
+								<div><small class="text-warning">HAVEN'T PHONE !</small></div>
 								
 							</div>
 
@@ -175,7 +176,7 @@
 							</div>
 							<div th:if="*{mails.isEmpty()}">
 							
-								<div><small class="text-warning">HAVEN't EMAIL !</small></div>
+								<div><small class="text-warning">HAVEN'T EMAIL !</small></div>
 								
 							</div>
 
@@ -352,6 +353,7 @@
 
 					<div class="modal-body">
 
+
 						<select class="form-control" id="open_type">
 
 							<option value="0">Always Open (24 hour)</option>
@@ -411,8 +413,6 @@
 								</tr>
 								
 								
-								
-
 							</table>
 
 
@@ -425,7 +425,7 @@
 						<button type="button" class="btn btn-outline-secondary"
 							data-dismiss="modal">Cancel</button>
 
-						<button type="button" class="btn btn-outline-primary">Save
+						<button type="button" id="save-time-btn" class="btn btn-outline-primary" data-dismiss="modal">Save
 							changes</button>
 
 					</div>
@@ -485,22 +485,35 @@
 				
 			}
 
-		   
 
-			function toggle(timepickers, close, obj) {
-			   	if(!obj.checked){
-					$(timepickers).hide();
-					$(close).show();
-			   	}
-			   	else{
-					$(timepickers).show();
-					$(close).hide();
+
+		</script>
+		
+		<script th:inline="javascript">
+			
+
+			$('#save-time-btn').on('click', function(){
+				var clinicID = [[${clinic.id}]];
+
+				if($('#open_type').val() == 0){
+					 $.ajax({
+						url:"http://localhost/partner/clinics/24hr/"+clinicID,
+						type: "GET",
+						dataType: "JSON",
+						contentType: 'application/json',
+						mimeType: 'application/json',
+						success: function(data){
+							console.log(data);
+						},
+						error: function(xhr, status, err){
+							
+						}
+					});
+				}else{
+					//set time
 				}
-			}
-			
-
-			
-
+				
+			});
 		</script>
 
 	</div>

@@ -1,5 +1,6 @@
 package com.jdc.clinic.controller;
 
+import java.time.LocalDate;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -13,6 +14,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import com.jdc.clinic.entity.Doctor;
 import com.jdc.clinic.entity.Timetable;
+import com.jdc.clinic.services.ClinicDoctorService;
 import com.jdc.clinic.services.ClinicServices;
 import com.jdc.clinic.services.DoctorService;
 import com.jdc.clinic.services.TimeTableService;
@@ -29,6 +31,9 @@ public class PublicClinicController {
 
 	@Autowired
 	private TimeTableService timetableService;
+
+	@Autowired
+	private ClinicDoctorService clinicDoctorService;
 
 	@GetMapping
 	public String search(@RequestParam(defaultValue = "", required = false) String keyword, ModelMap model) {
@@ -59,7 +64,7 @@ public class PublicClinicController {
 		List<Doctor> clinicdoctorList = doctorService.getDoctorsByClinicId(id);
 
 		model.addAttribute("clinicdoctorList", clinicdoctorList);
-
+		model.addAttribute("doctorsCount", clinicDoctorService.countDoctorByClinicId(id));
 		return "/views/clinicdoctors";
 	}
 
@@ -71,9 +76,23 @@ public class PublicClinicController {
 		List<Timetable> doctorsSchedules = timetableService.findDoctorsTimetableByClinicId(id).stream()
 				.filter(a -> a.getClinicDoctor().getDoctor().getId() == doctorId).collect(Collectors.toList());
 		model.addAttribute("clinicdoctorList", doctorService.getDoctorsByClinicId(id));
+		model.addAttribute("doctorsCount", clinicDoctorService.countDoctorByClinicId(id));
+
 		model.addAttribute("doctorSchedules", doctorsSchedules);
 
 		return "/views/clinicdoctors";
+	}
+
+	@GetMapping("{id}/schedules/{date}")
+	public String findDoctorsByTimetable(@RequestParam(defaultValue = "") LocalDate date, @PathVariable int id,
+			ModelMap model) {
+
+		List<Timetable> timetableList = timetableService.findDoctorsTimetableByClinicId(id).stream()
+				.filter(a -> (a.getDay().compareTo(date.getDayOfWeek())) == 0).collect(Collectors.toList());
+
+		model.addAttribute("doctorsTimetableList", timetableList);
+
+		return "/views/schedules";
 	}
 
 }

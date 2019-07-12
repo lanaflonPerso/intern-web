@@ -30,4 +30,8 @@ public class ClinicDoctorService {
 	public List<ClinicDoctor> findAll() {
 		return cliRepo.findAll();
 	}
+
+	public Long countDoctorByClinicId(int clinicId) {
+		return cliRepo.countDoctorByClinicId(clinicId);
+	}
 }

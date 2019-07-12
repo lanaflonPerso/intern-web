@@ -23,23 +23,34 @@
 
 			<div class="row">
 				<div class="col-lg-6 col-sm-12">
-
+					
 					<div class="card p-2" id="doctorList">
-
+						<div class="row">
+						<div class="col-md-6">
+						<div class="form-group">
+			  			<input class="form-control mt-2 mb-3" type="text" placeholder="Search" aria-label="Search">
+		
+			  			</div>
+			  			</div>
+			  			<div class="col-md-6">
+			  			<label class="text-primary mt-3 float-right mr-5">Total Doctor: <strong><span  th:text="${doctorsCount}"></span><span  th:if="${doctorsCount==0}" th:text="{0}"></span></strong> </label>
+			  			
+					</div>
+					</div>
 						<div class="list-group" style="height: 400px; overflow: auto;">
 
-
-							
-							<a href="#"  onclick="toggle_visibility('scheduleDoctor');"	
-							class="list-group-item
+						
+							<a href="#" class="list-group-item
 							 list-group-item-action d-flex 
 							 justify-content-between align-items-center"
 								th:each="clinicdoctor :${clinicdoctorList}"
 								th:href="@{/clinics/1/doctors/{id}(id=${clinicdoctor.id})}"
 								 >
 								 
-								<span th:text="${clinicdoctor.name}"></span>
-								 <span class="text-right">
+								<strong><span th:text="${clinicdoctor.name}" class="text-primary"></span></strong>
+								<span th:text="${clinicdoctor.specialities}" class="text-primary"></span>
+								
+								 <span class="text-right text-primary">
 								<i class="fal fa-chevron-right"></i></span>
 							</a>
 							 
@@ -54,8 +65,9 @@
 				 class="doctorSchedule col-lg-6 col-sm-12" 
 				 id="scheduleDoctor">
 					<div class="card-columns">
-						<div class="card" th:each="doctorSchedule: ${doctorSchedules}">
 					
+						<div class="card" th:each="doctorSchedule: ${doctorSchedules}">
+						
 							
 								
 								<div class="card-title bg-info p-2 text-white" th:text="${doctorSchedule.day}"></div>

@@ -48,7 +48,8 @@
 						<!--  <input type="text" placeholder="Search Booking..." id="searching"
 					class="form-control form-rounded" size="35">-->
 
-						<input list="encodings" value=""  class="col-md-9 custom-select custom-select-md">
+						<input list="encodings" value=""
+							class="col-md-9 custom-select custom-select-md">
 						<datalist id="encodings">
 							<option th:each="clinic:${clinics}" th:text="${clinic.name}"></option>
 
@@ -64,7 +65,7 @@
 					</div>
 					<!--  <input type="text" placeholder="Search Booking..." id="searching"
 					class="form-control form-rounded" size="35">-->
-					
+
 
 					<div class="row " id="search-bar">
 
@@ -119,19 +120,34 @@
 											aria-labelledby="dropdownMenuButton">
 											<a class="dropdown-item" href="#"
 												th:href="@{'/partner/doctors/edit/'+${doctor.id}}"><i
-												class="	fas fa-edit"></i> Edit</a> <a class="dropdown-item"
-												href="#"
-												th:href="@{'/partner/doctors/delete/'+${doctor.id}}"> <i
-												class="fas fa-trash"></i> Delete
-											</a> <a class="dropdown-item" href="#"
+												class="	fas fa-edit"></i> Edit</a> 
+												<a class="dropdown-item"
+												 data-toggle="modal" 
+												 th:attr="data-target='#myModal'+${doctor.id}"
+												 >
+												<i id="cancel" class="fas fa-trash"></i> Delete</a>
+											 <a class="dropdown-item" href="#"
 												th:href="@{'/partner/doctors/details/'+${doctor.id}}"><i
 												class="	fas fa-ellipsis-v"></i> Detail</a>
 										</div>
 									</div>
+
+									<div class="modal fade" th:id="myModal+${doctor.id}" role="dialog">
+										<div class="modal-dialog">
+											<div class="modal-content">
+												<div class="modal-header">
+													<h4 class="modal-title" style="color: red">Are you
+														sure to delete?</h4>
+													<button type="button" class="btn btn-outline-primary"
+														data-dismiss="modal">Cancel</button>
+													<a class="btn btn-outline-danger"
+														th:href="@{/partner/doctors/delete/{id}(id=${doctor.id})}"> Yes </a>
+												</div>
+											</div>
+										</div>
+									</div>
 								</td>
 							</tr>
-
-
 						</tbody>
 					</table>
 
@@ -157,17 +173,66 @@
 			</div>
 		</div>
 
-	
+
+		<!-- <div class="modal fade" id="myModal" role="dialog">
+			<div class="modal-dialog">
+
+				Modal content
+				<div class="modal-content">
+					<div class="modal-header">
+
+						<h4 class="modal-title" style="color: red">Are you sure to
+							delete?</h4>
+						<button type="button" class="btn btn-outline-primary"
+							data-dismiss="modal">Cancel</button>
+
+
+						 <a class="dropdown-item"
+												href="#" data-toggle="modal" data-target="#myModal"
+												th:href="@{'/partner/doctors/delete/'+${doctor.id}}"> <i
+												id="cancel" class="fas fa-trash"></i> Delete
+											</a> 
+
+						<a  class="btn btn-outline-danger" href="#" 
+							
+							th:href="@{'/partner/doctors/delete/'+${doctor.id}}" role="button">  Yes
+						</a>
+
+
+						<button type="button" class="btn btn-outline-danger"
+							data-dismiss="modal">Yes</button>
+					</div>
+				</div>
+			</div>
+		</div>
+ -->
+
+
 		<script>
-        $(document).ready(function(){
-           $("#searching").on("keyup", function() {
-              var value = $(this).val().toLowerCase();
-              $("#ChitTable tr").filter(function() {
-                 $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
-              });
-           });
-        });
-     </script>
+			$(document)
+					.ready(
+							function() {
+								$("#searching")
+										.on(
+												"keyup",
+												function() {
+													var value = $(this).val()
+															.toLowerCase();
+													$("#ChitTable tr")
+															.filter(
+																	function() {
+																		$(this)
+																				.toggle(
+																						$(
+																								this)
+																								.text()
+																								.toLowerCase()
+																								.indexOf(
+																										value) > -1)
+																	});
+												});
+							});
+		</script>
 	</section>
 </body>
 </html>

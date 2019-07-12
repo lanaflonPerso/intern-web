@@ -28,9 +28,10 @@ public class DoctorController {
 	private ClinicServices cService;
 
 	@GetMapping
-	public String all(ModelMap model) {
+	public String all(ModelMap model, HttpServletRequest request) {
+		HttpSession session = request.getSession(true);
 		model.put("doctors", dService.findAll());
-		model.put("clinics", cService.findAll());
+		model.put("clinics", cService.findByOwnerPhone(((Partner) session.getAttribute("partnerUser")).getPhone()));
 		return "/views/partner/doctors";
 	}
 

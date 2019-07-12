@@ -344,10 +344,14 @@ insert into family_member (id, member_phone, name) values (3, 'member', 'Maung M
 	
 insert into partner(phone) values ('partner');
 
-
-
 insert into doctor(name,license_code) values('Dr.Htet','12345');
 insert into doctor(name,license_code) values('Dr.Eaindray','13255');
+
+
+insert into clinic(name) values('Chan Thar');
+insert into clinic(name)  values('Myat Lin');
+insert into clinic(name,owner_phone)  values('Myat Lin','partner');
+
 insert into doctor(name,license_code) values('Dr.Thi','102585');
 
 insert into clinic_doctor(clinic_id,doctor_id) values(1,2);

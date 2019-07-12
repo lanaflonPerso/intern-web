@@ -30,9 +30,11 @@ public class TimeTableController {
 	public String index(ModelMap model) {
 		clinicDoctorList = cDService.findAll();
 		model.addAttribute("timetables", timeTableService.findAll());
+		timeTableService.findAll().stream().forEach(System.out::println);
+
 		model.addAttribute("clinicDoctors", clinicDoctorList);
 		model.addAttribute("tTable", new Timetable());
-		return "/views/partner/schedules";
+		return "views/partner/schedules";
 	}
 
 	@PostMapping("/create")

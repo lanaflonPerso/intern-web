@@ -28,4 +28,7 @@ public class Member extends Account implements Serializable {
 		family = new ArrayList<>();
 	}
 
+	@OneToMany(mappedBy = "member")
+	private List<MemberEvent> memberEvent;
+
 }

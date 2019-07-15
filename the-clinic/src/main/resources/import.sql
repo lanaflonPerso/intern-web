@@ -344,17 +344,13 @@ insert into family_member (id, member_phone, name) values (3, 'member', 'Maung M
 	
 insert into partner(phone) values ('partner');
 
-insert into doctor(name,license_code) values('Dr.Htet','12345');
-insert into doctor(name,license_code) values('Dr.Eaindray','13255');
-
-
+insert into doctor(id,name,gender,hospital,license_code,position) values(1,'ChitThae',1,'Chan Thar','343445','Prof');
 insert into clinic(name) values('Chan Thar');
 insert into clinic(name)  values('Myat Lin');
 insert into clinic(name,owner_phone)  values('Myat Lin','partner');
 
-insert into doctor(name,license_code) values('Dr.Thi','102585');
-
-insert into clinic_doctor(clinic_id,doctor_id) values(1,2);
+insert into doctor_degrees(doctor_id,degrees) values(1,'MBBS');
+insert into doctor_specialities(doctor_id,specialities) values (1,'Cardiologists');
 insert into clinic_doctor(clinic_id,doctor_id) values(1,1);
 
 insert into patient(clinic_id,family_member_id) values(1,1);

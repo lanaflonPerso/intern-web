@@ -220,8 +220,42 @@ canvas {
 				
 					<div class="card p-2">
 					
-						<div class="mt-2 text-center"><i class="fal fa-chart-line"></i> Patient line chart <i>(TODO Active)</i></div>
-						<canvas id="myChart2"></canvas>
+						<div class="d-flex">
+							
+							<span class="mr-auto">
+								<i class="fal fa-chart-line"></i> Patient line chart
+							</span>
+							
+							<span class="ml-auto">
+								<a class="btn" href="#"><i class="fal fa-chevron-left"></i></a><a class="btn disabled" href="#"><i class="fal fa-chevron-right"></i></a>
+							</span>
+							
+							
+						</div>
+						<canvas id="patientLineChart"></canvas>
+					
+					</div>
+					
+				</div>
+				
+				<div class="col-md-6 col-12 p-2">
+				
+					<div class="card p-2">
+					
+						<div class="d-flex">
+							
+							<span class="mr-auto">
+								<i class="fal fa-chart-pie"></i> Patient Pie chart
+							</span>
+							
+							<span class="ml-auto">
+								<a class="btn" href="#"><i class="fal fa-chevron-left"></i></a><small>Jul 15, 2019</small><a class="btn disabled" href="#"><i class="fal fa-chevron-right"></i></a>
+							</span>
+							
+							
+						</div>
+						<canvas id="patientPieChart"></canvas>
+						
 					
 					</div>
 					
@@ -242,7 +276,7 @@ canvas {
 		console.log(ppcList);
 		
 		
-		var ctx2 = document.getElementById('myChart2').getContext('2d');
+		var ctx2 = document.getElementById('patientLineChart').getContext('2d');
 
 
 		var myChart2 = new Chart(ctx2, {
@@ -277,6 +311,32 @@ canvas {
 						}
 					}]
 		        }
+		    }
+		});
+
+
+
+
+		var ctx3 = document.getElementById('patientPieChart').getContext('2d');
+		var pieChart = new Chart(ctx3,{
+			type: 'doughnut',
+			data:  {
+			    datasets: [{
+			        data: [20, 30],
+			        backgroundColor: ['rgba(255, 99, 132, 0.5)','rgba(54, 162, 235, 0.5)'],
+	            	borderColor: ['rgba(255, 99, 132, 1)','rgba(54, 162, 235, 1)'],
+	            	borderWidth: 2,
+	            	fill:false
+			    }],
+			    labels: [
+			        'Clinic A',
+			        'Clinic B'
+			    ]
+			    
+			}, options: {
+		    	responsive: true,
+		    	
+		    	
 		    }
 		});
 		</script>

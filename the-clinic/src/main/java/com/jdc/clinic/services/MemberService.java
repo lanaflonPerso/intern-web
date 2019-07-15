@@ -7,7 +7,6 @@ import com.jdc.clinic.entity.Member;
 import com.jdc.clinic.repo.BookingRepo;
 import com.jdc.clinic.repo.ClinicRepo;
 import com.jdc.clinic.repo.FamilyMemberRepo;
-import com.jdc.clinic.repo.MemberEventRepo;
 import com.jdc.clinic.repo.MemberRepo;
 
 @Service
@@ -25,8 +24,9 @@ public class MemberService {
 	@Autowired
 	private ClinicRepo cRepo;
 
-	@Autowired
-	public MemberEventRepo meRepo;
+	/*
+	 * @Autowired public MemberEventRepo meRepo;
+	 */
 
 	public Member getMemberByPhone(String phone) {
 		return memberRepo.getOne(phone);
@@ -44,8 +44,9 @@ public class MemberService {
 		return cRepo.countByMemberPhone(phone);
 	}
 
-	public Long getEventCountByMemberPhone(String phone) {
-		return meRepo.countByMemberPhone(phone);
-	}
+	/*
+	 * public Long getEventCountByMemberPhone(String phone) { return
+	 * meRepo.countByMemberPhone(phone); }
+	 */
 
 }

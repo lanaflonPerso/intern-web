@@ -17,10 +17,14 @@ import javax.persistence.OneToOne;
 import javax.persistence.PrePersist;
 import javax.validation.constraints.NotEmpty;
 
-import lombok.Data;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 
 @Entity
-@Data
+@NoArgsConstructor
+@Getter
+@Setter
 public class Clinic implements Serializable {
 
 	private static final long serialVersionUID = 1L;
@@ -33,30 +37,22 @@ public class Clinic implements Serializable {
 	private String name;
 
 	@ElementCollection
-	private List<String> phone;
+	private List<String> phone = new ArrayList<>();
 
 	@ElementCollection
-	private List<String> mails;
+	private List<String> mails = new ArrayList<String>();
 
 	@Embedded
-	private SecurityInfo security;
+	private SecurityInfo security = new SecurityInfo();
 
 	@ManyToOne
 	private Partner owner;
 
 	@OneToOne(mappedBy = "clinic", cascade = { CascadeType.PERSIST, CascadeType.MERGE }, orphanRemoval = true)
-	private Address addrress;
+	private Address addrress = new Address();
 
 	@OneToMany(mappedBy = "clinic", cascade = { CascadeType.PERSIST, CascadeType.MERGE }, orphanRemoval = true)
-	private List<OpenTime> openTime;
-
-	public Clinic() {
-		phone = new ArrayList<String>();
-		mails = new ArrayList<String>();
-		addrress = new Address();
-		security = new SecurityInfo();
-		openTime = new ArrayList<OpenTime>();
-	}
+	private List<OpenTime> openTime = new ArrayList<OpenTime>();
 
 	@PrePersist
 	private void prePersist() {

@@ -11,7 +11,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.jdc.clinic.entity.Account;
 import com.jdc.clinic.entity.Member;
-import com.jdc.clinic.services.MemberEventService;
 import com.jdc.clinic.services.MemberService;
 
 @Controller
@@ -21,8 +20,9 @@ public class MemberHomeController {
 	@Autowired
 	MemberService service;
 
-	@Autowired
-	MemberEventService mService;
+	/*
+	 * @Autowired MemberEventService mService;
+	 */
 
 	@GetMapping
 	public String index(ModelMap model, HttpServletRequest request) {
@@ -35,8 +35,11 @@ public class MemberHomeController {
 		model.addAttribute("bookingCount", service.getBookingCountByMemberPhone(m.getPhone()));
 		model.addAttribute("memberCount", service.getMemberCountByMemberPhone(m.getPhone()));
 		model.addAttribute("clinicCount", service.getClinicCountByMemberPhone(m.getPhone()));
-		model.addAttribute("eventCount", service.getEventCountByMemberPhone(m.getPhone()));
-		model.addAttribute("events", mService.getEventList());
+		/*
+		 * model.addAttribute("eventCount",
+		 * service.getEventCountByMemberPhone(m.getPhone()));
+		 */
+		/* model.addAttribute("events", mService.getEventList()); */
 
 		return "/views/member/home";
 	}

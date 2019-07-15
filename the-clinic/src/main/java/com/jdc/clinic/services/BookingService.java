@@ -2,6 +2,7 @@ package com.jdc.clinic.services;
 
 import java.time.LocalDate;
 import java.util.List;
+import java.util.Optional;
 import java.util.stream.Collectors;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -67,6 +68,14 @@ public class BookingService {
 	public List<Booking> getBookingByTodayDate(String partnerPhone) {
 		return bRepo.findBookingByPartnerPhone(partnerPhone).stream()
 				.filter(a -> ((a.getBookingDate()).compareTo(LocalDate.now())) == 0).collect(Collectors.toList());
+	}
+
+	public Optional<Booking> findById(long id) {
+		return bRepo.findById(id);
+	}
+
+	public void delete(Booking b) {
+		bRepo.delete(b);
 	}
 
 }

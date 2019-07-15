@@ -59,6 +59,12 @@ public class MemberBookingController {
 //		return "/views/member/booking";
 //	}
 
+	@GetMapping("delete/{id}")
+	public String delete(@PathVariable("id") long id) {
+		bService.delete(bService.findById(id).get());
+		return "redirect:/member/bookings";
+	}
+
 	@PostMapping("{id}")
 	public String cancel(@PathVariable long id) {
 		return "redirect:/member/bookings/**";

@@ -88,7 +88,7 @@
 				<tbody id="bookingTable">
 				
 					<tr th:each="booking,iterationStatus :${bookings}">
-						<td class="text-center" th:text="${iterationStatus.count}"></td>
+						<td class="text-center" th:text="${booking.id}"></td>
 						<td>
 							<p style="float: left"
 								th:text="${booking.patient.familyMember.name}"></p> <span
@@ -104,19 +104,13 @@
 						<td class="text-center"
 							th:text="${booking.timeTable.timeFrom} + ' to '+ ${booking.timeTable.timeTo}"></td>
 						<td class="text-center">
-							<button type="button" class="btn btn-delete" data-toggle="modal"
-								data-target="#myModal">
-								<i id="book-cancel" class="fal fa-trash-alt fa-lg"></i>
-							</button>
+							<a class="dropdown-item" data-toggle="modal" 
+								 th:attr="data-target='#myModal'+${booking.id}">
+						<i id="book-cancel" class="fal fa-trash-alt fa-lg"></i>
+						</a>
 						</td>
-
-					</tr>
-
-				</tbody>
-			</table>
-		</div>
-
-		<div class="modal fade" id="myModal" role="dialog">
+						
+						<div class="modal fade" th:id="myModal+${booking.id}" role="dialog">
 			<div class="modal-dialog">
 
 				<!-- Modal content-->
@@ -125,15 +119,21 @@
 
 						<h4 class="modal-title" style="color: red">Are you sure to
 							cancel?</h4>
-						<button type="button" class="btn btn-outline-danger"
-							data-dismiss="modal">Yes</button>
+						<button type="button" class="btn btn-outline-primary" data-dismiss="modal">Cancel</button>
+						<a class="btn btn-outline-danger"
+						th:href="@{/member/bookings/delete/{id}(id=${booking.id})}"> Yes </a>
 					</div>
 				</div>
 			</div>
 		</div>
 
+					</tr>
 
+				</tbody>
+			</table>
+		</div>
 
+		
 
 		<link rel="stylesheet"
 			href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">

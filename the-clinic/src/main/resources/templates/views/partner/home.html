@@ -254,8 +254,10 @@ canvas {
 							
 							
 						</div>
-						<canvas id="patientPieChart"></canvas>
-						
+						<canvas th:unless="${pieChartData.isEmpty()}" id="patientPieChart"></canvas>
+						<div class="text-center" th:if="${pieChartData.isEmpty()}" style="height: 100px;">
+							 No Patient today!
+						</div>
 					
 					</div>
 					
@@ -273,7 +275,8 @@ canvas {
 		var months = [[${monthList}]];
 		var ppcList = [[${ppcList}]];
 		
-		console.log(ppcList);
+		
+	
 		
 		
 		var ctx2 = document.getElementById('patientLineChart').getContext('2d');
@@ -300,7 +303,7 @@ canvas {
 						display: true,
 						scaleLabel: {
 							display: true,
-							labelString: 'Months'
+							labelString: 'Days of Week'
 						}
 					}],
 					yAxes: [{
@@ -316,29 +319,44 @@ canvas {
 
 
 
-
+		var clinicNames = [[${clinicNames}]];
+		var pieData = [[${pieChartData}]];
+		
 		var ctx3 = document.getElementById('patientPieChart').getContext('2d');
 		var pieChart = new Chart(ctx3,{
 			type: 'doughnut',
 			data:  {
 			    datasets: [{
-			        data: [20, 30],
-			        backgroundColor: ['rgba(255, 99, 132, 0.5)','rgba(54, 162, 235, 0.5)'],
-	            	borderColor: ['rgba(255, 99, 132, 1)','rgba(54, 162, 235, 1)'],
+			        data: pieData,
+			        backgroundColor: ['rgba(255, 99, 132, 0.5)',
+				        'rgba(54, 162, 235, 0.5)',
+				         'rgba(255, 206, 86, 0.2)',
+		                'rgba(75, 192, 192, 0.2)',
+		                'rgba(153, 102, 255, 0.2)',
+		                'rgba(255, 159, 64, 0.2)'],
+	            	borderColor: [
+	            		'rgba(255, 99, 132, 1)',
+	                    'rgba(54, 162, 235, 1)',
+	                    'rgba(255, 206, 86, 1)',
+	                    'rgba(75, 192, 192, 1)',
+	                    'rgba(153, 102, 255, 1)',
+	                    'rgba(255, 159, 64, 1)'
+						],
 	            	borderWidth: 2,
 	            	fill:false
 			    }],
-			    labels: [
-			        'Clinic A',
-			        'Clinic B'
-			    ]
-			    
+				labels:clinicNames
 			}, options: {
 		    	responsive: true,
-		    	
-		    	
 		    }
 		});
+
+
+		</script>
+		<script type="text/javascript">
+
+			var ses =  Session["partnerUser"];
+			console.log(ses);
 		</script>
 	</section>
 

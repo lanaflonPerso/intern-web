@@ -4,6 +4,7 @@ import java.time.Month;
 import java.time.YearMonth;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
@@ -19,6 +20,7 @@ import com.jdc.clinic.entity.Account;
 import com.jdc.clinic.entity.Partner;
 import com.jdc.clinic.services.BookingService;
 import com.jdc.clinic.services.PartnerService;
+import com.jdc.clinic.services.PatientService;
 
 @Controller
 @RequestMapping("/partner/home")
@@ -30,8 +32,12 @@ public class PartnerHomeController {
 	@Autowired
 	BookingService bookingService;
 
+	@Autowired
+	PatientService patientService;
+
 	@GetMapping
 	public String index(ModelMap model, HttpServletRequest request) {
+
 		HttpSession session = request.getSession(true);
 
 		Partner p = pService.getPartner(((Account) session.getAttribute("loginUser")).getPhone());
@@ -46,25 +52,27 @@ public class PartnerHomeController {
 		model.put("todayBookingList", bookingService.getBookingByTodayDate(partner.getPhone()));
 
 		tempTestChart(model);
+		tempDonutChart(model, session);
 
 		return "/views/partner/home";
 	}
 
 	private void tempTestChart(ModelMap model) {
 
-		List<Month> list = new ArrayList<Month>();
-		for (int i = 5; i >= 0; i--) {
-			YearMonth date = YearMonth.now().minusMonths(i);
-			list.add(date.getMonth());
+		int[] iArr = new int[] { 0, 0, 0, 0, 0, 0 };
+		iArr[5] = 53;
 
-		}
+		List<Month> list = new ArrayList<Month>();
+
+		for (int i = 5; i >= 0; i--)
+			list.add(YearMonth.now().minusMonths(i).getMonth());
 
 		List<PartnerPatientChartDTO> ppcList = new ArrayList<>();
 
 		PartnerPatientChartDTO ppcDTO = new PartnerPatientChartDTO();
 		ppcDTO.setLabel("Clinic A");
-		ppcDTO.setData(new int[] { 20, 80, 76, 54, 23, 53 });
-		ppcDTO.setBackgroundColor("rgba(255, 99, 132)");
+		ppcDTO.setData(iArr);
+		ppcDTO.setBackgroundColor("rgba(255, 99, 132, 1)");
 		ppcDTO.setBorderColor("rgba(255, 99, 132, 1)");
 		ppcDTO.setBorderWidth(2);
 		ppcDTO.setFill(false);
@@ -82,6 +90,19 @@ public class PartnerHomeController {
 
 		model.put("monthList", list);
 		model.put("ppcList", ppcList);
+
+	}
+
+	private void tempDonutChart(ModelMap model, HttpSession session) {
+
+		Partner partner = (Partner) session.getAttribute("partnerUser");
+
+		List<String> clinicNames = partner.getClinics().stream().map(c -> c.getName()).collect(Collectors.toList());
+
+		model.put("clinicNames", clinicNames);
+
+		model.put("pieChartData", patientService.getPieChartData(partner.getPhone()).stream().map(ppc -> ppc.getCount())
+				.collect(Collectors.toList()));
 
 	}
 

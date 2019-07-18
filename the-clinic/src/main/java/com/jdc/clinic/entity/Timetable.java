@@ -11,6 +11,8 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 
+import org.springframework.format.annotation.DateTimeFormat;
+
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
@@ -26,9 +28,9 @@ public class Timetable implements Serializable {
 	private long id;
 
 	private DayOfWeek day;
-
+	@DateTimeFormat(pattern = "HH:MM")
 	private LocalTime timeFrom;
-
+	@DateTimeFormat(pattern = "HH:MM")
 	private LocalTime timeTo;
 
 	@Embedded

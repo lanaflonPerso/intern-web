@@ -14,6 +14,7 @@ public interface ClinicDoctorRepo extends BaseRepository<ClinicDoctor, ClinicDoc
 
 	Long countDoctorByClinicId(int clinicID);
 
-	@Query(value = "select count(distinct doctor_id) from clinic join clinic_doctor on clinic.id = clinic_doctor.clinic_id where owner_phone = :phone", nativeQuery = true)
-	Long countDoctorWhereParterPhone(String phone);
+	@Query(value = "select count(distinct cd.doctor.id) from ClinicDoctor cd where cd.clinic.owner.phone = :phone")
+	Long countDistinctDoctorByClinicOwnerPhone(String phone);
+
 }

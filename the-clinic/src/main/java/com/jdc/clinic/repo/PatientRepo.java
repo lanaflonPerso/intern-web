@@ -1,8 +1,10 @@
 package com.jdc.clinic.repo;
 
+import java.time.LocalDate;
 import java.util.List;
 
 import org.springframework.data.jpa.repository.Query;
+import org.springframework.data.repository.query.Param;
 
 import com.jdc.clinic.dto.member.PartnerPatientCount;
 import com.jdc.clinic.entity.FamilyMember;
@@ -13,12 +15,11 @@ public interface PatientRepo extends BaseRepository<Patient, Long> {
 
 	Long countByClinicId(int clinicID);
 
-	@Query(value = "select count(*) from clinic join patient on clinic.id = patient.clinic_id where clinic.owner_phone = :phone", nativeQuery = true)
-	Long countByPartnerPhone(String phone);
+	Long countByClinicOwnerPhone(String phone);
 
 	List<Patient> findByFamilyMember(FamilyMember fm);
 
-	@Query(value = "select distinct new com.jdc.clinic.dto.member.PartnerPatientCount(p1.clinic.id, (select count(*) from Patient p2 where p2.clinic.id = p1.clinic.id)) from Patient p1 where p1.clinic.owner.phone = :phone")
-	List<PartnerPatientCount> getPatientCountAndClinicIDByPhone(String phone);
+	@Query(value = "select distinct new com.jdc.clinic.dto.member.PartnerPatientCount(c1.id, c1.name, (select count(distinct b2) from Booking b2 where b2.patient.clinic.id = c1.id and b2.bookingDate = :date)) from Clinic c1 where c1.owner.phone = :phone")
+	List<PartnerPatientCount> getPatientCountAndClinicIDByPhone(@Param("phone") String phone, LocalDate date);
 
 }

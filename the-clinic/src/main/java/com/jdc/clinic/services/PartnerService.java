@@ -44,15 +44,15 @@ public class PartnerService {
 	}
 
 	public Long getbookingCountByPartnerPhone(String phone) {
-		return bookingRepo.countBookingByPartnerPhone(phone);
+		return bookingRepo.countBookingsByPartnerPhone(phone);
 	}
 
 	public Long getPatientCountByPartnerPhone(String phone) {
-		return patientRepo.countByPartnerPhone(phone);
+		return patientRepo.countByClinicOwnerPhone(phone);
 	}
 
 	public Long getDoctorCountByParterPhone(String phone) {
-		return clinicDoctorRepo.countDoctorWhereParterPhone(phone);
+		return clinicDoctorRepo.countDistinctDoctorByClinicOwnerPhone(phone);
 	}
 
 }

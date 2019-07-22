@@ -1,5 +1,6 @@
 package com.jdc.clinic.services;
 
+import java.time.LocalDate;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,9 +15,8 @@ public class PatientService {
 	@Autowired
 	PatientRepo patientRepo;
 
-	public List<PartnerPatientCount> getPieChartData(String phone) {
-
-		return patientRepo.getPatientCountAndClinicIDByPhone(phone);
+	public List<PartnerPatientCount> getPieChartDataByDate(String phone, LocalDate date) {
+		return patientRepo.getPatientCountAndClinicIDByPhone(phone, date);
 
 	}
 }

@@ -118,7 +118,7 @@ canvas {
 					<div class="p-3 card-general" style="background-color: #3A70C7;">
 						<table class="table-in-card">
 							<tr>
-								<td>Bookings</td>
+								<td>Bookings <small style="color: #ffffffaa">(Today)</small></td>
 								<td rowspan="2" class="text-right"><i
 									class="fas fa-book dash-card-icons w-50 h-50"></i></td>
 							</tr>
@@ -168,50 +168,6 @@ canvas {
 		</div>
 		<!-- row bar end -->
 
-		<!-- <div class="card mt-3 container-fluid">
-		
-		<div class="row">
-
-				<p class="text-left mt-4 ml-3" style="font-size: 20px;">
-					<b>Today Patients' List</b>
-				</p>
-
-			</div>
-			for demo wrap
-
-
-			<div class="tbl-header">
-				<table class="table-patient table-responsive-md">
-					<thead>
-						<tr>
-							<th>No.</th>
-							<th>Patient</th>
-							<th>Booking Time</th>
-							<th>Doctor</th>
-							<th>Clinic</th>
-						</tr>
-					</thead>
-				</table>
-			</div>
-			<div class="tbl-content">
-				<table class="table-responsive-md table-patient-body table-hover">
-					<tbody>
-						<tr th:each="todayBooking : ${todayBookingList}">
-							<td th:text = "${todayBooking.id}"></td>
-							<td th:text = "${todayBooking.patient.patient.name}"></td>
-							<td th:text = "${todayBooking.timeTable.timeFrom}"></td>
-							<td th:text = "${todayBooking.clinicDoctor.doctor.name}"></td>
-							<td th:text = "${todayBooking.clinicDoctor.clinic.name}"></td>
-						</tr>
-						
-					</tbody>
-				</table>
-			</div>
-			
-			
-		</div>
-		 -->
-
 		<div class="mt-1 container-fluid">
 
 			<div class="row">
@@ -227,7 +183,7 @@ canvas {
 							</span>
 							
 							<span class="ml-auto">
-								<a class="btn" href="#"><i class="fal fa-chevron-left"></i></a><a class="btn disabled" href="#"><i class="fal fa-chevron-right"></i></a>
+								<a class="btn"><i class="fal fa-chevron-left"></i></a><a class="btn disabled"><i class="fal fa-chevron-right"></i></a>
 							</span>
 							
 							
@@ -249,7 +205,7 @@ canvas {
 							</span>
 							
 							<span class="ml-auto">
-								<a class="btn" href="#"><i class="fal fa-chevron-left"></i></a><small>Jul 15, 2019</small><a class="btn disabled" href="#"><i class="fal fa-chevron-right"></i></a>
+								<a class="btn" onClick="dateChange(0)"><i class="fal fa-chevron-left"></i></a><small class="pie-date" th:text="${todayDate}"></small><a class="btn" id="date-pie-right" onClick="dateChange(1)"><i class="fal fa-chevron-right"></i></a>
 							</span>
 							
 							
@@ -269,15 +225,30 @@ canvas {
 		</div>
 
 
+		<script type="text/javascript" th:inline="javascript">
 
-		<script th:inline="javascript">
-
+		var today = [[${todayDate}]];
+		var clinicNames = [[${clinicNames}]];
+		var pieData = [[${pieChartData}]];
+		
+		
+		function dateChange(num){
+			$.ajax({
+				url: "http://localhost/partner/home/pie/"+num,
+				type: "GET",
+				success: function(data){
+					$('.pie-date').text(data.date);
+					setInterval(data.ppcList);	
+				},
+				error: function(xhr, status, err){
+					alert("Occur Error "+err.toString()+" ,, "+status)
+				}
+			});
+		}
+		
 		var months = [[${monthList}]];
 		var ppcList = [[${ppcList}]];
-		
-		
-	
-		
+		console.log(ppcList);
 		
 		var ctx2 = document.getElementById('patientLineChart').getContext('2d');
 
@@ -319,8 +290,6 @@ canvas {
 
 
 
-		var clinicNames = [[${clinicNames}]];
-		var pieData = [[${pieChartData}]];
 		
 		var ctx3 = document.getElementById('patientPieChart').getContext('2d');
 		var pieChart = new Chart(ctx3,{
@@ -351,13 +320,13 @@ canvas {
 		    }
 		});
 
+		function setInterval(pieData){
+			pieChart.data.datasets[0].data = pieData;
+			pieChart.update();
+		}
 
 		</script>
-		<script type="text/javascript">
 
-			var ses =  Session["partnerUser"];
-			console.log(ses);
-		</script>
 	</section>
 
 </body>

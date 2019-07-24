@@ -1,14 +1,16 @@
 package com.jdc.clinic.dto.member;
 
+import java.util.List;
+
 import lombok.Data;
 
 @Data
-public class PartnerPatientChartDTO {
-
+public class LineChartDataSet {
 	String label;
-	int[] data;
+	List<Long> data;
+
 	String backgroundColor;
 	String borderColor;
 	int borderWidth;
-	boolean fill;
+
 }

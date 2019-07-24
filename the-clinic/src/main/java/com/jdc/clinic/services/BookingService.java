@@ -1,13 +1,20 @@
 package com.jdc.clinic.services;
 
 import java.time.LocalDate;
+import java.time.YearMonth;
+import java.time.format.DateTimeFormatter;
+import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.Optional;
 import java.util.stream.Collectors;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.jdc.clinic.dto.member.ChartDTO;
+import com.jdc.clinic.dto.member.LineChartDataSet;
 import com.jdc.clinic.entity.Booking;
 import com.jdc.clinic.entity.Clinic;
 import com.jdc.clinic.entity.Doctor;
@@ -20,6 +27,7 @@ import com.jdc.clinic.repo.FamilyMemberRepo;
 
 @Service
 public class BookingService {
+	// private static Logger logger = LoggerFactory.getLogger(BookingService.class);
 
 	@Autowired
 	BookingRepo bRepo;
@@ -76,6 +84,84 @@ public class BookingService {
 
 	public void delete(Booking b) {
 		bRepo.delete(b);
+	}
+
+	public Long findBookingCountbyPhoneAndDate(String phone, LocalDate startDate, LocalDate endDate) {
+
+		Map<String, Object> param = new HashMap<>();
+		param.put("phone", phone);
+		param.put("startDate", startDate);
+		param.put("endDate", endDate);
+
+		return bRepo.findCount(
+				"select count(b) from Booking b where b.clinicDoctor.clinic.owner.phone = :phone and b.bookingDate between :startDate and :endDate",
+				param);
+
+	}
+
+	public ChartDTO setLineChartData(String phone, YearMonth yearMonth, int control) {
+
+		if (control == 0) {
+			yearMonth = yearMonth.minusMonths(1);
+		} else if (control == 1) {
+			yearMonth = yearMonth.plusMonths(1);
+		}
+
+		System.out.println(phone + " , " + yearMonth + " , " + control);
+
+		ChartDTO chartDTO = new ChartDTO();
+
+		for (int i = 5; i >= 0; i--) {
+			YearMonth ym = yearMonth.minusMonths(i);
+			chartDTO.addLabel(ym.format(DateTimeFormatter.ofPattern("MMM yyyy")));
+		}
+		System.out.println(chartDTO.getLabels());
+
+		String[] colorArr = { "rgba(255, 99, 132, 1)", "rgba(54, 162, 235, 1)", "rgba(255, 206, 86, 1)",
+				"rgba(75, 192, 192, 1)", "rgba(153, 102, 255, 1)", "rgba(255, 159, 64, 1)" };
+
+		List<Clinic> clinicList = repo.findByOwnerPhone(phone);
+
+		List<LineChartDataSet> dataSetList = new ArrayList<>();
+
+		for (int i = 0; i < clinicList.size(); i++) {
+
+			Clinic clinic = clinicList.get(i);
+
+			LineChartDataSet dataSet = new LineChartDataSet();
+
+			dataSet.setLabel(clinic.getName());
+			List<Long> countList = new ArrayList<>();
+
+			for (int ii = 5; ii >= 0; ii--) {
+
+				YearMonth ym = yearMonth.minusMonths(ii);
+				LocalDate startDate = ym.atDay(1);
+				LocalDate endDate = ym.atEndOfMonth();
+
+				Map<String, Object> param = new HashMap<>();
+				param.put("phone", phone);
+				param.put("cID", clinic.getId());
+				param.put("startDate", startDate);
+				param.put("endDate", endDate);
+
+				countList.add(bRepo.findCount(
+						"select count(b) from Booking b where b.clinicDoctor.clinic.owner.phone = :phone and b.bookingDate between :startDate and :endDate and b.clinicDoctor.clinic.id = :cID",
+						param));
+
+			}
+
+			dataSet.setData(countList);
+			dataSet.setBorderWidth(2);
+			dataSet.setBackgroundColor(colorArr[i]);
+			dataSet.setBorderColor(colorArr[i]);
+
+			dataSetList.add(dataSet);
+		}
+
+		chartDTO.setDataSetList(dataSetList);
+		return chartDTO;
+
 	}
 
 }

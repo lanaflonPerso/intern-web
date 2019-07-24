@@ -1,12 +1,9 @@
 package com.jdc.clinic.controller.partner;
 
 import java.time.LocalDate;
-import java.time.Month;
 import java.time.YearMonth;
 import java.time.format.DateTimeFormatter;
-import java.util.ArrayList;
 import java.util.List;
-import java.util.stream.Collectors;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
@@ -19,8 +16,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-import com.jdc.clinic.dto.member.PartnerPatientChartDTO;
-import com.jdc.clinic.dto.member.PartnerPatientCount;
+import com.jdc.clinic.dto.member.ChartDTO;
 import com.jdc.clinic.entity.Account;
 import com.jdc.clinic.entity.Partner;
 import com.jdc.clinic.services.BookingService;
@@ -42,10 +38,6 @@ public class PartnerHomeController {
 	@Autowired
 	PatientService patientService;
 
-	LocalDate localDate;
-
-	Partner partner;
-
 	@GetMapping
 	public String index(ModelMap model, HttpServletRequest request) {
 
@@ -54,7 +46,7 @@ public class PartnerHomeController {
 		Partner p = pService.getPartner(((Account) session.getAttribute("loginUser")).getPhone());
 		session.setAttribute("partnerUser", p);
 
-		partner = (Partner) session.getAttribute("partnerUser");
+		Partner partner = (Partner) session.getAttribute("partnerUser");
 
 		model.put("patientCount", pService.getPatientCountByPartnerPhone(partner.getPhone()));
 		model.put("bookingCount", pService.getbookingCountByPartnerPhone(partner.getPhone()));
@@ -62,88 +54,52 @@ public class PartnerHomeController {
 		model.put("clinicCount", pService.countClinicByPartner(partner.getPhone()));
 
 		model.put("todayBookingList", bookingService.getBookingByTodayDate(partner.getPhone()));
+		model.put("localDate", LocalDate.now().format(DateTimeFormatter.ofPattern("dd MMM yyyy")).toString());
 
-		localDate = LocalDate.now();
-		model.put("todayDate", localDate.format(DateTimeFormatter.ofPattern("dd MMM yyyy")).toString());
+		model.put("clinicNames", patientService.getClinicNameListByDate(partner.getPhone(), LocalDate.now()));
+		model.put("pieChartData", patientService.getBookingRateListByDate(partner.getPhone(), LocalDate.now()));
 
-		tempTestChart(model);
-		tempDonutChart(model, session);
+		model.put("chartDTO", bookingService.setLineChartData(partner.getPhone(), YearMonth.now(), 3));
 
 		return "/views/partner/home";
 	}
 
-	@GetMapping("/pie/{num}")
+	@GetMapping("/pie/{d}/{num}")
 	@ResponseBody
-	public PieDTO pieDateMinus(@PathVariable int num) {
+	public PieDTO pieDateMinus(@PathVariable String d, @PathVariable int num, HttpServletRequest request) {
+
+		LocalDate localDate = LocalDate.parse(d, DateTimeFormatter.ofPattern("dd MMM yyyy"));
+
 		if (num == 0)
 			localDate = localDate.minusDays(1);
 		else if (num == 1)
-			if (!localDate.equals(LocalDate.now()))
-				localDate = localDate.plusDays(1);
+			localDate = localDate.plusDays(1);
+
+		HttpSession session = request.getSession(true);
+		Partner partner = (Partner) session.getAttribute("partnerUser");
 
 		PieDTO pieDTO = new PieDTO();
 		pieDTO.setDate(localDate.format(DateTimeFormatter.ofPattern("dd MMM yyyy")).toString());
-		pieDTO.setPpcList(
-				patientService
-							.getPieChartDataByDate(partner.getPhone(), localDate)
-							.stream()
-							.map(ppc -> ppc.getCount())
-							.collect(Collectors.toList()));
+		pieDTO.setPpcList(patientService.getBookingRateListByDate(partner.getPhone(), localDate));
 		return pieDTO;
 	}
 
-	private void tempTestChart(ModelMap model) {
+	@GetMapping("/line/{month}/{num}")
+	@ResponseBody
+	public ChartDTO lineChartControl(@PathVariable String month, @PathVariable int num, HttpServletRequest request) {
+		HttpSession session = request.getSession(true);
+		Partner partner = (Partner) session.getAttribute("partnerUser");
 
-		int[] iArr = new int[] { 0, 0, 0, 0, 0, 0 };
-		iArr[5] = 53;
-
-		List<Month> list = new ArrayList<Month>();
-
-		for (int i = 5; i >= 0; i--)
-			list.add(YearMonth.now().minusMonths(i).getMonth());
-
-		List<PartnerPatientChartDTO> ppcList = new ArrayList<>();
-
-		PartnerPatientChartDTO ppcDTO = new PartnerPatientChartDTO();
-		ppcDTO.setLabel("Clinic A");
-		ppcDTO.setData(iArr);
-		ppcDTO.setBackgroundColor("rgba(255, 99, 132, 1)");
-		ppcDTO.setBorderColor("rgba(255, 99, 132, 1)");
-		ppcDTO.setBorderWidth(2);
-		ppcDTO.setFill(false);
-
-		PartnerPatientChartDTO ppcDTO2 = new PartnerPatientChartDTO();
-		ppcDTO2.setLabel("Clinic B");
-		ppcDTO2.setData(new int[] { 80, 80, 26, 51, 93, 13 });
-		ppcDTO2.setBackgroundColor("rgba(54, 162, 235)");
-		ppcDTO2.setBorderColor("rgba(54, 162, 235, 1)");
-		ppcDTO2.setBorderWidth(2);
-		ppcDTO2.setFill(false);
-
-		ppcList.add(ppcDTO);
-		ppcList.add(ppcDTO2);
-
-		model.put("monthList", list);
-		model.put("ppcList", ppcList);
-
-	}
-
-	private void tempDonutChart(ModelMap model, HttpSession session) {
-
-		List<PartnerPatientCount> ppcList = patientService.getPieChartDataByDate(partner.getPhone(), LocalDate.now());
-		model.put("clinicNames", ppcList.stream().map(ppc -> ppc.getName()).collect(Collectors.toList()));
-		model.put("pieChartData", ppcList.stream().map(ppc -> ppc.getCount()).collect(Collectors.toList()));
-
+		return bookingService.setLineChartData(partner.getPhone(),
+				YearMonth.parse(month.replace(month.substring(1, 3), month.substring(1, 3).toLowerCase()),
+						DateTimeFormatter.ofPattern("MMM yyyy")),
+				num);
 	}
 
 	@Data
 	private class PieDTO {
 		private String date;
 		private List<Long> ppcList;
-
-		public PieDTO() {
-			ppcList = new ArrayList<>();
-		}
 	}
 
 }

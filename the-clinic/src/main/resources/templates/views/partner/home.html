@@ -183,7 +183,7 @@ canvas {
 							</span>
 							
 							<span class="ml-auto">
-								<a class="btn"><i class="fal fa-chevron-left"></i></a><a class="btn disabled"><i class="fal fa-chevron-right"></i></a>
+								<a class="btn" onClick="lineChartMonthChange(0)"><i class="fal fa-chevron-left"></i></a><a class="btn" onClick="lineChartMonthChange(1)"><i class="fal fa-chevron-right"></i></a>
 							</span>
 							
 							
@@ -205,7 +205,7 @@ canvas {
 							</span>
 							
 							<span class="ml-auto">
-								<a class="btn" onClick="dateChange(0)"><i class="fal fa-chevron-left"></i></a><small class="pie-date" th:text="${todayDate}"></small><a class="btn" id="date-pie-right" onClick="dateChange(1)"><i class="fal fa-chevron-right"></i></a>
+								<a class="btn" onClick="dateChange(0)"><i class="fal fa-chevron-left"></i></a><small class="pie-date" th:text="${localDate}"></small><a class="btn" id="date-pie-right" onClick="dateChange(1)"><i class="fal fa-chevron-right"></i></a>
 							</span>
 							
 							
@@ -227,37 +227,21 @@ canvas {
 
 		<script type="text/javascript" th:inline="javascript">
 
-		var today = [[${todayDate}]];
+		var today = [[${localDate}]];
 		var clinicNames = [[${clinicNames}]];
 		var pieData = [[${pieChartData}]];
 		
-		
-		function dateChange(num){
-			$.ajax({
-				url: "http://localhost/partner/home/pie/"+num,
-				type: "GET",
-				success: function(data){
-					$('.pie-date').text(data.date);
-					setInterval(data.ppcList);	
-				},
-				error: function(xhr, status, err){
-					alert("Occur Error "+err.toString()+" ,, "+status)
-				}
-			});
-		}
-		
-		var months = [[${monthList}]];
-		var ppcList = [[${ppcList}]];
-		console.log(ppcList);
-		
+
+		var chartDTO = [[${chartDTO}]];
+
 		var ctx2 = document.getElementById('patientLineChart').getContext('2d');
 
 
-		var myChart2 = new Chart(ctx2, {
-		    type: 'line',
+		var lineChart = new Chart(ctx2, {
+		    type: 'bar',
 		    data: {
-		        labels: months,
-		        datasets: ppcList
+		        labels: chartDTO.labels,
+		        datasets: chartDTO.dataSetList
 		    },
 		    options: {
 		    	responsive: true,
@@ -274,7 +258,7 @@ canvas {
 						display: true,
 						scaleLabel: {
 							display: true,
-							labelString: 'Days of Week'
+							labelString: 'Months'
 						}
 					}],
 					yAxes: [{
@@ -282,12 +266,30 @@ canvas {
 						scaleLabel: {
 							display: true,
 							labelString: 'Number of Patients'
-						}
+						},
+					 	ticks: {
+		                    beginAtZero: true
+		                }
 					}]
 		        }
 		    }
 		});
 
+		function lineChartMonthChange(num){
+			$.ajax({
+				url: "http://localhost/partner/home/line/"+lineChart.data.labels[5]+"/"+num,
+				type: "GET",
+				success: function(data){
+					lineChart.data.labels = data.labels;
+					lineChart.data.datasets = data.dataSetList
+					lineChart.update();
+				},
+				error: function(xhr, status, err){
+					
+				}
+			});
+		}
+		
 
 
 		
@@ -297,19 +299,23 @@ canvas {
 			data:  {
 			    datasets: [{
 			        data: pieData,
-			        backgroundColor: ['rgba(255, 99, 132, 0.5)',
-				        'rgba(54, 162, 235, 0.5)',
-				         'rgba(255, 206, 86, 0.2)',
-		                'rgba(75, 192, 192, 0.2)',
-		                'rgba(153, 102, 255, 0.2)',
-		                'rgba(255, 159, 64, 0.2)'],
-	            	borderColor: [
-	            		'rgba(255, 99, 132, 1)',
-	                    'rgba(54, 162, 235, 1)',
-	                    'rgba(255, 206, 86, 1)',
-	                    'rgba(75, 192, 192, 1)',
-	                    'rgba(153, 102, 255, 1)',
-	                    'rgba(255, 159, 64, 1)'
+			        backgroundColor: 
+				        [
+				        	'rgba(255, 99, 132, 0.5)',
+				        	'rgba(54, 162, 235, 0.5)',
+				        	'rgba(255, 206, 86, 0.2)',
+		                	'rgba(75, 192, 192, 0.2)',
+		                	'rgba(153, 102, 255, 0.2)',
+		                	'rgba(255, 159, 64, 0.2)'
+		                ],
+	            	borderColor: 
+		            	[
+	            			'rgba(255, 99, 132, 1)',
+	                    	'rgba(54, 162, 235, 1)',
+	                    	'rgba(255, 206, 86, 1)',
+	                    	'rgba(75, 192, 192, 1)',
+	                    	'rgba(153, 102, 255, 1)',
+	                    	'rgba(255, 159, 64, 1)'
 						],
 	            	borderWidth: 2,
 	            	fill:false
@@ -317,10 +323,33 @@ canvas {
 				labels:clinicNames
 			}, options: {
 		    	responsive: true,
+
+				hover: {
+					mode: 'nearest',
+					intersect: true
+				},
 		    }
 		});
 
-		function setInterval(pieData){
+
+		
+		function dateChange(num){
+			$.ajax({
+				url: "http://localhost/partner/home/pie/"+$('.pie-date').text()+"/"+num,
+				type: "GET",
+				success: function(data){
+					$('.pie-date').text(data.date);
+					changePieData(data.ppcList);
+				},
+				error: function(xhr, status, err){
+					
+				}
+			});
+		}
+
+		
+
+		function changePieData(pieData){
 			pieChart.data.datasets[0].data = pieData;
 			pieChart.update();
 		}

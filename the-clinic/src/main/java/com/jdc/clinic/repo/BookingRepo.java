@@ -28,4 +28,8 @@ public interface BookingRepo extends BaseRepository<Booking, Long> {
 	@Query(value = "select booking.* from booking join clinic on booking.clinic_id = clinic.id where clinic.owner_phone = :phone", nativeQuery = true)
 	List<Booking> findBookingByPartnerPhone(String phone);
 
+//	@Query(value = "select count(b) from Booking b where b.clinicDoctor.clinic.owner.phone = :phone and b.bookingDate between :startDate and :endDate")
+//	PartnerPatientChartDTO findbyBookingDateBetweenAndPartnerPhone(LocalDate startDate, LocalDate endDate,
+//			String phone);
+
 }

@@ -38,12 +38,13 @@ public class TimeTableController {
 	}
 
 	@PostMapping("/create")
-	public String save(Timetable tt) {
-		clinicDoctorList.stream().filter(cd -> cd.getId().getDoctorId() == tt.getClinicDoctor().getDoctor().getId())
-				.findFirst().ifPresent(cd -> {
-					tt.getClinicDoctor().setId(cd.getId());
+	public String save(Timetable timeTable) {
+		clinicDoctorList.stream()
+				.filter(cd -> cd.getId().getDoctorId() == timeTable.getClinicDoctor().getDoctor().getId()).findFirst()
+				.ifPresent(cd -> {
+					timeTable.getClinicDoctor().setId(cd.getId());
 				});
-		timeTableService.save(tt);
+		timeTableService.save(timeTable);
 		return "redirect:/partner/schedules";
 	}
 

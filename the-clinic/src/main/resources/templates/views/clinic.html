@@ -18,7 +18,7 @@
   						<a class="nav-link" id="pills-profile-tab"  href="" th:href="@{/clinics/{id}/doctors(id=${clinic.id})}" role="tab" aria-controls="pills-profile" aria-selected="false"><span><i class="fal fa-user-md"></i> Doctors</span></a>
   					</li>
   					<li class="nav-item">
-  						<a class="nav-link" id="pills-contact-tab" th:href="@{/clinics/{id}/schedules(id=${clinic.id})}" role="tab" aria-controls="pills-contact" aria-selected="false"><span><i class="fal fa-calendar-alt"></i> Schedules</span></a>
+  						<a class="nav-link" id="pills-contact-tab" th:href="@{/clinics/{id}/schedules/(id=${clinic.id})}" role="tab" aria-controls="pills-contact" aria-selected="false"><span><i class="fal fa-calendar-alt"></i> Schedules</span></a>
   					</li>
 			</ul>
 		</div>

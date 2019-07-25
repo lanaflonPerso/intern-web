@@ -1,6 +1,8 @@
 package com.jdc.clinic.services;
 
+import java.time.DayOfWeek;
 import java.util.List;
+import java.util.stream.Collectors;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -26,5 +28,10 @@ public class TimeTableService {
 
 	public List<Timetable> findDoctorsTimetableByClinicId(int id) {
 		return timeTableRepo.findByClinicDoctorClinicId(id);
+	}
+
+	public List<Timetable> findDoctorsTimetableByClinicIdAndDay(int id, DayOfWeek day) {
+		return timeTableRepo.findByClinicDoctorClinicId(id).stream().filter(a -> (day.compareTo(a.getDay()) == 0))
+				.collect(Collectors.toList());
 	}
 }

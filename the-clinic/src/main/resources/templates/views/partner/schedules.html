@@ -153,16 +153,16 @@
 
 							<tbody>
 
-								<tr th:each="tt : ${timetables}">
-									<td class="text-center" th:text="${tt.clinicDoctor.doctor.id}"></td>
+								<tr th:each="timeTable : ${timetables}">
+									<td class="text-center" th:text="${timeTable.id}"></td>
 									<td class="text-center"
-										th:text="${tt.clinicDoctor.doctor.name}"></td>
+										th:text="${timeTable.clinicDoctor.doctor.name}"></td>
 									<td class="text-center"
-										th:text="${tt.clinicDoctor.clinic.name}"></td>
+										th:text="${timeTable.clinicDoctor.clinic.name}"></td>
 									<td class="text-center"
-										th:text="${tt.clinicDoctor.doctor.specialities}"></td>
-									<td class="text-center" th:text="${tt.timeTo}"></td>
-									<td class="text-center" th:text="${tt.timeTo}"></td>
+										th:text="${timeTable.clinicDoctor.doctor.specialities}"></td>
+									<td class="text-center" th:text="${timeTable.timeTo}"></td>
+									<td class="text-center" th:text="${timeTable.timeTo}"></td>
 
 
 									<td class="text-center">
@@ -176,20 +176,15 @@
 												aria-labelledby="dropdownMenuButton">
 												<a class="dropdown-item" data-toggle="modal"
 													data-target="#myModal" 
-													th:href="@{'/partner/schedules/edit/'+${tt.clinicDoctor.doctor.id}}">
+													th:href="@{'/partner/schedules/edit/'+${timeTable.clinicDoctor.doctor.name}}">
 													<i class="fas fa-edit"></i>Edit</a>
 													
-												<!-- <a class="dropdown-item" href="#" data-toggle="modal"
-					                               data-target="#myModal"
-													th:href="@{'/partner/doctors/edit/'+${tt.clinicDoctor.doctor.id}}"><i
-													class="	fas fa-edit"></i> Edit</a>  -->
+												
 
 												<a class="dropdown-item" href="#"
-													th:href="@{'/partner/doctors/delete/'+${tt.clinicDoctor.doctor.id}}">
+													th:href="@{/partner/schedules/delete/{id}}" onclick="return confirm(Are you sure?)">
 													<i class="fas fa-trash"></i> Delete
-												</a> <a class="dropdown-item" href="#"
-													th:href="@{/partner/doctors/details/1}"><i
-													class="	fas fa-ellipsis-v"></i> Detail</a>
+												</a> 
 
 											</div>
 										</div>

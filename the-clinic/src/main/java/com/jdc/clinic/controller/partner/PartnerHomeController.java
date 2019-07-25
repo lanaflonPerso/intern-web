@@ -59,7 +59,7 @@ public class PartnerHomeController {
 		model.put("clinicNames", patientService.getClinicNameListByDate(partner.getPhone(), LocalDate.now()));
 		model.put("pieChartData", patientService.getBookingRateListByDate(partner.getPhone(), LocalDate.now()));
 
-		model.put("chartDTO", bookingService.setLineChartData(partner.getPhone(), YearMonth.now(), 3));
+		model.put("chartDTO", bookingService.setLineChartData(partner.getPhone(), YearMonth.now()));
 
 		return "/views/partner/home";
 	}
@@ -91,9 +91,7 @@ public class PartnerHomeController {
 		Partner partner = (Partner) session.getAttribute("partnerUser");
 
 		return bookingService.setLineChartData(partner.getPhone(),
-				YearMonth.parse(month.replace(month.substring(1, 3), month.substring(1, 3).toLowerCase()),
-						DateTimeFormatter.ofPattern("MMM yyyy")),
-				num);
+				YearMonth.parse(month, DateTimeFormatter.ofPattern("MMM yyyy")), num);
 	}
 
 	@Data

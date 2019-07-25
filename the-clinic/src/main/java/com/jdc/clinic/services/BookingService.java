@@ -99,6 +99,10 @@ public class BookingService {
 
 	}
 
+	public ChartDTO setLineChartData(String phone, YearMonth yearMonth) {
+		return setLineChartData(phone, yearMonth, 3);
+	}
+
 	public ChartDTO setLineChartData(String phone, YearMonth yearMonth, int control) {
 
 		if (control == 0) {
@@ -107,15 +111,12 @@ public class BookingService {
 			yearMonth = yearMonth.plusMonths(1);
 		}
 
-		System.out.println(phone + " , " + yearMonth + " , " + control);
-
 		ChartDTO chartDTO = new ChartDTO();
 
 		for (int i = 5; i >= 0; i--) {
 			YearMonth ym = yearMonth.minusMonths(i);
 			chartDTO.addLabel(ym.format(DateTimeFormatter.ofPattern("MMM yyyy")));
 		}
-		System.out.println(chartDTO.getLabels());
 
 		String[] colorArr = { "rgba(255, 99, 132, 1)", "rgba(54, 162, 235, 1)", "rgba(255, 206, 86, 1)",
 				"rgba(75, 192, 192, 1)", "rgba(153, 102, 255, 1)", "rgba(255, 159, 64, 1)" };
@@ -148,7 +149,6 @@ public class BookingService {
 				countList.add(bRepo.findCount(
 						"select count(b) from Booking b where b.clinicDoctor.clinic.owner.phone = :phone and b.bookingDate between :startDate and :endDate and b.clinicDoctor.clinic.id = :cID",
 						param));
-
 			}
 
 			dataSet.setData(countList);

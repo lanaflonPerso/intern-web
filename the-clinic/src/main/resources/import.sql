@@ -337,4 +337,5 @@ insert into Account (phone, name, role, del_flag, password) values ('member2', '
 insert into Account (phone, name, role, del_flag, password) values ('partner', 'Partner', 'ROLE_Partner', false, '$2a$10$M2HV.7p3K0LX6hN7I.aqcOXiuMpen1wWJdPYgdrhASZG.XSewSSoG');
 
 insert into member(phone) values ('member');
+insert into partner(phone) values ('partner');
 	

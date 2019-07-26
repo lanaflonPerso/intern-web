@@ -1,8 +1,10 @@
 package com.jdc.clinic.controller;
 
-import java.time.LocalDate;
+import java.time.DayOfWeek;
 import java.util.List;
 import java.util.stream.Collectors;
+
+import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -11,6 +13,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.jdc.clinic.entity.Doctor;
 import com.jdc.clinic.entity.Timetable;
@@ -52,9 +55,11 @@ public class PublicClinicController {
 	}
 
 	@GetMapping("{id}/schedules")
-	public String findSchedulesForClinic(@PathVariable int id, ModelMap model) {
+	public String findSchedulesForClinic(@PathVariable int id, ModelMap model, HttpServletRequest request) {
+
 		model.put("schedules", service.findSchedules(id));
 		model.put("clinic", service.findById(id));
+
 		return "/views/schedules";
 	}
 
@@ -85,16 +90,10 @@ public class PublicClinicController {
 		return "/views/clinicdoctors";
 	}
 
-	@GetMapping("{id}/schedules/{date}")
-	public String findDoctorsByTimetable(@RequestParam(defaultValue = "") LocalDate date, @PathVariable int id,
-			ModelMap model) {
-
-		List<Timetable> timetableList = timetableService.findDoctorsTimetableByClinicId(id).stream()
-				.filter(a -> (a.getDay().compareTo(date.getDayOfWeek())) == 0).collect(Collectors.toList());
-
-		model.addAttribute("doctorsTimetableList", timetableList);
-
-		return "/views/schedules";
+	@GetMapping("{clinicID}/schedules/{day}")
+	@ResponseBody
+	public List<Timetable> getTimeTableByDays(@PathVariable int clinicID, @PathVariable int day) {
+		return timetableService.findDoctorsTimetableByClinicIdAndDay(clinicID, DayOfWeek.of(day == 0 ? 7 : day));
 	}
 
 }

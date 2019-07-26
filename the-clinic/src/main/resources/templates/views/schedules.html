@@ -11,11 +11,9 @@
 
 
 <style>
-{
-font-family:'OpenSans';
-
-		
-}
+/* {
+	font-family:'OpenSans';
+} */
 body {
 	background-color: #fafafa;
 }
@@ -95,10 +93,9 @@ pre {
 	color: #9e9e9e;
 }
 
-.calendar thead th:not (:last-child ) {
-	border-right: 1px solid #fff;
+.calendar thead th :not(:last-child){
+	border-right:1px solid #fff;
 }
-
 .calendar .calendar-frame table {
 	width: 100%;
 }
@@ -122,18 +119,20 @@ pre {
 </head>
 <body>
 	<div layout:fragment="clinic-details-content">
-	
+
 		<div class="d-flex justify-content-center">
 			<ul class="nav nav-pills mb-3" id="pills-tab" role="tablist">
-  					<li class="nav-item">
-    					<a class="nav-link" id="pills-home-tab" th:href="@{/clinics/{id}(id=${clinic.id})}" aria-selected="false"><span><i class="fal fa-info"></i> Overview</span></a>
-  					</li>
-  					<li class="nav-item">
-  						<a class="nav-link" id="pills-profile-tab" href="" th:href="@{/clinics/{id}/doctors(id=${clinic.id})}" role="tab" aria-controls="pills-profile" aria-selected="false"><span><i class="fal fa-user-md"></i> Doctors</span></a>
-  					</li>
-  					<li class="nav-item">
-  						<a class="nav-link active" href="" id="pills-contact-tab"role="tab" aria-controls="pills-contact" aria-selected="true"><span><i class="fal fa-calendar-alt"></i> Schedules</span></a>
-  					</li>
+				<li class="nav-item"><a class="nav-link" id="pills-home-tab"
+					th:href="@{/clinics/{id}(id=${clinic.id})}" aria-selected="false"><span><i
+							class="fal fa-info"></i> Overview</span></a></li>
+				<li class="nav-item"><a class="nav-link" id="pills-profile-tab"
+					href="" th:href="@{/clinics/{id}/doctors(id=${clinic.id})}"
+					role="tab" aria-controls="pills-profile" aria-selected="false"><span><i
+							class="fal fa-user-md"></i> Doctors</span></a></li>
+				<li class="nav-item"><a class="nav-link active" href=""
+					id="pills-contact-tab" role="tab" aria-controls="pills-contact"
+					aria-selected="true"><span><i
+							class="fal fa-calendar-alt"></i> Schedules</span></a></li>
 			</ul>
 		</div>
 		<div class="tab-content mt-3">
@@ -145,37 +144,98 @@ pre {
 
 
 
-			<p class="today-date bg-light" style="text-align: center">Today: <span id="lblEventCalendar" >[date]</span></p>
-			
-			<div>
-				<table class="table">
-			
-					  <thead>
-					    <tr >
-					      <th scope="col">id</th>
-					      <th scope="col">Name</th>
-					      <th scope="col">Time From</th>
-					      <th scope="col">Time to</th>
-					    </tr>
-					  </thead>
-					  <tbody>
-					    
-					    <!-- <tr th:each="timetableList :${timetable}">
+						<p class="today-date bg-light" style="text-align: center">
+							<span id="lblEventCalendar">[date]</span>
+						</p>
+
+						<div>
+							<table class="table">
+
+								<thead>
+									<tr>
+										<th scope="col">id</th>
+										<th scope="col">Name</th>
+										<th scope="col">Time From</th>
+										<th scope="col">Time to</th>
+										<th scope="col"></th>
+									</tr>
+								</thead>
+								<tbody id="timetablebody">
+
+									<!-- <tr th:each="timetableList :${timetable}">
 					      <th scope="row" th:text="${timetableList.id}">2</th>
 					      <td th:text="${timetableList.clinicdoctor.doctor.name}"></td>
 					      <td th:text="${timetableList.timeFrom}"></td>
 					      <td></td>
 					    </tr> -->
-					   
-					  </tbody>
-					</table>
-								
-			</div>
-			
-	</div>
+
+								</tbody>
+							</table>
+
+						</div>
+
+					</div>
+
+<div class="modal fade bd-example-modal-lg" id="open-time-dialog"
+						tabindex="0" role="dialog" aria-labelledby="myLargeModalLabel"
+						aria-hidden="true">
+
+						<div class="modal-dialog modal-dialog-centered" role="document">
+
+							<div class="modal-content">
+
+								<div class="modal-header">
+
+									<h5 class="modal-title" id="exampleModalLongTitle">CHOOSE
+										YOUR FAMILY MEMBER</h5>
+
+									<button type="button" class="close" data-dismiss="modal"
+										aria-label="Close">
+
+										<span aria-hidden="true">&times;</span>
+
+									</button>
+								</div>
+								<div class="modal-body" sec:authorize="isAuthenticated()"
+									th:unless="${session.member}"></div>
+								<div class="modal-body" sec:authorize="isAuthenticated()"
+									th:if="${session.member}">
+
+									<div class="text-center" th:text="${session.loginUser.name}"></div>
+									<select class="form-control" id="family-selector">
+										<option th:each="family : *{session.member.family}"
+											th:text="${family.name}" th:value="${family.id}"></option>
+									</select>
 
 
-						<script>
+								</div>
+
+								<div class="modal-body" th:unless="${session.member}">
+
+									<p class="text-secondary">
+										Your have no permission role to book. Please <a
+											class="btn btn-outline-info" th:href="@{/login}">Sign in</a>
+										or <a class="btn btn-outline-info" th:href="@{/signup}">Sign
+											up</a>
+									</p>
+
+								</div>
+								<div class="modal-footer">
+
+									<button type="button" class="btn btn-outline-secondary"
+										data-dismiss="modal">Cancel</button>
+
+									<button th:if="${session.member}" type="button"
+										id="save-time-btn" class="btn btn-outline-primary"
+										data-dismiss="modal" onclick="saveBooking()">Book</button>
+
+								</div>
+
+							</div>
+						</div>
+					</div>
+
+					<script>
 					$(function () {
 						$('#pnlEventCalendar').calendar({
 							months: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'],
@@ -191,31 +251,81 @@ pre {
 
 				</script>
 
-				
+
 
 				</div>
 			</div>
 			<!--overview complete-->
 
 
-			<script type="text/javascript">
-			function triggerSelectEvent(event) {
-			var date = new Date(currentYear, currentMonth, currentDay);
 
-			const days = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
-			const monthNames = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
+			<script th:inline="javascript">
+			
 		
-			var label = date.getDate();
+			var clinicID = [[${clinic.id}]];
+			var timetableID;
+			var mDate;
+			
+			function triggerSelectEvent(event) {
+				var date = new Date(currentYear, currentMonth, currentDay);
+
+				const days = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
+				const monthNames = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
+		
+				var label = date.getDate()+ " "+(date.getYear()+1900);
+
+				if (event != undefined) {
+					$('#lblEventCalendar').text(days[date.getDay()] + " " + " " + monthNames[date.getMonth()] + " " + label);
+					$.ajax({
+						url: "http://localhost/clinics/"+clinicID+"/schedules/"+date.getDay(),
+						type: "GET",
+						success: function(ttlist){
+							$("#timetablebody").empty();
+							$.each(ttlist, function(k, v){
+								timetableID = v.id;
+								mDate = date;
+								$("#timetablebody").append(""+ 
+									"<tr>"+
+										"<td>"+(k+1)+"</td>"+
+										"<td>"+v.clinicDoctor.doctor.name+"</td>"+
+										"<td>"+v.timeFrom[0]+" : "+v.timeFrom[1]+"</td>"+
+										"<td>"+v.timeTo[0]+" : "+v.timeTo[1]+"</td>"+
+										"<td>"+"<button class='btn btn-primary' data-toggle='modal' data-target='.bd-example-modal-lg'>Book</button>"+"</td>"+
+									"</tr>");
+							})
+						},
+						error: function(xhr, status, err){
+							console.log(err);
+						}
+					});
+ 
+				}//end of if event
+
+			}//end triggerSelectEvent
 
 
-			if (event != undefined) {
-				$('#lblEventCalendar').text(days[date.getDay()] + " " + " " + monthNames[date.getMonth()] + " " + label + " ");
-
-
+			function saveBooking(){
+				var familyMemberID = $('#family-selector').val();
+				var month = (mDate.getMonth()+1).toString();
+				if(month.length == 1){
+					month = '0'+month;
+				}
+				var date = mDate.getDate().toString();
+				if(date.length == 1){
+					date = '0'+date;
+				}
+				var dateStr = (mDate.getYear()+1900)+"-"+month+"-"+date;
+				$.ajax({
+					url: "http://localhost/member/bookings/book/"+clinicID+"/"+familyMemberID+"/"+timetableID+"/"+dateStr,
+					type: "GET",
+					success: function(data){
+						console.log('success to alert');
+					},
+					error: function(xhr, status, err){
+						console.log(err);
+					}
+				});
 			}
-
-		}
-
 
 
 	</script>

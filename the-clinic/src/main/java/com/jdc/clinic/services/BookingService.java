@@ -24,6 +24,7 @@ import com.jdc.clinic.repo.ClinicDoctorRepo;
 import com.jdc.clinic.repo.ClinicRepo;
 import com.jdc.clinic.repo.DoctorRepo;
 import com.jdc.clinic.repo.FamilyMemberRepo;
+import com.jdc.clinic.repo.PatientRepo;
 
 @Service
 public class BookingService {
@@ -43,6 +44,13 @@ public class BookingService {
 
 	@Autowired
 	ClinicDoctorRepo clinicDoctorRepo;
+
+	@Autowired
+	PatientRepo patientRepo;
+
+	public Booking insertBooking(Booking booking) {
+		return bRepo.save(booking);
+	}
 
 	public List<FamilyMember> getFamilyMembersByPhone(String phone) {
 		return fmRepo.findByMemberPhone(phone);

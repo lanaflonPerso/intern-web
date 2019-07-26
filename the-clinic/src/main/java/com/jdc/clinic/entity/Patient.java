@@ -28,11 +28,11 @@ public class Patient implements Serializable {
 	private long id;
 
 	@ManyToOne
-	@JoinColumn(insertable = false, updatable = false)
+	@JoinColumn
 	private FamilyMember familyMember;
 
 	@ManyToOne
-	@JoinColumn(insertable = false, updatable = false)
+	@JoinColumn
 	private Clinic clinic;
 
 }

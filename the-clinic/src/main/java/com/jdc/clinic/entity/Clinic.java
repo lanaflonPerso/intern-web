@@ -17,6 +17,8 @@ import javax.persistence.OneToOne;
 import javax.persistence.PrePersist;
 import javax.validation.constraints.NotEmpty;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -46,8 +48,10 @@ public class Clinic implements Serializable {
 	private SecurityInfo security = new SecurityInfo();
 
 	@ManyToOne
+	@JsonIgnore
 	private Partner owner;
 
+	@JsonIgnore
 	@OneToOne(mappedBy = "clinic", cascade = { CascadeType.PERSIST, CascadeType.MERGE }, orphanRemoval = true)
 	private Address addrress = new Address();
 

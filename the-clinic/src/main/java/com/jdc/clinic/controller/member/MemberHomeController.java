@@ -31,10 +31,11 @@ public class MemberHomeController {
 		Member member = service.getMemberByPhone(((Account) session.getAttribute("loginUser")).getPhone());
 		session.setAttribute("member", member);
 
-		Member m = (Member) session.getAttribute("member");
-		model.addAttribute("bookingCount", service.getBookingCountByMemberPhone(m.getPhone()));
-		model.addAttribute("memberCount", service.getMemberCountByMemberPhone(m.getPhone()));
-		model.addAttribute("clinicCount", service.getClinicCountByMemberPhone(m.getPhone()));
+		member.getFamily().stream().map(m -> m.getName()).forEach(System.out::println);
+
+		model.addAttribute("bookingCount", service.getBookingCountByMemberPhone(member.getPhone()));
+		model.addAttribute("memberCount", service.getMemberCountByMemberPhone(member.getPhone()));
+		model.addAttribute("clinicCount", service.getClinicCountByMemberPhone(member.getPhone()));
 		/*
 		 * model.addAttribute("eventCount",
 		 * service.getEventCountByMemberPhone(m.getPhone()));

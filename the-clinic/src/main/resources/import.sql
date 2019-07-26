@@ -338,26 +338,3 @@ insert into Account (phone, name, role, del_flag, password) values ('partner', '
 
 insert into member(phone) values ('member');
 	
-insert into family_member (id, member_phone, name) values (1, 'member', 'Kyaw Kyaw');
-insert into family_member (id, member_phone, name) values (2, 'member', 'Aung Aung');
-insert into family_member (id, member_phone, name) values (3, 'member', 'Maung Maung');
-	
-insert into partner(phone) values ('partner');
-
-insert into doctor(id,name,gender,hospital,license_code,position) values(1,'ChitThae',1,'Chan Thar','343445','Prof');
-insert into clinic(name) values('Chan Thar');
-insert into clinic(name)  values('Myat Lin');
-insert into clinic(name,owner_phone)  values('Myat Lin','partner');
-
-insert into doctor_degrees(doctor_id,degrees) values(1,'MBBS');
-insert into doctor_specialities(doctor_id,specialities) values (1,'Cardiologists');
-insert into clinic_doctor(clinic_id,doctor_id) values(1,1);
-
-insert into patient(clinic_id,family_member_id) values(1,1);
-
-insert into timetable(time_from,time_to) values('12:05:12','01:10:12');
-
- insert into booking(booking_date,status,clinic_id,doctor_id,patient_id,time_table_id) values('2019/02/07',1,1,2,1,1);
-
-
-

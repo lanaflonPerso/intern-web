@@ -56,6 +56,17 @@
 .list-group-item {
 	position: static;
 }
+
+/* The heart of the matter */
+.h-scroll-group>.scrollable-row {
+	overflow-x: auto;
+	white-space: nowrap;
+}
+
+.h-scroll-group>.scrollable-row>.scroll-card {
+	display: inline-block;
+	float: none;
+}
 </style>
 
 </head>
@@ -333,37 +344,43 @@
 
 			</div>
 
-			<div class="col-lg-6 col-12">
+			<div class="row">
+				<div class="col-lg-4 col-12">
 
-				<div class="card p-2">
+					<div class="card p-2">
 
-					<div class="mt-2 mb-2 d-flex">
-						<span class="mr-auto" style="color: #C98B42"><span><i
-								class="fal fa-user-md" style="font-size: 20px;"></i></span> Doctors </span> <a
-							class="btn btn-outline-primary" href="#" data-toggle="modal"
-							data-target=".add-doctor-modal"> <i class="fal fa-plus"></i>
-							Add doctor
-						</a>
-					</div>
-
-					<div>
-
-						<div class="text-center text-muted"
-							th:if="${doctorList.isEmpty()}">
-							<i class="fal fa-exclamation-triangle"></i> No Doctors
+						<div class="mt-2 mb-2 d-flex">
+							<span class="mr-auto" style="color: #C98B42"><span><i
+									class="fal fa-user-md" style="font-size: 20px;"></i></span> Doctors </span> <a
+								class="btn btn-outline-primary" href="#" data-toggle="modal"
+								data-target=".add-doctor-modal"> <i class="fal fa-plus"></i>
+								Add doctor
+							</a>
 						</div>
 
-						<div class="list-group" style="height: 400px; overflow: scroll;"  id="doctorListGroup"
-							th:unless="${doctorList.isEmpty()}">
+						<div>
 
-							<div class="list-group-item list-group-item-action"
-								th:each="d : ${doctorList}">
+							<div class="text-center text-muted"
+								th:if="${doctorList.isEmpty()}">
+								<i class="fal fa-exclamation-triangle"></i> No Doctors
+							</div>
 
-								<div>
-									<span th:text="${d.name}"></span> - <span th:text="${d.specialities}"></span>
-								</div>
-								<div>
-									<small class="text-muted">Sat, Sun, Mon</small>
+							<div class="list-group" style="overflow: scroll;"
+								id="doctorListGroup" th:unless="${doctorList.isEmpty()}">
+
+								<div class="list-group-item list-group-item-action"
+									th:each="d : ${doctorList}">
+
+									<div>
+										<span th:text="${d.name}"></span> - <span
+											th:text="${d.specialities}"></span>
+									</div>
+									<div>
+										<small class="text-muted">
+											<span>Sat, Sun, Mon</span>
+										</small>
+									</div>
+
 								</div>
 
 							</div>
@@ -374,6 +391,44 @@
 
 				</div>
 
+
+
+				<div class="col-lg-8 col-12">
+
+					<div class="container-fluid h-scroll-group card mb-3" th:each="dto : ${timetableDTO}">
+
+						<div class="mt-1">
+							<i class="fal fa-sun"></i> <span th:text="*{dto.day}"></span>
+						</div>
+
+						<div class="scrollable-row">
+							
+							<div class="scroll-card p-2 card col-12 col-md-4 mb-3" th:each="timetable : *{dto.timeTable}">
+								<small class="text-muted">
+									<i class="fal fa-clock"></i>
+									<span th:text=*{timetable.timeFrom}></span> to <span th:text="*{timetable.timeTo}"></span>
+								</small>
+								<div style="font-size: 18px"><b th:text="*{timetable.clinicDoctor.doctor.name}"></b></div>
+								<div>
+									<small th:each="degree: *{timetable.clinicDoctor.doctor.degrees}">
+										<span th:text="*{degree}"></span>&nbsp;
+									</small>
+								</div>
+								
+								<div>
+									<span style="color: white; background-color: green;" class="m-2 label label-success ml-auto badge" th:each="special: *{timetable.clinicDoctor.doctor.specialities}" th:text="*{special}"></span>
+								</div>
+								
+								
+								
+							</div>
+							
+
+
+						</div>
+					</div>
+
+				</div>
 			</div>
 
 		</div>
@@ -409,7 +464,7 @@
 
 
 						<div id="doctordata"></div>
-						
+
 
 
 					</div>
@@ -446,7 +501,7 @@
 										"<div style='font-size: 24px;'>"+doctor.name+"</div>"+
 										"<div>"+doctor.degrees+"</div>"+
 										"<div class='mb-1'>"+doctor.specialities+"</div>"+
-										"<button class='btn btn-outline-success' onclick='saveClinicDoctor("+doctor.id+")'><i class='fal fa-plus'></i> Add</button>"+
+										"<button class='btn btn-outline-success' onclick='saveClinicDoctor("+doctor.id+")' data-dismiss='modal'><i class='fal fa-plus'></i> Add</button>"+
 									"</div>");
 						}
 						

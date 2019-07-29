@@ -18,11 +18,13 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.jdc.clinic.entity.Clinic;
 import com.jdc.clinic.entity.OpenTime;
+import com.jdc.clinic.entity.Timetable;
 import com.jdc.clinic.entity.Township;
 import com.jdc.clinic.services.ClinicDoctorService;
 import com.jdc.clinic.services.ClinicServices;
 import com.jdc.clinic.services.LocationService;
 import com.jdc.clinic.services.OpenTimeService;
+import com.jdc.clinic.services.TimeTableService;
 
 @Controller
 @RequestMapping("/partner/clinics")
@@ -40,14 +42,24 @@ public class ClinicController {
 	@Autowired
 	private ClinicDoctorService clinicDoctorService;
 
+	@Autowired
+	private TimeTableService timeTableService;
+
 	@GetMapping("{id}")
 	public String findById(@PathVariable int id, ModelMap model) {
 
 		model.put("clinic", clinicService.findById(id));
 		model.put("days", Arrays.asList(DayOfWeek.values()));
 		model.put("doctorList", clinicDoctorService.getDoctorsByClinicId(id));
+		model.put("timetableDTO", timeTableService.findTimeTableDTO(id));
 
 		return "views/partner/clinic";
+	}
+
+	@GetMapping("byday/{id}/{day}")
+	@ResponseBody
+	public List<Timetable> findTimeTableByDay(@PathVariable int id, @PathVariable int day) {
+		return timeTableService.findDoctorsTimetableByClinicIdAndDay(id, DayOfWeek.of(day + 1));
 	}
 
 	@GetMapping("create")

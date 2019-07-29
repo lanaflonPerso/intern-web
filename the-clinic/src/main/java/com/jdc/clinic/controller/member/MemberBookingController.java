@@ -75,7 +75,7 @@ public class MemberBookingController {
 		booking.setPatient(patient);
 		booking.setStatus(Status.Apply);
 		booking.setTimeTable(timeTableService.findById(timeTableID));
-
+		bookingService.insertBooking(booking);
 		return "Successful";
 	}
 

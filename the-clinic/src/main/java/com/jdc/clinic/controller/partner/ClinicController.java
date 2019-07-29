@@ -19,6 +19,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import com.jdc.clinic.entity.Clinic;
 import com.jdc.clinic.entity.OpenTime;
 import com.jdc.clinic.entity.Township;
+import com.jdc.clinic.services.ClinicDoctorService;
 import com.jdc.clinic.services.ClinicServices;
 import com.jdc.clinic.services.LocationService;
 import com.jdc.clinic.services.OpenTimeService;
@@ -36,11 +37,15 @@ public class ClinicController {
 	@Autowired
 	private OpenTimeService openTimeService;
 
+	@Autowired
+	private ClinicDoctorService clinicDoctorService;
+
 	@GetMapping("{id}")
 	public String findById(@PathVariable int id, ModelMap model) {
 
 		model.put("clinic", clinicService.findById(id));
 		model.put("days", Arrays.asList(DayOfWeek.values()));
+		model.put("doctorList", clinicDoctorService.getDoctorsByClinicId(id));
 
 		return "views/partner/clinic";
 	}

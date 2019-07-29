@@ -11,9 +11,11 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.jdc.clinic.entity.Doctor;
 import com.jdc.clinic.entity.Partner;
+import com.jdc.clinic.services.ClinicDoctorService;
 import com.jdc.clinic.services.ClinicServices;
 import com.jdc.clinic.services.DoctorService;
 
@@ -26,6 +28,9 @@ public class DoctorController {
 
 	@Autowired
 	private ClinicServices cService;
+
+	@Autowired
+	private ClinicDoctorService clinicDoctorService;
 
 	@GetMapping
 	public String all(ModelMap model, HttpServletRequest request) {
@@ -42,10 +47,11 @@ public class DoctorController {
 	}
 
 	@GetMapping("create")
-	public String create(ModelMap model) {
+	public String create(ModelMap model, HttpServletRequest request) {
+		HttpSession session = request.getSession(true);
 		model.put("doctor", new Doctor());
-		model.put("id", dService.findLast().getId() + 1);
-		model.put("clinics", cService.findAll());
+		// model.put("id", dService.findLast().getId() + 1);
+		model.put("clinics", cService.findByOwnerPhone(((Partner) session.getAttribute("partnerUser")).getPhone()));
 		return "/views/partner/doctor-edit";
 	}
 
@@ -56,7 +62,6 @@ public class DoctorController {
 		model.put("clinics", cService.findByOwnerPhone(((Partner) session.getAttribute("partnerUser")).getPhone()));
 		return "/views/partner/doctor-edit";
 	}
-
 
 	@PostMapping("edit/{id}")
 	public String save(Doctor doctor, BindingResult result, @PathVariable int id) {
@@ -80,5 +85,17 @@ public class DoctorController {
 	public String delete(@PathVariable("id") int id) {
 		dService.delete(dService.findById(id).get());
 		return "redirect:/partner/doctors";
+	}
+
+	@GetMapping("findbylicense/{license}")
+	@ResponseBody
+	public Doctor getDoctorByLicense(@PathVariable String license) {
+		return dService.findByLicenseCode(license);
+	}
+
+	@GetMapping("saveclinicdoctor/{clinicID}/{doctorID}")
+	@ResponseBody
+	public Doctor saveClinicDoctor(@PathVariable int clinicID, @PathVariable int doctorID) {
+		return clinicDoctorService.saveClinicDoctor(clinicID, doctorID).getDoctor();
 	}
 }

@@ -5,9 +5,12 @@
 	layout:decorate="~{/layout/partner-deshboard-template}">
 <head>
 <title>Clinic A</title>
-<link th:href="@{/resources/css/kst.css}" rel="stylesheet" type="text/css" />
-<link th:href="@{/resources/css/bootstrap-clockpicker.min.css}" rel="stylesheet" type="text/css" />
-<script type="text/javascript" th:src="@{/resources/js/bootstrap-clockpicker.min.js}"></script>
+<link th:href="@{/resources/css/kst.css}" rel="stylesheet"
+	type="text/css" />
+<link th:href="@{/resources/css/bootstrap-clockpicker.min.css}"
+	rel="stylesheet" type="text/css" />
+<script type="text/javascript"
+	th:src="@{/resources/js/bootstrap-clockpicker.min.js}"></script>
 
 
 
@@ -58,8 +61,8 @@
 </head>
 <body>
 	<div layout:fragment="dashboard-contents">
-	
-		
+
+
 
 		<div class="container-fluid mt-2 p-3" th:object="${clinic}">
 			<div class="card p-2" id="content">
@@ -78,11 +81,11 @@
 
 							<h4 class="c-name" th:text="*{name}"></h4>
 
-							<span class="c-category text-muted" th:text="*{addrress.township.name}"></span> 
-							
-							<span class="c-category text-muted"> &bull; </span> 
-							
-							<span class="c-category text-muted" th:text="*{addrress.township.division.name}"></span>
+							<span class="c-category text-muted"
+								th:text="*{addrress.township.name}"></span> <span
+								class="c-category text-muted"> &bull; </span> <span
+								class="c-category text-muted"
+								th:text="*{addrress.township.division.name}"></span>
 						</div>
 						<!-- first column end -->
 
@@ -145,15 +148,17 @@
 							</div>
 
 							<div th:unless="*{phone.isEmpty()}" th:each="ph: *{phone}">
-							
+
 								<div th:text="${ph}"></div>
-								
+
 							</div>
-							
+
 							<div th:if="*{phone.isEmpty()}">
-							
-								<div><small class="text-warning">HAVEN'T PHONE !</small></div>
-								
+
+								<div>
+									<small class="text-warning">HAVEN'T PHONE !</small>
+								</div>
+
 							</div>
 
 						</div>
@@ -166,18 +171,20 @@
 
 
 							<div th:unless="*{mails.isEmpty()}" th:each="mail: *{mails}">
-							
+
 								<div>
-								
+
 									<a th:href="@{mailto:{m}(m=${mail})}" th:text="${mail}"></a>
-									
+
 								</div>
-								
+
 							</div>
 							<div th:if="*{mails.isEmpty()}">
-							
-								<div><small class="text-warning">HAVEN'T EMAIL !</small></div>
-								
+
+								<div>
+									<small class="text-warning">HAVEN'T EMAIL !</small>
+								</div>
+
 							</div>
 
 						</div>
@@ -209,9 +216,10 @@
 					<div class="mt-2 mb-2 d-flex">
 						<span class="mr-auto" style="color: #834A07"><span><i
 								class="fal fa-clock" style="font-size: 20px;"></i></span> Opening Times</span>
-								
-						<span class="hover-scale-animation" data-toggle="modal" data-target=".bd-example-modal-lg">
-							<i class="fal fa-pencil-alt"></i></span>
+
+						<span class="hover-scale-animation" data-toggle="modal"
+							data-target=".bd-example-modal-lg"> <i
+							class="fal fa-pencil-alt"></i></span>
 					</div>
 					<table class="text-center table table-striped table-bordered">
 
@@ -322,10 +330,156 @@
 
 				</div>
 				<!-- card 2 end -->
+
+			</div>
+
+			<div class="col-lg-6 col-12">
+
+				<div class="card p-2">
+
+					<div class="mt-2 mb-2 d-flex">
+						<span class="mr-auto" style="color: #C98B42"><span><i
+								class="fal fa-user-md" style="font-size: 20px;"></i></span> Doctors </span> <a
+							class="btn btn-outline-primary" href="#" data-toggle="modal"
+							data-target=".add-doctor-modal"> <i class="fal fa-plus"></i>
+							Add doctor
+						</a>
+					</div>
+
+					<div>
+
+						<div class="text-center text-muted"
+							th:if="${doctorList.isEmpty()}">
+							<i class="fal fa-exclamation-triangle"></i> No Doctors
+						</div>
+
+						<div class="list-group" style="height: 400px; overflow: scroll;"  id="doctorListGroup"
+							th:unless="${doctorList.isEmpty()}">
+
+							<div class="list-group-item list-group-item-action"
+								th:each="d : ${doctorList}">
+
+								<div>
+									<span th:text="${d.name}"></span> - <span th:text="${d.specialities}"></span>
+								</div>
+								<div>
+									<small class="text-muted">Sat, Sun, Mon</small>
+								</div>
+
+							</div>
+
+						</div>
+
+					</div>
+
+				</div>
+
 			</div>
 
 		</div>
 
+
+		<div class="modal fade add-doctor-modal" id="add-doctor-dialog"
+			tabindex="-1" role="dialog" aria-labelledby="adddoctorlabel"
+			aria-hidden="true">
+
+			<div class="modal-dialog" role="document">
+
+				<div class="modal-content">
+
+					<div class="modal-header">Add Doctor</div>
+
+					<div class=modal-body>
+
+						<div class="input-group">
+
+							<input type="text" id="doctor-license" class="form-control"
+								placeholder="#license code">
+
+							<div class="input-group-prepend">
+
+								<button class="btn btn-outline-secondary"
+									onclick="searchdoctor()">
+									<i class="fal fa-search"></i> Search
+								</button>
+
+							</div>
+
+						</div>
+
+
+						<div id="doctordata"></div>
+						
+
+
+					</div>
+
+				</div>
+
+			</div>
+
+		</div>
+
+		<script th:inline="javascript">
+
+			var clinicID = [[${clinic}]].id;
+
+			function searchdoctor(){
+				$.ajax({
+					url: "http://localhost/partner/doctors/findbylicense/"+$('#doctor-license').val(),
+					type: "GET",
+					contentType: "application/json",
+			        data: "json",
+					success: function(doctor){
+						$('#doctordata').empty();
+						if(doctor == ""){
+							$('#doctordata').append(""+
+									"<div class='text-muted card mt-2 p-5 text-center'>"+
+										"<div><i class='fal fa-times' style='font-size: 40px;'></i></div>"+
+										"<div>Doctor Not Found!</div>"+
+									"</div>");
+						}else{
+							//doctor found
+							$('#doctordata').append(+
+									"<div class='card mt-2 p-3'>"+
+										"<small>"+doctor.licenseCode+"</small>"+
+										"<div style='font-size: 24px;'>"+doctor.name+"</div>"+
+										"<div>"+doctor.degrees+"</div>"+
+										"<div class='mb-1'>"+doctor.specialities+"</div>"+
+										"<button class='btn btn-outline-success' onclick='saveClinicDoctor("+doctor.id+")'><i class='fal fa-plus'></i> Add</button>"+
+									"</div>");
+						}
+						
+					},
+					error: function(xhr, status, err){
+						console.log(err);
+					}
+				});
+			}
+
+			function saveClinicDoctor(doctorID){
+				$.ajax({
+					url: "http://localhost/partner/doctors/saveclinicdoctor/"+clinicID+"/"+doctorID,
+					type: "GET",
+					contentType: "application/json",
+			        data: "json",
+					success: function(doctor){
+						$('#doctorListGroup').append(""+
+								"<div class='list-group-item list-group-item-action'>"+
+									"<div>"+
+										"<span>"+doctor.name+"</span> - <span>"+doctor.specialities+"</span>"+
+									"</div>"+
+									"<div>"+
+										"<small class='text-muted'>Sat, Sun, Mon</small>"+
+									"</div>"+
+								"</div>");
+					},
+					error: function(xhr, status, err){
+						console.log(err);
+					}
+				});
+			}
+		</script>
 
 
 		<!-- Modal dialog -->
@@ -364,12 +518,12 @@
 						<div class="custom-div mt-2" id="schedule-div">
 
 							<table class="table">
-								
-								
+
+
 								<tr th:each="day: ${days}">
 
-									<td><input type="checkbox" 
-										th:value="${day}" th:id="@{{da}_check(da=${day})}"
+									<td><input type="checkbox" th:value="${day}"
+										th:id="@{{da}_check(da=${day})}"
 										th:onclick="@{'toggle(\'#'+${day}+'_time_picks\',\'#'+${day}+'_close\',this)'}">
 									</td>
 
@@ -380,28 +534,22 @@
 										<div th:id="@{${day}+'_time_picks'}" class="form-inline">
 
 											<div th:id="@{${day}+'_time_picks_one'}">
-												from
-												&nbsp;
-												<input class="form-control" type="time" th:id="@{${day}+'_from1'}">
-												&nbsp;
-												to 
-												&nbsp;
-												<input class="form-control" type="time" th:id="@{${day}+'_to1'}">
+												from &nbsp; <input class="form-control" type="time"
+													th:id="@{${day}+'_from1'}"> &nbsp; to &nbsp; <input
+													class="form-control" type="time" th:id="@{${day}+'_to1'}">
 
-												&nbsp;
-												<input th:onchange="@{'partTimeToggle(this, \'#'+${day}+'_time_picks_two\')'}" th:id="@{${day}+'_time_add'}" type="checkbox" checked data-toggle="toggle" data-on="<i class='fal fa-plus'></i>"
+												&nbsp; <input
+													th:onchange="@{'partTimeToggle(this, \'#'+${day}+'_time_picks_two\')'}"
+													th:id="@{${day}+'_time_add'}" type="checkbox" checked
+													data-toggle="toggle" data-on="<i class='fal fa-plus'></i>"
 													data-off="<i class='fal fa-minus'></i>"
 													data-onstyle="primary" data-offstyle="primary">
 											</div>
 
 											<div th:id="@{${day}+'_time_picks_two'}">
-												from
-												&nbsp;
-												<input class="form-control" type="time" th:id="@{${day}+'_from2'}">
-												&nbsp;
-												to 
-												&nbsp;
-												<input class="form-control" type="time" th:id="@{${day}+'_to2'}">
+												from &nbsp; <input class="form-control" type="time"
+													th:id="@{${day}+'_from2'}"> &nbsp; to &nbsp; <input
+													class="form-control" type="time" th:id="@{${day}+'_to2'}">
 
 											</div>
 
@@ -411,8 +559,8 @@
 									</td>
 
 								</tr>
-								
-								
+
+
 							</table>
 
 
@@ -425,7 +573,8 @@
 						<button type="button" class="btn btn-outline-secondary"
 							data-dismiss="modal">Cancel</button>
 
-						<button type="button" id="save-time-btn" class="btn btn-outline-primary" data-dismiss="modal">Save
+						<button type="button" id="save-time-btn"
+							class="btn btn-outline-primary" data-dismiss="modal">Save
 							changes</button>
 
 					</div>
@@ -488,7 +637,7 @@
 
 
 		</script>
-		
+
 		<script th:inline="javascript">
 			
 

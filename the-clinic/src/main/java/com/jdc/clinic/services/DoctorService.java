@@ -59,6 +59,9 @@ public class DoctorService {
 
 	public List<String> getSpecialitiesList() {
 		return dRepo.findSpecialities();
+	}
 
+	public Doctor findByLicenseCode(String licenseCode) {
+		return dRepo.findByLicenseCode(licenseCode);
 	}
 }

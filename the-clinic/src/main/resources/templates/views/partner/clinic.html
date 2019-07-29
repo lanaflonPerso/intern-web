@@ -361,23 +361,23 @@
 						<div>
 
 							<div class="text-center text-muted"
-								th:if="${doctorList.isEmpty()}">
+								th:if="${doctorTimetable.isEmpty()}">
 								<i class="fal fa-exclamation-triangle"></i> No Doctors
 							</div>
 
 							<div class="list-group" style="overflow: scroll;"
-								id="doctorListGroup" th:unless="${doctorList.isEmpty()}">
+								id="doctorListGroup" th:unless="${doctorTimetable.isEmpty()}">
 
 								<div class="list-group-item list-group-item-action"
-									th:each="d : ${doctorList}">
+									th:each="d : ${doctorTimetable}">
 
 									<div>
-										<span th:text="${d.name}"></span> - <span
-											th:text="${d.specialities}"></span>
+										<span th:text="${d.doctor.name}"></span> - <span
+											th:text="${d.doctor.specialities}"></span>
 									</div>
 									<div>
 										<small class="text-muted">
-											<span>Sat, Sun, Mon</span>
+											<span th:text="*{d.days}"></span>
 										</small>
 									</div>
 
@@ -494,8 +494,7 @@
 										"<div>Doctor Not Found!</div>"+
 									"</div>");
 						}else{
-							//doctor found
-							$('#doctordata').append(+
+							$('#doctordata').append(
 									"<div class='card mt-2 p-3'>"+
 										"<small>"+doctor.licenseCode+"</small>"+
 										"<div style='font-size: 24px;'>"+doctor.name+"</div>"+

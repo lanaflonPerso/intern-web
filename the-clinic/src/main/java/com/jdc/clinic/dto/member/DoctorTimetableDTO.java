@@ -1,8 +1,5 @@
 package com.jdc.clinic.dto.member;
 
-import java.time.DayOfWeek;
-import java.util.List;
-
 import com.jdc.clinic.entity.Doctor;
 
 import lombok.AllArgsConstructor;
@@ -14,5 +11,6 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 public class DoctorTimetableDTO {
 	Doctor doctor;
-	List<DayOfWeek> days;
+	String days;
+
 }

@@ -8,8 +8,10 @@ import org.springframework.stereotype.Controller;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.jdc.clinic.entity.ClinicDoctor;
 import com.jdc.clinic.entity.Timetable;
@@ -53,6 +55,12 @@ public class TimeTableController {
 		timeTableService.save(timeTable);
 
 		return "redirect:/partner/schedules";
+	}
+
+	@GetMapping("{clinicID}")
+	@ResponseBody
+	public List<Object> get(@PathVariable int clinicID) {
+		return timeTableService.getDoctorTimeTable(clinicID);
 	}
 
 }

@@ -52,6 +52,7 @@ public class ClinicController {
 		model.put("days", Arrays.asList(DayOfWeek.values()));
 		model.put("doctorList", clinicDoctorService.getDoctorsByClinicId(id));
 		model.put("timetableDTO", timeTableService.findTimeTableDTO(id));
+		model.put("doctorTimetable", timeTableService.getDoctorTimeTable(id));
 
 		return "views/partner/clinic";
 	}

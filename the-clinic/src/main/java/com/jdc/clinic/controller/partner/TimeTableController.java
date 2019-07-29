@@ -1,9 +1,11 @@
 package com.jdc.clinic.controller.partner;
 
+import java.time.DayOfWeek;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -34,17 +36,22 @@ public class TimeTableController {
 
 		model.addAttribute("clinicDoctors", clinicDoctorList);
 		model.addAttribute("tTable", new Timetable());
+		model.put("days", DayOfWeek.values());
 		return "views/partner/schedules";
 	}
 
 	@PostMapping("/create")
+	@Transactional
 	public String save(Timetable timeTable) {
 		clinicDoctorList.stream()
 				.filter(cd -> cd.getId().getDoctorId() == timeTable.getClinicDoctor().getDoctor().getId()).findFirst()
 				.ifPresent(cd -> {
 					timeTable.getClinicDoctor().setId(cd.getId());
 				});
+
+		System.out.println(timeTable.getDay());
 		timeTableService.save(timeTable);
+
 		return "redirect:/partner/schedules";
 	}
 

@@ -58,10 +58,12 @@
 											id="doctor_option" th:field="*{clinicDoctor.doctor.id}">
 
 											<option th:each="clinicDoctor:${clinicDoctors}"
-												th:text="${clinicDoctor.doctor.name}"
+												th:text="${clinicDoctor.doctor.name}+' - '+${clinicDoctor.clinic.name}"
 												th:value="${clinicDoctor.doctor.id}"></option>
 										</select>
-									</div>
+									</div> 
+									
+									
 
 									<div class="form-group">
 										<label for="" class="cusLabel"> From</label> <input
@@ -74,16 +76,13 @@
 											placeholder="Enter End Time">
 									</div>
 									<div class="form-group">
-										<label for="" class="cusLabel">Day Of Week:</label> <select
-											class="custom-select">
-											<option selected>Day Of Week</option>
-											<option>Sunday</option>
-											<option>Monday</option>
-											<option>Tuesday</option>
-											<option>Wednesday</option>
-											<option>Thursday</option>
-											<option>Friday</option>
-											<option>Saturday</option>
+										<label >Day Of Week:</label> 
+										<select th:field="*{day}"
+											class="custom-select" >
+											<option value="">Days of week</option>
+											<option th:each="d: ${days}" th:text="${d}" th:value="${d}"></option>
+											
+											
 										</select>
 									</div>
 									<div class="form-group">

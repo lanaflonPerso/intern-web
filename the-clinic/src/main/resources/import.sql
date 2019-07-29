@@ -338,4 +338,4 @@ insert into Account (phone, name, role, del_flag, password) values ('partner', '
 
 insert into member(phone) values ('member');
 insert into partner(phone) values ('partner');
-	
+insert into doctor (id,name,license_code) values (1, 'Dr.Soe','abc123');

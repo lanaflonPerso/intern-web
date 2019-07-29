@@ -2,12 +2,134 @@
 <html xmlns:th="http://www.thymeleaf.org"
 	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
 	xmlns:sec="http://www.thymeleaf.org/extras/spring-security"
-	layout:decorate="~{/layout/template}">
+	layout:decorate="~{/layout/template2}">
 <head>
 <meta charset="UTF-8">
 <title>Clinics</title>
+<link href="/src/main/resources/static/css/bootstrap.min.css"
+	rel="stylesheet" type="text/css" />
+<style type="text/css">
+
+/* body{
+			background-image: url("/resources/img/bkimg.jpg");
+			background-repeat: no-repeat;
+			background-position: center;
+			background-attachment: fixed;
+			background-size: cover;
+			
+} */
+.list-group-item {
+	position: static;
+}
+
+.c-profile-image {
+	width: 100%;
+	height: 160px;
+}
+
+.clinic-profile {
+	border-radius: 50%;
+	margin: 1em auto;
+	overflow: hidden;
+	max-width: 180px;
+}
+</style>
 </head>
 <body>
+	<section layout:fragment="content">
 
+		<div class="container-fluid mt-3">
+
+			<div class="row  ml-3 mr-3">
+
+				<div class="col-12 col-md-3 col-lg-2">
+
+					<div class="d-md-inline d-none">
+						<div class="text-center p-2 mb-1 list-group-item">
+							Specialities</div>
+
+						<div class="list-group">
+
+							<a href="#"
+								class="list-group-item list-group-item-action d-flex justify-content-between align-items-center">
+								All <span class="text-right"><i
+									class="fal fa-chevron-right"></i></span>
+							</a> 
+							<a class="list-group-item list-group-item-action d-flex justify-content-between align-items-center" th:each="special: ${specials}" th:href="@{special}">
+								<span th:text="*{special}"></span>
+								<span class="text-right"><i class="fal fa-chevron-right"></i></span>
+							</a>
+
+						</div>
+					</div>
+
+					<div class="d-md-none mb-2">
+						Specialities<br> <select class="form-control">
+							<option>All</option>
+							<option>General</option>
+							<option>Dental</option>
+						</select>
+					</div>
+
+				</div>
+
+				<div class="col-12 col-md-9 col-lg-10">
+
+					<form action="/clinics/" method="get" class="form pl-2 pr-2">
+					
+						<input type="text" name="keyword" th:value="${keyword}" class="form-control" placeholder="Search Clinics">
+						
+					</form>
+					
+					<div class="container-fluid" th:if="${clinics.isEmpty()}">
+					
+						<div class="text-center text-warning mt-5">
+						
+							<div>
+							
+								<i class="fal fa-exclamation-triangle" style="font-size: 40px;"></i>
+								<p>No Clinic Found</p>
+								
+							</div>
+							
+						</div>
+					</div>
+					
+					<div class="container-fluid" th:unless="${clinics.isEmpty()}">
+						<div class="row">
+							
+							<div class="col-lg-3 col-6 text-center hover-scale-animation" th:each="clinic: ${clinics}" th:onclick="@{'changeLocation('+${clinic.id}+')'}">
+								<img class="clinic-profile shadow" alt="100x100"
+									th:src="@{/resources/img/placeholder.png}"
+									data-holder-rendered="true">
+									
+									<h5 th:text="${clinic.name}">SAY KHAN</h5>
+									<div>General Clinic</div>
+									<small th:if="${clinic.addrress}" ><span><i class="fal fa-map-marker-alt"></i></span>&nbsp;<span th:text="${clinic.addrress.township.name}"></span> &bull; <span th:text="${clinic.addrress.township.division.name}"></span></small>
+									<small th:unless="${clinic.addrress}" class="text-danger" >No address</small><br>
+									
+
+							</div>
+							
+						</div>
+					</div>
+
+
+				</div>
+
+			</div>
+
+		</div>
+		<script>
+		
+			function changeLocation(id){
+				window.location.href = '/clinics/'+id;
+			}		
+		
+		</script>
+
+	</section>
 </body>
+
 </html>
+

@@ -24,36 +24,91 @@ body {
 </head>
 <body>
 	<section layout:fragment="content">
-		<div class="container mt-3">
-
+		
+			<div class="container-fluid mt-3 "> 
+			
 			<div class="row">
-				<div class="col-2">
-					<form class="form">
-						<div class="input-group">
-							<input class="form-control" type="text" placeholder="Search"
-								aria-label="Search" style="border-radius: 40px;" id="mysearch">
-							<div class="input-group-addon"
-								style="margin-left: -50px; z-index: 3; border-radius: 40px; background-color: transparent; border: none;">
-								<button class="btn btn-white btn-sm" type="submit"
-									style="border-radius: 20px;" id="search-btn">
-									<i class="fa fa-search"></i>
-								</button>
-							</div>
-
-						</div>
+			<form action="/doctors/" method="get" class="form pl-2 pr-2">
+					
+						<input type="text" name="keyword" th:value="${keyword}" class="form-control" placeholder="Search Doctors">
+						
 					</form>
-				</div>
-			</div>
+				<!-- 	<div class="container-fluid">
+					
+						<div class="text-center text-warning mt-5">
+						
+							<div>
+							
+								<i class="fal fa-exclamation-triangle" style="font-size: 40px;"></i>
+								<p>No Doctor Found</p>
+								
+							</div>
+							
+						</div>
+					</div> -->
+					</div>
+			<div class="container-fluid" >
+					
+			<div  th:each="publicdoctor :${publicdoctors}">
 
-			<div class="row">
-
+				<div class="col-sm-3" >
+					<div class="card border-primary  btn-seemore-tone">
+						<div class="shadow">
+							<div class="card-body " >
+								<p>
+									<span class="text-center mr-3">Doctor Name <span class="ml-1">:</span> </span>
+									<i class="fa fa-user-md"></i>
+									<strong th:text="${publicdoctor.name}"></strong>
+								</p>
+								
+								<p>
+								<div th:each="speciality :${publicdoctor.specialities}" class="row ml-1">
+									<span class="text-center mr-3">Speciality <span class="ml-4 mr-2">:</span> </span>
+								
+									
+									
+									<span th:text="${speciality}"></span> 
+									</div>
+								</p>
+								
+									
+								
+								<p><span class="mr-3">License code <span class="ml-2">:</span> </span><span th:text="${publicdoctor.licenseCode}"></span></p>
+								<p>
+									<span class="text-center mr-3">Clinic Name <span class="ml-3">:</span> </span>
+									<i class="fa fa-user-md"></i>
+									<strong th:text="${publicdoctor.hospital}"></strong>
+								</p>
+								<a th:href="@{doctors/1}" class="float-right mb-2">See
+									more</a>
+							</div>
+						</div>
+					</div>
+				</div>
+				<!-- <div class="col-sm-3">
+					<div class="card border-primary  btn-seemore-tone ">
+						<div class="shadow">
+							<div class="card-body">
+								<p>
+									<strong><i class="fa fa-user-md"></i> Dr.Thet Hylar
+										Tin</strong>
+								</p>
+								<p>
+									<i class="fa fa-graduation-cap"></i> M.B.,B.S
+								</p>
+								<p>Neurologist</p>
+								<a th:href="@{doctors/1}" class="btn btn-primary btn-sm">See
+									more</a>
+							</div>
+						</div>
+					</div>
+				</div>
 				<div class="col-sm-3">
 					<div class="card border-primary  btn-seemore-tone ">
 						<div class="shadow">
 							<div class="card-body ">
 								<p>
-									<strong><i class="fa fa-user-md"></i> Dr.Thet Hylar
-										Tin</strong>
+									<strong><i class="fa fa-user-md"></i></strong>
 								</p>
 								<p>
 									<i class="fa fa-graduation-cap"></i> M.B.,B.S
@@ -82,215 +137,13 @@ body {
 							</div>
 						</div>
 					</div>
-				</div>
-				<div class="col-sm-3">
-					<div class="card border-primary  btn-seemore-tone ">
-						<div class="shadow">
-							<div class="card-body ">
-								<p>
-									<strong><i class="fa fa-user-md"></i> Dr.Thet Hylar
-										Tin</strong>
-								</p>
-								<p>
-									<i class="fa fa-graduation-cap"></i> M.B.,B.S
-								</p>
-								<p>Neurologist</p>
-								<a th:href="@{doctors/1}" class="btn btn-primary btn-sm">See
-									more</a>
-							</div>
-						</div>
-					</div>
-				</div>
-				<div class="col-sm-3">
-					<div class="card border-primary  btn-seemore-tone ">
-						<div class="shadow">
-							<div class="card-body ">
-								<p>
-									<strong><i class="fa fa-user-md"></i> Dr.Thet Hylar
-										Tin</strong>
-								</p>
-								<p>
-									<i class="fa fa-graduation-cap"></i> M.B.,B.S
-								</p>
-								<p>Neurologist</p>
-								<a th:href="@{doctors/1}" class="btn btn-primary btn-sm">See
-									more</a>
-							</div>
-						</div>
-					</div>
-				</div>
-
-			</div>
-
-			<div class="row mt-2">
-
-				<div class="col-sm-3">
-					<div class="card border-primary  btn-seemore-tone ">
-						<div class="shadow">
-							<div class="card-body ">
-								<p>
-									<strong><i class="fa fa-user-md"></i> Dr.Thet Hylar
-										Tin</strong>
-								</p>
-								<p>
-									<i class="fa fa-graduation-cap"></i> M.B.,B.S
-								</p>
-								<p>Neurologist</p>
-								<a th:href="@{doctors/1}" class="btn btn-primary btn-sm">See
-									more</a>
-							</div>
-						</div>
-					</div>
-				</div>
-				<div class="col-sm-3">
-					<div class="card border-primary  btn-seemore-tone ">
-						<div class="shadow">
-							<div class="card-body ">
-								<p>
-									<strong><i class="fa fa-user-md"></i> Dr.Thet Hylar
-										Tin</strong>
-								</p>
-								<p>
-									<i class="fa fa-graduation-cap"></i> M.B.,B.S
-								</p>
-								<p>Neurologist</p>
-								<a th:href="@{doctors/1}" class="btn btn-primary btn-sm">See
-									more</a>
-							</div>
-						</div>
-					</div>
-				</div>
-				<div class="col-sm-3">
-					<div class="card border-primary  btn-seemore-tone ">
-						<div class="shadow">
-							<div class="card-body ">
-								<p>
-									<strong><i class="fa fa-user-md"></i> Dr.Thet Hylar
-										Tin</strong>
-								</p>
-								<p>
-									<i class="fa fa-graduation-cap"></i> M.B.,B.S
-								</p>
-								<p>Neurologist</p>
-								<a th:href="@{doctors/1}" class="btn btn-primary btn-sm">See
-									more</a>
-							</div>
-						</div>
-					</div>
-				</div>
-				<div class="col-sm-3">
-					<div class="card border-primary  btn-seemore-tone ">
-						<div class="shadow">
-							<div class="card-body ">
-								<p>
-									<strong><i class="fa fa-user-md"></i> Dr.Thet Hylar
-										Tin</strong>
-								</p>
-								<p>
-									<i class="fa fa-graduation-cap"></i> M.B.,B.S
-								</p>
-								<p>Neurologist</p>
-								<a th:href="@{doctors/1}" class="btn btn-primary btn-sm">See
-									more</a>
-							</div>
-						</div>
-					</div>
-				</div>
+				</div> -->
 
 			</div>
-			<div class="row mt-2">
-
-				<div class="col-sm-3">
-					<div class="card border-primary  btn-seemore-tone ">
-						<div class="shadow">
-							<div class="card-body ">
-								<p>
-									<strong><i class="fa fa-user-md"></i> Dr.Thet Hylar
-										Tin</strong>
-								</p>
-								<p>
-									<i class="fa fa-graduation-cap"></i> M.B.,B.S
-								</p>
-								<p>Neurologist</p>
-								<a th:href="@{doctors/1}" class="btn btn-primary btn-sm">See
-									more</a>
-							</div>
-						</div>
-					</div>
-				</div>
-				<div class="col-sm-3">
-					<div class="card border-primary  btn-seemore-tone ">
-						<div class="shadow">
-							<div class="card-body ">
-								<p>
-									<strong><i class="fa fa-user-md"></i> Dr.Thet Hylar
-										Tin</strong>
-								</p>
-								<p>
-									<i class="fa fa-graduation-cap"></i> M.B.,B.S
-								</p>
-								<p>Neurologist</p>
-								<a th:href="@{doctors/1}" class="btn btn-primary btn-sm">See
-									more</a>
-							</div>
-						</div>
-					</div>
-				</div>
-				<div class="col-sm-3">
-					<div class="card border-primary  btn-seemore-tone ">
-						<div class="shadow">
-							<div class="card-body ">
-								<p>
-									<strong><i class="fa fa-user-md"></i> Dr.Thet Hylar
-										Tin</strong>
-								</p>
-								<p>
-									<i class="fa fa-graduation-cap"></i> M.B.,B.S
-								</p>
-								<p>Neurologist</p>
-								<a th:href="@{doctors/1}" class="btn btn-primary btn-sm">See
-									more</a>
-							</div>
-						</div>
-					</div>
-				</div>
-				<div class="col-sm-3">
-					<div class="card border-primary  btn-seemore-tone ">
-						<div class="shadow">
-							<div class="card-body ">
-								<p>
-									<strong><i class="fa fa-user-md"></i> Dr.Thet Hylar
-										Tin</strong>
-								</p>
-								<p>
-									<i class="fa fa-graduation-cap"></i> M.B.,B.S
-								</p>
-								<p>Neurologist</p>
-								<a th:href="@{doctors/1}" class="btn btn-primary btn-sm">See
-									more</a>
-							</div>
-						</div>
-					</div>
-				</div>
-
 			</div>
 
-
-
-		</div>
-		<!-- Footer -->
-		<footer class="page-footer">
-
-			<!-- Copyright -->
-			<div class="footer-copyright text-center py-3">
-				© 2019 Copyright: <a
-					href="https://mdbootstrap.com/education/bootstrap/">
-					JDCInternship.com</a>
-			</div>
-			<!-- Copyright -->
-
-		</footer>
-		<!-- Footer -->
+					
+		
 	</section>
 </body>
 </html>

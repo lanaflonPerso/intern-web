@@ -13,7 +13,7 @@
 
 		<form method="post" class="form mt-2" th:object="${doctor}"
 			th:action="@{'/partner/doctors/edit'}">
-
+			<input type="hidden" th:field="*{id}" />
 			<div class="card">
 
 				<div class="card-header bg-transparent">
@@ -45,20 +45,8 @@
 
 								<div class="column">
 									<label for="gender">Gender:</label>
-
-									<ul>
-										<li th:each="gender : ${T(com.jdc.clinic.entity.FamilyMember.Gender).values()}">
-											<input type="radio" th:id="${gender}" th:value="${gender}"
-											name="gender" th:field="${doctor.gender}" />
-											<label th:for="*{gender}" th:text="${gender.name()}"></label>
-										</li>
-									</ul>
-									<!-- <div
-										th:each="gender : ${T(com.jdc.clinic.entity.FamilyMember.Gender).values()}">
-										<input type="radio" th:id="${gender}" th:value="*{gender}"
-											name="gender" th:field="*{gender}" /> <label
-											th:for="${gender}" th:text="${gender.name()}"></label>
-									</div> -->
+									<input type="radio" th:id="${gender}" th:value="Male" name="gender" th:field="${doctor.gender}" /> <label>Male</label>
+									<input type="radio" th:id="${gender}" th:value="Female" name="gender" th:field="${doctor.gender}" /> <label>Female</label>
 								</div>
 								<div class="form-group mt-2">
 
@@ -86,12 +74,12 @@
 									<div class="degree-list">
 
 										<div class="container-fluid degree-input"
-											th:each="de : *{degrees}">
+											th:each="degree: *{degrees}">
 
 											<div class="row">
 
 												<input type="text" placeholder="Degree" name="degrees"
-													class="mt-1 col-11 form-control" th:value="${de}"/>
+													class="mt-1 col-11 form-control" th:value="${degree}"/>
 
 												<button type="button"
 													class="ml-1 btn btn-outline-danger mt-1 btn-remove-degree">
@@ -125,7 +113,7 @@
 
 											<div class="row">
 
-												<input type="text" placeholder="Speciality" name="specialitiess"
+												<input type="text" placeholder="Speciality" name="specialities"
 													class="mt-1 col-11 form-control" th:value="${sp}" />
 
 												<button type="button"
@@ -159,7 +147,7 @@
 
 											<div class="row">
 
-												<input type="tel" placeholder="Phone" name="phone"
+												<input type="tel" placeholder="Phone" name="phones"
 													class="mt-1 col-11 form-control" th:value="${ph}" />
 
 												<button type="button"

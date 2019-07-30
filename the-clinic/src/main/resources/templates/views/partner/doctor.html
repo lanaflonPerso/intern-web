@@ -47,13 +47,14 @@
 															th:text="${doctor.name}"> </span></li>
 														<li><span class="title">Specialist</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 															<span class="">:</span> <span class="text"
-															th:text="${doctor.specialities[0]}"></span></li>
+															th:text="${doctor.specialities}"></span></li>
 														<li><span class="title">Phone</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-															<span class="">:</span> <span class="text"
-															th:text="${doctor.phones[0]}"></span></li>
+															<span class="">:</span> 
+															<span class="text" th:each="phone: ${doctor.phones}" th:text="*{phone}"></span>
+															</li>
 														<li><span class="title">Degrees</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 															<span class="">:</span> <span class="text"
-															th:text="${doctor.degrees[0]}"></span></li>
+															th:text="${doctor.degrees}"></span></li>
 
 														<li><span class="title">Hospital</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 															<span class="">:</span> <span class="text"

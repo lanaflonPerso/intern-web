@@ -12,11 +12,15 @@ import org.springframework.data.annotation.LastModifiedBy;
 import org.springframework.data.annotation.LastModifiedDate;
 
 import lombok.EqualsAndHashCode;
+import lombok.Getter;
 import lombok.NoArgsConstructor;
+import lombok.Setter;
 
 @Embeddable
 @NoArgsConstructor
 @EqualsAndHashCode
+@Getter
+@Setter
 public class SecurityInfo implements Serializable {
 
 	private static final long serialVersionUID = 1L;

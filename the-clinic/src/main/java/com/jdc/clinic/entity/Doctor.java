@@ -31,13 +31,13 @@ public class Doctor implements Serializable {
 	private String name;
 
 	@ElementCollection
-	private List<String> degrees;
+	private List<String> degrees = new ArrayList<>();
 
 	@ElementCollection
-	private List<String> phones;
+	private List<String> phones = new ArrayList<>();
 
 	@ElementCollection
-	private List<String> specialities;
+	private List<String> specialities = new ArrayList<>();
 
 	private Gender gender;
 

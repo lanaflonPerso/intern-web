@@ -67,22 +67,19 @@ public class DoctorController {
 		if (result.hasErrors()) {
 			return "/views/partner/doctor-edit";
 		}
-//		if (dService.findById(id).isPresent()) {
-//			doctor.setId(id);
-//		}
 		dService.save(doctor);
 		return "redirect:/partner/doctors";
 	}
 
 	@GetMapping("details/{id}")
 	public String findById(@PathVariable int id, ModelMap model) {
-		model.put("doctor", dService.findById(id).get());
+		model.put("doctor", dService.findById(id));
 		return "/views/partner/doctor";
 	}
 
 	@GetMapping("delete/{id}")
 	public String delete(@PathVariable("id") int id) {
-		dService.delete(dService.findById(id).get());
+		dService.delete(dService.findById(id));
 		return "redirect:/partner/doctors";
 	}
 

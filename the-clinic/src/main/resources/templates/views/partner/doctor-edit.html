@@ -45,11 +45,9 @@
 
 								<div class="column">
 									<label for="gender">Gender:</label>
-									<div
-										th:each="gender : ${T(com.jdc.clinic.entity.FamilyMember.Gender).values()}">
-										<input type="radio" th:id="${gender}" th:value="${gender}"
-											name="gender" th:field="*{gender}" /> <label
-											th:for="${gender}" th:text="${gender.name()}"></label>
+									<div th:each="gender : ${T(com.jdc.clinic.entity.FamilyMember.Gender).values()}">
+										<input type="radio" th:id="${gender}" th:value="*{gender}" name="gender" th:field="*{gender}"/>
+										<label th:for="${gender}" th:text="${gender.name()}"></label>
 									</div>
 								</div>
 								<div class="form-group mt-2">

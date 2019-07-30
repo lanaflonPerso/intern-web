@@ -35,19 +35,19 @@
 					<hr>
 					
 					
-					<form action="" method="post" th:action="@{/login}">
+					<form action="" method="post" th:action="@{/signup}" th:object="${member}">
 					
 						<div class="form-group">
 						
 							<label class="label">Enter User Name</label>
-							<input type="text" name="loginId" placeholder="Name" class="form-control"/>
+							<input type="text" name="loginId" placeholder="Name" th:field="*{name}" class="form-control"/>
 							
 						</div>
 					
 						<div class="form-group">
 						
 							<label class="label">Enter Phone Number</label>
-							<input type="text" name="loginId" placeholder="Phone number" class="form-control"/>
+							<input type="text" name="loginId" placeholder="Phone number" th:field="*{phone}" class="form-control"/>
 							
 						</div>
 						
@@ -55,7 +55,7 @@
 						<div class="form-group">
 						
 							<label class="label">Enter Password</label>
-							<input id="password" type="password" name="password" placeholder="Password" class="form-control"/>
+							<input id="password" type="password" name="password" th:field="*{password}" placeholder="Password" class="form-control"/>
 							
 						</div>
 						

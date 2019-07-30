@@ -28,6 +28,10 @@ public class MemberService {
 	 * @Autowired public MemberEventRepo meRepo;
 	 */
 
+	public Member saveMember(Member memeber) {
+		return memberRepo.save(memeber);
+	}
+
 	public Member getMemberByPhone(String phone) {
 		return memberRepo.getOne(phone);
 	}

@@ -50,7 +50,6 @@ public class DoctorController {
 	public String create(ModelMap model, HttpServletRequest request) {
 		HttpSession session = request.getSession(true);
 		model.put("doctor", new Doctor());
-		// model.put("id", dService.findLast().getId() + 1);
 		model.put("clinics", cService.findByOwnerPhone(((Partner) session.getAttribute("partnerUser")).getPhone()));
 		return "/views/partner/doctor-edit";
 	}
@@ -68,9 +67,9 @@ public class DoctorController {
 		if (result.hasErrors()) {
 			return "/views/partner/doctor-edit";
 		}
-		if (dService.findById(id).isPresent()) {
-			doctor.setId(id);
-		}
+//		if (dService.findById(id).isPresent()) {
+//			doctor.setId(id);
+//		}
 		dService.save(doctor);
 		return "redirect:/partner/doctors";
 	}

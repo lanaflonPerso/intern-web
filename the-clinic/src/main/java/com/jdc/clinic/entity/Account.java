@@ -12,11 +12,9 @@ import javax.persistence.InheritanceType;
 import javax.validation.constraints.NotEmpty;
 
 import lombok.Data;
-import lombok.NoArgsConstructor;
 
 @Data
 @Entity
-@NoArgsConstructor
 @Inheritance(strategy = InheritanceType.JOINED)
 public class Account implements Serializable {
 
@@ -35,14 +33,16 @@ public class Account implements Serializable {
 
 	@Enumerated(EnumType.STRING)
 	private Role role;
-	
+
 	@Embedded
 	private SecurityInfo security;
 
 	public enum Role {
-		ROLE_Admin,
-		ROLE_Member,
-		ROLE_Partner
+		ROLE_Admin, ROLE_Member, ROLE_Partner
+	}
+
+	public Account() {
+		security = new SecurityInfo();
 	}
 
 }

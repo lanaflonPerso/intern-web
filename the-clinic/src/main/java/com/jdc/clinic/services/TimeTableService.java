@@ -62,7 +62,6 @@ public class TimeTableService {
 		List<DayOfWeek> daysList = timeTableRepo.findDayOfWeekByClinicId(clinicID);
 
 		daysList.forEach(day -> {
-			System.out.println(day);
 			Map<String, Object> params = new HashMap<>();
 			params.put("clinicID", clinicID);
 			params.put("day", day);

@@ -51,7 +51,6 @@ public class TimeTableController {
 					timeTable.getClinicDoctor().setId(cd.getId());
 				});
 
-		System.out.println(timeTable.getDay());
 		timeTableService.save(timeTable);
 
 		return "redirect:/partner/schedules";

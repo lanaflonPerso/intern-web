@@ -30,7 +30,6 @@ public class DoctorService {
 	}
 
 	public Doctor save(Doctor doctor) {
-		System.out.println(doctor.getId());
 		doctor.setDegrees(doctor.getDegrees().stream().filter(d -> !d.isEmpty()).collect(Collectors.toList()));
 		doctor.setPhones(doctor.getPhones().stream().filter(p -> !p.isEmpty()).collect(Collectors.toList()));
 		doctor.setSpecialities(

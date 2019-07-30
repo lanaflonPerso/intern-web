@@ -50,7 +50,6 @@ public class ClinicDoctorService {
 		clincDoctor.setClinic(clinicRepo.getOne(clinicID));
 		clincDoctor.setDoctor(doctorRepo.getOne(doctorID));
 		clincDoctor.setId(new ClinicDoctorPK(clinicID, doctorID));
-		System.out.println(clincDoctor);
 		return cliRepo.save(clincDoctor);
 
 	}

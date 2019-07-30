@@ -10,14 +10,21 @@
 <body>
 	<div layout:fragment="dashboard-contents">
 
-		<form method="get" class="form mt-2">
+		<form method="post" class="form mt-2"  th:action="@{/member/family}" th:object="${familyMember}">
+		
+			<!-- <input type="hidden" th:field="*{id}" />
+			<input type="hidden" th:field="*{addrress.id}" />
+			<input type="hidden" th:if="*{owner}" name="owner" th:field="*{owner.phone}"/>
+			<input type="hidden" th:unless="*{owner}" name="owner" th:value="${session.partnerUser.phone}"/>
+			 -->
 		
 			<div class="card">
 
 				<div class="card-header bg-transparent">
 				
-					<div style="font-size: 20px;" class="ml-1">New Family Member</div>
-					
+					<div style="font-size: 20px;">New Family Member</div>
+					<div style="font-size: 20px;" class="ml-1"></div>
+
 					<div class="text-muted">Please fill your family member information</div>
 					
 				</div><!-- card header -->
@@ -33,7 +40,10 @@
 								<div class="form-group">
 									
 									<label>Enter member name</label>
-									<input type="text" placeholder="Name" name="name" class="form-control" required>
+									<input type="text" th:field="*{name}" placeholder="Name" name="name" class="form-control" required>
+									 <span
+									th:if="${#fields.hasErrors('name')}" th:errors="*{name}"
+									class="text-danger"></span>
 									
 								</div><!-- name form -->
 								
@@ -41,21 +51,29 @@
 								<div class="form-group">
 									
 									<label>Enter date of birth</label>
-                                    <input type="text" class="form-control"  placeholder="dd/MM/yyyy" id="datepicker1"  required>
-                              	
+                                    <input type="text" th:field="*{dob}" class="form-control"  placeholder="dd/MM/yyyy" id="datepicker1"  required>
+                              	     <span
+									th:if="${#fields.hasErrors('dob')}" th:errors="*{dob}"  th:each="dob: *{dob}"
+									class="text-danger"></span>
 								</div><!-- DOB form -->
 								
 								<div class="form-group">
 									
                                     <label>Enter relationship</label>
-                                    <input type="text" placeholder="Relationship" name="relationship" class="form-control" required>
+                                    <input type="text" th:field="*{relationship}" placeholder="Relationship" name="relationship" class="form-control" required>
+									 <span
+									th:if="${#fields.hasErrors('relationship')}" th:errors="*{relationship}"
+									class="text-danger"></span>
 									
 								</div><!-- Relationship form -->
 								
 								<div class="form-group">
 									
 									<label>Enter Allergic Medicines</label>
-									<textarea class="form-control" placeholder="Allergic Medicines" required></textarea>
+									<textarea class="form-control" th:field="*{allergicMedicnes}" placeholder="Allergic Medicines" required></textarea>
+									 <span
+									th:if="${#fields.hasErrors('allergicMedicines')}" th:errors="*{allergicMedicines}"
+									class="text-danger"></span>
 									
 								</div><!-- Allergic form -->									
 															
@@ -70,8 +88,8 @@
 									
 										<label>Enter phone number</label>
 										<div class="phone-list">
-											<div class="phone-input">
-												<input type="tel" placeholder="Phone" name="phone1" class="form-control" required/>
+											<div class="phone-input" th:each="ph : *{phone}">
+												<input type="tel" th:value="${ph}" placeholder="Phone" name="phone1" class="form-control" required/>
 											</div>
 										</div>
 										<button type="button" class="btn mt-1 form-control btn-outline-info btn-add-phone" style="border-style: dashed;"><span><i class="far fa-plus"></i></span> Add New</button>
@@ -82,7 +100,10 @@
 								<div class="form-group">
 									
 									<label>Enter Address</label>
-									<textarea class="form-control" placeholder="Address" required></textarea>
+									<textarea class="form-control" th:field="*{address}" placeholder="Address" required></textarea>
+									 <span
+									th:if="${#fields.hasErrors('address')}" th:errors="*{address}"
+									class="text-danger"></span>
 									
 								</div><!-- Address form -->
                                 
@@ -92,30 +113,30 @@
                                   <p>Gender</p>
                                   
                                   <div class="form-check form-check-inline">
-                                  <input type="radio" name="gender" class="form-check-input" value="male" checked required>
+                                  <input type="radio" name="gender" class="form-check-input" value="male"  checked th:field="*{gender}"  required>
                                   <label for="" class="form-check-label">Male</label>
                               </div>
                                 <div class="form-check form-check-inline">
-                                <input type="radio" name="gender" class="form-check-input" value="female" required>
+                                <input type="radio" name="gender" class="form-check-input" value="female"  th:field="*{gender}" required>
                                 <label for="" class="form-check-label">Female</label>
                               </div>
                            </div>
                    <!--  <div class="form-group"> -->
                         <p>Blood Type</p>
                         <div class="form-check form-check-inline">
-                            <input type="radio" name="bloodType" class="form-check-input" required>
+                            <input type="radio" name="bloodType" class="form-check-input"  th:field="*{bloodType}" required>
                             <label for="" class="form-check-label">A</label>
                         </div>
                         <div class="form-check form-check-inline">
-                            <input type="radio" name="bloodType" class="form-check-input" required>
+                            <input type="radio" name="bloodType" class="form-check-input"  th:field="*{bloodType}" required>
                             <label for="" class="form-check-label">B</label>
                         </div>
                         <div class="form-check form-check-inline">
-                            <input type="radio" name="bloodType" class="form-check-input" required>
+                            <input type="radio" name="bloodType" class="form-check-input"  th:field="*{bloodType}" required>
                             <label for="" class="form-check-label">O</label>
                         </div>
                         <div class="form-check form-check-inline">
-                            <input type="radio" name="bloodType" class="form-check-input" required>
+                            <input type="radio" name="bloodType" class="form-check-input" th:field="*{bloodType}" required>
                             <label for="" class="form-check-label">AB</label>
                         </div>
                     </div>
@@ -132,7 +153,7 @@
 				<div class="card-footer text-right bg-transparent">
 					
 					<!-- <input type="submit" value="Submit" id="create-clinic" class="btn btn-outline-success"/> -->
-					<a class="btn btn-outline-success" href="#" th:href="@{/member/family/1}" role="button">Submit</a>
+					<a class="btn btn-outline-success"  type="submit" role="button">Submit</a>
 				</div><!-- card footer -->
 
 			</div><!-- card -->

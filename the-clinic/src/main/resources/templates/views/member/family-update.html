@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	xmlns:sec="http://www.thymeleaf.org/extras/spring-security"
+	layout:decorate="~{/layout/member-dashboard-template}">
+<head>
+<meta charset="ISO-8859-1">
+<title>New Family Member</title>
+</head>
+<body>
+	<div layout:fragment="dashboard-contents">
+
+		<form method="post" class="form mt-2"  th:action="@{/member/family/}" th:object="${familyMember}">
+		
+		
+			<div class="card">
+
+				<div class="card-header bg-transparent">
+				
+					<div style="font-size: 20px;">New Family Member</div>
+					<div style="font-size: 20px;" class="ml-1"></div>
+
+					<div class="text-muted">Please fill your family member information</div>
+					
+				</div><!-- card header -->
+
+				<div class="card-body">
+				
+					<div class="container-fluid">
+						
+						<div class="row">
+								
+							<div class="col-12 col-md-6">
+								
+								<div class="form-group">
+									
+									<label>Enter member name</label>
+									<input type="text" th:field="*{name}" placeholder="Name" name="name" class="form-control" required>
+									 <span
+									th:if="${#fields.hasErrors('name')}" th:errors="*{name}"
+									class="text-danger"></span>
+									
+								</div><!-- name form -->
+								
+								
+								<div class="form-group">
+									
+									<label>Enter date of birth</label>
+                                    <input type="text" th:field="*{dob}" class="form-control"  placeholder="dd/MM/yyyy" id="datepicker1"  required>
+                              	     <span
+									th:if="${#fields.hasErrors('dob')}" th:errors="*{dob}"
+									class="text-danger"></span>
+								</div><!-- DOB form -->
+								
+								<div class="form-group">
+									
+                                    <label>Enter relationship</label>
+                                    <input type="text" th:field="*{relationship}" placeholder="Relationship" name="relationship" class="form-control" required>
+									 <span
+									th:if="${#fields.hasErrors('relationship')}" th:errors="*{relationship}"
+									class="text-danger"></span>
+									
+								</div><!-- Relationship form -->
+								
+								<div class="form-group">
+									
+									<label>Enter Allergic Medicines</label>
+									<textarea class="form-control" th:field="*{alergicMedicnes}" placeholder="Allergic Medicines" required></textarea>
+									 <span
+									th:if="${#fields.hasErrors('allergicMedicines')}" th:errors="*{allergicMedicines}"
+									class="text-danger"></span>
+									
+								</div><!-- Allergic form -->									
+															
+									
+								
+							</div><!-- first column -->
+							
+							<div class="col-12 col-md-6">
+
+								
+								<div class="form-group">
+									
+										<label>Enter phone number</label>
+										<div class="phone-list">
+											<div class="phone-input" th:each="ph : *{phone}">
+												<input type="tel" th:value="${ph}" placeholder="Phone" name="phone1" class="form-control" required/>
+											</div>
+										</div>
+										<button type="button" class="btn mt-1 form-control btn-outline-info btn-add-phone" style="border-style: dashed;"><span><i class="far fa-plus"></i></span> Add New</button>
+										
+									
+								</div><!-- phone form -->
+								
+								<div class="form-group">
+									
+									<label>Enter Address</label>
+									<textarea class="form-control" th:field="*{address}" placeholder="Address" required></textarea>
+									 <span
+									th:if="${#fields.hasErrors('address')}" th:errors="*{address}"
+									class="text-danger"></span>
+									
+								</div><!-- Address form -->
+                                
+								<div class="row">
+								<div class="col-md-6">
+                                <div class="form-group">
+                                  <p>Gender</p>
+                                  
+                                  <div class="form-check form-check-inline">
+                                  <input type="radio" name="gender" class="form-check-input" value="male"  checked th:field="*{gender}"  required>
+                                  <label for="" class="form-check-label">Male</label>
+                              </div>
+                                <div class="form-check form-check-inline">
+                                <input type="radio" name="gender" class="form-check-input" value="female"  th:field="*{gender}" required>
+                                <label for="" class="form-check-label">Female</label>
+                              </div>
+                           </div>
+                   <!--  <div class="form-group"> -->
+                        <p>Blood Type</p>
+                        <div class="form-check form-check-inline">
+                            <input type="radio" name="bloodType" class="form-check-input"  th:field="*{bloodType}" required>
+                            <label for="" class="form-check-label">A</label>
+                        </div>
+                        <div class="form-check form-check-inline">
+                            <input type="radio" name="bloodType" class="form-check-input"  th:field="*{bloodType}" required>
+                            <label for="" class="form-check-label">B</label>
+                        </div>
+                        <div class="form-check form-check-inline">
+                            <input type="radio" name="bloodType" class="form-check-input"  th:field="*{bloodType}" required>
+                            <label for="" class="form-check-label">O</label>
+                        </div>
+                        <div class="form-check form-check-inline">
+                            <input type="radio" name="bloodType" class="form-check-input" th:field="*{bloodType}" required>
+                            <label for="" class="form-check-label">AB</label>
+                        </div>
+                    </div>
+                    </div>
+                 	
+							</div><!-- second column -->
+						
+						</div><!-- row -->
+						
+					</div><!-- container-fluid -->
+				
+				</div><!-- card body -->
+
+				<div class="card-footer text-right bg-transparent">
+					
+					<!-- <input type="submit" value="Submit" id="create-clinic" class="btn btn-outline-success"/> -->
+					<a class="btn btn-outline-success"  type="submit" role="button">Submit</a>
+				</div><!-- card footer -->
+
+			</div><!-- card -->
+			
+		</form>
+		<script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+        <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+         <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+		
+		<script>
+
+		$(document.body).on('click','.btn-remove-phone',function(){
+			$(this).closest('.phone-input').remove();
+		});
+		
+		$('.btn-add-phone').on('click', function() {
+			var index = $('.phone-input').length + 1;
+			$('.phone-list').append(''+
+					'<div class="container-fluid phone-input">'+
+					'<div class="row">'+
+					'<input type="tel" placeholder="Phone" name="phone'+index+'" class="mt-1 col-11 form-control"/>'+
+					'<button type="button" class="ml-1 btn btn-outline-danger mt-1 btn-remove-phone"><i class="fal fa-times"></i></button>'+
+					'</div></div>'
+					);
+		});
+
+		$(document.body).on('click','.btn-remove-address',function(){
+			$(this).closest('.address-input').remove();
+		});
+		
+		$('.btn-add-address').on('click', function() {
+			var index = $('.address-input').length + 1;
+			$('.address-list').append(''+
+					'<div class="container-fluid address-input">'+
+					'<div class="row">'+
+					'<input type="email" placeholder="Address" name="address'+index+'" class="mt-1 col-11 form-control"/>'+
+					'<button type="button" class="ml-1 btn btn-outline-danger mt-1 btn-remove-address"><i class="fal fa-times"></i></button>'+
+					'</div></div>'
+					);
+		});
+        $( function() {
+              $( "#datepicker1" ).datepicker({
+                dateFormat : 'dd/mm/yy',
+                changeMonth : true,
+                changeYear : true,
+                yearRange: '-100y:c+nn',
+                monthRage:'undefined',
+                maxDate: '-1d',
+              });
+            } );
+
+        $(document.body).on('click','.btn-remove-med',function(){
+			$(this).closest('.medicine-input').remove();
+		});
+		
+		$('.btn-add-med').on('click', function() {
+			var index = $('.medicine-input').length + 1;
+			$('.med-list').append(''+
+					'<div class="container-fluid medicine-input">'+
+					'<div class="row">'+
+					'<input type="med" placeholder="Allergic Medicine" name="med'+index+'" class="mt-1 col-11 form-control"/>'+
+					'<button type="button" class="ml-1 btn btn-outline-danger mt-1 btn-remove-med"><i class="fal fa-times"></i></button>'+
+					'</div></div>'
+					);
+		});
+		</script>	
+	</div>
+</body>
+</html>

@@ -1,8 +1,12 @@
 package com.jdc.clinic.services;
 
+import java.util.List;
+import java.util.Optional;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.jdc.clinic.entity.FamilyMember;
 import com.jdc.clinic.entity.Member;
 import com.jdc.clinic.repo.BookingRepo;
 import com.jdc.clinic.repo.ClinicRepo;
@@ -28,8 +32,8 @@ public class MemberService {
 	 * @Autowired public MemberEventRepo meRepo;
 	 */
 
-	public Member saveMember(Member memeber) {
-		return memberRepo.save(memeber);
+	public Member saveMember(Member member) {
+		return memberRepo.save(member);
 	}
 
 	public Member getMemberByPhone(String phone) {
@@ -52,5 +56,24 @@ public class MemberService {
 	 * public Long getEventCountByMemberPhone(String phone) { return
 	 * meRepo.countByMemberPhone(phone); }
 	 */
+	public List<FamilyMember> findAll() {
+		return fmRepo.findAll();
+	}
+
+	public Optional<FamilyMember> findMemberById(long id) {
+		return fmRepo.findById(id);
+	}
+
+	public FamilyMember save(FamilyMember familyMember) {
+		return fmRepo.save(familyMember);
+	}
+
+	public FamilyMember delete(FamilyMember familyMember) {
+		return fmRepo.save(familyMember);
+	}
+
+	public FamilyMember edit(FamilyMember familyMember) {
+		return fmRepo.save(familyMember);
+	}
 
 }

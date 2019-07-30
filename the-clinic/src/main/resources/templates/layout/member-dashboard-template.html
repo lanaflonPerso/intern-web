@@ -188,19 +188,20 @@ transform: translateX(-50%);
 						class="fal fa-user"></i>&nbsp;Family Member &nbsp;&nbsp;<i
 						class="fal fa-angle-right ml-auto"></i>
 					</a>
-
+					
 					<ul class="collapse list-unstyled w-100" id="member-list">
 						<li class="ml-3">
-							<a href="#" th:href="@{/member/family/edit/1}"class="text-left btn w-100 nav-link"> 
+							<a href="#" th:href="@{/member/family/create}"class="text-left btn w-100 nav-link"> 
 								<i class="fal fa-user-plus"></i>&nbsp;&nbsp;Add New Member
 							</a>
 						</li>
-						<li class="ml-3">
-							<a href="#" th:href="@{/member/family/1}" class="text-left btn w-100 nav-link">
+							<li class="ml-3">
+							<a href="#" th:href="@{/member/family/list}" class="text-left btn w-100 nav-link">
 								<i class="fal fa-list-alt"></i>&nbsp;&nbsp;Member List
 							</a>
 						</li>
 					</ul>
+					
 					<a href="#" th:href="@{/member/bookings}" class="btn w-100 text-left nav-link"> <i
 						class="fal fa-book"></i>&nbsp;Bookings&nbsp;&nbsp;
 					</a> 

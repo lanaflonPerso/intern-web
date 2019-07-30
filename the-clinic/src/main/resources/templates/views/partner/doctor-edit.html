@@ -45,10 +45,13 @@
 
 								<div class="column">
 									<label for="gender">Gender:</label>
-									<div th:each="gender : ${T(com.jdc.clinic.entity.FamilyMember.Gender).values()}">
-										<input type="radio" th:id="${gender}" th:value="*{gender}" name="gender" th:field="*{gender}"/>
-										<label th:for="${gender}" th:text="${gender.name()}"></label>
-									</div>
+									<input type="radio" value="Male" name="gender"/>
+									<!-- <div
+										th:each="gender : ${T(com.jdc.clinic.entity.FamilyMember.Gender).values()}">
+										<input type="radio" th:id="${gender}" th:value="*{gender}"
+											name="gender" th:field="*{gender}" /> <label
+											th:for="${gender}" th:text="${gender.name()}"></label>
+									</div> -->
 								</div>
 								<div class="form-group mt-2">
 
@@ -68,60 +71,101 @@
 							</div>
 							<!-- first column -->
 							<div class="col-12 col-md-6">
-								<div class="form-group">
-
-									<label>Select Hospital :</label> <select
-										class="form-control mdb-select md-form" name="hospital"
-										th:field="*{hospital}">
-										<option th:each="clinic : ${clinics}" th:text="${clinic.name}"
-											th:value="${clinic.name}"></option>
-									</select>
-
-								</div>
-								<div class="form-group mt-2">
-
-									<label>Select Degree : </label> <select
-										class="form-control mdb-select md-form" name="degree"
-										th:field="*{degrees}">
-
-										<option value="" disabled selected>Choose Degree</option>
-										<option value="M.B.B.S">M.B.B.S</option>
-										<option value="M.Med.Sc(Surgery)">M.Med.Sc(Surgery)</option>
-										<option value="M.R.C.S(Edin)">M.R.C.S(Edin)</option>
-										<option value="M.Med.Sc(O.G)">M.Med.Sc(O.G)</option>
-
-									</select>
-
-								</div>
 
 								<div class="form-group">
 
-									<label>Select Specialitie :</label> <select
-										class="form-control mdb-select md-form" name="Specialitie"
-										th:field="*{specialities}">
+									<label>Enter Degree :</label>
+									
+									<div class="degree-list">
 
-										<option value="" disabled selected>Choose Specialitie</option>
-										<option value="Orthopaedic Surgeons">Orthopaedic
-											Surgeons</option>
-										<option value="Uro Surgeons">Uro Surgeons</option>
-										<option value="Physicians">Physicians</option>
+										<div class="container-fluid degree-input"
+											th:each="de : *{degrees}">
 
-									</select>
+											<div class="row">
+
+												<input type="text" placeholder="Degree" name="degree"
+													class="mt-1 col-11 form-control" th:value="${de}" />
+
+												<button type="button"
+													class="ml-1 btn btn-outline-danger mt-1 btn-remove-degree">
+													<i class="fal fa-times"></i>
+												</button>
+
+											</div>
+
+										</div>
+
+									</div>
+									
+									<button type="button"
+										class="btn mt-1 form-control btn-outline-info btn-add-degree" style="border-style: dashed;">
+										<span><i class="far fa-plus"></i></span> Add New
+									</button>
+									
+
+								</div>
+								
+								
+								<div class="form-group">
+
+									<label>Enter Specialities :</label>
+									
+									<div class="special-list">
+
+										<div class="container-fluid special-input"
+											th:each="sp : *{specialities}">
+
+											<div class="row">
+
+												<input type="text" placeholder="Speciality" name="special"
+													class="mt-1 col-11 form-control" th:value="${sp}" />
+
+												<button type="button"
+													class="ml-1 btn btn-outline-danger mt-1 btn-remove-special">
+													<i class="fal fa-times"></i>
+												</button>
+
+											</div>
+
+										</div>
+
+									</div>
+									
+									<button type="button"
+										class="btn mt-1 form-control btn-outline-info btn-add-special" style="border-style: dashed;">
+										<span><i class="far fa-plus"></i></span> Add New
+									</button>
+									
 
 								</div>
 
 								<div class="form-group">
 
 									<label>Enter phone numbers</label>
+
 									<div class="phone-list">
-										<div class="phone-input">
-											<input type="tel" placeholder="Phone" name="phone1"
-												th:field="*{phones}" class="form-control" />
+
+										<div class="container-fluid phone-input"
+											th:each="ph : *{phones}">
+
+											<div class="row">
+
+												<input type="tel" placeholder="Phone" name="phone"
+													class="mt-1 col-11 form-control" th:value="${ph}" />
+
+												<button type="button"
+													class="ml-1 btn btn-outline-danger mt-1 btn-remove-phone">
+													<i class="fal fa-times"></i>
+												</button>
+
+											</div>
+
 										</div>
+
 									</div>
+
 									<button type="button"
-										class="btn mt-1 form-control btn-outline-info btn-add-phone"
-										style="border-style: dashed;">
+										class="btn mt-1 form-control btn-outline-info btn-add-phone" style="border-style: dashed;">
 										<span><i class="far fa-plus"></i></span> Add New
 									</button>
 
@@ -160,43 +204,55 @@
 		</form>
 
 		<script>
-			$(document.body).on('click', '.btn-remove-phone', function() {
-				$(this).closest('.phone-input').remove();
-			});
 
-			$('.btn-add-phone')
-					.on(
-							'click',
-							function() {
-								var index = $('.phone-input').length + 1;
-								$('.phone-list')
-										.append(
-												''
-														+ '<div class="container-fluid phone-input">'
-														+ '<div class="row">'
-														+ '<input type="tel" placeholder="Phone" name="phone'+index+'" class="mt-1 col-11 form-control"/>'
-														+ '<button type="button" class="ml-1 btn btn-outline-danger mt-1 btn-remove-phone"><i class="fal fa-times"></i></button>'
-														+ '</div></div>');
-							});
+		$(document.body).on('click','.btn-remove-phone',function(){
+			$(this).closest('.phone-input').remove();
+		});
+		
+		$('.btn-add-phone').on('click', function() {
+			var index = $('.phone-input').length + 1;
+			$('.phone-list').append(''+
+					'<div class="container-fluid phone-input">'+
+					'<div class="row">'+
+					'<input type="tel" placeholder="Phone" name="phones" class="mt-1 col-11 form-control"/>'+
+					'<button type="button" class="ml-1 btn btn-outline-danger mt-1 btn-remove-phone"><i class="fal fa-times"></i></button>'+
+					'</div></div>'
+					);
+		});
 
-			$(document.body).on('click', '.btn-remove-email', function() {
-				$(this).closest('.email-input').remove();
-			});
 
-			$('.btn-add-email')
-					.on(
-							'click',
-							function() {
-								var index = $('.email-input').length + 1;
-								$('.email-list')
-										.append(
-												''
-														+ '<div class="container-fluid email-input">'
-														+ '<div class="row">'
-														+ '<input type="email" placeholder="Email" name="mail'+index+'" class="mt-1 col-11 form-control"/>'
-														+ '<button type="button" class="ml-1 btn btn-outline-danger mt-1 btn-remove-email"><i class="fal fa-times"></i></button>'
-														+ '</div></div>');
-							});
+		$(document.body).on('click','.btn-remove-special',function(){
+			$(this).closest('.special-input').remove();
+		});
+		
+		$('.btn-add-special').on('click', function() {
+			var index = $('.special-input').length + 1;
+			$('.special-list').append(''+
+					'<div class="container-fluid special-input">'+
+					'<div class="row">'+
+					'<input type="text" placeholder="Speciality" name="special" class="mt-1 col-11 form-control"/>'+
+					'<button type="button" class="ml-1 btn btn-outline-danger mt-1 btn-remove-special"><i class="fal fa-times"></i></button>'+
+					'</div></div>'
+					);
+		});
+
+
+		$(document.body).on('click','.btn-remove-degree',function(){
+			$(this).closest('.degree-input').remove();
+		});
+		
+		$('.btn-add-degree').on('click', function() {
+			var index = $('.degree-input').length + 1;
+			$('.degree-list').append(''+
+					'<div class="container-fluid degree-input">'+
+					'<div class="row">'+
+					'<input type="text" placeholder="Degree" name="degree" class="mt-1 col-11 form-control"/>'+
+					'<button type="button" class="ml-1 btn btn-outline-danger mt-1 btn-remove-degree"><i class="fal fa-times"></i></button>'+
+					'</div></div>'
+					);
+		});
+		
+
 		</script>
 
 	</div>

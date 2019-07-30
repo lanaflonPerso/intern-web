@@ -106,8 +106,8 @@
 							<tr th:each="doctor : ${doctors}">
 								<td class="text-center" th:text="${doctor.id}"></td>
 								<td class="text-center" th:text="${doctor.name}"></td>
-								<td class="text-center" th:text="${doctor.degrees[0]}"></td>
-								<td class="text-center" th:text="${doctor.specialities[0]}"></td>
+								<td class="text-center" th:text="${doctor.degrees}"></td>
+								<td class="text-center" th:text="${doctor.specialities}"></td>
 
 								<td class="text-center">
 

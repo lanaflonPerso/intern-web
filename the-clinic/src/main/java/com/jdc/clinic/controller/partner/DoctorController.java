@@ -62,8 +62,8 @@ public class DoctorController {
 		return "/views/partner/doctor-edit";
 	}
 
-	@PostMapping("edit/{id}")
-	public String save(Doctor doctor, BindingResult result, @PathVariable int id) {
+	@PostMapping("edit")
+	public String save(Doctor doctor, BindingResult result) {
 		if (result.hasErrors()) {
 			return "/views/partner/doctor-edit";
 		}

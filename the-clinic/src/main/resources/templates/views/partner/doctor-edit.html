@@ -12,7 +12,7 @@
 	<div layout:fragment="dashboard-contents">
 
 		<form method="post" class="form mt-2" th:object="${doctor}"
-			th:action="@{'/partner/doctors/edit/'+${id}}">
+			th:action="@{'/partner/doctors/edit'}">
 
 			<div class="card">
 
@@ -45,7 +45,14 @@
 
 								<div class="column">
 									<label for="gender">Gender:</label>
-									<input type="radio" value="Male" name="gender"/>
+
+									<ul>
+										<li th:each="gender : ${T(com.jdc.clinic.entity.FamilyMember.Gender).values()}">
+											<input type="radio" th:id="${gender}" th:value="${gender}"
+											name="gender" th:field="${doctor.gender}" />
+											<label th:for="*{gender}" th:text="${gender.name()}"></label>
+										</li>
+									</ul>
 									<!-- <div
 										th:each="gender : ${T(com.jdc.clinic.entity.FamilyMember.Gender).values()}">
 										<input type="radio" th:id="${gender}" th:value="*{gender}"
@@ -75,7 +82,7 @@
 								<div class="form-group">
 
 									<label>Enter Degree :</label>
-									
+
 									<div class="degree-list">
 
 										<div class="container-fluid degree-input"
@@ -83,8 +90,8 @@
 
 											<div class="row">
 
-												<input type="text" placeholder="Degree" name="degree"
-													class="mt-1 col-11 form-control" th:value="${de}" />
+												<input type="text" placeholder="Degree" name="degrees"
+													class="mt-1 col-11 form-control" th:value="${de}"/>
 
 												<button type="button"
 													class="ml-1 btn btn-outline-danger mt-1 btn-remove-degree">
@@ -96,20 +103,21 @@
 										</div>
 
 									</div>
-									
+
 									<button type="button"
-										class="btn mt-1 form-control btn-outline-info btn-add-degree" style="border-style: dashed;">
+										class="btn mt-1 form-control btn-outline-info btn-add-degree"
+										style="border-style: dashed;">
 										<span><i class="far fa-plus"></i></span> Add New
 									</button>
-									
+
 
 								</div>
-								
-								
+
+
 								<div class="form-group">
 
 									<label>Enter Specialities :</label>
-									
+
 									<div class="special-list">
 
 										<div class="container-fluid special-input"
@@ -117,7 +125,7 @@
 
 											<div class="row">
 
-												<input type="text" placeholder="Speciality" name="special"
+												<input type="text" placeholder="Speciality" name="specialitiess"
 													class="mt-1 col-11 form-control" th:value="${sp}" />
 
 												<button type="button"
@@ -130,12 +138,13 @@
 										</div>
 
 									</div>
-									
+
 									<button type="button"
-										class="btn mt-1 form-control btn-outline-info btn-add-special" style="border-style: dashed;">
+										class="btn mt-1 form-control btn-outline-info btn-add-special"
+										style="border-style: dashed;">
 										<span><i class="far fa-plus"></i></span> Add New
 									</button>
-									
+
 
 								</div>
 
@@ -165,7 +174,8 @@
 									</div>
 
 									<button type="button"
-										class="btn mt-1 form-control btn-outline-info btn-add-phone" style="border-style: dashed;">
+										class="btn mt-1 form-control btn-outline-info btn-add-phone"
+										style="border-style: dashed;">
 										<span><i class="far fa-plus"></i></span> Add New
 									</button>
 
@@ -230,7 +240,7 @@
 			$('.special-list').append(''+
 					'<div class="container-fluid special-input">'+
 					'<div class="row">'+
-					'<input type="text" placeholder="Speciality" name="special" class="mt-1 col-11 form-control"/>'+
+					'<input type="text" placeholder="Speciality" name="specialities" class="mt-1 col-11 form-control"/>'+
 					'<button type="button" class="ml-1 btn btn-outline-danger mt-1 btn-remove-special"><i class="fal fa-times"></i></button>'+
 					'</div></div>'
 					);
@@ -246,7 +256,7 @@
 			$('.degree-list').append(''+
 					'<div class="container-fluid degree-input">'+
 					'<div class="row">'+
-					'<input type="text" placeholder="Degree" name="degree" class="mt-1 col-11 form-control"/>'+
+					'<input type="text" placeholder="Degree" name="degrees" class="mt-1 col-11 form-control"/>'+
 					'<button type="button" class="ml-1 btn btn-outline-danger mt-1 btn-remove-degree"><i class="fal fa-times"></i></button>'+
 					'</div></div>'
 					);

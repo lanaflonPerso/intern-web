@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	xmlns:sec="http://www.thymeleaf.org/extras/spring-security"
+	layout:decorate="~{/layout/template2}">
+<head>
+<meta charset="UTF-8">
+<title>404</title>
+
+<style type="text/css">
+.center {
+	margin: 0;
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	-ms-transform: translate(-50%, -50%);
+	transform: translate(-50%, -50%);
+}
+</style>
+</head>
+<body>
+
+	<section layout:fragment="content">
+	
+		<div class="center text-center">
+			<div>
+				<img alt="" src="/resources/img/500.svg" style="width: 100px; height: 100px;"><br><br>
+				<h3 class="text-muted">Internal Server Error</h3><br>
+				<a class="btn btn-outline-secondary" href="mailto:clinic@gmail.com">Contact To Developer</a>
+			</div>
+			
+			
+		</div>
+	</section>
+
+</body>
+</html>

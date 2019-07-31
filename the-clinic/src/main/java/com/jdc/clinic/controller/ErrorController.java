@@ -13,9 +13,9 @@ import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
-public class Error404Controller extends AbstractErrorController {
+public class ErrorController extends AbstractErrorController {
 
-	public Error404Controller(ErrorAttributes errorAttributes) {
+	public ErrorController(ErrorAttributes errorAttributes) {
 		super(errorAttributes);
 	}
 

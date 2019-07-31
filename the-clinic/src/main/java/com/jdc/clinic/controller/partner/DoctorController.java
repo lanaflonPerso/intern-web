@@ -62,24 +62,28 @@ public class DoctorController {
 		return "/views/partner/doctor-edit";
 	}
 
-	@PostMapping("edit")
-	public String save(Doctor doctor, BindingResult result) {
+	@PostMapping("edit/{id}")
+	public String save(Doctor doctor, BindingResult result, @PathVariable int id) {
 		if (result.hasErrors()) {
 			return "/views/partner/doctor-edit";
 		}
+//		if (dService.findById(id).isPresent()) {
+//			doctor.setId(id);
+//		}
 		dService.save(doctor);
 		return "redirect:/partner/doctors";
 	}
 
 	@GetMapping("details/{id}")
 	public String findById(@PathVariable int id, ModelMap model) {
-		model.put("doctor", dService.findById(id));
+		model.put("doctor", dService.findById(id).getId());
 		return "/views/partner/doctor";
 	}
 
 	@GetMapping("delete/{id}")
 	public String delete(@PathVariable("id") int id) {
-		dService.delete(dService.findById(id));
+		/* Doctor tempDoctor = dService.findById(id); */
+		// dService.delete(dService.findById(id).getId());
 		return "redirect:/partner/doctors";
 	}
 

@@ -10,45 +10,47 @@
 <body>
 	<section layout:fragment="content">
 		<br> <br>
-
-
-
-
 		<div class="container">
-
+		<div>
 			<h4>Doctor Details</h4>
-
-
-			<table>
-
-				<tr>
-					<td valign="top">Name</td>
-					<td valign="top">:</td>
-					<td valign="bottom">Dr.San Lwin Oo</td>
-				</tr>
-				<tr>
-					<td valign="bottom">Degree</td>
-					<td valign="top">:</td>
-					<td valign="bottom">M.B.,B.S</td>
-				</tr>
-				<tr>
-					<td valign="bottom">Specilaity</td>
-					<td valign="top">:</td>
-					<td valign="bottom">Neurologist</td>
-				</tr>
-				<tr>
-					<td valign="bottom">Gender</td>
-					<td valign="top">:</td>
-					<td valign="bottom">Female</td>
-				</tr>
-				<tr>
-					<td valign="bottom">hospital</td>
-					<td valign="top">:</td>
-					<td valign="bottom">OSC,SSC,Shin Par Gu</td>
-				</tr>
+			<div class="row">
+				<div class="col-md-6">
+					 <div class="card">
+			   <table class="table">
+				<tbody>
+					<tr>
+						<td class="text-muted"  align="right" style="width: 30%;"> Name : </td>
+						<td style="width: 70% " ><strong th:text="${doctor.name}"></strong></td>
+					</tr>
+					<tr>
+						<td class="text-muted"  align="right" style="width: 30%;"> Speciality : </td>
+						<td style="width: 70% " ><strong th:text="${doctor.specialities}"></strong></td>	
+					</tr>
+					<tr>
+						<td class="text-muted"  align="right" style="width: 30%;"> Degree : </td>
+						<td style="width: 70% " ><strong th:text="${doctor.degrees}"></strong></td>	
+					</tr> 
+					<tr>
+						<td class="text-muted"  align="right" style="width: 30%;"> Gender : </td>
+						<td style="width: 70% " ><strong th:text="${doctor.gender}"></strong></td>	
+					</tr> 
+					<tr>
+						<td class="text-muted"  align="right" style="width: 30%;"> Hospital : </td>
+						<td style="width: 70% " ><strong th:text="${doctor.hospital}"></strong></td>	
+					</tr> 
+					<tr>
+						<td class="text-muted"  align="right" style="width: 30%;">  Position : </td>
+						<td style="width: 70% " ><strong th:text="${doctor. position}"></strong></td>	
+					</tr>
+				</tbody>
 			</table>
+			</div>
+				</div>
+			</div>
+			
+			
 			<br>
-	         <h4>
+	           <h4>
 					<strong>OSC</strong>
 				</h4>
 			<table class="table table-bordered table-sm ">
@@ -257,7 +259,7 @@
 			</table>
 
 		</div>
-
+</div>
 
 		
 	</section>

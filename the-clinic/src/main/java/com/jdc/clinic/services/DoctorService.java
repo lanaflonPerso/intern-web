@@ -7,6 +7,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import com.jdc.clinic.entity.Clinic;
+import com.jdc.clinic.entity.ClinicDoctor;
+import com.jdc.clinic.entity.ClinicDoctorPK;
 import com.jdc.clinic.entity.Doctor;
 import com.jdc.clinic.repo.ClinicDoctorRepo;
 import com.jdc.clinic.repo.DoctorRepo;
@@ -16,9 +19,9 @@ public class DoctorService {
 
 	@Autowired
 	private ClinicDoctorRepo cdRepo;
-//
-//	@Autowired
-//	private ClinicServices cService;
+
+	@Autowired
+	private ClinicServices cService;
 
 	@Autowired
 	private DoctorRepo dRepo;
@@ -29,12 +32,10 @@ public class DoctorService {
 				.collect(Collectors.toList());
 	}
 
-	public Doctor save(Doctor doctor) {
-		doctor.setDegrees(doctor.getDegrees().stream().filter(d -> !d.isEmpty()).collect(Collectors.toList()));
-		doctor.setPhones(doctor.getPhones().stream().filter(p -> !p.isEmpty()).collect(Collectors.toList()));
-		doctor.setSpecialities(
-				doctor.getSpecialities().stream().filter(s -> !s.isEmpty()).collect(Collectors.toList()));
-		return dRepo.save(doctor);
+	public void save(Doctor doctor) {
+		Clinic c = cService.findByName(doctor.getHospital());
+		Doctor d = dRepo.save(doctor);
+		cdRepo.save(new ClinicDoctor(null, c, d, new ClinicDoctorPK(c.getId(), d.getId())));
 	}
 
 	public Doctor findById(int id) {
@@ -46,8 +47,9 @@ public class DoctorService {
 	}
 
 	public void delete(Doctor d) {
-		d.getSecurity().setDelete(true);
-		dRepo.save(d);
+		cdRepo.delete(
+				cdRepo.findById(new ClinicDoctorPK(cService.findByName(d.getHospital()).getId(), d.getId())).get());
+		dRepo.delete(d);
 	}
 
 	public Doctor findLast() {

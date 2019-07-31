@@ -12,59 +12,19 @@
 
 <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
  integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-
+ 
 <style>
 body {
   font-family: Arial, Helvetica, sans-serif;
 }
-
-.flip-card {
-  background-color: transparent;
-  width: 350px;
-  height: 300px;
-  perspective: 1000px;
-  margin-bottom: 40px;
-
+.flip-card{
+ background-color: #29afb9bd;
+ width:350px;
+ height:350px;
+ persective:100px;
+ margin-bottom:40px;
 }
 
-.flip-card-inner {
-  position: relative;
-  width: 100%;
-  height: 100%;
-  text-align: center;
-  transition: transform 0.5s;
-  transform-style: preserve-3d;
-  box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); 
- 
-}
-.flip-card:hover .flip-card-inner {
-  transform: rotateY(180deg);
-}
-
-.flip-card-front, .flip-card-back {
-  position: absolute;
-  width: 100%;
-  height: 100%;
-  backface-visibility: hidden;
-
-
-}
-
-.flip-card-front {
-  background-color: rgba(187, 187, 187, 0.589);
-   color: black;
-
-   z-index: 1;
-   
-}
-
-.flip-card-back {
-  background-color: #29afb9bd;
-  color: black;
-  transform: rotateY(180deg);
-  z-index: 0;
-
-}
 </style>
 </head>
 <body>
@@ -74,82 +34,48 @@ body {
 
   <!-- Card-1 -->
  <div class="flip-card" id="HmuTable"> 
-  <div class="flip-card-inner">
-    <div class="flip-card-front">
-      <img th:src="@{/resources/img/greenman.png}" alt="Avatar" style="width:150px;height:150px; margin-top: 30px;">
-      <input type="text" th:field="*{name}">
-      <input type="text" th:field="*{relationship}">
-    
-    </div>
-    
-    <div class="flip-card-back">
-        <h3>Details</h3> 
+    <div  th:each="fm : ${familyMember}">
+    <div>
+        <h4 class="text-center">Details</h4> 
         <div class="dropdown">
-        <a href="#" class="action-icon dropdown-toggle-split" data-toggle="dropdown" aria-expanded="true">
-        <i class="fas fa-ellipsis-h"></i></a>
-		<div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-		 <a class="dropdown-item" href="#"
-		   th:href="@{/family/member/edit/{id}(id=${familyMember.id})}" >
-			<i class="	fas fa-edit"></i> Edit</a>
-				<button class="dropdown-item" type="button" onclick="deleteRow(this)" th:href="@{/family/member/delete{id}(id=${familyMember.id})}">
-					<i class="fas fa-trash"></i> Delete
-				</button>
-		</div>
-	</div>
+	        <a href="#" class="action-icon dropdown-toggle-split" data-toggle="dropdown" aria-expanded="true">
+	        <i class="fas fa-ellipsis-h"></i></a>
+			<div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+			 <a class="dropdown-item" href="#"
+			   th:href="@{/family/member/edit/{id}(id=${fm.id})}" >
+				<i class="	fas fa-edit"></i> Edit</a>
+					<button class="dropdown-item" type="button"
+					 onclick="deleteCard(this)"
+					 th:href="@{/family/member/delete{id}(id=${fm.id})}">
+						<i class="fas fa-trash"></i> Delete
+					</button>
+			</div>
+	    </div>
 	
-      <div class="card" style="background-color: #18959ebd; width: 350px; height: auto ">
-        <div class="card-body text-left">
-          <table>
-            <tr>
-              <td><b>Name</b></td>
-              <td>:</td>
-              <td><input type="text" th:field="*{name}"></td>
-            </tr>
-            <tr>
-              <td><b>DOB</b></td>
-              <td>:</td>
-              <td><input type="text" th:field="*{dob}"></td>
-            </tr>
-            <tr>
-                <td><b>Relationship</b></td>
-                <td>:</td>
-                <td><input type="text" th:field="*{relationship}"></td>
-              </tr>
-              <tr>
-                 <td><b>AllergicMedicine</b></td>
-                 <td>:</td>
-                 <td><input type="text" th:field="*{allergicMedicines}"></td>
-                </tr> 
-            <tr>
-              <td><b>Blood Type</b></td>
-              <td>:</td>
-              <td><input type="submit" th:field="*{bloodType}"></td>
-            </tr> 
-            <tr>
-                <td><b>Gender</b></td>
-                <td>:</td>
-                <td><input type="submit" th:field="*{gender}"></td>
-              </tr> 
-               <tr>
-                  <td><b>Phone</b></td>
-                  <td>:</td>
-                  <td><input type="submit" th:field="*{ph}"></td>
-                </tr>
-                <tr>
-                  <td><b>Address</b></td>
-                  <td>:</td>
-                  <td><input type="text" th:field="*{address}"></td>
-                </tr>
-          </table>
-          </div>
-     </div>
+	      <div class="card width: 350px; height: auto ">
+	        <div class="card-body text-left">
+	           <div>
+	           		<p><b>Name : </b><span th:text="${fm.name}"></span></p>
+	           		<p><b>Date Of Birth : </b><span th:text="${fm.dob}"></span></p>
+	           		<p><b>Relationship :</b> <span th:text="${fm.relationship}"></span></p>
+	           		<p><b>Phone Number :</b> <span th:each="phno : ${fm.phNo}"></span></p>
+	           
+	           		<p><b>Blood Type : </b><span th:text="${fm.bloodType}"></span></p>
+	           		<p><b>Allergic Medicines : </b><span th:each="alergic :${fm.alergicMedicnes}">
+	           			<span th:text={alergic.value}></span>
+	           		</span>
+	           		</p>
+	           		<p><b>Gender : </b><span th:text="${fm.gender}"></span></p>
+	                      		
+	           </div>
+	          </div>
+	     </div>
+    </div><!--  card  -->
     </div>
   </div>
 </div>
 
-
 </div>
-    </div> 
 
 
 <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
@@ -160,37 +86,12 @@ integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6ji
 <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
 
 <script>
-$(document).ready(function() {
-  var front = document.getElementsByClassName("flip-card-front");
-  var back = document.getElementsByClassName("flip-card-back");
-
-  var highest = 0;
-  var absoluteSide = "";
-
-  for (var i = 0; i < flip-card-front.length; i++) {
-    if (flip-card-front[i].offsetHeight > flip-card-back[i].offsetHeight) {
-      if (flip-card-front[i].offsetHeight > highest) {
-        highest = flip-card-front[i].offsetHeight;
-        absoluteSide = ".flip-card-front";
-      }
-    } else if (back[i].offsetHeight > highest) {
-      highest = flip-card-back[i].offsetHeight;
-      absoluteSide = ".flip-card-back";
-    }
-  }
-  $(".flip-card-front").css("height", highest);
-  $(".flip-card-back").css("height", highest);
-  $(absoluteSide).css("position", "absolute");
-});
-
 function deleteCard(r) {
 	var i = r.parentNode.parentNode.parentNode.parentNode.cardIndex;
 	document.getElementById("HmuTable").deleteCard(i);
 }
-
 </script>
-
-             
+           
 </section>
 </body>
 </html>

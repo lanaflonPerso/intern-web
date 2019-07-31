@@ -24,20 +24,21 @@ public class FamilyMemberController {
 	@GetMapping("/create")
 	public String showCreateForm(ModelMap model) {
 		model.addAttribute("familyMember", new FamilyMember());
-		return "/views/member/family-edit";
+		return "views/member/family-edit";
 	}
 
 	@GetMapping("/list")
 	public String showList(ModelMap model) {
 		model.addAttribute("familyMember", mService.findAll());
-		return "/views/member/family";
+		
+		return "views/member/family";
 
 	}
 
 	@PostMapping("/add")
 	public String addFamilyMember(@Valid FamilyMember familyMember, BindingResult result, ModelMap model) {
 		if (result.hasErrors()) {
-			return "/views/member/family-edit";
+			return "views/member/family-edit";
 		}
 
 		mService.save(familyMember);
@@ -49,7 +50,7 @@ public class FamilyMemberController {
 		FamilyMember familyMember = mService.findMemberById(id)
 				.orElseThrow(() -> new IllegalArgumentException("Invalid Member Id:" + id));
 		model.addAttribute("familyMember", familyMember);
-		return "/views/member/family-edit";
+		return "views/member/family-edit";
 	}
 
 	@PostMapping("update/{id}")
@@ -61,7 +62,7 @@ public class FamilyMemberController {
 		}
 		mService.save(familyMember);
 		model.addAttribute("students", mService.findAll());
-		return "/views/member/family";
+		return "views/member/family";
 	}
 
 	@GetMapping("delete/{id}")
@@ -70,7 +71,7 @@ public class FamilyMemberController {
 				.orElseThrow(() -> new IllegalArgumentException("Invalid student Id:" + id));
 		mService.delete(familyMember);
 		model.addAttribute("familyMember", mService.findAll());
-		return "/views/member/family";
+		return "views/member/family";
 	}
 
 }

@@ -48,6 +48,9 @@ public class FamilyMember implements Serializable {
 	private SecurityInfo security;
 
 	private Gender gender;
+	
+	@ElementCollection
+	private List<String> phNo;
 
 	@ManyToOne
 	private Member member;

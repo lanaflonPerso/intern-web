@@ -42,11 +42,11 @@ body {
 	        <i class="fas fa-ellipsis-h"></i></a>
 			<div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
 			 <a class="dropdown-item" href="#"
-			   th:href="@{/family/member/edit/{id}(id=${fm.id})}" >
+			   th:href="@{/member/family/edit/{id}(id=${fm.id})}" >
 				<i class="	fas fa-edit"></i> Edit</a>
 					<button class="dropdown-item" type="button"
 					 onclick="deleteCard(this)"
-					 th:href="@{/family/member/delete{id}(id=${fm.id})}">
+					 th:href="@{/member/family/delete/{id}(id=${fm.id})}">
 						<i class="fas fa-trash"></i> Delete
 					</button>
 			</div>

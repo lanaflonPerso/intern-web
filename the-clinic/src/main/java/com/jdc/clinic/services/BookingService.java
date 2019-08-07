@@ -172,4 +172,23 @@ public class BookingService {
 
 	}
 
+	// Partner Booking
+	public List<Clinic> getClinicByPhone(String phone) {
+		return repo.findByOwnerPhone(phone);
+	}
+
+	public List<Booking> getBookingByPartner(String partnerPhone) {
+		return bRepo.findBookingByPartnerPhone(partnerPhone);
+
+	}
+
+	public List<Booking> getBookingByPartnerAndDate(String partnerPhone) {
+		return bRepo.findBookingByPartnerPhoneAndDate(partnerPhone);
+
+	}
+
+	public List<Booking> getPartnerBookingByDate(String partnerPhone, LocalDate date) {
+		return bRepo.findByDate(partnerPhone, date);
+	}
+
 }

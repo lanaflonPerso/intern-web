@@ -15,8 +15,12 @@
 }
 
 .table thead {
-	background-color: #AFEEEE;
+	background-color: #3A85C7;
 	color: black;
+}
+
+#tablethead{
+background-color: #3A85C7;
 }
 
 .table tbody {
@@ -87,10 +91,10 @@
 
 
 				<div class="table-wrapper-scroll-y my-custom-scrollbar">
-					<table class="table table-bordered mt-3" id="ChitTable">
+					<table class="table table-bordered mt-3">
 
 
-						<thead class="thead-danger">
+						<thead id="tablehead">
 
 							<tr class="table-info">
 								<th class="text-center">No</th>
@@ -101,10 +105,10 @@
 
 							</tr>
 						</thead>
-						<tbody>
+						<tbody id="doctor-tr">
 
-							<tr th:each="doctor : ${doctors}">
-								<td class="text-center" th:text="${doctor.id}"></td>
+							<tr th:each="doctor,iterationStatus : ${doctors}">
+								<td class="text-center" th:text="${iterationStatus.count}"></td>
 								<td class="text-center" th:text="${doctor.name}"></td>
 								<td class="text-center" th:text="${doctor.degrees}"></td>
 								<td class="text-center" th:text="${doctor.specialities}"></td>
@@ -153,7 +157,7 @@
 
 
 
-					<div id="bookings-page">
+					<!-- <div id="bookings-page">
 
 						<ul class="pagination">
 							<li class="page-item"><a class="page-link" href="#"
@@ -168,25 +172,22 @@
 									class="sr-only">Next</span>
 							</a></li>
 						</ul>
-					</div>
+					</div> -->
 				</div>
 			</div>
 		</div>
 
 
 		<script>
-			$(document).ready(function() {
-					$("#searching").on("keyup",function() {
-							var value = $(this).val().toLowerCase();
-							$("#ChitTable tbody tr").filter(function() {
-									$(this).toggle($(this)
-														.text()
-														.toLowerCase()
-														.indexOf(value) > -1)
-							});
-					);
-			});
-		</script>
+         $(document).ready(function(){
+            $("#searching").on("keyup", function() {
+               var value = $(this).val().toLowerCase();
+               $("#doctor-tr tr").filter(function() {
+                  $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
+               });
+            });
+         });
+      </script>
 	</section>
 </body>
 </html>

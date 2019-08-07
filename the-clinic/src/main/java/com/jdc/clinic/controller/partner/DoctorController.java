@@ -2,6 +2,7 @@ package com.jdc.clinic.controller.partner;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
+import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -54,6 +55,16 @@ public class DoctorController {
 		return "/views/partner/doctor-edit";
 	}
 
+	@PostMapping("/create")
+	public String addDoctor(@Valid Doctor doctor, BindingResult result, ModelMap model) {
+		if (result.hasErrors()) {
+			return "views/partner/doctor-edit";
+		}
+
+		dService.save(doctor);
+		return "redirect:/partner/doctors";
+	}
+
 	@GetMapping("edit/{id}")
 	public String edit(@PathVariable int id, ModelMap model, HttpServletRequest request) {
 		HttpSession session = request.getSession(true);
@@ -62,8 +73,8 @@ public class DoctorController {
 		return "/views/partner/doctor-edit";
 	}
 
-	@PostMapping("edit/{id}")
-	public String save(Doctor doctor, BindingResult result, @PathVariable int id) {
+	@PostMapping("edit")
+	public String save(Doctor doctor, BindingResult result) {
 		if (result.hasErrors()) {
 			return "/views/partner/doctor-edit";
 		}
@@ -76,7 +87,7 @@ public class DoctorController {
 
 	@GetMapping("details/{id}")
 	public String findById(@PathVariable int id, ModelMap model) {
-		model.put("doctor", dService.findById(id).getId());
+		model.put("doctor", dService.findById(id));
 		return "/views/partner/doctor";
 	}
 

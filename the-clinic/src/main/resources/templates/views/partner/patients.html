@@ -14,7 +14,7 @@
 }
 
 .table thead {
-	background-color: #AFEEEE;
+	background-color: #3A85C7;
 }
 
 .table tbody {
@@ -26,7 +26,7 @@
 }
 
 #patient-tr>tr:hover {
-	background-color: #AFEEEE;
+	background-color: gray;
 	cursor: pointer;
 }
 
@@ -41,12 +41,52 @@
 			<h3 class="mx-3">
 				<i class="fa fa-wheelchair"></i>Patients
 			</h3>
-
 			<div class="container-fluid">
+			<div class="row" id="search-bar">
+
+						<div id="search-patient">
+							<input type="text" placeholder="Search patient" id="search"
+								class="form-control form-rounded" size="35">
+
+						</div>
+						<div id="btn-circle-search">
+							<button type="submit" class="btn  btn-circle">
+								<i class="fa fa-search" style="color: white"></i>
+							</button>
+						</div>
+					</div>
+			
+				<table class="table table-responsive-md" id="patient-tb">
+							<thead>
+								<tr>
+									<td>No.</td>
+									<td>Patient</td>
+									<td>Clinic</td>
+									<td></td>
+								</tr>
+							</thead>
+							<tbody id="patient-tr" th:each="patient,iterationStatus : ${patients}">
+								<a href="#" >
+									<tr class="table-row" th:data-href="@{'/partner/1/patients/'+${patient.id}}">
+
+										<td th:text="${iterationStatus.count}"></td>
+										<td th:text="${patient.familyMember.name}"></td>
+										<td th:text="${patient.clinic.name}"></td>
+										<td><span class="text-right"><i
+												class="fal fa-chevron-right"></i></span></td>
+									</tr>
+								</a>
+								
+							</tbody>
+						</table>
+				
+</div>
+			<!-- <div class="container-fluid">
 
 				<ul class="nav nav-tabs" role="tablist">
-					<li class="nav-item"><a class="nav-link active"
-						data-toggle="tab" href="#clinicA">Clinic A</a></li>
+					<li th:each="clinic : ${clinics}" class="nav-item"><a class="nav-link active"
+						data-toggle="tab" th:href="@{'#'+${clinic.name}}"
+						th:text="${clinic.name}">Clinic A</a></li>
 					<li class="nav-item"><a class="nav-link" data-toggle="tab"
 						href="#clinicB">Clinic B</a></li>
 					<li class="nav-item"><a class="nav-link" data-toggle="tab"
@@ -55,8 +95,8 @@
 
 			</div>
 
-			<div class="tab-content">
-				<div class="row mx-3 mt-3 container tab-pane active" id="clinicA">
+ -->			<!-- <div class="tab-content" th:each="clinic : ${clinics}">
+				<div class="row mx-3 mt-3 container tab-pane active" th:id="${clinic.name}">
 
 					<div class="row" id="search-bar">
 
@@ -84,57 +124,18 @@
 							</thead>
 							<tbody id="patient-tr">
 								<a href="#" th:href="@{/partner/1/patients/1}">
-									<tr class="table-row" th:data-href="@{/partner/1/patients/1}">
+									<tr class="table-row" th:data-href="@{/partner/1/patients/1}"
+									th:each="patient,iterationStatus : ${patients}"
+									>
 
-										<td>1</td>
-										<td>Daw Mya</td>
-										<td>0945634456</td>
+										<td th:text="${iterationStatus.count}"></td>
+										<td th:text="${patient.familyMember.name}"></td>
+										<td th:text="${patient.familyMember.bloodType}"></td>
 										<td><span class="text-right"><i
 												class="fal fa-chevron-right"></i></span></td>
-
 									</tr>
 								</a>
-								<tr>
-									<td>2</td>
-									<td>Daw Mya</td>
-									<td>097852312</td>
-									<td><span class="text-right"><i
-											class="fal fa-chevron-right"></i></span></td>
-
-								</tr>
-								<tr>
-									<td>3</td>
-									<td>Daw Mya</td>
-									<td>0978541236</td>
-									<td><span class="text-right"><i
-											class="fal fa-chevron-right"></i></span></td>
-
-								</tr>
-								<tr>
-									<td>4</td>
-									<td>Daw Mya</td>
-									<td>09654123</td>
-									<td><span class="text-right"><i
-											class="fal fa-chevron-right"></i></span></td>
-
-								</tr>
-								<tr>
-									<td>5</td>
-									<td>Daw Mya</td>
-									<td>09561234</td>
-									<td><span class="text-right"><i
-											class="fal fa-chevron-right"></i></span></td>
-
-								</tr>
-								<tr>
-									<td>6</td>
-									<td>Daw Mya</td>
-									<td>09852369</td>
-									<td><span class="text-right"><i
-											class="fal fa-chevron-right"></i></span></td>
-
-								</tr>
-
+								
 							</tbody>
 						</table>
 
@@ -363,37 +364,20 @@
 				</div>
 
 			</div>
-
+ -->
 
 		</div>
 
 		<script>
-			$(document)
-					.ready(
-							function() {
-								$("#myInput")
-										.on(
-												"keyup",
-												function() {
-													var value = $(this).val()
-															.toLowerCase();
-													$("#myTable tr")
-															.filter(
-																	function() {
-																		$(this)
-																				.toggle(
-																						$(
-																								this)
-																								.text()
-																								.toLowerCase()
-																								.indexOf(
-																										value) > -1)
-																	});
-												});
-							});
-		</script>
-
-
+         $(document).ready(function(){
+            $("#search").on("keyup", function() {
+               var value = $(this).val().toLowerCase();
+               $("#patient-tr tr").filter(function() {
+                  $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
+               });
+            });
+         });
+      </script>
 		<script type="text/javascript">
 			$(document).ready(function($) {
 				$(".table-row").click(function() {

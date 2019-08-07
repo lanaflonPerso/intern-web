@@ -2,7 +2,7 @@
 <html xmlns:th="http://www.thymeleaf.org"
 	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
 	xmlns:sec="http://www.thymeleaf.org/extras/spring-security"
-	layout:decorate="~{/layout/template}">
+	layout:decorate="~{/layout/template2}">
 <head>
 <meta charset="UTF-8">
 <title>Doctor Detail</title>
@@ -46,222 +46,34 @@
 			</table>
 			</div>
 				</div>
+				
+		</div>
+			<div class="row mt-3">
+	           <!-- <h4 th:text="${tb.clinicDoctor.clinic.name}"></h4> -->
+			<table class="table table-bordered table-sm "  >
+				
+				<thead style="background-color: #3A85C7">
+					<tr class="tableHeading-color">
+						<th>Date</th>
+						<th>Time</th>
+						<th>Clinic</th>
+
+					</tr>
+				</thead>
+				<tbody>
+					<tr th:each="tb :${timetables}">
+						<td th:text="${tb.day}"></td>
+
+						<td th:text="${tb.timeFrom}+' to '+${tb.timeTo}"></td>
+						<td th:text="${tb.clinicDoctor.clinic.name}"></td>
+
+					</tr>
+				</tbody>
+			</table>
+			</div>
+</div>
 			</div>
 			
-			
-			<br>
-	           <h4>
-					<strong>OSC</strong>
-				</h4>
-			<table class="table table-bordered table-sm ">
-				
-				<thead>
-					<tr class="tableHeading-color">
-						<th>Date</th>
-
-						<th>Time</th>
-						<th>Time</th>
-
-					</tr>
-				</thead>
-				<tbody>
-					<tr>
-						<td>Sunday</td>
-
-						<td>3:00 pm to 7:00pm</td>
-						<td></td>
-
-					</tr>
-					<tr>
-						<td>Monday</td>
-
-						<td>2:00pm 3:00pm</td>
-						<td></td>
-
-					</tr>
-					<tr>
-						<td>Tuesday</td>
-
-						<td></td>
-						<td></td>
-
-
-					</tr>
-					<tr>
-						<td>Wednesday</td>
-
-						<td></td>
-						<td></td>
-
-
-					</tr>
-					<tr>
-						<td>Thursday</td>
-
-						<td>2:00pm 3:00pm</td>
-						<td>7:00pm 9:00pm</td>
-
-					</tr>
-					<tr>
-						<td>Friday</td>
-
-						<td></td>
-						<td></td>
-
-					</tr>
-					<tr>
-						<td>Saturday</td>
-						<td>8:00am 10:00am</td>
-						<td>4:00pm 6:00pm</td>
-
-
-					</tr>
-					<tr>
-				</tbody>
-			</table>
-
-			<h4>
-					<strong>Shin Par Gu</strong>
-				</h4>
-			<table class="table table-bordered table-sm ">
-				<thead>
-					<tr class="tableHeading-color">
-						<th>Date</th>
-
-						<th>Time</th>
-						<th>Time</th>
-
-					</tr>
-				</thead>
-				<tbody>
-					<tr>
-						<td>Sunday</td>
-
-						<td>3:00 pm to 7:00pm</td>
-						<td></td>
-
-					</tr>
-					<tr>
-						<td>Monday</td>
-
-						<td>2:00pm 3:00pm</td>
-						<td></td>
-
-					</tr>
-					<tr>
-						<td>Tuesday</td>
-
-						<td></td>
-						<td></td>
-
-
-					</tr>
-					<tr>
-						<td>Wednesday</td>
-
-						<td></td>
-						<td></td>
-
-
-					</tr>
-					<tr>
-						<td>Thursday</td>
-
-						<td>2:00pm 3:00pm</td>
-						<td>7:00pm 9:00pm</td>
-
-					</tr>
-					<tr>
-						<td>Friday</td>
-
-						<td></td>
-						<td></td>
-
-					</tr>
-					<tr>
-						<td>Saturday</td>
-						<td>8:00am 10:00am</td>
-						<td>4:00pm 6:00pm</td>
-
-
-					</tr>
-					<tr>
-				</tbody>
-			</table>
-			<h4>
-					<strong>SSC</strong>
-				</h4>
-			<table class="table table-bordered table-sm">
-				
-				<thead>
-					<tr class="tableHeading-color">
-						<th>Date</th>
-
-						<th>Time</th>
-						<th>Time</th>
-
-					</tr>
-				</thead>
-				<tbody>
-					<tr>
-						<td>Sunday</td>
-
-						<td>3:00 pm to 7:00pm</td>
-						<td></td>
-
-					</tr>
-					<tr>
-						<td>Monday</td>
-
-						<td>2:00pm 3:00pm</td>
-						<td></td>
-
-					</tr>
-					<tr>
-						<td>Tuesday</td>
-
-						<td></td>
-						<td></td>
-
-
-					</tr>
-					<tr>
-						<td>Wednesday</td>
-
-						<td></td>
-						<td></td>
-
-
-					</tr>
-					<tr>
-						<td>Thursday</td>
-
-						<td>2:00pm 3:00pm</td>
-						<td>7:00pm 9:00pm</td>
-
-					</tr>
-					<tr>
-						<td>Friday</td>
-
-						<td></td>
-						<td></td>
-
-					</tr>
-					<tr>
-						<td>Saturday</td>
-
-						<td>4:00pm 6:00pm</td>
-						<td></td>
-
-					</tr>
-					<tr>
-				</tbody>
-			</table>
-
-		</div>
-</div>
-
-		
 	</section>
 
 </body>

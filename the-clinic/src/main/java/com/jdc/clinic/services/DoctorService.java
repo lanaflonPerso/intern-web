@@ -7,8 +7,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import com.jdc.clinic.entity.Clinic;
-import com.jdc.clinic.entity.ClinicDoctor;
 import com.jdc.clinic.entity.ClinicDoctorPK;
 import com.jdc.clinic.entity.Doctor;
 import com.jdc.clinic.repo.ClinicDoctorRepo;
@@ -33,9 +31,12 @@ public class DoctorService {
 	}
 
 	public void save(Doctor doctor) {
-		Clinic c = cService.findByName(doctor.getHospital());
-		Doctor d = dRepo.save(doctor);
-		cdRepo.save(new ClinicDoctor(null, c, d, new ClinicDoctorPK(c.getId(), d.getId())));
+		/* Clinic c = cService.findByName(doctor.getHospital()); */
+		dRepo.save(doctor);
+		/*
+		 * cdRepo.save(new ClinicDoctor(null, c, d, new ClinicDoctorPK(c.getId(),
+		 * d.getId())));
+		 */
 	}
 
 	public Doctor findById(int id) {
@@ -63,4 +64,5 @@ public class DoctorService {
 	public Doctor findByLicenseCode(String licenseCode) {
 		return dRepo.findByLicenseCode(licenseCode);
 	}
+
 }

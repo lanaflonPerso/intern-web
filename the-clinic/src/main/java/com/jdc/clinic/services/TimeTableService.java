@@ -41,6 +41,10 @@ public class TimeTableService {
 		return timeTableRepo.findByClinicDoctorClinicId(id);
 	}
 
+	public List<Timetable> findTimetableByDoctorId(int id) {
+		return timeTableRepo.findByClinicDoctorDoctorId(id);
+	}
+
 	public List<DayOfWeek> findDayOfWeekByClinicId(int id) {
 		return timeTableRepo.findDayOfWeekByClinicId(id);
 	}

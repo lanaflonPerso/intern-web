@@ -81,7 +81,7 @@ public class MemberBookingController {
 
 	@GetMapping("delete/{id}")
 	public String delete(@PathVariable("id") long id) {
-		bookingService.delete(bookingService.findById(id).get());
+		// bookingService.delete(bookingService.findById(id).get());
 		return "redirect:/member/bookings";
 	}
 

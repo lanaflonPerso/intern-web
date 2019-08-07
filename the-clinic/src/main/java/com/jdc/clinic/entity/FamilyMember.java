@@ -15,6 +15,8 @@ import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.validation.constraints.NotEmpty;
 
+import org.springframework.format.annotation.DateTimeFormat;
+
 import lombok.Data;
 
 @Entity
@@ -37,6 +39,7 @@ public class FamilyMember implements Serializable {
 
 	private String relationship;
 
+	@DateTimeFormat(pattern = "yyyy-MM-dd")
 	private LocalDate dob;
 
 	private BloodType bloodType;
@@ -48,7 +51,7 @@ public class FamilyMember implements Serializable {
 	private SecurityInfo security;
 
 	private Gender gender;
-	
+
 	@ElementCollection
 	private List<String> phNo;
 

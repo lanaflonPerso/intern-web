@@ -24,15 +24,15 @@ body {
 </head>
 <body>
 	<section layout:fragment="content">
-		
+		<form action="" method="get" class="form pl-2 pr-2">
 			<div class="container-fluid mt-3 "> 
 			
 			<div class="row">
-			<form action="/doctors/" method="get" class="form pl-2 pr-2">
+			
 					
 						<input type="text" name="keyword" th:value="${keyword}" class="form-control" placeholder="Search Doctors">
 						
-					</form>
+					
 				<!-- 	<div class="container-fluid">
 					
 						<div class="text-center text-warning mt-5">
@@ -65,21 +65,18 @@ body {
 								<div th:each="speciality :${publicdoctor.specialities}" class="row ml-1">
 									<span class="text-center mr-3">Speciality <span class="ml-4 mr-2">:</span> </span>
 								
-									
-									
 									<span th:text="${speciality}"></span> 
-									</div>
+								</div>
 								</p>
 								
-									
-								
-								<p><span class="mr-3">License code <span class="ml-2">:</span> </span><span th:text="${publicdoctor.licenseCode}"></span></p>
-								<p>
+								<p><span class="mr-3">Position <span class="ml-2">:</span> </span><span th:text="${publicdoctor.position}"></span></p>
+								<!-- <p>
 									<span class="text-center mr-3">Clinic Name <span class="ml-3">:</span> </span>
 									<i class="fa fa-user-md"></i>
 									<strong th:text="${publicdoctor.hospital}"></strong>
-								</p>
-								<a th:href="@{doctors/1}" class="float-right mb-2">See more</a>
+								</p> -->
+								<a th:href="@{'/doctors/'+${publicdoctor.id}}" href="#" class="float-right mb-2">See more</a>
+							</div>
 							</div>
 						</div>
 					</div>
@@ -89,7 +86,7 @@ body {
 			</div>
 			</div>
 
-					
+			</form>		
 		
 	</section>
 </body>

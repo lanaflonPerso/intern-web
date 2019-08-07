@@ -96,8 +96,10 @@
 					</div>
 					
 					<ul id="myUL" th:each="clinicdoctor :${clinicdoctorList}" style="overflow : auto">
-						  <li><a href="" 
-						  th:href="@{/clinics/{id}(id=${clinic.id})/doctors/{id}(id=${clinicdoctor.id})}">
+						  <li><!-- <a href="" 
+						  th:href="@{/clinics/{id}(id=${clinic.id})/doctors/{id}(id=${clinicdoctor.id})}"> -->
+						  <a th:href="@{'/doctors/'+${clinicdoctor.id}}" href="">
+							
 						  <span class="col-md-4" th:text="${clinicdoctor.name}"></span>
 						  <span class="col-md-4" th:text="${clinicdoctor.specialities}"></span>
 						  <span class="float-right text-muted ">

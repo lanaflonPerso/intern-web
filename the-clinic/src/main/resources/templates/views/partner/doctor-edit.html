@@ -12,7 +12,7 @@
 	<div layout:fragment="dashboard-contents">
 
 		<form method="post" class="form mt-2" th:object="${doctor}"
-			th:action="@{'/partner/doctors/edit'}">
+			th:action="@{/partner/doctors/edit}">
 			<input type="hidden" th:field="*{id}" />
 			<div class="card">
 

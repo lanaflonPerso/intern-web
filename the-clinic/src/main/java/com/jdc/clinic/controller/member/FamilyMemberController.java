@@ -21,21 +21,31 @@ public class FamilyMemberController {
 	@Autowired
 	private MemberService mService;
 
+	/*
+	 * @Autowired private FamilyMemberService fmService;
+	 */
+
 	@GetMapping("/create")
 	public String showCreateForm(ModelMap model) {
 		model.addAttribute("familyMember", new FamilyMember());
 		return "views/member/family-edit";
 	}
 
+	/*
+	 * @PostMapping("/create") public String createFMember(FamilyMember fmember) {
+	 * fmService.createFM(fmember);
+	 * 
+	 * return "views/member/family"; }
+	 */
 	@GetMapping("/list")
 	public String showList(ModelMap model) {
 		model.addAttribute("familyMember", mService.findAll());
-		
+
 		return "views/member/family";
 
 	}
 
-	@PostMapping("/add")
+	@PostMapping("/create")
 	public String addFamilyMember(@Valid FamilyMember familyMember, BindingResult result, ModelMap model) {
 		if (result.hasErrors()) {
 			return "views/member/family-edit";
@@ -67,11 +77,13 @@ public class FamilyMemberController {
 
 	@GetMapping("delete/{id}")
 	public String deleteFamilyMember(@PathVariable("id") long id, ModelMap model) {
+
 		FamilyMember familyMember = mService.findMemberById(id)
 				.orElseThrow(() -> new IllegalArgumentException("Invalid student Id:" + id));
 		mService.delete(familyMember);
 		model.addAttribute("familyMember", mService.findAll());
-		return "views/member/family";
+
+		return "redirect:/member/family";
 	}
 
 }

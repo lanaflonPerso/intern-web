@@ -6,58 +6,39 @@
 <head>
 <meta charset="UTF-8">
 <link rel="stylesheet" href="/resources/css/custom.css">
+ <link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css" />
+			
 
 <title>Bookings</title>
 </head>
 <body>
 	<section layout:fragment="dashboard-contents">
-	<div class="container">
-		<h4 class="mx-3 my-3"><i class="fa fa-book" ></i> Booking Lists</h4>
-		<!-- start selection -->
-		<div class="row mx-3 my-2" id="div-select">
-			<div id="selection">
-				<div class="dropdown">
-					<button class="btn btn-primary dropdown-toggle" type="button"
-						id="dropdownMenuButton" data-toggle="dropdown"
-						aria-haspopup="true" aria-expanded="false">Patient Name</button>
-					<div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-						<a class="dropdown-item" href="#">Daw Mya</a> <a
-							class="dropdown-item" href="#">Daw Hla</a> <a
-							class="dropdown-item" href="#">U Soe</a>
+		<div class="container">
+			<h4 class="mx-3 my-3"><i class="fa fa-book" ></i> Booking Lists</h4>
+				<!-- start selection -->
+				<div class="row mx-3 my-2" id="div-select">
+				
+					<div id="selection">
+		
+						<input type="text" placeholder="Search Booking..." id="searching"
+							class="form-control form-rounded" size="35">
+		
 					</div>
-				</div>
-			</div>
-			<div id="selection">
-				<div class="dropdown">
-					<button class="btn btn-primary dropdown-toggle" type="button"
-						id="dropdownMenuButton" data-toggle="dropdown"
-						aria-haspopup="true" aria-expanded="false">Doctor Name</button>
-					<div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-						<a class="dropdown-item" href="#">Dr.Khine</a> <a
-							class="dropdown-item" href="#">Dr.Grace</a> <a
-							class="dropdown-item" href="#">Dr.Aung Min</a>
-					</div>
-				</div>
-			</div>
-			<div id="selection">
-				<div class="dropdown">
-					<button class="btn btn-primary dropdown-toggle" type="button"
-						id="dropdownMenuButton" data-toggle="dropdown"
-						aria-haspopup="true" aria-expanded="false">Status</button>
-					<div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-						<a class="dropdown-item" href="#">Confirmed</a> 
-						<a	class="dropdown-item" href="#">Cancel</a> 
-					</div>
-				</div>
-			</div>
+						<div id="selection" class="row">
 
-			<div id="selection">
-			<input type="text" class="form-control"  id="datepicker" size="12px">
-			
-			</div>
+							<p class="col pt-2" style="size: 20px;">
+								<b>Search by date</b>
+							</p>
+							<form method="get" id="formId" action="/partner/bookings/" name="formId">
+							<input type="text" class="form-control col" id="datepicker"
+								size="12px">
+							</form>
+						</div>
+	
+				</div>
 		</div>
-		<!-- End selection -->
-		<div class="row mx-3">
+		<!-- End of Container Header Part -->
+		<div class="row mx-3" th:if="${not #lists.isEmpty(bookings)}">
 			<table class="table  table-responsive-md  table-hover table-bordered"
 				id="table-bookings">
 				<thead id="table-bookings-thead">
@@ -72,156 +53,37 @@
 
 					</tr>
 				</thead>
-				<tbody>
-					<tr>
-						<td>1</td>
-						<td>Daw Mya
-						
+				<tbody id="booking-tr">
+					<tr th:each="booking,iterationStatus :${bookings}">
+						<td class="text-center" th:text="${iterationStatus.count}"></td>
+						<td>
+							<p style="float: left"
+								th:text="${booking.patient?.familyMember?.name}"></p> <span
+							class="label label-success ml-auto badge mt-1"
+							style="background-color: #ef6c00; color: white; float: right; width: 80px;"
+							th:text="${booking.status}"></span>
 						</td>
-						<td>Dr.Sai Zaw Win Naing</td>
-						<td>12 Jun 2019</td>
-						<td>8:00 am to 11:00 am</td>
 						
+						<td class="text-center"
+							th:text="${booking.clinicDoctor?.doctor?.name}"></td>
+						<td class="text-center" th:text="${booking.bookingDate}"></td>
+						<td class="text-center"
+							th:text="${booking.timeTable.timeFrom} + ' to '+ ${booking.timeTable.timeTo}"></td>
 						<td class="text-center">
-							<button type="button" class="btn btn-delete" data-toggle="modal"
+						<button type="button" class="btn btn-delete" data-toggle="modal"
 								data-target="#myModel">
 								<i id="book-confirm" class="fa fa-check "></i>
 							</button>
 							<button type="button" class="btn btn-delete" data-toggle="modal"
 								data-target="#myModal">
-								<i id="book-cancel" class="fa fa-trash "></i>
+								<i id="book-cancel" class="fal fa-trash-alt fa-lg"></i>
 							</button>
 						</td>
 
-					</tr>
-					<tr>
-						<td>2</td>
-						<td>U Aung La
-						
-						</td>
-						<td>Dr.Min Thu</td>
-						<td>12 Jun 2019</td>
-						<td>8:00 am to 11:00 am</td>
-						
-						<td class="text-center">
-							<button type="button" class="btn btn-delete" data-toggle="modal"
-								data-target="#myModel">
-								<i id="book-confirm" class="fa fa-check "></i>
-							</button>
-							<button type="button" class="btn btn-delete" data-toggle="modal"
-								data-target="#myModal">
-								<i id="book-cancel" class="fa fa-trash "></i>
-							</button>
-						</td>
-
-					</tr>
-					<tr>
-						<td>3</td>
-						<td>Daw Rosey
-						
-						</td>
-						<td>Dr.Sai Zaw Win Naing</td>
-						<td>12 Jun 2019</td>
-						<td>8:00 am to 11:00 am</td>
-						
-						<td class="text-center">
-							<button type="button" class="btn btn-delete" data-toggle="modal"
-								data-target="#myModel">
-								<i id="book-confirm" class="fa fa-check "></i>
-							</button>
-							<button type="button" class="btn btn-delete" data-toggle="modal"
-								data-target="#myModal">
-								<i id="book-cancel" class="fa fa-trash "></i>
-							</button>
-						</td>
-						</tr>
-						<tr>
-						<td>4</td>
-						<td>Daw Khin Khin Win
-								</td>
-						<td>Dr.Aung Ko Min</td>
-						<td>12 Jun 2019</td>
-						<td>8:00 am to 11:00 am</td>
-						
-						<td class="text-center">
-							<button type="button" class="btn btn-delete" data-toggle="modal"
-								data-target="#myModel">
-								<i id="book-confirm" class="fa fa-check "></i>
-							</button>
-							<button type="button" class="btn btn-delete" data-toggle="modal"
-								data-target="#myModal">
-								<i id="book-cancel" class="fa fa-trash "></i>
-							</button>
-						</td>
-
-					</tr>
-					<tr>
-						<td>5</td>
-						<td>U Kyaw Mya
-						
-						</td>
-						<td>Dr.Thu Thu Aung</td>
-						<td>12 Jun 2019</td>
-						<td>8:00 am to 11:00 am</td>
-						
-						<td class="text-center">
-							<button type="button" class="btn btn-delete" data-toggle="modal"
-								data-target="#myModel">
-								<i id="book-confirm" class="fa fa-check "></i>
-							</button>
-							<button type="button" class="btn btn-delete" data-toggle="modal"
-								data-target="#myModal">
-								<i id="book-cancel" class="fa fa-trash "></i>
-							</button>
-						</td>
-
-					</tr>
-					<tr>
-						<td>6</td>
-						<td>Daw Thin Kyi
-						
-						</td>
-						<td>Dr.Sai Zaw Win Naing</td>
-						<td>12 Jun 2019</td>
-						<td>8:00 am to 11:00 am</td>
-						
-						<td class="text-center">
-							<button type="button" class="btn btn-delete" data-toggle="modal"
-								data-target="#myModel">
-								<i id="book-confirm" class="fa fa-check "></i>
-							</button>
-							<button type="button" class="btn btn-delete" data-toggle="modal"
-								data-target="#myModal">
-								<i id="book-cancel" class="fa fa-trash "></i>
-							</button>
-						</td>
-
-					</tr>
-					<tr>
-						<td>7</td>
-						<td>Daw Thin Kyi
-						
-						</td>
-						<td>Dr.Sai Zaw Win Naing</td>
-						<td>12 Jun 2019</td>
-						<td>8:00 am to 11:00 am</td>
-						
-						<td class="text-center">
-							<button type="button" class="btn btn-delete" data-toggle="modal"
-								data-target="#myModel">
-								<i id="book-confirm" class="fa fa-check "></i>
-							</button>
-							<button type="button" class="btn btn-delete" data-toggle="modal"
-								data-target="#myModal">
-								<i id="book-cancel" class="fa fa-trash "></i>
-							</button>
-						</td>
-
-					</tr>
-					
+					</tr>					
 				</tbody>
 			</table>
-			<div id="bookings-page">
+			<!-- <div id="bookings-page">
 						
 							<ul class="pagination">
 								<li class="page-item"><a class="page-link" href="#"
@@ -236,7 +98,7 @@
 										<span class="sr-only">Next</span>
 								</a></li>
 							</ul>
-							</div>
+							</div> -->
 		</div>
 
 		<div class="modal fade" id="myModal" role="dialog">
@@ -270,27 +132,37 @@
 				</div>
 			</div>
 		</div>
+
 		
-		</div>
-		
-  <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
-  <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
-    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
-      <script>
-            $( function() {
-            	
-              $( "#datepicker" ).datepicker({
-                dateFormat : 'dd/mm/yy',
-                changeMonth : true,
-                changeYear : true,
-                yearRange: '-100y:c+nn',
-                monthRage:'undefined',
-                /* maxDate: '-1d', */
-              });
-              
-              $("#datepicker").datepicker({ dateFormat: "dd/mm/yy"}).datepicker("setDate", new Date());
-            } );
-            </script>
-	</section>
+ 
+	
+		<script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+		<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+		<script>
+         $(document).ready(function(){
+            $("#searching").on("keyup", function() {
+               var value = $(this).val().toLowerCase();
+               $("#booking-tr tr").filter(function() {
+                  $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
+               });
+            });
+         });
+      </script>
+		<script type="text/javascript">
+			$(document).ready(function() {
+				  $('#datepicker').datepicker({
+					  dateFormat : 'yy-mm-dd',
+						changeMonth : true,
+						changeYear : true,
+						yearRange : '-100y:c+nn',
+						monthRage : 'undefined', 
+				       onSelect : function (dateText, inst) {
+				          document.formId.action = "/partner/bookings/"+ dateText; 
+				          $('#formId').submit();
+				  }}).datepicker("setDate", new Date());
+				});
+			</script>
+			</section>
+	
 </body>
 </html>

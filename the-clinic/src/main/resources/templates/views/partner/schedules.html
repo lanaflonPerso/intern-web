@@ -115,7 +115,7 @@
 					<div class="row" id="search-bar">
 
 						<div id="search-doctor">
-							<input type="text" placeholder="Search doctor..."
+							<input type="text" placeholder="Search doctor..." id="searching"
 								class="form-control form-rounded" size="35">
 
 						</div>
@@ -145,7 +145,7 @@
 								</tr>
 							</thead>
 
-							<tbody>
+							<tbody id="schedule-tr">
 
 								<tr th:each="timeTable : ${timetables}">
 									<td class="text-center" th:text="${timeTable.id}"></td>
@@ -156,7 +156,7 @@
 									<td class="text-center"
 										th:text="${timeTable.clinicDoctor.doctor.specialities}"></td>
 									<td class="text-center" th:text="${timeTable.timeTo}"></td>
-									<td class="text-center" th:text="${timeTable.timeTo}"></td>
+									<td class="text-center" th:text="${timeTable.timeFrom}"></td>
 
 
 									<td class="text-center">
@@ -193,7 +193,15 @@
 			</div>
 		</div>
 		<script>
-		</script>
+         $(document).ready(function(){
+            $("#searching").on("keyup", function() {
+               var value = $(this).val().toLowerCase();
+               $("#schedule-tr tr").filter(function() {
+                  $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
+               });
+            });
+         });
+      </script>
 	</section>
 </body>
 </html>

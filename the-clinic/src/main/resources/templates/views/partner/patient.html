@@ -60,35 +60,35 @@
 		</h4>
 <div class="card mx-3" style="width:700px" >
  
-    <div class="card-body" > 
+    <div class="card-body"> 
         <div class="row">
             <div class="col-lg-4 col-md-4 d-flex justify-content-around">
                 <div class="patient-img-name text-center">
                     <img th:src="@{/resources/img/patient.png}"
 											class="m-profile-img-sidebar1" >
-											<br>
-											<br>
-                    <h5>U Bo Bo Htun</h5>
+											
+                    <h5 th:text="${patient.familyMember.name}" class="mt-4"></h5>
                 </div>
             </div>
             <div class="col-lg-8 col-md-8 d-flex justify-content-around">
                 <div class="patient-info">
                     <ul class="list-unstyled">
                         <li>
-                            <div class="patient-info-heading"><b>Date of Birth</b>: 20 Jun 2019</div>
+                            <div class="patient-info-heading"><b>Date of Birth</b>:<span th:text="${patient.familyMember.dob}"></span></div>
                         </li>
                         <li>
-                            <div class="patient-info-heading"><b>Gender</b>:  Male</div>
+                            <div class="patient-info-heading"><b>Gender</b>: <span th:text="${patient.familyMember.gender}"></span></div>
                         </li>
                         <li>
-                            <div class="patient-info-heading"><b>Blood Type</b>:  AB+</div>
+                            <div class="patient-info-heading"><b>Blood Type</b>: <span th:text="${patient.familyMember.bloodType}"></span></div>
+                        </li> 
+                        <li>
+                            <div class="patient-info-heading"><b>Phone no</b>:<span th:text="${patient.familyMember.phNo}"></span> </div>
                         </li>
                         <li>
-                            <div class="patient-info-heading"><b>Ph no</b>: 01774532675</div>
+                            <div class="patient-info-heading"><b>Clinic</b>:&nbsp;<span th:text="${patient.clinic.name}"></span> </div>
                         </li>
-                        <li>
-                            <div class="patient-info-heading"><b>Address</b>: 55th street, South Okkalapa</div>
-                        </li>
+                       
                     </ul>
                 </div>
             </div>

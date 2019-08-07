@@ -32,4 +32,10 @@ public interface BookingRepo extends BaseRepository<Booking, Long> {
 //	PartnerPatientChartDTO findbyBookingDateBetweenAndPartnerPhone(LocalDate startDate, LocalDate endDate,
 //			String phone);
 
+	@Query(value = "select booking.* from booking join clinic on booking.clinic_id=clinic.id where clinic.owner_phone=:phone and date(booking.booking_date)>=date(now())", nativeQuery = true)
+	List<Booking> findBookingByPartnerPhoneAndDate(String phone);
+
+	@Query(value = "select booking.* from booking join clinic on booking.clinic_id=clinic.id where clinic.owner_phone=:phone and date(booking.booking_date)=:date", nativeQuery = true)
+	List<Booking> findByDate(String phone, LocalDate date);
+
 }

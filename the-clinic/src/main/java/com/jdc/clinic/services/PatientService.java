@@ -63,4 +63,16 @@ public class PatientService {
 		return p;
 	}
 
+	public List<Patient> findPatientByClinicId(int id) {
+		return patientRepo.findByClinicId(id);
+	}
+
+	public List<Patient> getAllPatient() {
+		return patientRepo.findAll();
+	}
+
+	public Patient findById(long id) {
+		return patientRepo.getOne(id);
+	}
+
 }

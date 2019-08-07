@@ -10,7 +10,7 @@
 <body>
 	<div layout:fragment="dashboard-contents">
 
-		<form method="post" class="form mt-2"  th:action="@{/member/family}" th:object="${familyMember}">
+		<form method="post" class="form mt-2"  th:action="@{/member/family/create}" th:object="${familyMember}">
 		
 			<!-- <input type="hidden" th:field="*{id}" />
 			<input type="hidden" th:field="*{addrress.id}" />
@@ -51,7 +51,7 @@
 								<div class="form-group">
 									
 									<label>Enter date of birth</label>
-                                    <input type="text" th:field="*{dob}" class="form-control"  placeholder="dd/MM/yyyy" id="datepicker1"  required>
+                                    <input type="date" th:field="*{dob}" class="form-control"  placeholder="dd/MM/yyyy" id="datepicker1"  required>
                               	     <span
 									th:if="${#fields.hasErrors('dob')}" th:errors="*{dob}"  th:each="dob: *{dob}"
 									class="text-danger"></span>
@@ -88,7 +88,7 @@
 									
 										<label>Enter phone number</label>
 										<div class="phone-list">
-											<div class="phone-input" th:each="ph : *{phone}">
+											<div class="phone-input" th:each="ph : *{phNo}">
 												<input type="tel" th:value="${ph}" placeholder="Phone" name="phone1" class="form-control" required/>
 											</div>
 										</div>
@@ -97,7 +97,7 @@
 									
 								</div><!-- phone form -->
 								
-								<div class="form-group">
+								<!-- <div class="form-group">
 									
 									<label>Enter Address</label>
 									<textarea class="form-control" th:field="*{address}" placeholder="Address" required></textarea>
@@ -105,40 +105,53 @@
 									th:if="${#fields.hasErrors('address')}" th:errors="*{address}"
 									class="text-danger"></span>
 									
-								</div><!-- Address form -->
-                                
+								</div>Address form
+                                 -->
 								<div class="row">
 								<div class="col-md-6">
                                 <div class="form-group">
-                                  <p>Gender</p>
                                   
-                                  <div class="form-check form-check-inline">
+                                  
+                                  <!-- <div class="form-check form-check-inline">
                                   <input type="radio" name="gender" class="form-check-input" value="male"  checked th:field="*{gender}"  required>
                                   <label for="" class="form-check-label">Male</label>
                               </div>
                                 <div class="form-check form-check-inline">
                                 <input type="radio" name="gender" class="form-check-input" value="female"  th:field="*{gender}" required>
                                 <label for="" class="form-check-label">Female</label>
-                              </div>
+                              </div> -->
+                              
+                               <label for="gender">Gender</label>
+                               <select class="form-control" th:field="*{gender}" name="gender" id="gender">
+                               		<option th:each="g:${T(com.jdc.clinic.entity.FamilyMember$Gender).values()}"
+                               				th:value="${{g}}" th:text="${g}"></option>
+                               </select>
+                              
                            </div>
                    <!--  <div class="form-group"> -->
-                        <p>Blood Type</p>
-                        <div class="form-check form-check-inline">
-                            <input type="radio" name="bloodType" class="form-check-input"  th:field="*{bloodType}" required>
+                       
+                        <!-- <div class="form-check form-check-inline">
+                            <input type="radio" name="bloodType" class="form-check-input" value="A" th:field="*{bloodType}" required>
                             <label for="" class="form-check-label">A</label>
                         </div>
                         <div class="form-check form-check-inline">
-                            <input type="radio" name="bloodType" class="form-check-input"  th:field="*{bloodType}" required>
+                            <input type="radio" name="bloodType" class="form-check-input" value="B" th:field="*{bloodType}" required>
                             <label for="" class="form-check-label">B</label>
                         </div>
                         <div class="form-check form-check-inline">
-                            <input type="radio" name="bloodType" class="form-check-input"  th:field="*{bloodType}" required>
+                            <input type="radio" name="bloodType" class="form-check-input" value="O" th:field="*{bloodType}" required>
                             <label for="" class="form-check-label">O</label>
                         </div>
                         <div class="form-check form-check-inline">
-                            <input type="radio" name="bloodType" class="form-check-input" th:field="*{bloodType}" required>
+                            <input type="radio" name="bloodType" class="form-check-input" value="AB" th:field="*{bloodType}" required>
                             <label for="" class="form-check-label">AB</label>
-                        </div>
+                        </div> -->
+                        <label for="bloodType">Blood Type</label>
+                               <select class="form-control" th:field="*{bloodType}" name="btype" id="btype">
+                               		<option th:each="bt:${T(com.jdc.clinic.entity.FamilyMember$BloodType).values()}"
+                               				th:value="${{bt}}" th:text="${bt}"></option>
+                               </select>
+                              
                     </div>
                     </div>
                  	
@@ -152,8 +165,9 @@
 
 				<div class="card-footer text-right bg-transparent">
 					
-					<!-- <input type="submit" value="Submit" id="create-clinic" class="btn btn-outline-success"/> -->
-					<a class="btn btn-outline-success"  type="submit" role="button">Submit</a>
+					<input type="submit" value="Submit" id="create-clinic" class="btn btn-outline-success"/>
+					<!-- <a class="btn btn-outline-success"  type="submit" role="button">Submit</a> -->
+					
 				</div><!-- card footer -->
 
 			</div><!-- card -->

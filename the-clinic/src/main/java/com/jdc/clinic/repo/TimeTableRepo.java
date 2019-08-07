@@ -20,4 +20,6 @@ public interface TimeTableRepo extends BaseRepository<Timetable, Long> {
 	@Query(value = "update Timetable t set t.security.delete = true")
 	void deleteTimeTable(long id);
 
+	List<Timetable> findByClinicDoctorDoctorId(int id);
+
 }

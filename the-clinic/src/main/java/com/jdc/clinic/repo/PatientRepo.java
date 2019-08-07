@@ -19,4 +19,6 @@ public interface PatientRepo extends BaseRepository<Patient, Long> {
 	@Query(value = "select p from Patient p where p.clinic.id = :clinicID and p.familyMember.id = :familyMemberID")
 	Patient findByClinicIdAndFamilyMemberId(int clinicID, long familyMemberID);
 
+	List<Patient> findByClinicId(int clinicId);
+
 }

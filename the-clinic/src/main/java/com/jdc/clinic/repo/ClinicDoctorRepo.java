@@ -12,6 +12,8 @@ public interface ClinicDoctorRepo extends BaseRepository<ClinicDoctor, ClinicDoc
 
 	List<ClinicDoctor> findByClinicId(int clinicID);
 
+	List<ClinicDoctor> findByDoctorId(int doctorID);
+
 	Long countDoctorByClinicId(int clinicID);
 
 	@Query(value = "select count(distinct cd.doctor.id) from ClinicDoctor cd where cd.clinic.owner.phone = :phone")

@@ -11,12 +11,16 @@ import com.jdc.clinic.entity.ClinicDoctorPK;
 import com.jdc.clinic.entity.Doctor;
 import com.jdc.clinic.repo.ClinicDoctorRepo;
 import com.jdc.clinic.repo.DoctorRepo;
+import com.jdc.clinic.repo.TimeTableRepo;
 
 @Service
 public class DoctorService {
 
 	@Autowired
 	private ClinicDoctorRepo cdRepo;
+
+	@Autowired
+	private TimeTableRepo timeTableRepo;
 
 	@Autowired
 	private ClinicServices cService;
@@ -63,6 +67,23 @@ public class DoctorService {
 
 	public Doctor findByLicenseCode(String licenseCode) {
 		return dRepo.findByLicenseCode(licenseCode);
+	}
+
+	public void delete(int doctorID) {
+		// Doctor Delete
+		dRepo.getOne(doctorID).getSecurity().setDelete(true);
+
+		// Clinic DoctorDelete
+		cdRepo.findByDoctorId(doctorID).stream().map(cd -> {
+			cd.getSecurity().setDelete(true);
+			return cdRepo.save(cd);
+		});
+
+		// TimeTable Delete
+		timeTableRepo.findByClinicDoctorDoctorId(doctorID).stream().map(timetable -> {
+			timetable.getSecurity().setDelete(true);
+			return timeTableRepo.save(timetable);
+		});
 	}
 
 }

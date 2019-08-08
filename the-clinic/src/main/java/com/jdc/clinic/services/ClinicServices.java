@@ -11,6 +11,7 @@ import org.springframework.transaction.annotation.Transactional;
 import com.jdc.clinic.entity.Clinic;
 import com.jdc.clinic.entity.Doctor;
 import com.jdc.clinic.entity.Timetable;
+import com.jdc.clinic.repo.ClinicDoctorRepo;
 import com.jdc.clinic.repo.ClinicRepo;
 import com.jdc.clinic.repo.TimeTableRepo;
 import com.jdc.clinic.repo.TownshipRepo;
@@ -20,6 +21,9 @@ public class ClinicServices {
 
 	@Autowired
 	private ClinicRepo clinicRepo;
+
+	@Autowired
+	private ClinicDoctorRepo clinicDoctorRepo;
 
 	@Autowired
 	private TimeTableRepo timeTableRepo;
@@ -57,7 +61,8 @@ public class ClinicServices {
 	}
 
 	public List<Clinic> findAll() {
-		return clinicRepo.findAll();
+		return clinicRepo.findAll().stream().filter(clinic -> !clinic.getSecurity().isDelete())
+				.collect(Collectors.toList());
 	}
 
 	public Clinic findByName(String name) {
@@ -65,7 +70,28 @@ public class ClinicServices {
 	}
 
 	public List<Clinic> findByOwnerPhone(String phone) {
-		return clinicRepo.findByOwnerPhone(phone);
+		return clinicRepo.findByOwnerPhone(phone).stream().filter(clinic -> !clinic.getSecurity().isDelete())
+				.collect(Collectors.toList());
+	}
+
+	public void delete(int clinicID) {
+
+		// clinic Delete
+		Clinic clinic = clinicRepo.getOne(clinicID);
+		clinic.getSecurity().setDelete(true);
+		clinicRepo.save(clinic);
+
+		// clinicDoctor Delete
+		clinicDoctorRepo.findByClinicId(clinicID).stream().map(cd -> {
+			cd.getSecurity().setDelete(true);
+			return clinicDoctorRepo.save(cd);
+		});
+
+		// Timetable Delete
+		timeTableRepo.findByClinicDoctorClinicId(clinicID).stream().map(timetable -> {
+			timetable.getSecurity().setDelete(true);
+			return timeTableRepo.save(timetable);
+		});
 	}
 
 }

@@ -53,4 +53,9 @@ public class ClinicDoctorService {
 		return cliRepo.save(clincDoctor);
 
 	}
+
+	public void delete(int clinicID) {
+		// Clinic DoctorDelete
+		clinicRepo.getOne(clinicID).getSecurity().setDelete(true);
+	}
 }

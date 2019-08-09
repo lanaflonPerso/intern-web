@@ -4,6 +4,8 @@ import java.time.DayOfWeek;
 import java.util.Arrays;
 import java.util.List;
 
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,14 +18,17 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.jdc.clinic.entity.Account;
 import com.jdc.clinic.entity.Clinic;
 import com.jdc.clinic.entity.OpenTime;
+import com.jdc.clinic.entity.Partner;
 import com.jdc.clinic.entity.Timetable;
 import com.jdc.clinic.entity.Township;
 import com.jdc.clinic.services.ClinicDoctorService;
 import com.jdc.clinic.services.ClinicServices;
 import com.jdc.clinic.services.LocationService;
 import com.jdc.clinic.services.OpenTimeService;
+import com.jdc.clinic.services.PartnerService;
 import com.jdc.clinic.services.TimeTableService;
 
 @Controller
@@ -45,8 +50,16 @@ public class ClinicController {
 	@Autowired
 	private TimeTableService timeTableService;
 
+	@Autowired
+	private PartnerService pService;
+
 	@GetMapping("{id}")
-	public String findById(@PathVariable int id, ModelMap model) {
+	public String findById(@PathVariable int id, ModelMap model, HttpServletRequest request) {
+
+		HttpSession session = request.getSession(true);
+
+		Partner partner = pService.getPartner(((Account) session.getAttribute("loginUser")).getPhone());
+		session.setAttribute("partnerUser", partner);
 
 		model.put("clinic", clinicService.findById(id));
 		model.put("days", Arrays.asList(DayOfWeek.values()));
@@ -99,9 +112,15 @@ public class ClinicController {
 		return "views/partner/clinic-edit";
 	}
 
-	@PostMapping("{id}/delete")
-	public String deleteClinicById(@PathVariable int id) {
-		return String.format("redirect:/partner/clinics/%d", id);
+	@GetMapping("{id}/delete")
+	public String deleteClinicById(@PathVariable int id, HttpServletRequest request) {
+
+		HttpSession session = request.getSession(true);
+		Partner partner = pService.getPartner(((Account) session.getAttribute("loginUser")).getPhone());
+		session.setAttribute("partnerUser", partner);
+
+		clinicService.delete(id);
+		return "redirect:/home";
 	}
 
 	@GetMapping("24hr/{id}")

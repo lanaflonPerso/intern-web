@@ -7,7 +7,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import com.jdc.clinic.entity.ClinicDoctorPK;
 import com.jdc.clinic.entity.Doctor;
 import com.jdc.clinic.repo.ClinicDoctorRepo;
 import com.jdc.clinic.repo.DoctorRepo;
@@ -21,9 +20,6 @@ public class DoctorService {
 
 	@Autowired
 	private TimeTableRepo timeTableRepo;
-
-	@Autowired
-	private ClinicServices cService;
 
 	@Autowired
 	private DoctorRepo dRepo;
@@ -49,12 +45,6 @@ public class DoctorService {
 
 	public List<Doctor> findAll() {
 		return dRepo.findAll();
-	}
-
-	public void delete(Doctor d) {
-		cdRepo.delete(
-				cdRepo.findById(new ClinicDoctorPK(cService.findByName(d.getHospital()).getId(), d.getId())).get());
-		dRepo.delete(d);
 	}
 
 	public Doctor findLast() {

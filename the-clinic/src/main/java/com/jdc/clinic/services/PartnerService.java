@@ -33,7 +33,7 @@ public class PartnerService {
 	DoctorRepo doctorRepo;
 
 	public Long countClinicByPartner(String phone) {
-		return clinicRepo.countByOwnerPhone(phone);
+		return clinicRepo.countByOwnerPhoneAndSecurityDeleteFalse(phone);
 	}
 
 	public Partner getPartner(String phone) {

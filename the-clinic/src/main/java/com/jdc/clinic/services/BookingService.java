@@ -129,7 +129,7 @@ public class BookingService {
 		String[] colorArr = { "rgba(255, 99, 132, 1)", "rgba(54, 162, 235, 1)", "rgba(255, 206, 86, 1)",
 				"rgba(75, 192, 192, 1)", "rgba(153, 102, 255, 1)", "rgba(255, 159, 64, 1)" };
 
-		List<Clinic> clinicList = repo.findByOwnerPhone(phone);
+		List<Clinic> clinicList = repo.findByOwnerPhoneAndSecurityDeleteFalse(phone);
 
 		List<LineChartDataSet> dataSetList = new ArrayList<>();
 
@@ -174,7 +174,7 @@ public class BookingService {
 
 	// Partner Booking
 	public List<Clinic> getClinicByPhone(String phone) {
-		return repo.findByOwnerPhone(phone);
+		return repo.findByOwnerPhoneAndSecurityDeleteFalse(phone);
 	}
 
 	public List<Booking> getBookingByPartner(String partnerPhone) {

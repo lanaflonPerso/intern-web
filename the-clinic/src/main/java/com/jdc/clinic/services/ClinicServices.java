@@ -32,7 +32,7 @@ public class ClinicServices {
 	private TownshipRepo townshipRepo;
 
 	public List<Clinic> search(String keyword) {
-		return clinicRepo.findByNameContainingIgnoreCase(keyword);
+		return clinicRepo.findByNameContainingIgnoreCaseAndSecurityDeleteFalse(keyword);
 	}
 
 	@Transactional
@@ -65,33 +65,35 @@ public class ClinicServices {
 				.collect(Collectors.toList());
 	}
 
-	public Clinic findByName(String name) {
-		return clinicRepo.findByNameContainingIgnoreCase(name).get(0);
+	public List<Clinic> findByName(String name) {
+		return clinicRepo.findByNameContainingIgnoreCaseAndSecurityDeleteFalse(name);
 	}
 
 	public List<Clinic> findByOwnerPhone(String phone) {
-		return clinicRepo.findByOwnerPhone(phone).stream().filter(clinic -> !clinic.getSecurity().isDelete())
-				.collect(Collectors.toList());
+		return clinicRepo.findByOwnerPhoneAndSecurityDeleteFalse(phone);
 	}
 
 	public void delete(int clinicID) {
 
 		// clinic Delete
-		Clinic clinic = clinicRepo.getOne(clinicID);
-		clinic.getSecurity().setDelete(true);
-		clinicRepo.save(clinic);
+//		Clinic clinic = clinicRepo.getOne(clinicID);
+//		clinic.getSecurity().setDelete(true);
+//		clinicRepo.save(clinic);
 
 		// clinicDoctor Delete
 		clinicDoctorRepo.findByClinicId(clinicID).stream().map(cd -> {
+			System.out.println(cd.getClinic().getName());
+
+			cd.getClinic().getSecurity().setDelete(true);
 			cd.getSecurity().setDelete(true);
 			return clinicDoctorRepo.save(cd);
-		});
+		}).collect(Collectors.toList());
 
 		// Timetable Delete
 		timeTableRepo.findByClinicDoctorClinicId(clinicID).stream().map(timetable -> {
 			timetable.getSecurity().setDelete(true);
 			return timeTableRepo.save(timetable);
-		});
+		}).collect(Collectors.toList());
 	}
 
 }

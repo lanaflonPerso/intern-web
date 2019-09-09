@@ -1,5 +1,7 @@
 package com.jdc.clinic.services;
 
+import java.time.LocalDate;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -43,8 +45,13 @@ public class PartnerService {
 		}).orElse(new Partner());
 	}
 
-	public Long getbookingCountByPartnerPhone(String phone) {
-		return bookingRepo.countBookingsByPartnerPhone(phone);
+	public Long confrimedBookingsCount(String phone) {
+		return bookingRepo.countBookingsByPartnerPhoneToday(phone, LocalDate.now());
+	}
+
+	public Long ApplyBookingsCount(String phone) {
+		return bookingRepo.countBookingsByPartnerPhone(phone, LocalDate.now());
+
 	}
 
 	public Long getPatientCountByPartnerPhone(String phone) {
@@ -53,6 +60,7 @@ public class PartnerService {
 
 	public Long getDoctorCountByParterPhone(String phone) {
 		return clinicDoctorRepo.countDistinctDoctorByClinicOwnerPhone(phone);
+
 	}
 
 }

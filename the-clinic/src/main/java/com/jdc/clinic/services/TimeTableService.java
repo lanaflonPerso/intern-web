@@ -87,9 +87,11 @@ public class TimeTableService {
 		Map<String, Object> params = new HashMap<>();
 		params.put("clinicID", clinicID);
 
-		String jpql1 = "select distinct t.clinicDoctor.doctor from Timetable t where t.clinicDoctor.clinic.id = :clinicID";
+//		String jpql1 = "select distinct t.clinicDoctor.doctor from Timetable t where t.clinicDoctor.clinic.id = :clinicID";
+		String jpql4 = "select distinct cd.doctor from ClinicDoctor cd where cd.clinic.id = :clinicID";
 
-		List<Doctor> dList = timeTableRepo.find(jpql1, params, Doctor.class);
+		List<Doctor> dList = timeTableRepo.find(jpql4, params, Doctor.class);
+		System.out.println(dList.size());
 
 		dList.forEach(doctor -> {
 
@@ -105,7 +107,8 @@ public class TimeTableService {
 				str += d.getDisplayName(TextStyle.SHORT, Locale.getDefault()) + ", ";
 			}
 
-			dtoList.add(new DoctorTimetableDTO(doctor, str.substring(0, str.length() - 2)));
+			dtoList.add(new DoctorTimetableDTO(doctor,
+					!str.isEmpty() ? str.substring(0, str.length() - 2) : "no schedule"));
 		});
 
 		return dtoList;

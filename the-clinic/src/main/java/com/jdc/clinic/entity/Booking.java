@@ -13,6 +13,8 @@ import javax.persistence.JoinColumn;
 import javax.persistence.JoinColumns;
 import javax.persistence.ManyToOne;
 
+import org.springframework.format.annotation.DateTimeFormat;
+
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
@@ -37,6 +39,7 @@ public class Booking implements Serializable {
 	@ManyToOne
 	private Patient patient;
 
+	@DateTimeFormat(pattern = "yyyy-MM-dd")
 	private LocalDate bookingDate;
 
 	@ManyToOne

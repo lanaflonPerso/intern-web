@@ -45,9 +45,10 @@ public class PartnerHomeController {
 
 		Partner partner = pService.getPartner(((Account) session.getAttribute("loginUser")).getPhone());
 		session.setAttribute("partnerUser", partner);
+		session.setAttribute("newBookingsCount", pService.ApplyBookingsCount(partner.getPhone()));
 
 		model.put("patientCount", pService.getPatientCountByPartnerPhone(partner.getPhone()));
-		model.put("bookingCount", pService.getbookingCountByPartnerPhone(partner.getPhone()));
+		model.put("bookingCount", pService.confrimedBookingsCount(partner.getPhone()));
 		model.put("doctorCount", pService.getDoctorCountByParterPhone(partner.getPhone()));
 		model.put("clinicCount", pService.countClinicByPartner(partner.getPhone()));
 

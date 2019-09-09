@@ -1,6 +1,8 @@
 package com.jdc.clinic.services;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -56,12 +58,20 @@ public class MemberService {
 	 * public Long getEventCountByMemberPhone(String phone) { return
 	 * meRepo.countByMemberPhone(phone); }
 	 */
-	public List<FamilyMember> findAll() {
-		return fmRepo.findAll();
+	public List<FamilyMember> findAll(String phone) {
+		System.out.println(phone);
+		Map<String, Object> params = new HashMap<String, Object>();
+		params.put("phone", phone);
+		return fmRepo.find(
+				"select fm from FamilyMember fm where fm.security.delete = false and fm.member.phone = :phone", params);
 	}
 
 	public Optional<FamilyMember> findMemberById(long id) {
 		return fmRepo.findById(id);
+	}
+
+	public FamilyMember findById(long id) {
+		return fmRepo.getOne(id);
 	}
 
 	public FamilyMember save(FamilyMember familyMember) {
@@ -69,6 +79,7 @@ public class MemberService {
 	}
 
 	public FamilyMember delete(FamilyMember familyMember) {
+		fmRepo.getOne(familyMember.getId()).getSecurity().setDelete(true);
 		return fmRepo.save(familyMember);
 	}
 

@@ -6,17 +6,15 @@
 <head>
 <meta charset="ISO-8859-1">
 <title>New Family Member</title>
+		<script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+        <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+         <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+		
 </head>
 <body>
 	<div layout:fragment="dashboard-contents">
 
 		<form method="post" class="form mt-2"  th:action="@{/member/family/create}" th:object="${familyMember}">
-		
-			<!-- <input type="hidden" th:field="*{id}" />
-			<input type="hidden" th:field="*{addrress.id}" />
-			<input type="hidden" th:if="*{owner}" name="owner" th:field="*{owner.phone}"/>
-			<input type="hidden" th:unless="*{owner}" name="owner" th:value="${session.partnerUser.phone}"/>
-			 -->
 		
 			<div class="card">
 
@@ -38,6 +36,8 @@
 							<div class="col-12 col-md-6">
 								
 								<div class="form-group">
+								
+									<input type = "text" th:field="*{id}" class="d-none"/>
 									
 									<label>Enter member name</label>
 									<input type="text" th:field="*{name}" placeholder="Name" name="name" class="form-control" required>
@@ -65,17 +65,7 @@
 									th:if="${#fields.hasErrors('relationship')}" th:errors="*{relationship}"
 									class="text-danger"></span>
 									
-								</div><!-- Relationship form -->
-								
-								<!-- <div class="form-group">
-									
-									<label>Enter Allergic Medicines</label>
-									<textarea class="form-control" th:field="*{alergicMedicnes}" placeholder="Allergic Medicines" required></textarea>
-									 <span
-									th:if="${#fields.hasErrors('alergicMedicines')}" th:errors="*{alergicMedicines}"
-									class="text-danger"></span>
-									
-								</div> Allergic form  -->								
+								</div>
 															
 									
 								
@@ -87,69 +77,47 @@
 								<div class="form-group">
 									
 										<label>Enter phone number</label>
-										<div class="phone-list">
-											<div class="phone-input" th:each="ph : *{phNo}">
-												<input type="tel" th:value="${ph}" placeholder="Phone" name="phone1" class="form-control" required/>
+										
+										 <div class="phone-list">
+										
+											<div class="container-fluid phone-input" th:each="ph : *{phNo}">
+											
+												<div class="row">
+												
+													<input type="tel" placeholder="Phone" name="phNo" class="mt-1 col-11 form-control" th:value="${ph}"/>
+													
+													<button type="button" class="ml-1 btn btn-outline-danger mt-1 btn-remove-phone"><i class="fal fa-times"></i></button>
+													
+												</div>
+												
 											</div>
+											
 										</div>
+										 
+										
 										<button type="button" class="btn mt-1 form-control btn-outline-info btn-add-phone" style="border-style: dashed;"><span><i class="far fa-plus"></i></span> Add New</button>
 										
 									
 								</div><!-- phone form -->
 								
-								<!-- <div class="form-group">
-									
-									<label>Enter Address</label>
-									<textarea class="form-control" th:field="*{address}" placeholder="Address" required></textarea>
-									 <span
-									th:if="${#fields.hasErrors('address')}" th:errors="*{address}"
-									class="text-danger"></span>
-									
-								</div>Address form
-                                 -->
 								<div class="row">
 								<div class="col-md-6">
                                 <div class="form-group">
                                   
                                   
-                                  <!-- <div class="form-check form-check-inline">
-                                  <input type="radio" name="gender" class="form-check-input" value="male"  checked th:field="*{gender}"  required>
-                                  <label for="" class="form-check-label">Male</label>
-                              </div>
-                                <div class="form-check form-check-inline">
-                                <input type="radio" name="gender" class="form-check-input" value="female"  th:field="*{gender}" required>
-                                <label for="" class="form-check-label">Female</label>
-                              </div> -->
-                              
+                                 
                                <label for="gender">Gender</label>
                                <select class="form-control" th:field="*{gender}" name="gender" id="gender">
                                		<option th:each="g:${T(com.jdc.clinic.entity.FamilyMember$Gender).values()}"
-                               				th:value="${{g}}" th:text="${g}"></option>
+                               				th:value="${g}" th:text="${g}"></option>
                                </select>
                               
                            </div>
-                   <!--  <div class="form-group"> -->
-                       
-                        <!-- <div class="form-check form-check-inline">
-                            <input type="radio" name="bloodType" class="form-check-input" value="A" th:field="*{bloodType}" required>
-                            <label for="" class="form-check-label">A</label>
-                        </div>
-                        <div class="form-check form-check-inline">
-                            <input type="radio" name="bloodType" class="form-check-input" value="B" th:field="*{bloodType}" required>
-                            <label for="" class="form-check-label">B</label>
-                        </div>
-                        <div class="form-check form-check-inline">
-                            <input type="radio" name="bloodType" class="form-check-input" value="O" th:field="*{bloodType}" required>
-                            <label for="" class="form-check-label">O</label>
-                        </div>
-                        <div class="form-check form-check-inline">
-                            <input type="radio" name="bloodType" class="form-check-input" value="AB" th:field="*{bloodType}" required>
-                            <label for="" class="form-check-label">AB</label>
-                        </div> -->
+               
                         <label for="bloodType">Blood Type</label>
                                <select class="form-control" th:field="*{bloodType}" name="btype" id="btype">
                                		<option th:each="bt:${T(com.jdc.clinic.entity.FamilyMember$BloodType).values()}"
-                               				th:value="${{bt}}" th:text="${bt}"></option>
+                               				th:value="${bt}" th:text="${bt}"></option>
                                </select>
                               
                     </div>
@@ -166,18 +134,15 @@
 				<div class="card-footer text-right bg-transparent">
 					
 					<input type="submit" value="Submit" id="create-clinic" class="btn btn-outline-success"/>
-					<!-- <a class="btn btn-outline-success"  type="submit" role="button">Submit</a> -->
 					
 				</div><!-- card footer -->
 
 			</div><!-- card -->
 			
 		</form>
-		<script src="https://code.jquery.com/jquery-1.12.4.js"></script>
-        <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
-         <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
-		
+
 		<script>
+		
 
 		$(document.body).on('click','.btn-remove-phone',function(){
 			$(this).closest('.phone-input').remove();
@@ -188,7 +153,7 @@
 			$('.phone-list').append(''+
 					'<div class="container-fluid phone-input">'+
 					'<div class="row">'+
-					'<input type="tel" placeholder="Phone" name="phone'+index+'" class="mt-1 col-11 form-control"/>'+
+					'<input type="tel" placeholder="Phone" name="phNo" class="mt-1 col-11 form-control"/>'+
 					'<button type="button" class="ml-1 btn btn-outline-danger mt-1 btn-remove-phone"><i class="fal fa-times"></i></button>'+
 					'</div></div>'
 					);
@@ -210,7 +175,7 @@
 		});
         $( function() {
               $( "#datepicker1" ).datepicker({
-                dateFormat : 'dd/mm/yy',
+                dateFormat : 'yy-mm-dd',
                 changeMonth : true,
                 changeYear : true,
                 yearRange: '-100y:c+nn',
@@ -233,6 +198,9 @@
 					'</div></div>'
 					);
 		});
+
+
+		
 		</script>	
 	</div>
 </body>

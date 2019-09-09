@@ -6,17 +6,10 @@
 <head>
 <meta charset="UTF-8">
 <title>Family Detail</title>
-</head>
-<body>
-<section layout:fragment="dashboard-contents">
 
-<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
- integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
- 
+
 <style>
-body {
-  font-family: Arial, Helvetica, sans-serif;
-}
+
 .flip-card{
  background-color: #29afb9bd;
  width:350px;
@@ -26,72 +19,60 @@ body {
 }
 
 </style>
+
 </head>
 <body>
-<div class="container mt-3 text-center"><h3><b>Member List</b></h3></div>
- <div class="container-fluid mt-5">
-<div class="card-columns">
+<section layout:fragment="dashboard-contents">
 
-  <!-- Card-1 -->
- <div class="flip-card" id="HmuTable"> 
-    <div  th:each="fm : ${familyMember}">
-    <div>
-        <h4 class="text-center">Details</h4> 
-        <div class="dropdown">
-	        <a href="#" class="action-icon dropdown-toggle-split" data-toggle="dropdown" aria-expanded="true">
-	        <i class="fas fa-ellipsis-h"></i></a>
-			<div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-			 <a class="dropdown-item" href="#"
-			   th:href="@{/member/family/edit/{id}(id=${fm.id})}" >
-				<i class="	fas fa-edit"></i> Edit</a>
-					<button class="dropdown-item" type="button"
-					 onclick="deleteCard(this)"
-					 th:href="@{/member/family/delete/{id}(id=${fm.id})}">
-						<i class="fas fa-trash"></i> Delete
-					</button>
-			</div>
-	    </div>
 	
-	      <div class="card width: 350px; height: auto ">
-	        <div class="card-body text-left">
-	           <div>
-	           		<p><b>Name : </b><span th:text="${fm.name}"></span></p>
-	           		<p><b>Date Of Birth : </b><span th:text="${fm.dob}"></span></p>
-	           		<p><b>Relationship :</b> <span th:text="${fm.relationship}"></span></p>
-	           		<p><b>Phone Number :</b> <span th:each="phno : ${fm.phNo}"></span></p>
-	           
-	           		<p><b>Blood Type : </b><span th:text="${fm.bloodType}"></span></p>
-	           		<p><b>Allergic Medicines : </b><span th:each="alergic :${fm.alergicMedicnes}">
-	           			<span th:text={alergic.value}></span>
-	           		</span>
-	           		</p>
-	           		<p><b>Gender : </b><span th:text="${fm.gender}"></span></p>
-	                      		
-	           </div>
-	          </div>
-	     </div>
-    </div><!--  card  -->
-    </div>
-  </div>
-</div>
+	<div class="container">
+	
+	<div>
+		<p style="font-size: 20px;" class="ml-3">Family Member List</p>
+	</div>
 
-</div>
+		<table class="table">
+			<thead>
+				<tr>
+					<th>Name</th>
+					<th>Age</th>
+					<th>Relationship</th>
+					<th>Phone</th>
+					<th></th>
+				</tr>
+			</thead>
+			<tbody th:if="${familyMember.isEmpty()}">
+				<tr>
+					<td colspan="5" class="text-center">No Member</td>
+				</tr>
+			</tbody>
+			<tbody>
+				<tr th:each="fm: ${familyMember}">
+					<td th:text="${fm.name}"></td>
+					<td th:text="${fm.age}"></td>
+					<td th:text="${fm.relationship}"></td>
+					<td>
+					<!-- class="label label-success ml-auto badge"
+						style="background-color: green; color: white"> -->
+						<div class="label label-success badge">
+							<div th:text="${ph}"  th:each="ph: ${fm.phNo}"></div>
+						</div>
+					</td>
+					
+					<td>
+						<a class="btn btn-outline-success" th:href="@{/member/family/edit/{id}(id=${fm.id})}"><i
+									class="fal fa-pencil-alt text-success"
+									style="font-size: 20px; color: black;"></i> Edit</a>
+						<a class="btn btn-outline-danger" th:href="@{/member/family/delete/{id}(id=${fm.id})}"><i
+									class="fal fa-trash-alt text-danger"
+									style="font-size: 20px; color: black;"></i> Delete</a>
+					</td>
+				</tr>
+			</tbody>
+		</table>
+	
+	</div>
 
-
-<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
-integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous">
-</script>
- <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
- <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
-<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
-
-<script>
-function deleteCard(r) {
-	var i = r.parentNode.parentNode.parentNode.parentNode.cardIndex;
-	document.getElementById("HmuTable").deleteCard(i);
-}
-</script>
-           
 </section>
 </body>
 </html>

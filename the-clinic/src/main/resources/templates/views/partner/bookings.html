@@ -6,39 +6,43 @@
 <head>
 <meta charset="UTF-8">
 <link rel="stylesheet" href="/resources/css/custom.css">
- <link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css" />
-			
+<link rel="stylesheet"
+	href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css" />
+
 
 <title>Bookings</title>
 </head>
 <body>
 	<section layout:fragment="dashboard-contents">
 		<div class="container">
-			<h4 class="mx-3 my-3"><i class="fa fa-book" ></i> Booking Lists</h4>
-				<!-- start selection -->
-				<div class="row mx-3 my-2" id="div-select">
-				
-					<div id="selection">
-		
-						<input type="text" placeholder="Search Booking..." id="searching"
-							class="form-control form-rounded" size="35">
-		
-					</div>
-						<div id="selection" class="row">
+			<h4 class="mx-3 my-3">
+				<i class="fa fa-book"></i> Booking Lists
+			</h4>
+			<!-- start selection -->
+			<div class="row mx-3 my-2" id="div-select">
 
-							<p class="col pt-2" style="size: 20px;">
-								<b>Search by date</b>
-							</p>
-							<form method="get" id="formId" action="/partner/bookings/" name="formId">
-							<input type="text" class="form-control col" id="datepicker"
-								size="12px">
-							</form>
-						</div>
-	
+				<div id="selection">
+
+					<input type="text" placeholder="Search Booking..." id="searching"
+						class="form-control form-rounded" size="35">
+
 				</div>
+				<div id="selection" class="row">
+
+					<p class="col pt-2" style="size: 20px;">
+						<b>Search by date</b>
+					</p>
+					<form method="get" id="formId" action="/partner/bookings/"
+						name="formId">
+						<input type="text" class="form-control col" id="datepicker"
+							size="12px">
+					</form>
+				</div>
+
+			</div>
 		</div>
 		<!-- End of Container Header Part -->
-		<div class="row mx-3" th:if="${not #lists.isEmpty(bookings)}">
+		<div class="row mx-3">
 			<table class="table  table-responsive-md  table-hover table-bordered"
 				id="table-bookings">
 				<thead id="table-bookings-thead">
@@ -49,56 +53,63 @@
 						<td class="text-center">Date</td>
 						<td class="text-center">Time</td>
 						<td class="text-center">Status</td>
-						
+
 
 					</tr>
 				</thead>
+				 <tbody th:unless="${not #lists.isEmpty(bookings)}">
+				 	<tr>
+				 	<td colspan="6" class="text-center">No Booking</td>
+				 	</tr>
+				 </tbody>
 				<tbody id="booking-tr">
 					<tr th:each="booking,iterationStatus :${bookings}">
 						<td class="text-center" th:text="${iterationStatus.count}"></td>
 						<td>
 							<p style="float: left"
-								th:text="${booking.patient?.familyMember?.name}"></p> <span
-							class="label label-success ml-auto badge mt-1"
-							style="background-color: #ef6c00; color: white; float: right; width: 80px;"
+								th:text="${booking.patient?.familyMember?.name}"></p>
+							
+							<span th:if="${booking.status.toString().equals('Apply')}" class="label label-success ml-auto badge mt-1"
+							style="background-color: #ffbb00; color: white; float: right; width: 80px;">Pending</span>
+							
+							<span th:if="${booking.status.toString().equals('Confirmed')}" class="label label-success ml-auto badge mt-1"
+							style="background-color: #00aa00; color: white; float: right; width: 80px;"
 							th:text="${booking.status}"></span>
+							
+							<span th:if="${booking.status.toString().equals('Cancel')}" class="label label-success ml-auto badge mt-1"
+							style="background-color: #ff0000; color: white; float: right; width: 80px;"
+							th:text="${booking.status}"></span>
+
+
+
+
+
 						</td>
-						
+
 						<td class="text-center"
 							th:text="${booking.clinicDoctor?.doctor?.name}"></td>
 						<td class="text-center" th:text="${booking.bookingDate}"></td>
 						<td class="text-center"
 							th:text="${booking.timeTable.timeFrom} + ' to '+ ${booking.timeTable.timeTo}"></td>
 						<td class="text-center">
-						<button type="button" class="btn btn-delete" data-toggle="modal"
-								data-target="#myModel">
-								<i id="book-confirm" class="fa fa-check "></i>
-							</button>
-							<button type="button" class="btn btn-delete" data-toggle="modal"
-								data-target="#myModal">
-								<i id="book-cancel" class="fal fa-trash-alt fa-lg"></i>
-							</button>
+							<form th:if="${booking.status.toString().equals('Apply')}"
+								th:action="'bookings/confirm/'+${booking.id}" method="get">
+								<button type="submit" class="btn btn-delete">
+									<i id="book-confirm" class="fa fa-check "></i>
+								</button>
+							</form>
+							<form th:if="${booking.status.toString().equals('Apply')}"
+								th:action="'bookings/cancel/'+${booking.id}" method="get">
+								<button type="submit" class="btn btn-delete">
+									<i id="book-cancel" class="fal fa-trash-alt fa-lg"></i>
+								</button>
+							</form>
 						</td>
 
-					</tr>					
+					</tr>
 				</tbody>
 			</table>
-			<!-- <div id="bookings-page">
-						
-							<ul class="pagination">
-								<li class="page-item"><a class="page-link" href="#"
-									aria-label="Previous"> <span aria-hidden="true">&laquo;</span>
-										<span class="sr-only">Previous</span>
-								</a></li>
-								<li class="page-item"><a class="page-link" href="#">1</a></li>
-								<li class="page-item"><a class="page-link" href="#">2</a></li>
-								<li class="page-item"><a class="page-link" href="#">3</a></li>
-								<li class="page-item"><a class="page-link" href="#"
-									aria-label="Next"> <span aria-hidden="true">&raquo;</span>
-										<span class="sr-only">Next</span>
-								</a></li>
-							</ul>
-							</div> -->
+
 		</div>
 
 		<div class="modal fade" id="myModal" role="dialog">
@@ -110,13 +121,14 @@
 
 						<h4 class="modal-title" style="color: red">Are you sure to
 							cancel?</h4>
-						<button type="button" class="btn btn-outline-danger"
+
+						<button type="submit" class="btn btn-outline-danger"
 							data-dismiss="modal">Yes</button>
 					</div>
 				</div>
 			</div>
 		</div>
-		
+
 		<div class="modal fade" id="myModel" role="dialog">
 			<div class="modal-dialog">
 
@@ -127,15 +139,15 @@
 						<h4 class="modal-title" style="color: green">Are you sure to
 							confirm?</h4>
 						<button type="button" class="btn btn-outline-success"
-							data-dismiss="modal">Yes</button>
+							id="btn-confirm" data-dismiss="modal">Yes</button>
 					</div>
 				</div>
 			</div>
 		</div>
 
-		
- 
-	
+
+
+
 		<script src="https://code.jquery.com/jquery-1.12.4.js"></script>
 		<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
 		<script>
@@ -149,7 +161,8 @@
          });
       </script>
 		<script type="text/javascript">
-			$(document).ready(function() {
+
+		$(document).ready(function() {
 				  $('#datepicker').datepicker({
 					  dateFormat : 'yy-mm-dd',
 						changeMonth : true,
@@ -157,12 +170,38 @@
 						yearRange : '-100y:c+nn',
 						monthRage : 'undefined', 
 				       onSelect : function (dateText, inst) {
-				          document.formId.action = "/partner/bookings/"+ dateText; 
-				          $('#formId').submit();
+				    	   $.ajax({
+								url: "http://localhost/partner/bookings/"+ dateText,
+								type: "GET",
+								dataType: "JSON",
+								contentType: 'application/json',
+								mimeType: 'application/json',
+								success: function(data){
+									console.log(data);
+									$("#booking-tr").empty();
+									$.each(data, function(k, v){
+										$("#booking-tr").append(""+ 
+										"<tr>"+
+										"<td class='text-center'>"+(k+1)+"</td>"+
+										"<td>"+v.patient.familyMember.name+"<span class='label label-success ml-auto badge mt-1' style='background-color: #ef6c00; color: white; float: right; width: 80px;'>"+v.status+"</span>"+"</td>"+
+										"<td class='text-center'>"+v.clinicDoctor.doctor.name+"</td>"+
+										"<td class='text-center'>"+v.bookingDate[0]+"-"+v.bookingDate[1]+"-"+v.bookingDate[2]+"</td>"+
+										"<td class='text-center'>"+v.timeTable.timeFrom[0]+":"+v.timeTable.timeFrom[1]+" to "+v.timeTable.timeTo[0]+":"+v.timeTable.timeTo[1]+"</td>"+
+										"<td class='text-center'><button type='button' class='btn btn-delete' data-toggle='modal' data-target='#myModel'><i id='book-confirm' class='fa fa-check'></i></button><button type='button' class='btn btn-delete' data-toggle='modal' data-target='#myModal'><i id='book-cancel' class='fal fa-trash-alt fa-lg'></i></button></td>"+
+										"</tr>");
+									})
+								},
+								error: function(xhr, status, err){
+									console.error(this.props.url, status, err.toString())
+								},
+							}); 
+					       
+				          /* document.formId.action = "/partner/bookings/"+ dateText; 
+				          $('#formId').submit(); */
 				  }}).datepicker("setDate", new Date());
 				});
 			</script>
-			</section>
-	
+	</section>
+
 </body>
 </html>

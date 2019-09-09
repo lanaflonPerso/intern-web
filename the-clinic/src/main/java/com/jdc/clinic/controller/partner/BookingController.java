@@ -23,12 +23,6 @@ public class BookingController {
 	@Autowired
 	BookingService bService;
 
-	/*
-	 * @GetMapping public String index(@PathVariable int clinicID, ModelMap model) {
-	 * 
-	 * return "/views/partner/bookings"; }
-	 */
-
 	@GetMapping
 	public String index(ModelMap model, HttpServletRequest request) {
 		// TODO check Login user or not
@@ -40,10 +34,6 @@ public class BookingController {
 
 		model.put("bookings", bService.listAllBookings());
 
-		/*
-		 * model.put("bookings", bService.getBookingByPartnerAndDate((((Partner)
-		 * session.getAttribute("partner")).getPhone())));
-		 */
 		return "/views/partner/bookings";
 	}
 
@@ -59,27 +49,4 @@ public class BookingController {
 		return "/views/partner/bookings";
 	}
 
-	/*
-	 * @GetMapping("/{bookid}") public String findById(@PathVariable int
-	 * clinicID, @PathVariable int bookid, ModelMap model) {
-	 * 
-	 * return "/views/partner/patient"; }
-	 */
-
-	/*
-	 * @PostMapping("/{bookid}") public String cancel(@PathVariable int
-	 * clinicID, @PathVariable int bookid) {
-	 * bService.delete(bService.findById(bookid).get());
-	 * 
-	 * return String.format("redirect:/partner/bookings/%d", bookid); return
-	 * "redirect:/partner/bookings"; }
-	 */
-
-	/*
-	 * @GetMapping("/{id}") public String cancel(@PathVariable("id") long bookid) {
-	 * bService.delete(bService.findById(bookid).get());
-	 * 
-	 * return String.format("redirect:/partner/bookings/%d", bookid); return
-	 * "redirect:/partner/bookings"; }
-	 */
 }

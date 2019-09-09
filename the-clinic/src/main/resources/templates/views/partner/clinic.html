@@ -382,7 +382,8 @@
 									</div>
 									<div>
 										<small class="text-muted">
-											<span th:text="*{d.days}"></span>
+											<span th:unless="*{d.days.isEmpty()}" th:text="*{d.days}"></span>
+											<span th:if="*{d.days.isEmpty()}">no schedule</span>
 										</small>
 									</div>
 

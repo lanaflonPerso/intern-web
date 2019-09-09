@@ -28,6 +28,7 @@ public class FamilyMember implements Serializable {
 	public FamilyMember() {
 		alergicMedicnes = new ArrayList<>();
 		diseasesHistories = new ArrayList<>();
+		security = new SecurityInfo();
 	}
 
 	@Id
@@ -53,7 +54,7 @@ public class FamilyMember implements Serializable {
 	private Gender gender;
 
 	@ElementCollection
-	private List<String> phNo;
+	private List<String> phNo = new ArrayList<>();
 
 	@ManyToOne
 	private Member member;
